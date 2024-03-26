@@ -1,79 +1,88 @@
-<!doctype html>
-<html>
-  <head>
-    <!-- Page setup -->
-    <meta charset="utf-8">
-    <title>Your title here</title>
-    <meta name="description" content="A brief description of your site for search engines">
-    <meta name="author" content="Information about the author here">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link rel="icon" type="image/png" href="favicon.png">
-  
-    <!-- Stylesheets -->
-    <!-- Reset default styles and add support for google fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
-   
-    <!-- Custom styles -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache Network Simulator</title>
+    <style>
+        body {
+            background-color: rgb(82, 82, 82);
+            color: white; /* Text color */
+            font-family: Arial, sans-serif; /* Choose your font */
+            margin:50; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        section {
+            padding: 50px; /* Adjust spacing inside sections */
+        }
+        h2 {
+            margin-top: 0; /* Remove default margin for the first heading */
+        }
+    </style>
+</head>
+<body>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
+    <h1>Cache Network Simulator</h1>
+      Dane Engman (dengman) and Yu-Ching Wu (yuchingw)
 
-    <!-- Want to add Bootstrap? -->
-    <!-- Visit: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
-    
-  </head>
-  
-  <body>
+    <section id="summary">
+        <h2>Summary</h2>
+        <p>We plan to augment Professor Railing's 
+          <a href="https://github.com/bprail/cadss_public" target="_blank">CADSS</a> (Computer Architecture Design Simulator for Students)
+         by developing a cycle-accurate network topology simulator that can 
+        simulate how cache coherrency messages would propogate about the network. We plan
+        to use this to simulate how different topologies affect the performance of programs. 
+        We will write the network simulator in SystemVerilog and integrate it into the existing
+        C++ framework by using the SystemVerilog DPI. </p>
+    </section>
 
-    <header id="header">
-      <img src="logo.png">
-      <h1>Simple Website</h1>
-      
-      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
-      <ul class="main-menu">
-        <li><a href="#home">home</a></li>
-        <li><a href="#about">about</a></li>
-        <li><a href="#contact">contact</a></li>
-      </ul>                 
-    </header>
-   
-    <div id="container">
-      <div class="inner">
-        <div id="content"> 
-          
-          <div id="home" class="content-region hide">
-            <h2>Home</h2>
-            <p>
-              This is a simple website template published with Github Pages, sourced from <a href="https://github.com/zirafa/simple-website-template">
-            </p>
-          </div>
-          
-          <div id="about" class="content-region hide">
-            <h2>About</h2>
-            <p>
-              Sed tempus urna et pharetra pharetra massa massa ultricies. Porttitor rhoncus dolor purus non enim praesent. Id aliquet risus feugiat in ante metus dictum. 
-            </p>
-          </div>
-          
-          <div id="contact" class="content-region hide">
-            <h2>Contact</h2>
-            <p>
-              Pellentesque nec nam aliquam sem et tortor consequat. Quisque sagittis purus sit amet volutpat consequat. Magna eget est lorem ipsum dolor. 
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
+    <section id="background">
+        <h2>Background</h2>
+        <p>The network topology of a cache interconnect is an important microarchitectual
+          feature that will influence performance during various cache transactions, but
+          the exact ways that different topologies might affect performance is unclear.
+        </p>
+          <p>The CADSS is a lightweight architecture simulator that will allow us to easily 
+          integrate our network simulator without facing the complexities of a more complex simulator
+          like Gem 5. </p>
+        <p>
+          SystemVerilog is a hardware description and verification language which we will
+          use to describe the network. It implicitly supports constructs of timing and and
+          parallelism that are not present in software languages, and will allow us to integrate our
+          simulation with other tools that can measure power, area and other requirements. 
+        </p>
+    </section>
 
-    <footer>  
-      Footer region
-    </footer>
-    
-    <!-- Load additional JS scripts here -->
-    <script type="text/javascript" src="script.js"></script>
-    
-  </body>
+    <section id="challenges">
+        <h2>Challenges</h2>
+        <p>We will need to learn how to use the SystemVerilog DPI to interact
+          with the C++ simulator.
+        </p>
+        <p>We will need to develop and verify network topologies for our simulator.
+        </p>
+    </section>
+
+    <section id="resources">
+        <h2>Resources</h2>
+        <p>As noted before, we will use the CADSS along with SystemVerilog and its 
+          DPI. 
+        </p>
+    </section>
+
+    <section id="goals">
+        <h2>Goals and Deliverables</h2>
+        <p>This is the content of section 5.</p>
+    </section>
+
+    <section id="platform">
+      <h2>Platform Choice</h2>
+      <p>This is the content of section 5.</p>
+  </section>
+
+  <section id="schedule">
+    <h2>Schedule</h2>
+    <p>This is the content of section 5.</p>
+</section>
+
+</body>
 </html>
