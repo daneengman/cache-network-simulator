@@ -31,6 +31,10 @@ url: "https://daneengman.github.io" # the base hostname & protocol for your site
 remote_theme: jekyll/minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+
+minima:
+  skin: solarized-dark
 
 # Exclude from processing.
 # The following items will not be processed, by default.
