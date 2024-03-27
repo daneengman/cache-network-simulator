@@ -28,7 +28,7 @@ url: "https://daneengman.github.io" # the base hostname & protocol for your site
 # github_username:  jekyll
 
 # Build settings
-theme: minima
+remote_theme: minima
 plugins:
   - jekyll-feed
 
