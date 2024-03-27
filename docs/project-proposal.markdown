@@ -4,7 +4,7 @@ title: "Project Proposal"
 url: "https://daneengman.github.io/cache-network-simulator/project-proposal"
 ---
 
-# Summary
+## Summary
 
 We plan to augment Professor Railing's Computer Architecture Design
 Simulator for Students by developing a cycle-accurate network topology
@@ -13,7 +13,7 @@ about the network. We plan to use this We will write the network
 simulator in SystemVerilog and integrate it into the existing C++
 framework by using the SystemVerilog DPI.
 
-# Background
+## Background
 
 The network topology of a cache interconnect is an important
 microarchitectual feature that will influence performance during various
@@ -28,7 +28,7 @@ of timing and and parallelism that are not present in software
 languages, and will allow us to integrate our simulation with other
 tools that can measure power, area and other requirements.
 
-# Challenges
+## Challenges
 
 We will need to learn how to use the SystemVerilog DPI to interact with
 the C++ simulator and accurately reflect performance benefits and trade
@@ -39,15 +39,15 @@ performance with. Given that we are working with a HDL we will need to
 handle correctness issues and a level of parallelism that is very high
 if we want to accurately represent high performance topologies.
 
-# Resources
+## Resources
 
 As noted before, we will use the CADSS along with SystemVerilog and its
 DPI. We additionally hope to use some of Professor Railing's traces to
 test the performance of different designs.
 
-# Goals and Deliverables
+## Goals and Deliverables
 
-## Plan to Achieve
+#### Plan to Achieve
 
 We expect to achieve:
 
@@ -59,7 +59,7 @@ We expect to achieve:
 3.  Design at least 3 different networks (Bus, ring, torus) and compare
     performance between different designs
 
-## Hope to Achieve
+#### Hope to Achieve
 
 We hope to achieve:
 
@@ -73,7 +73,7 @@ We hope to achieve:
     see how different interconnects work with different workload
     coherence management patterns
 
-## Plans for Demonstration
+#### Plans for Demonstration
 
 We hope to present well defined graphs demonstrating our different
 networks, along with designs for how they might be implemented in
@@ -81,7 +81,7 @@ hardware. We also plan to present graphs demonstrating the effects of
 different interconnects on cache and overall compute performance using
 our simulator.
 
-## Analysis We Hope to Complete
+#### Analysis We Hope to Complete
 
 Our primary goal is to analyze how different topologies affect the speed
 of a multi-core workload with communication. We plan to use traces from
@@ -90,7 +90,7 @@ find how different interconnects affect 1. the amount of time the cache
 is waiting for messages to connect and 2. how much the overall trace
 speeds up based on the topology being used.
 
-# Platform Choice
+## Platform Choice
 
 We are using CADSS because although it does not offer the robustness and
 research quality results of more complex simulators like Gem 5, it will
@@ -102,7 +102,7 @@ and it allows us to easily and directly express the levels of
 parallelism needed in describing a network. It will also allow us to
 experiment with synthesis and power consumption.
 
-# Schedule
+## Schedule
 
 1.  Week 1: Run basic traces on CADSS and integrate with a very simple
     SystemVerilog network
