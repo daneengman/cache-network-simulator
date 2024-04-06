@@ -4,9 +4,9 @@ set(CMAKE_C_COMPILER gcc)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 # For debugging.
-# set(CMAKE_C_FLAGS "-O0 -ggdb3 -DDEBUG")
+set(CMAKE_C_FLAGS "-O0 -ggdb3 -DDEBUG -std=gnu99")
 
-set(CMAKE_C_FLAGS "-O2 -ggdb -DDEBUG -std=gnu99")
+# set(CMAKE_C_FLAGS "-O2 -ggdb -DDEBUG -std=gnu99")
 
 add_subdirectory(branch)
 add_subdirectory(cache)
@@ -15,6 +15,7 @@ add_subdirectory(trace)
 add_subdirectory(processor)
 add_subdirectory(coherence)
 add_subdirectory(interconnect)
+add_subdirectory(interconnect-ring)
 add_subdirectory(simpleCache)
 add_subdirectory(memory)
 
