@@ -1,7 +1,0 @@
-cd cadss
-mkdir build
-cd build
-cmake ..
-make
-
-# executable should now appear
