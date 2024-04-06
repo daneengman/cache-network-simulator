@@ -1,0 +1,238 @@
+/* $Revision$ */
+
+/*
+ ++---------------------------------------------------------------------++
+ ||                     VERA System Verifier (TM)                       ||
+ ||                                                                     ||
+ ||             Copyright (c) 1995-2002 by Synopsys, Inc.               ||
+ ||                      All Rights Reserved                            ||
+ ||                                                                     ||
+ ||      For support, send email to vera-support@synopsys.com           ||
+ ||                                                                     ||
+ ||  This program is proprietary and confidential information of        ||
+ ||  Synopsys Inc. and may be used and disclosed only as authorized in  ||
+ ||  a license agreement controlling such use and disclosure.           ||
+ ++---------------------------------------------------------------------++
+*/
+
+#ifndef _VERA_DEFINES_
+#define _VERA_DEFINES_		1
+
+#define	OFF			0
+#define	ON			1
+#define	ONE_SHOT		2
+#define	ONE_BLAST		3
+#define	HAND_SHAKE		4
+
+#define REPORT			2
+#define CLEAR			3
+#define SAVE			4
+#define LOAD			5
+#define DEBUG                   6
+#define CROSS                   7
+
+#define	CHECK			0
+#define	ALL			1
+#define	ANY			2
+#define	ORDER			3
+
+#define PERCENT			0
+#define MAX_COM			1
+#define NUM_DET			2
+
+#define FIRST			1
+#define NEXT			2
+#define DELETE			3
+
+#define PAST_IT			-1
+#define FAIL			0
+#define OK			1
+#define OK_LAST			2
+#define NO_VARS			3
+
+#define NO_WAIT			0
+#define WAIT			1
+#define COPY_NO_WAIT		2
+#define COPY_WAIT		3
+
+#define POSEDGE			0
+#define NEGEDGE			1
+#define CHGEDGE			2
+
+#define LO			0
+#define HI			1
+#define LOW			0
+#define HIGH			1
+#define NO_OVERLAP              2
+#define NO_OVERLAP_STATE        2
+#define CROSS_TRANS             4
+#define NO_OVERLAP_TRANS        8
+#define ONE_CROSS_STATE         16
+#define PRINT_MISSING           32
+
+#define NUM			1
+#define STR			2
+#define HNUM			3
+
+#define SEMAPHORE		0
+#define REGION			1
+#define MAILBOX			2
+#define PROGRAM			3
+#define VERBOSE			4
+#define EVENT			5
+#define CALL			6
+#define FORK			7
+#define WAIT_CHILD		8
+#define WAIT_VAR  		9
+
+#define	SILENT			0
+#define	RAWIN			1
+
+#define PROFILE_SORT            3
+#define PROFILE_VERBOSE         5
+
+#define VERA_PROFILE            7
+#define VERA_OBJECT             8
+
+#define SET			1
+
+#define SUM                     0
+#define NUM_BIN                 3
+#define GOAL                    4
+#define NAME                    5
+#define SAMPLE                  6
+#define COVERAGE                7
+#define STATE                   1
+#define TRANS                   2
+#define BAD_STATE               4
+#define BAD_TRANS               8
+#define LT                      0
+#define LE                      1
+#define GT                      2
+#define GE                      3
+#define EQ                      4
+#define NE                      5
+
+/* Error Class for error_mode() */
+#define EC_EXPECT		0
+#define EC_FULLEXPECT		1
+#define EC_SEXPECT		2
+#define EC_SFULLEXPECT		3
+#define EC_RETURN		4
+#define EC_USERSET		5
+#define EC_SEMTMOUT		6
+#define EC_RGNTMOUT		7
+#define EC_MBXTMOUT		8
+#define EC_CONFLICT		9
+#define EC_ARRAYX		10
+#define EC_SCONFLICT		11
+#define EC_EVNTTMOUT		12
+#define EC_WVARTMOUT		13
+#define EC_WCHILDTMOUT		14
+#define EC_VERBOSE		15
+#define EC_CODE_END		15
+
+/* Vera 1.0  Only */
+#define EC_NEXPECT		1
+#define EC_SNEXPECT		3
+
+/* signal flags */
+#define SIG_VCA                 0
+#define SIG_EXPECT              1
+#define SIG_EXIT                2
+
+/* Error codes for string methods */
+#define STR_ERR_OUT_OF_RANGE	1
+#define STR_ERR_REGEXP_SYNTAX	2
+
+/* License defines */
+#define LIC_PRERR	(1 << 0)
+#define LIC_PRWARN	(1 << 1)
+#define LIC_EXIT	(1 << 2)
+#define LIC_WAIT	(1 << 3)
+
+/* Stdio defines */
+#define stdin		32'h8000_0000
+#define stdout		32'h8000_0001
+#define stderr		32'h8000_0002
+
+/* Coverage API defines  */
+/*************************/
+/* mode values */
+#define CM_START 1
+#define CM_STOP  2
+#define CM_CHECK 3
+
+/* coverage type values */
+#define CM_SOURCE    1
+#define CM_CONDITION 2
+#define CM_TOGGLE    3
+#define CM_FSM       4
+#define CM_FSM_TRANS 4
+#define CM_FSM_STATE 5
+#define CM_UEXPR     6
+
+/* scope definition values */
+#define CM_MODULE 10
+#define CM_HIER   11
+
+/* return values */
+#define CM_NOERROR 0
+#define CM_ERROR   -1
+#define CM_NOCOV   -2
+#define CM_PARTIAL -3
+
+/* Vera Plot types */
+#define SIMWAVE 1
+#define VIRSIM  2
+#define DEBUSSY 3
+#define MTI	4
+#define ATHDL   5
+
+
+#include <assertions_defines.vrh>
+
+/*
+ * User managed Random Number Generator (RNG) state is always declared as VeraRandomState (see vera_initstate, vera_setstate).
+ * Internally we store (4) 32-bit words in the A/B fields of the bit vector, thus we need a 64-bit vera bitvector.
+ */
+#define VeraRandomState		bit[63:0]
+
+/* Used with vera_crc() types */
+#define VERA_CRC_LSB    0
+#define VERA_CRC_MSB    1
+
+/* Control constants for coverage_control */
+#define COV_STOP 0
+#define COV_START 1
+
+/* Randomize per-call options */
+#define VERA_SOLVE_MODE               	       0  /* default solve mode */
+#define VERA_CHECK_MODE 	               1  /* default check mode */
+#define VERA_ENABLE_SOLVER_TRACE_0	       2  /* vera_enable_solver_trace=0 */
+#define VERA_ENABLE_SOLVER_TRACE_1	       4  /* vera_enable_solver_trace=1 */
+#define VERA_ENABLE_SOLVER_TRACE_2	       8  /* vera_enable_solver_trace=2 */
+#define VERA_ENABLE_SOLVER_TRACE_ON_FAILURE_0  16  /* vera_enable_solver_trace_on_failure=0 */
+#define VERA_ENABLE_SOLVER_TRACE_ON_FAILURE_1  32  /* vera_enable_solver_trace_on_failure=1 */
+#define VERA_ENABLE_SOLVER_TRACE_ON_FAILURE_2  64  /* vera_enable_solver_trace_on_failure=2 */
+#define VERA_ENABLE_SOLVER_TRACE_ON_FAILURE_3  128  /* vera_enable_solver_trace_on_failure=3 */
+#define VERA_ENABLE_SOLVER_TRACE_ON_FAILURE_4  256  /* vera_enable_solver_trace_on_failure=4 (future) */
+#define VERA_ENABLE_CHECKER_TRACE_0            512  /* vera_enable_checker_trace=0 */
+#define VERA_ENABLE_CHECKER_TRACE_1            1024  /* vera_enable_checker_trace=1 */
+#define VERA_ENABLE_CHECKER_TRACE_2            2048  /* vera_enable_checker_trace=2 */
+#define VERA_ENABLE_CHECKER_TRACE_ON_FAILURE_0 4096  /* vera_enable_checker_trace_on_failure=0 */
+#define VERA_ENABLE_CHECKER_TRACE_ON_FAILURE_1 8192  /* vera_enable_checker_trace_on_failure=1 */
+#define VERA_ENABLE_CHECKER_TRACE_ON_FAILURE_2 16384  /* vera_enable_checker_trace_on_failure=2 */
+#define VERA_ENABLE_CHECKER_TRACE_ON_FAILURE_3 32768  /* vera_enable_checker_trace_on_failure=3 */
+#define VERA_SOLVER_MODE_1                     65536  /* +vera_solver_mode=1 */
+#define VERA_SOLVER_MODE_2                     131072  /* vera_solver_mode=2 */
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_0       1048576 /* vera_enable_solver_diagnostics=0*/
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_1       2097152 /* vera_enable_solver_diagnostics=1*/
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_2       4194304 /* vera_enable_solver_diagnostics=2*/
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_3       8388608 /* vera_enable_solver_diagnostics=3*/
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_4       16777216 /* vera_enable_solver_diagnostics=4*/
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_ON_FAILURE_0       33554432  /* vera_enable_solver_diagnostics_on_failure=0 */ 
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_ON_FAILURE_1  67108864 /* vera_enable_solver_diagnostics_on_failure=1 */
+#define VERA_ENABLE_SOLVER_DIAGNOSTICS_ON_FAILURE_2  134217728 /* vera_enable_solver_diagnostics_on_failure=2 */
+
+#endif

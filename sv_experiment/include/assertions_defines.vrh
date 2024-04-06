@@ -1,0 +1,89 @@
+/* $Revision$ */
+
+/*
+ ++---------------------------------------------------------------------++
+ ||                     VERA System Verifier (TM)                       ||
+ ||                                                                     ||
+ ||             Copyright (c) 1995-2002 by Synopsys, Inc.               ||
+ ||                      All Rights Reserved                            ||
+ ||                                                                     ||
+ ||      For support, send email to vera-support@synopsys.com           ||
+ ||                                                                     ||
+ ||  This program is proprietary and confidential information of        ||
+ ||  Synopsys Inc. and may be used and disclosed only as authorized in  ||
+ ||  a license agreement controlling such use and disclosure.           ||
+ ++---------------------------------------------------------------------++
+*/
+
+#ifndef _ASSERTIONS_DEFINES_
+#define _ASSERTIONS_DEFINES_		1
+
+
+/* OVA Vera types */
+#define OVA_INFO                        1
+#define OVA_QUIET                       2
+#define OVA_REPORT                      3
+#define OVA_RESET                       4
+#define OVA_FINISH                      5
+#define OVA_TERMINATE                   6
+#define OVA_DISABLE 			7
+#define OVA_ENABLE         		8
+#define OVA_FAILURE                     9
+#define OVA_SUCCESS                     10
+#define OVA_ALL                         11
+#define OVA_NULL                        12
+#define OVA_NO_OP                       14
+#define	OVA_VACOUS_SUCCESS              15 
+#define	OVA_REAL_SUCCESS                16
+#define	OVA_CONFIG                      17 
+#define OVA_EVENT			18
+#define OVA_CHECK			19
+#define OVA_FORBID			20
+#define OVA_COVER			21
+#define OVA_COVER_NOT			22
+#define OVA_IMMEDIATE			23
+#define OVA_MAX_COUNT			24
+
+
+
+#define OVA_FALSE                       0
+#define OVA_TRUE                        1
+
+/* Assertion Vera types */
+#define ASSERT_INFO	    OVA_INFO       
+#define ASSERT_QUIET        OVA_QUIET       
+#define ASSERT_REPORT       OVA_REPORT
+#define ASSERT_RESET        OVA_RESET
+#define ASSERT_FINISH       OVA_FINISH
+#define ASSERT_TERMINATE    OVA_TERMINATE 
+#define ASSERT_DISABLE      OVA_DISABLE 
+#define ASSERT_ENABLE       OVA_ENABLE
+#define ASSERT_FAILURE      OVA_FAILURE 
+#define ASSERT_SUCCESS      OVA_SUCCESS 
+#define ASSERT_ALL          OVA_ALL
+#define ASSERT_NULL         OVA_NULL
+#define ASSERT_NO_OP        OVA_NO_OP
+#define	ASSERT_VACOUS_SUCCESS OVA_VACOUS_SUCCESS
+#define	ASSERT_REAL_SUCCESS   OVA_REAL_SUCCESS
+#define	ASSERT_CONFIG         OVA_CONFIG
+#define ASSERT_EVENT          OVA_EVENT
+#define ASSERT_CHECK          OVA_CHECK
+#define ASSERT_FORBID         OVA_FORBID
+#define ASSERT_COVER          OVA_COVER
+#define ASSERT_COVER_NOT      OVA_COVER_NOT
+#define ASSERT_IMMEDIATE      OVA_IMMEDIATE
+#define ASSERT_MAX_TYPE       OVA_MAX_COUNT /* Should be last in this list of macros*/
+    
+#define ASSERT_FALSE       OVA_FALSE
+#define ASSERT_TRUE        OVA_TRUE 
+
+/* For backward compatibility with Vera-OVA code */
+#define GetOVAName AssertGetType
+#define OVAAssert  Assertion
+#define OVAEngine  AssertEngine
+#define OVAEvent   AssertEvent 
+#define GetNextEvent    GetNextEventType
+
+
+
+#endif

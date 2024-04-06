@@ -1,0 +1,299 @@
+#pragma vip(14967748, a11b2f87, 00000000, 00001b95, "Aug 25 2015", "21:31:39")
+/////////////////////////////////////////////////////////////////
+// Vera Header file created from vmm_hw.pp 
+/////////////////////////////////////////////////////////////////
+#ifndef INC_VMM_HW_VRH
+#define INC_VMM_HW_VRH
+
+#include "rvm_std_lib.vrh"
+
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+// This is an unpublished, proprietary work of Synopsys, Inc., and is
+// fully protected under copyright and trade secret laws. You may not
+// view, use, disclose, copy, or distribute this file or any information
+// contained herein except pursuant to a valid written license from
+// Synopsys.
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+
+
+#ifndef VMM_HW__VRI
+#define VMM_HW__VRI
+
+#include <vera_defines.vrh>
+
+#ifndef VMM_HW_DATA_WIDTH
+#define VMM_HW_DATA_WIDTH 1024
+#endif
+
+
+port vmm_hw_clock_port {
+   no_posw;
+   no_negw;
+   ck_en;
+   ckn_en;
+}
+
+#define vmm_hw_clock_if(inst, path) \
+ \
+interface inst { \
+  inout [31:0] no_posw    PSAMPLE  #0 PHOLD   #0 hdl_node "path.no_posw"; \
+  inout [31:0] no_negw    PSAMPLE  #0 PHOLD   #0 hdl_node "path.no_negw"; \
+  input        ck_en                  PSAMPLE #0 hdl_node "path.ck_en"; \
+  input        ckn_en                 PSAMPLE #0 hdl_node "path.ckn_en"; \
+}
+
+
+#ifdef VMM_HW_ARCH_NULL
+
+#define vmm_hw_clock_bind(name, path) \
+ \
+    vmm_hw_clock_if(name/**/_itf, path) \
+ \
+    bind vmm_hw_clock_port name { \
+       no_posw  name/**/_itf.no_posw; \
+       no_negw  name/**/_itf.no_negw; \
+       ck_en    name/**/_itf.ck_en; \
+       ckn_en   name/**/_itf.ckn_en; \
+    }
+
+#else
+
+#define vmm_hw_clock_bind(name, path) \
+ \
+    bind vmm_hw_clock_port name { \
+       no_posw  void; \
+       no_negw  void; \
+       ck_en    void; \
+       ckn_en   void; \
+    }
+
+#endif
+
+
+port vmm_hw_clock_control_port {
+   cclk_en;
+   cclk_neg_en;
+   rdy_for_cclk;
+   rdy_for_cclk_neg;
+}
+
+
+#define vmm_hw_clock_control_if(inst, path) \
+ \
+interface inst { \
+  output cclk_en           PHOLD   #0 hdl_node "path.vitf.cclk_en"; \
+  output cclk_neg_en       PHOLD   #0 hdl_node "path.vitf.cclk_neg_en"; \
+  input  rdy_for_cclk      PSAMPLE #0 hdl_node "path.rdy_for_cclk"; \
+  input  rdy_for_cclk_neg  PSAMPLE #0 hdl_node "path.rdy_for_cclk_neg"; \
+}
+
+
+#ifdef VMM_HW_ARCH_NULL
+
+#define vmm_hw_clock_control_bind(name, path) \
+ \
+    vmm_hw_clock_control_if(name/**/_itf, path) \
+ \
+    bind vmm_hw_clock_control_port name { \
+       cclk_en           name/**/_itf.cclk_en; \
+       cclk_neg_en       name/**/_itf.cclk_neg_en; \
+       rdy_for_cclk      name/**/_itf.rdy_for_cclk; \
+       rdy_for_cclk_neg  name/**/_itf.rdy_for_cclk_neg; \
+    }
+
+#else
+
+#define vmm_hw_clock_control_bind(name, path) \
+ \
+    bind vmm_hw_clock_control_port name { \
+       cclk_en           void; \
+       cclk_neg_en       void; \
+       rdy_for_cclk      void; \
+       rdy_for_cclk_neg  void; \
+    }
+
+#endif
+
+
+
+port vmm_hw_in_if_port {
+   rx_rdy;
+   tx_rdy;
+   msg;
+}
+
+#define vmm_hw_in_if_if(inst, hpath) \
+ \
+interface inst { \
+   input                          uclk    CLOCK       hdl_node "vmm_hw.uclk"; \
+   input                          rx_rdy  PSAMPLE #-1 hdl_node "hpath.rx_rdy"; \
+   output                         tx_rdy  PHOLD   #1  hdl_node "hpath.vitf.tx_rdy"; \
+   output [VMM_HW_DATA_WIDTH-1:0] msg     PHOLD   #1  hdl_node "hpath.vitf.msg"; \
+}
+
+#ifdef VMM_HW_ARCH_NULL
+
+#define vmm_hw_in_if_bind(name, hpath, hsize) \
+ \
+    vmm_hw_in_if_if(name/**/_itf, hpath) \
+ \
+    bind vmm_hw_in_if_port name/**/_bind { \
+       rx_rdy   name/**/_itf.rx_rdy; \
+       tx_rdy   name/**/_itf.tx_rdy; \
+       msg      name/**/_itf.msg; \
+   } \
+ \
+   function string name/**/_path() { name/**/_path = "hpath"; } \
+   function integer name/**/_size() { name/**/_size = hsize; }
+
+
+#else
+
+#define vmm_hw_in_if_bind(name, hpath, hsize) \
+ \
+    bind vmm_hw_in_if_port name/**/_bind { \
+       rx_rdy   void; \
+       tx_rdy   void; \
+       msg      void; \
+   } \
+ \
+   function string name/**/_path() { name/**/_path = "hpath"; } \
+   function integer name/**/_size() { name/**/_size = hsize; }
+
+#endif
+
+#define create_in_port(itf, name) \
+   _create_in_port(itf/**/_bind, itf/**/_path(), itf/**/_size(), name)
+
+
+
+
+port vmm_hw_out_if_port {
+   rx_rdy;
+   tx_rdy;
+   msg;
+   stamp;
+}
+
+#define vmm_hw_out_if_if(inst, hpath) \
+ \
+interface inst { \
+   input                         uclk    CLOCK       hdl_node "vmm_hw.uclk"; \
+   output                        rx_rdy  PHOLD   #1  hdl_node "hpath.vitf.rx_rdy"; \
+   input                         tx_rdy  PSAMPLE #-1 hdl_node "hpath.tx_rdy"; \
+   input [VMM_HW_DATA_WIDTH-1:0] msg     PSAMPLE #-1 hdl_node "hpath.msg"; \
+   input [63:0]                  stamp   PSAMPLE #-1 hdl_node "vmm_hw.stamp"; \
+}
+
+#ifdef VMM_HW_ARCH_NULL
+
+#define vmm_hw_out_if_bind(name, hpath, hsize) \
+ \
+    vmm_hw_out_if_if(name/**/_itf, hpath) \
+ \
+    bind vmm_hw_out_if_port name/**/_bind { \
+       rx_rdy   name/**/_itf.rx_rdy; \
+       tx_rdy   name/**/_itf.tx_rdy; \
+       msg      name/**/_itf.msg; \
+       stamp    name/**/_itf.stamp; \
+   } \
+ \
+   function string name/**/_path() { name/**/_path = "hpath"; } \
+   function integer name/**/_size() { name/**/_size = hsize; }
+
+
+#else
+
+#define vmm_hw_out_if_bind(name, hpath, hsize) \
+ \
+    bind vmm_hw_out_if_port name/**/_bind { \
+       rx_rdy   void; \
+       tx_rdy   void; \
+       msg      void; \
+       stamp    void; \
+   } \
+ \
+   function string name/**/_path() { name/**/_path = "hpath"; } \
+   function integer name/**/_size() { name/**/_size = hsize; }
+
+#endif
+
+#define create_out_port(itf, name) \
+   _create_out_port(itf/**/_bind, itf/**/_path(), itf/**/_size(), name)
+
+
+
+#endif // VMM_HW__VRI
+
+#ifndef SYNOPSYS_NTB
+
+extern class vmm_hw_version { 
+  function integer major (
+  );
+  function integer minor (
+  );
+  function integer patch (
+  );
+  function string vendor (
+  );
+  task display (
+    string prefix = ""
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+}
+typedef class vmm_hw_in_port ;
+typedef class vmm_hw_out_port ;
+extern virtual class vmm_hw_arch { 
+  rvm_log log;
+  virtual function vmm_hw_in_port _create_in_port (
+    vmm_hw_in_if_port in_if,
+    string path,
+    integer size,
+    string name = ""
+  );
+  virtual function vmm_hw_out_port _create_out_port (
+    vmm_hw_out_if_port out_if,
+    string path,
+    integer size,
+    string name = ""
+  );
+  virtual function string connect_to (
+    string hdl_path,
+    string name
+  );
+  virtual task clk_control (
+    vmm_hw_clock_port clk,
+    vmm_hw_clock_control_port ctl
+  );
+  virtual task init_sim (
+  );
+}
+extern virtual class vmm_hw_in_port { 
+  rvm_log log;
+  virtual function bit is_rdy (
+  );
+  virtual task wait_is_rdy_t (
+  );
+  virtual task send_t (
+    bit [1023:0] data
+  );
+}
+extern virtual class vmm_hw_out_port { 
+  rvm_log log;
+  virtual function bit is_rdy (
+  );
+  virtual task wait_is_rdy_t (
+  );
+  virtual function bit [63:0] receive_t (
+    var bit [1023:0] msg
+  );
+}
+
+#endif
+#endif

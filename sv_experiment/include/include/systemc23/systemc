@@ -1,0 +1,3 @@
+#ifndef SYSTEMC_INCLUDED
+#include "systemc_"
+#endif

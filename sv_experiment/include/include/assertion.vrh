@@ -1,0 +1,500 @@
+/* $Revision$ */
+
+/*
+ ++---------------------------------------------------------------------++
+ ||                     VERA System Verifier (TM)                       ||
+ ||                                                                     ||
+ ||             Copyright (c) 2004 by Synopsys, Inc.                    ||
+ ||                      All Rights Reserved                            ||
+ ||                                                                     ||
+ ||      For support, send email to vcs-support@synopsys.com            ||
+ ||                                                                     ||
+ ||  This program is proprietary and confidential information of        ||
+ ||  Synopsys Inc. and may be used and disclosed only as authorized in  ||
+ ||  a license agreement controlling such use and disclosure.           ||
+ ++---------------------------------------------------------------------++
+*/
+
+#ifndef __VERAASSERT__VRH__
+#define __VERAASSERT__VRH__ 1
+
+#include <vera_defines.vrh>
+#include <assertions_defines.vrh>
+
+/* Directc functions : interface with assertion engine */
+extern  "C" function string AssertGetType(integer i);
+extern  "C" task AssertAttachEvent( integer Id, event Event, 
+		 integer EventType, integer Attach);
+extern  "C" function integer AssertGetNextEvent( event Event); 
+extern  "C" function integer AssertGetMaxCount();
+extern  "C" task AssertDoAction( integer Id, integer Action);
+extern  "C" task AssertEventCountEnabled( integer Id, integer Type);
+extern  "C" function string AssertGetName( integer Id );
+extern  "C" function integer AssertGetCount( integer Id, integer Type);
+extern  "C" function integer AssertGetCategory( integer Id);
+extern  "C" function integer AssertGetAssertionType( integer Id);
+extern  "C" task AssertEngineConfig(integer Operation , integer Value);
+extern  "C" function integer AssertGetIdFromName( string Name);
+extern  "C" task AssertSetCategory(integer Id, integer Category); 
+extern  "C" function integer AssertEngineInitialize();
+extern  "C" function integer  AssertGetFirstAssertion(integer EngineIndex);
+extern  "C" function integer AssertGetNextAssertion(integer EngineIndex);
+
+class AssertEvent
+{
+	local integer EventType;
+	local integer Attached;
+	local integer AssertId;
+	
+	event Event; 
+
+	task new(integer Event); 
+	task Wait();
+	task Attach(integer attach, integer id);
+	task Detach(integer attach, integer id);
+
+	function integer GetNextEventType();
+	function integer GetEventType();
+	function integer    IsAttached();
+	function integer    GetAssertId();
+}
+
+class Assertion
+{
+	local integer Id;
+
+	//Events for Assertions
+	//TBD:: Event reduction : Real/Vacuous callback
+	local AssertEvent RealSuccessEvent;
+	local AssertEvent VacSuccessEvent;
+	local AssertEvent SuccessEvent;
+	local AssertEvent FailureEvent ;
+	local AssertEvent DisableEvent;
+	local AssertEvent EnableEvent;
+	local AssertEvent ResetEvent;
+	local AssertEvent AllEvent;
+
+	//Public tasks
+	task new(integer Id, integer value);
+	task DoAction (integer Action);
+	task EnableCount(integer id);
+	task Wait(integer Type);
+	task Attach(integer Type, event Event);
+	task Detach(integer Type, event Event);
+	task SetCategory(integer Category);
+
+	//Public functions
+	function string  GetName();
+	function integer GetCount(integer id);
+	function integer GetCategory();
+	function integer GetAssertionType();
+
+	//For backward compatibility. 
+	//These tasks are local tasks in SVA context. Not visible to user.
+	//Visible only when used with OVA i.e inclusion ovavera.vrh
+	task EnableTrigger ( AssertEvent ev );
+	task DisableTrigger ( AssertEvent ev );
+}
+
+
+class AssertEngine
+{
+	static local integer IsUsed = 0;
+	local integer EngineIndex;
+	local integer CurrentIndex;
+	local integer EngineEventMask;
+	local integer AssertCount;
+	local AssertEvent ResetEvent;
+	local AssertEvent TerminateEvent;
+	local AssertEvent AllEvent;
+	
+	task new();
+	task Configure(integer Operation,  integer Value);
+	task DoAction (integer Action);
+	task Wait(integer Type);
+	task Attach(integer Type, event Event);
+	task Detach(integer Type, event Event);
+	task clean();
+	
+	function Assertion GetFirstAssert();
+	function Assertion GetNextAssert();
+	function Assertion GetAssert(string Name);
+
+	//For backward compatibility. 
+	//These tasks are local tasks in SVA context. Not visible to user.
+	//Visible only when used with OVA i.e inclusion ovavera.vrh
+	task EnableTrigger(AssertEvent ev);
+	task DisableTrigger(AssertEvent ev);
+	//TBD :: var for OVA
+	//LOCAL function OVAVar GetVar(string Name);
+}
+
+
+task AssertEvent::new(integer Event)
+{
+	if(( Event >= ASSERT_MAX_TYPE ) || ( Event < 0)) {
+		printf("Ntb Error : Invalid Event value %s\n", 
+			AssertGetType(Event));
+		exit(1);
+	}
+
+	EventType  = Event;
+	Attached   = 0;
+	AssertId   = 0;
+}
+
+task AssertEvent::Wait()
+{
+	if((IsAttached() == 0)) { 
+		printf("Ntb Error: Event can't wait if not attached to assertion/engine\n");
+		exit(1);
+	}
+	if((EventType >= ASSERT_MAX_TYPE ) || (EventType < 0)) {
+		printf("Ntb Error : Invalid Event value %d\n", EventType);
+		exit(1);
+	}
+	sync(ALL, Event);
+}
+
+task AssertEvent::Attach(integer attach, integer id)
+{
+	Attached = attach;
+	AssertId = id;
+	AssertAttachEvent(id, Event, EventType, 1);
+}
+
+task AssertEvent::Detach(integer attach, integer id)
+{
+	Attached = 0;
+	AssertId = 0;
+	AssertAttachEvent(id, Event, EventType, 0);
+}
+
+function integer AssertEvent::IsAttached()
+{
+	IsAttached = Attached;
+}
+
+function integer AssertEvent::GetAssertId()
+{
+	GetAssertId = AssertId;
+}
+
+
+function integer AssertEvent::GetEventType()
+{
+	GetEventType = EventType;
+}
+
+function integer AssertEvent::GetNextEventType()
+{
+	if (IsAttached() == 0) {
+		GetNextEventType =  0;
+	}
+	else {
+		GetNextEventType = AssertGetNextEvent(Event);
+	}
+}
+
+#define LOCK_VALUE 82347
+task Assertion::new(integer id, integer value)
+{
+	integer maxCount = 0;
+
+	RealSuccessEvent = new(ASSERT_REAL_SUCCESS);
+	VacSuccessEvent = new(ASSERT_VACOUS_SUCCESS);
+	SuccessEvent = new(ASSERT_SUCCESS);
+	FailureEvent = new(ASSERT_FAILURE);
+	DisableEvent = new(ASSERT_DISABLE);
+	EnableEvent = new(ASSERT_ENABLE);
+	ResetEvent = new(ASSERT_RESET);
+	AllEvent = new(ASSERT_ALL);
+	if(value != LOCK_VALUE) {
+		printf("Ntb Error: Assertion class can't be instantiated\n");
+		exit(1);
+	}
+	maxCount = AssertGetMaxCount();
+	if (Id < 1  || Id > maxCount ) {
+		printf("Ntb Error: Assertion class can't be instantiated\n");
+		exit(1);
+	}
+	Id = id;
+}
+
+task Assertion::DoAction(integer Action)
+{
+	if(Id) {
+		AssertDoAction(Id, Action);
+	}
+}
+
+task Assertion::EnableCount(integer Type)
+{
+
+	if(Id) {
+		AssertEventCountEnabled(Id, Type);
+	}
+}
+
+task Assertion::Wait(integer Type)
+{
+	if(Id) {
+		case(Type) {
+			ASSERT_FAILURE: 
+				{
+					FailureEvent.Attach(Type, Id);
+					sync(ALL, FailureEvent.Event);
+				}
+			ASSERT_SUCCESS: 
+				{   
+					SuccessEvent.Attach(Type, Id);
+					sync(ALL, SuccessEvent.Event);
+				}
+			ASSERT_VACOUS_SUCCESS: 
+				{
+					VacSuccessEvent.Attach(Type, Id);
+					sync(ALL, VacSuccessEvent.Event);
+				}	
+			ASSERT_REAL_SUCCESS: 
+				{   
+					RealSuccessEvent.Attach(Type, Id);
+					sync(ALL, RealSuccessEvent.Event);
+				}
+			ASSERT_DISABLE:
+				{
+					DisableEvent.Attach(Type, Id);
+					sync(ALL, DisableEvent.Event);
+				}
+			ASSERT_ENABLE:
+				{
+					EnableEvent.Attach(Type, Id);
+					sync(ALL, EnableEvent.Event);
+				}
+			ASSERT_RESET:
+				{
+					ResetEvent.Attach(Type, Id);
+					sync(ALL, ResetEvent.Event);
+				}
+			ASSERT_ALL:
+				{
+					AllEvent.Attach(Type, Id);
+					sync(ALL, AllEvent.Event);
+				}
+		}
+	}
+}
+
+task Assertion::Attach(integer Type, event Event)
+{
+	if(Id) {
+		AssertAttachEvent(Id, Event, Type, 1);
+	}
+}
+
+task Assertion::Detach(integer Type, event Event)
+{
+	if(Id) {
+		AssertAttachEvent(Id, Event, Type, 0);
+	}
+}
+
+task Assertion::SetCategory(integer Category)
+{
+	if(Id) {
+		AssertSetCategory(Id, Category); 
+	}
+}
+
+function string Assertion::GetName()
+{
+	GetName="";
+	if(Id) {
+		GetName = AssertGetName(Id);
+	}
+}
+
+function integer Assertion::GetCount(integer Type)
+{
+	GetCount = 0;
+	if(Id) {
+		GetCount = AssertGetCount(Id, Type); 
+	}
+}
+
+function integer Assertion::GetCategory()
+{
+	GetCategory = 0;
+	if(Id) {
+		GetCategory = AssertGetCategory(Id);
+	}
+}
+
+function integer Assertion::GetAssertionType()
+{
+	GetAssertionType = OVA_NULL;
+	if(Id) {
+		GetAssertionType = AssertGetAssertionType(Id);
+	}
+}
+
+
+task Assertion::EnableTrigger(AssertEvent ev)
+{
+	if(Id) { 
+		ev.Attach(1, Id); 
+	}
+}
+
+task Assertion::DisableTrigger(AssertEvent ev)
+{
+	if(Id) {
+		ev.Detach(0, Id); 
+	}
+}
+
+task AssertEngine::new()
+{ 
+	integer maxCount = 0;
+	integer i;
+	ResetEvent = new(ASSERT_RESET);
+	TerminateEvent = new(ASSERT_TERMINATE);
+	AllEvent = new(ASSERT_ALL);
+	if (IsUsed) {
+		printf("Ntb Error : Multiple instances of Engines are not allowed.\n");
+		exit(1);
+	}
+	else {
+		IsUsed++;
+	}
+
+	Configure(ASSERT_QUIET, ASSERT_TRUE);
+	Configure(ASSERT_REPORT, ASSERT_TRUE);
+
+	EngineIndex = AssertEngineInitialize();
+	maxCount = AssertGetMaxCount();
+	AssertCount = maxCount;
+	CurrentIndex = -1;
+	EngineEventMask = 0;
+}
+
+task AssertEngine::Configure(integer Operation,  integer Value)
+{
+	if( (Value != 0) && (Value != 1)) {
+		printf("Ntb error : Value %d is not a valid value to AssertEngine::Config\n", Value);
+		exit(1);
+	}
+
+	case(Operation) {
+	  ASSERT_INFO:
+		AssertEngineConfig(Operation , Value);
+	  ASSERT_QUIET:
+		AssertEngineConfig(Operation , Value);
+	  ASSERT_REPORT:
+		AssertEngineConfig(Operation , Value);
+	  default:
+		{
+		    printf("Ntb error : Oprtaion %s is not a valid value to AssertEngine::Config\n", AssertGetType(Operation));
+		    exit(1);
+		}
+	}
+}
+
+task AssertEngine::DoAction(integer Action)
+{
+	AssertDoAction(0, Action);
+}
+
+function Assertion AssertEngine::GetFirstAssert()
+{
+	integer id = 0;
+	GetFirstAssert = null;
+	if (AssertCount == 0) { 
+		printf("Ntb Error: No Assertion in the design\n");
+	}
+	else {
+		id =  AssertGetFirstAssertion(EngineIndex);
+		if(id) {
+			GetFirstAssert = new(id, LOCK_VALUE);
+		}
+	}
+}
+
+function Assertion AssertEngine::GetNextAssert()
+{
+	integer id = 0;
+	GetNextAssert = null;
+	if (AssertCount == 0) { 
+		printf("Ntb Error: No Assertion in the design\n");
+	}
+	else {
+		id =  AssertGetNextAssertion(EngineIndex);
+		if(id) {
+			GetNextAssert = new(id, LOCK_VALUE);
+		}
+	}
+}
+
+function Assertion AssertEngine::GetAssert(string Name)
+{
+	integer Id;
+	Id = AssertGetIdFromName(Name);
+	if(!Id) {
+		printf("Ntb Error: Assert name %s does not exist \n", Name);
+		GetAssert = null;
+		//exit(1);
+	}
+	else {
+		GetAssert = new(Id, LOCK_VALUE);
+	}
+}
+
+task AssertEngine::Wait(integer Type)
+{
+	case(Type) {
+		ASSERT_RESET: 
+			{   
+				ResetEvent.Attach(Type, 0);
+				sync(ALL, ResetEvent.Event);
+			}
+		ASSERT_TERMINATE: 
+			{	
+				TerminateEvent.Attach(Type, 0);
+				sync(ALL, TerminateEvent.Event);
+			}
+		ASSERT_ALL: 
+			{
+				AllEvent.Attach(Type, 0);
+				sync(ALL, AllEvent.Event);
+			}
+		default :
+			printf("Ntb Error : Event %s is not meant for Engine\n", 
+				AssertGetType(Type));
+	}
+}
+
+task AssertEngine::Attach(integer Type, event Event)
+{
+	AssertAttachEvent(0, Event, Type, 1);
+}
+
+task AssertEngine::Detach(integer Type, event Event)
+{
+	AssertAttachEvent(0, Event, Type, 0);
+}
+
+task AssertEngine::clean()
+{
+	IsUsed = 0;
+}
+
+task AssertEngine::EnableTrigger(AssertEvent evnt)
+{
+	evnt.Attach(1, 0);
+}
+
+task AssertEngine::DisableTrigger(AssertEvent evnt)
+{
+	evnt.Detach(0, 0);
+}
+
+#endif

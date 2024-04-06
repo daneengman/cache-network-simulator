@@ -1,0 +1,68 @@
+#pragma vip(948971e0, 7c67fc82, 00000000, 00000667, "Aug 25 2015", "21:31:39")
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+// This is an unpublished, proprietary work of Synopsys, Inc., and is
+// fully protected under copyright and trade secret laws. You may not
+// view, use, disclose, copy, or distribute this file or any information
+// contained herein except pursuant to a valid written license from
+// Synopsys.
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+
+/////////////////////////////////////////////////////////////////
+// Vera Header file created from vmm_subenv.pp 
+/////////////////////////////////////////////////////////////////
+#ifndef INC_VMM_SUBENV_VRH
+#define INC_VMM_SUBENV_VRH
+
+#include "rvm_std_lib.vrh"
+
+#ifndef SYNOPSYS_NTB
+
+typedef class rvm_ms_scenario_election ;
+typedef class rvm_watchdog ;
+typedef class rvm_voter ;
+typedef class xvc_xactor ;
+extern class vmm_subenv_version { 
+  function integer major (
+  );
+  function integer minor (
+  );
+  function integer patch (
+  );
+  function integer vcs_patch (
+  );
+  function string vendor (
+  );
+  task display (
+    string prefix = ""
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+}
+extern class vmm_subenv { 
+  rvm_log log;
+  protected rvm_consensus end_test;
+  enum state_type = NEWED, CONFIGURED, STARTED, STOPPED, CLEANED;
+  task new (
+    string name,
+    string inst,
+    rvm_consensus end_test
+  );
+  protected task configured (
+  );
+  virtual task start_t (
+  );
+  virtual task stop_t (
+  );
+  virtual task cleanup_t (
+  );
+  virtual task report (
+  );
+}
+
+#endif
+#endif

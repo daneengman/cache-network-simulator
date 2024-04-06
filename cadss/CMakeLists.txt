@@ -15,6 +15,7 @@ add_subdirectory(trace)
 add_subdirectory(processor)
 add_subdirectory(coherence)
 add_subdirectory(interconnect)
+add_subdirectory(interconnect_sv)
 add_subdirectory(simpleCache)
 add_subdirectory(memory)
 

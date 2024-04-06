@@ -1,0 +1,19 @@
+{
+    "CompUnits": {
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "out": "objs/amcQw_d.o",
+            "checksum": 4294967295,
+            "bytes": 7489,
+            "mode": 4
+        }
+    },
+    "Modules": {
+        "dpi_tb": {},
+        "...MASTER...": {},
+        "_vcs_DPI_package": {},
+        "std": {}
+    },
+    "ObjArchives": [],
+    "reusePaths": {}
+}

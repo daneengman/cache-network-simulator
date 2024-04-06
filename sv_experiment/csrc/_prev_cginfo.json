@@ -1,0 +1,135 @@
+{
+    "Misc": {
+        "archive_dir": "archive.3",
+        "daidir": "simv.daidir",
+        "cwd": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_experiment",
+        "csrc_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_experiment/csrc",
+        "csrc": "csrc",
+        "daidir_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_experiment/simv.daidir",
+        "default_output_dir": "csrc"
+    },
+    "MlibObjs": {},
+    "CurCompileModules": [
+        "...MASTER..."
+    ],
+    "PrevCompiledModules": {
+        "std": {
+            "reYIK_d": {
+                "checksum": 4294967295,
+                "bytes": 28502,
+                "mod": "std",
+                "mode": 4,
+                "archive": "archive.3/_prev_archive_1.a",
+                "out": "reYIK_d.o"
+            }
+        },
+        "_vcs_DPI_package": {
+            "uM9F1_d": {
+                "checksum": 4294967295,
+                "bytes": 7336,
+                "mod": "_vcs_DPI_package",
+                "mode": 4,
+                "archive": "archive.3/_prev_archive_1.a",
+                "out": "uM9F1_d.o"
+            }
+        },
+        "dpi_tb": {
+            "i7AAI_d": {
+                "checksum": 4294967295,
+                "bytes": 8629,
+                "mod": "dpi_tb",
+                "mode": 4,
+                "archive": "archive.3/_prev_archive_1.a",
+                "out": "i7AAI_d.o"
+            }
+        },
+        "...MASTER...": {
+            "amcQw_d": {
+                "checksum": 4294967295,
+                "bytes": 7481,
+                "mod": "...MASTER...",
+                "out": "objs/amcQw_d.o",
+                "mode": 4
+            }
+        }
+    },
+    "PEModules": [],
+    "NameTable": {
+        "dpi_tb": [
+            "dpi_tb",
+            "i7AAI",
+            "module"
+        ],
+        "_vcs_DPI_package": [
+            "_vcs_DPI_package",
+            "uM9F1",
+            "module"
+        ],
+        "std": [
+            "std",
+            "reYIK",
+            "module"
+        ],
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
+            "module"
+        ]
+    },
+    "stat": {
+        "ru_self_cgstart": {
+            "ru_maxrss_kb": 44748,
+            "ru_utime_sec": 0.049679000000000001,
+            "ru_stime_sec": 0.040737000000000002,
+            "ru_nivcsw": 7,
+            "ru_minflt": 11841,
+            "ru_nvcsw": 125,
+            "ru_majflt": 0
+        },
+        "ru_childs_cgstart": {
+            "ru_maxrss_kb": 0,
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0,
+            "ru_nivcsw": 0,
+            "ru_minflt": 0,
+            "ru_nvcsw": 0,
+            "ru_majflt": 0
+        },
+        "nMops": 0,
+        "Frontend(%)": 92.878776548010777,
+        "nQuads": 0,
+        "totalObjSize": 64482,
+        "ru_self_end": {
+            "ru_maxrss_kb": 47836,
+            "ru_utime_sec": 0.053488000000000001,
+            "ru_stime_sec": 0.055506,
+            "ru_nivcsw": 7,
+            "ru_minflt": 13039,
+            "ru_nvcsw": 178,
+            "ru_majflt": 0
+        },
+        "ru_childs_end": {
+            "ru_maxrss_kb": 0,
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0,
+            "ru_nivcsw": 0,
+            "ru_minflt": 0,
+            "ru_nvcsw": 0,
+            "ru_majflt": 0
+        },
+        "CodeGen(%)": 7.1212234519892315
+    },
+    "CompileProcesses": [
+        "cgproc.14640.json"
+    ],
+    "CompileStrategy": "fullobj",
+    "SIMBData": {
+        "out": "amcQwB.o",
+        "bytes": 57001
+    },
+    "CurCompileUdps": {},
+    "CompileStatus": "Successful",
+    "LVLData": [
+        "SIM"
+    ]
+}

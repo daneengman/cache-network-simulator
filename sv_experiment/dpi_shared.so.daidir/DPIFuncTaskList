@@ -1,0 +1,2 @@
+import_DPI c_method dpi_tb
+export_DPI sv_method dpi_tb

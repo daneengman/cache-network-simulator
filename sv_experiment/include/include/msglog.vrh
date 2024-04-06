@@ -1,0 +1,46 @@
+/******************************************************************
+ *   Copyright (c) 2009 by Synopsys Inc. - All Rights Reserved    *
+ *                                                                *
+ *    CONFIDENTIAL AND PROPRIETARY INFORMATION OF SYNOPSYS INC.   *
+ ******************************************************************/
+
+#ifndef _VCS_MSGLOG_VRH
+#define _VCS_MSGLOG_VRH
+
+// _MSG_T constants have the same encoding as vmm_log::types_e
+#define FAILURE_T       1
+#define NOTE_T          2
+#define DEBUG_T         4
+#define REPORT_T        8
+#define NOTIFY_T        16        
+#define TIMING_T        32
+#define XHANDLING_T     64
+#define XACTION_T       128
+#define PROTOCOL_T      256
+#define COMMAND_T       512
+#define CYCLE_T         1024
+
+// _MSG_S constants have the same encoding as vmm_log::severities_e
+#define FATAL_S         1
+#define ERROR_S         2
+#define WARNING_S       4
+#define NORMAL_S        8
+#define TRACE_S         16
+#define DEBUGS_S        32
+#define VERBOSE_S       64
+#define HIDDEN_S        128
+#define IGNORE_S        256
+
+// _MSG_R constants
+#define START_R         1 
+#define FINISH_R        2
+#define PRED_R          4
+#define SUCC_R          8
+#define SUB_R           16  
+#define PARENT_R        32
+#define CHILD_R         64
+#define XTEND_R         128
+// USER RELATION
+#define USER_R          256 
+
+#endif

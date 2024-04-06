@@ -1,0 +1,3 @@
+DPI_STUB_OBJS += ./../dpi_shared.so.daidir/vc_hdrs.o
+./../dpi_shared.so.daidir/vc_hdrs.o: ./../dpi_shared.so.daidir/vc_hdrs.c
+	@$(CC)  -pipe -fPIC    -I/afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/include  -fPIC -c -o ./../dpi_shared.so.daidir/vc_hdrs.o ./../dpi_shared.so.daidir/vc_hdrs.c

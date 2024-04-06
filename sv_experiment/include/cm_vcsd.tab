@@ -1,0 +1,58 @@
+$start_toggle 		call=startToggleQT 	check=checkStartToggleQT 	misc=toggleMiscQT 
+$start_reg_toggle 	call=startRegToggleQT 	check=checkStartRegToggleQT 	misc=toggleMiscQT 
+$start_net_toggle 	call=startNetToggleQT 	check=checkStartNetToggleQT 	misc=toggleMiscQT 
+$stop_toggle 		call=stopToggleQT 	check=checkStopToggleQT		misc=toggleMiscQT
+$stop_module_toggle	call=stopModuleToggleQT	check=checkStopModuleToggleQT	misc=toggleMiscQT
+$stop_bit_toggle	call=stopBitToggleQT	check=checkStopBitToggleQT	misc=toggleMiscQT
+$add_toggle		call=addToggleQT	check=checkAddToggleQT		misc=toggleMiscQT
+$set_toggle_mode	call=setToggleModeQT	check=checkSetToggleModeQT	misc=toggleMiscQT
+$set_toggle_clock	call=setToggleClockQT	check=checkSetToggleClockQT	misc=toggleMiscQT
+$reset_toggle		call=resetToggleQT	check=checkResetToggleQT	misc=toggleMiscQT
+$report_toggle		call=reportToggleQT	check=checkReportToggleQT	misc=toggleMiscQT
+$report_net_toggle	call=reportNetToggleQT	check=checkReportNetToggleQT	misc=toggleMiscQT
+$report_reg_toggle	call=reportRegToggleQT	check=checkReportRegToggleQT	misc=toggleMiscQT
+$disable_toggle_report	call=disableToggleReportQT check=checkDisableToggleReportQT misc=toggleMiscQT
+$add_condition		call=addConditionQT	check=checkAddConditionQT 	misc=conditionMiscQT
+$start_condition	call=startConditionQT 	check=checkStartConditionQT 	misc=conditionMiscQT 
+$report_condition	call=reportConditionQT	check=checkReportConditionQT    misc=conditionMiscQT
+$disable_condition_report call=disableConditionReportQT check=checkDisableConditionReportQT	misc=conditionMiscQT
+$add_uexpr		call=addUexprQT		check=checkAddUexprQT 		misc=uexprMiscQT	
+$set_uvar		call=setUvarQT		check=checkSetUvarQT 		misc=uexprMiscQT
+$get_uvar		call=getUvarQT		check=checkGetUvarQT 		misc=uexprMiscQT size=32
+$start_uexpr		call=startUexprQT 	check=checkStartUexprQT 	misc=uexprMiscQT 
+$report_uexpr		call=reportUexprQT	check=checkReportUexprQT	misc=uexprMiscQT
+$disable_uexpr_report 	call=disableUexprReportQT check=checkDisableUexprReportQT misc=uexprMiscQT
+$add_fsm		call=addFsmQT		check=checkAddFsmQT 		misc=fsmMiscQT
+$start_fsm		call=startFsmQT 	check=checkStartFsmQT 		misc=fsmMiscQT 
+$report_fsm		call=reportFsmQT	check=checkReportFsmQT		misc=fsmMiscQT
+$disable_fsm_report 	call=disableFsmReportQT check=checkDisableFsmReportQT	misc=fsmMiscQT
+$enable_fsm_sequence    call=enableFsmSeqQT     check=checkEnableFsmSeqQT	misc=fsmMiscQT
+$disable_fsm_sequence   call=disableFsmSeqQT    check=checkDisableFsmSeqQT	misc=fsmMiscQT
+$cover_line	        call=coverLineQT	check=checkCoverLineQT
+$start_source 		call=startSourceQT 	check=checkStartSourceQT 	misc=sourceMiscQT 
+$reset_source 		call=resetSourceQT 	check=checkResetSourceQT	misc=sourceMiscQT
+$stop_source 		call=stopSourceQT 	check=checkStopSourceQT		misc=sourceMiscQT
+$stop_module_source	call=stopModuleSourceQT	check=checkStopModuleSourceQT	misc=sourceMiscQT
+$add_source		call=addSourceQT	check=checkAddSourceQT		misc=sourceMiscQT 
+$set_source_dir		call=setSourceDirQT	check=checkSetSourceDirQT 	misc=cmMiscQT
+$set_source_dir_assert	call=setSourceDirAssertQT	check=checkSetSourceDirAssertQT 	misc=cmMiscQT
+$disable_source_report	call=disableSourceReportQT check=checkDisableSourceReportQT misc=sourceMiscQT
+$report_source		call=reportSourceQT	check=checkReportSourceQT	misc=sourceMiscQT
+$disable_decl_report	call=disableDeclReportQT  check=checkDisableDeclReportQT misc=declMiscQT
+$close_log		call=closeLogQT		check=checkCloseLogQT		misc=cmMiscQT
+$set_report		call=setReportQT	check=checkSetReportQT		misc=cmMiscQT
+$read_cm_tasks 		call=readCMtasksQT 	check=checkReadCMtasksQT 	misc=cmMiscQT 
+$use_cm 		call=useCMqt 		check=checkUseCMqt 		misc=cmMiscQT 
+$isNoGlitch		call=isNoGlitchQT	check=checkIsNoGlitchQT size=32
+$set_glitch_period	call=setGlitchPeriodQT	check=checkSetGlitchPeriodQT    misc=toggleMiscQT	
+$initModInd		call=initModIndQT	check=checkInitModIndQT size=32
+$cm_coverage		call=cm_CoverageQT	check=cm_check_CoverageQT	misc=cmMiscQT	size=32 minargs=3
+$cm_get_coverage	call=cm_GetCoverageQT	check=cm_check_GetCoverageQT	misc=cmMiscQT	size=32 minargs=3
+$cm_get_limit		call=cm_GetLimitQT	check=cm_check_GetLimitQT	misc=cmMiscQT	size=32 minargs=3
+$cm_dump		call=cm_DumpQT  check=cm_check_DumpQT   misc=cmMiscQT
+$cm_line_cond_restore   call=updateLineCondRegQT check=cm_check_LineCondRegQT
+$start_history          call=startHistoryQT
+$stop_history           call=stopHistoryQT
+$cm_record_path     call=addRecordPathQT   check=checkRecordPathQT
+$cm_arc_coverage    call=updateArcCoverage
+

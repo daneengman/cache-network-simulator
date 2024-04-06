@@ -1,0 +1,2025 @@
+#pragma vip(b02e16dd, 235d61b3, 00000000, 0000b8f7, "Aug 25 2015", "21:31:39")
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+// This is an unpublished, proprietary work of Synopsys, Inc., and is
+// fully protected under copyright and trade secret laws. You may not
+// view, use, disclose, copy, or distribute this file or any information
+// contained herein except pursuant to a valid written license from
+// Synopsys.
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+
+/////////////////////////////////////////////////////////////////
+// Vera Header file created from vmm_ral.pp 
+/////////////////////////////////////////////////////////////////
+#ifndef INC_VMM_RAL_VRH
+#define INC_VMM_RAL_VRH
+
+
+#include <vera_defines.vrh>
+#include <rvm_std_lib.vrh>
+
+#ifndef VMM_RAL_ADDR_WIDTH
+  #define VMM_RAL_ADDR_WIDTH 64
+#endif
+#ifndef VMM_RAL_DATA_WIDTH
+  #define VMM_RAL_DATA_WIDTH 64
+#endif
+
+#ifndef VMM_RW_ADDR_WIDTH
+  #define VMM_RW_ADDR_WIDTH VMM_RAL_ADDR_WIDTH
+#endif
+#ifndef VMM_RW_DATA_WIDTH
+  #define VMM_RW_DATA_WIDTH VMM_RAL_DATA_WIDTH
+#endif
+
+#ifndef SYNOPSYS_NTB
+typedef class rvm_log ;
+typedef class rvm_data ;
+typedef class rvm_log_msg ;
+typedef class rvm_xactor ;
+typedef class rvm_watchdog ;
+typedef class xvc_xactor ;
+extern class vmm_ral_version { 
+  function integer major (
+  );
+  function integer minor (
+  );
+  function integer patch (
+  );
+  function string vendor (
+  );
+  task display (
+    string prefix = ""
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+}
+extern class vmm_rw { 
+  enum kind_e = READ, WRITE, EXPECT;
+  enum status_e = IS_OK, ERROR, RETRY;
+}
+extern class vmm_rw_access extends rvm_data { 
+  static rvm_log log;
+  rand vmm_rw::kind_e kind;
+  rand bit [63:0] addr;
+  rand bit [63:0] data;
+  rand integer n_bits;
+  vmm_rw::status_e status;
+  constraint valid_vmm_rw_access;
+  task new (
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+}
+extern class vmm_rw_access_channel extends rvm_channel_class { 
+  task new (
+    string name,
+    string instance,
+    integer full = 1,
+    integer empty = 0,
+    bit fill_as_bytes = 0
+  );
+  function vmm_rw_access unput (
+    integer offset = -1
+  );
+  function vmm_rw_access get_t (
+    integer offset = 0
+  );
+  function vmm_rw_access peek_t (
+    integer offset = 0
+  );
+  function vmm_rw_access activate_t (
+    integer offset = 0
+  );
+  function vmm_rw_access active_slot (
+  );
+  function vmm_rw_access start (
+  );
+  function vmm_rw_access complete (
+  );
+  function vmm_rw_access remove (
+  );
+  function vmm_rw_access tee_t (
+  );
+  function vmm_rw_access for_each (
+    bit reset = 0
+  );
+}
+extern class vmm_rw_burst extends vmm_rw_access { 
+  rand integer n_beats;
+  rand bit [63:0] incr_addr;
+  rand bit [63:0] max_addr;
+  rand bit [63:0] data [*];
+  rvm_data user_data;
+  constraint vmm_rw_burst_valid;
+  constraint reasonable;
+  constraint linear;
+  constraint fifo;
+  constraint wrap;
+  task new (
+  );
+}
+typedef class vmm_rw_xactor ;
+extern class vmm_rw_xactor_callbacks extends rvm_xactor_callbacks { 
+  virtual task pre_single_t (
+    vmm_rw_xactor xactor,
+    vmm_rw_access tr
+  );
+  virtual task pre_burst_t (
+    vmm_rw_xactor xactor,
+    vmm_rw_burst tr
+  );
+  virtual task post_single_t (
+    vmm_rw_xactor xactor,
+    vmm_rw_access tr
+  );
+  virtual task post_burst_t (
+    vmm_rw_xactor xactor,
+    vmm_rw_burst tr
+  );
+}
+extern class vmm_rw_xactor extends rvm_xactor { 
+  enum notifications_e = BURST_DONE=99990, SINGLE_DONE;
+  vmm_rw_access_channel exec_chan;
+  task new (
+    string name,
+    string instance,
+    integer stream_id = -1,
+    vmm_rw_access_channel exec_chan = null
+  );
+  protected task pre_single_t (
+    vmm_rw_access br
+  );
+  protected task post_single_t (
+    vmm_rw_access br
+  );
+  protected task pre_burst_t (
+    vmm_rw_burst br
+  );
+  protected task post_burst_t (
+    vmm_rw_burst br
+  );
+  virtual protected task execute_single_t (
+    vmm_rw_access tr
+  );
+  virtual protected task execute_burst_t (
+    vmm_rw_burst tr
+  );
+  virtual protected task main_t (
+  );
+  virtual task reset_xactor (
+    integer rst_type = 0
+  );
+}
+typedef class vmm_ral_access ;
+typedef class vmm_ral_field ;
+typedef class vmm_ral_vfield ;
+typedef class vmm_ral_reg ;
+typedef class vmm_ral_vreg ;
+typedef class vmm_ral_block_or_sys ;
+typedef class vmm_ral_block ;
+typedef class vmm_ral_sys ;
+typedef class vmm_ral_subsys ;
+extern class vmm_ral { 
+  enum path_e = BFM, BACKDOOR, DEFAULT;
+  enum access_e = RW, RO, WO, W1, RU, RC, W1C, A0,
+	A1, DC, OTHER, USER0, USER1, USER2, USER3;
+  enum check_e = QUIET, VERB;
+  enum endianness_e = NO_ENDIAN, LITTLE_ENDIAN, BIG_ENDIAN, LITTLE_FIFO, BIG_FIFO;
+  enum reset_e = HARD, SOFT;
+  enum coverage_model_e = NO_COVERAGE, REG_BITS, ADDR_MAP, FIELD_VALS=4, ALL_COVERAGE=7;
+}
+extern class vmm_ral_callbacks extends rvm_xactor_callbacks { 
+  task new (
+  );
+}
+extern class vmm_ral_field_callbacks extends vmm_ral_callbacks { 
+  virtual task pre_write_t (
+    vmm_ral_field field,
+    var bit [63:0] wdat,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_write_t (
+    vmm_ral_field field,
+    bit [63:0] wdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+  virtual task pre_read_t (
+    vmm_ral_field field,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_read_t (
+    vmm_ral_field field,
+    var bit [63:0] rdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+}
+extern class vmm_ral_field { 
+  static rvm_log log;
+  rand bit [63:0] value;
+  vmm_ral_field_callbacks XcbsX [$];
+  constraint vmm_ral_field_valid;
+  task new (
+    vmm_ral_reg parent,
+    string name,
+    integer size,
+    vmm_ral::access_e access,
+    bit [63:0] reset,
+    bit [63:0] soft_reset,
+    integer lsb_pos,
+    bit is_rand = 0,
+    bit cover_on = 0
+  );
+  virtual function string get_name (
+  );
+  virtual function string get_fullname (
+  );
+  virtual function vmm_ral_reg get_register (
+  );
+  virtual function integer get_lsb_pos_in_register (
+  );
+  virtual function integer get_n_bits (
+  );
+  virtual function vmm_ral::access_e get_access (
+    string domain = ""
+  );
+  virtual function vmm_ral::access_e set_access (
+    vmm_ral::access_e mode
+  );
+  virtual task display (
+    string prefix = ""
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  virtual function bit [63:0] XpredictX (
+    bit [63:0] cur_val,
+    bit [63:0] wr_val,
+    string domain
+  );
+  virtual task XforceX (
+    bit [63:0] value,
+    vmm_ral::path_e path,
+    string domain
+  );
+  virtual task XwroteX (
+    bit [63:0] value,
+    vmm_ral::path_e path,
+    string domain = ""
+  );
+  virtual function bit [63:0] XupdX (
+  );
+  virtual task set (
+    bit [63:0] value
+  );
+  virtual function bit predict (
+    bit [63:0] value
+  );
+  virtual function bit [63:0] get (
+  );
+  virtual task reset (
+    vmm_ral::reset_e kind = vmm_ral::HARD
+  );
+  virtual function bit [63:0] set_reset (
+    bit [63:0] value,
+    vmm_ral::reset_e kind = vmm_ral::HARD
+  );
+  virtual function bit needs_update (
+  );
+  virtual function vmm_rw::status_e write_t (
+    bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e read_t (
+    var bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e poke_t (
+    bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e peek_t (
+    var bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e mirror_t (
+    vmm_ral::check_e check = vmm_ral::QUIET,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = ""
+  );
+  task prepend_callback (
+    vmm_ral_field_callbacks cb
+  );
+  task append_callback (
+    vmm_ral_field_callbacks cb
+  );
+  task unregister_callback (
+    vmm_ral_field_callbacks cb
+  );
+  task pre_randomize (
+  );
+  task post_randomize (
+  );
+}
+extern class vmm_ral_vfield_callbacks extends vmm_ral_callbacks { 
+  virtual task pre_write_t (
+    vmm_ral_vfield field,
+    integer idx,
+    var bit [63:0] wdat,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_write_t (
+    vmm_ral_vfield field,
+    integer idx,
+    bit [63:0] wdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+  virtual task pre_read_t (
+    vmm_ral_vfield field,
+    integer idx,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_read_t (
+    vmm_ral_vfield field,
+    integer idx,
+    var bit [63:0] rdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+}
+extern class vmm_ral_vfield { 
+  static rvm_log log;
+  vmm_ral_vfield_callbacks XcbsX [$];
+  task new (
+    vmm_ral_vreg parent,
+    string name,
+    integer size,
+    integer lsb_pos
+  );
+  virtual function string get_name (
+  );
+  virtual function string get_fullname (
+  );
+  virtual function vmm_ral_vreg get_register (
+  );
+  virtual function integer get_lsb_pos_in_register (
+  );
+  virtual function integer get_n_bits (
+  );
+  virtual function vmm_ral::access_e get_access (
+    string domain = ""
+  );
+  virtual task display (
+    string prefix = ""
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  virtual function vmm_rw::status_e write_t (
+    integer idx,
+    bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e read_t (
+    integer idx,
+    var bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e poke_t (
+    integer idx,
+    bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e peek_t (
+    integer idx,
+    var bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  task prepend_callback (
+    vmm_ral_vfield_callbacks cb
+  );
+  task append_callback (
+    vmm_ral_vfield_callbacks cb
+  );
+  task unregister_callback (
+    vmm_ral_vfield_callbacks cb
+  );
+}
+extern virtual class vmm_ral_reg_backdoor_callbacks { 
+  virtual task pre_read_t (
+    vmm_ral_reg rg,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_read_t (
+    vmm_ral_reg rg,
+    var vmm_rw::status_e status,
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task pre_write_t (
+    vmm_ral_reg rg,
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_write_t (
+    vmm_ral_reg rg,
+    var vmm_rw::status_e status,
+    bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function bit [63:0] encode (
+    bit [63:0] data
+  );
+  virtual function bit [63:0] decode (
+    bit [63:0] data
+  );
+}
+typedef class vmm_ral_mem ;
+extern virtual class vmm_ral_mem_backdoor_callbacks { 
+  virtual task pre_read_t (
+    vmm_ral_mem mem,
+    var bit [63:0] offset,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_read_t (
+    vmm_ral_mem mem,
+    var vmm_rw::status_e status,
+    var bit [63:0] offset,
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task pre_write_t (
+    vmm_ral_mem mem,
+    var bit [63:0] offset,
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_write_t (
+    vmm_ral_mem mem,
+    var vmm_rw::status_e status,
+    var bit [63:0] offset,
+    bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function bit [63:0] encode (
+    bit [63:0] data
+  );
+  virtual function bit [63:0] decode (
+    bit [63:0] data
+  );
+}
+extern virtual class vmm_ral_reg_backdoor { 
+  vmm_ral_reg rg;
+  static rvm_log log;
+  task new (
+    vmm_ral_reg rg = null
+  );
+  virtual function vmm_rw::status_e write_t (
+    bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e read_t (
+    var bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual task pre_read_t (
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_read_t (
+    var vmm_rw::status_e status,
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task pre_write_t (
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_write_t (
+    var vmm_rw::status_e status,
+    bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task append_callback (
+    vmm_ral_reg_backdoor_callbacks cb
+  );
+  virtual task prepend_callback (
+    vmm_ral_reg_backdoor_callbacks cb
+  );
+  virtual task unregister_callback (
+    vmm_ral_reg_backdoor_callbacks cb
+  );
+}
+extern virtual class vmm_ral_mem_backdoor { 
+  vmm_ral_mem mem;
+  static rvm_log log;
+  task new (
+    vmm_ral_mem mem = null
+  );
+  virtual function vmm_rw::status_e write_t (
+    bit [63:0] offset,
+    bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e read_t (
+    bit [63:0] offset,
+    var bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual task pre_read_t (
+    var bit [63:0] offset,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_read_t (
+    var vmm_rw::status_e status,
+    var bit [63:0] offset,
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task pre_write_t (
+    var bit [63:0] offset,
+    var bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task post_write_t (
+    var vmm_rw::status_e status,
+    var bit [63:0] offset,
+    bit [63:0] data,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task append_callback (
+    vmm_ral_mem_backdoor_callbacks cb
+  );
+  virtual task prepend_callback (
+    vmm_ral_mem_backdoor_callbacks cb
+  );
+  virtual task unregister_callback (
+    vmm_ral_mem_backdoor_callbacks cb
+  );
+}
+extern class vmm_ral_reg_callbacks extends vmm_ral_callbacks { 
+  virtual task pre_write_t (
+    vmm_ral_reg rg,
+    var bit [63:0] wdat,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_write_t (
+    vmm_ral_reg rg,
+    bit [63:0] wdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+  virtual task pre_read_t (
+    vmm_ral_reg rg,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_read_t (
+    vmm_ral_reg rg,
+    var bit [63:0] rdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+}
+extern virtual class vmm_ral_reg_frontdoor { 
+  static rvm_log log;
+  virtual function vmm_rw::status_e write_t (
+    bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e read_t (
+    var bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+}
+extern class vmm_ral_reg { 
+  static rvm_log log;
+  bit Xis_busyX;
+  task new (
+    vmm_ral_block parent,
+    string name,
+    integer n_bits,
+    bit [63:0] offset,
+    string domain = "",
+    integer cover_on = 0,
+    bit [1:0] rights = 2'b11,
+    bit unmapped = 0,
+    integer has_cover = 0
+  );
+  task Xlock_modelX (
+  );
+  task add_domain (
+    bit [63:0] offset,
+    string domain,
+    bit [1:0] rights,
+    bit unmapped = 0
+  );
+  virtual local task domain_coverage (
+    string domain,
+    bit rights,
+    integer idx
+  );
+  task register_field (
+    vmm_ral_field field
+  );
+  task Xregister_ral_accessX (
+    vmm_ral_access access
+  );
+  task Xadd_constraintsX (
+    string name
+  );
+  task XatomicX (
+    bit on
+  );
+  virtual function string get_name (
+  );
+  virtual function string get_fullname (
+  );
+  virtual function integer get_n_domains (
+  );
+  virtual task get_domains (
+    var string domains[*]
+  );
+  virtual function vmm_ral::access_e get_rights (
+    string domain = ""
+  );
+  virtual function vmm_ral_block get_block (
+  );
+  virtual function bit [63:0] get_offset_in_block (
+    string domain = ""
+  );
+  virtual function bit [63:0] get_address_in_system (
+    string domain = ""
+  );
+  virtual function integer get_n_bytes (
+  );
+  virtual task get_constraints (
+    var string names[*]
+  );
+  virtual task display (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual function string psdisplay (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual task get_fields (
+    var vmm_ral_field fields[*]
+  );
+  virtual function vmm_ral_field get_field_by_name (
+    string name
+  );
+  virtual function bit can_cover (
+    integer models
+  );
+  virtual function integer set_cover (
+    integer is_on
+  );
+  virtual function bit is_cover_on (
+    integer is_on
+  );
+  virtual local task XforceX (
+    bit [63:0] value,
+    vmm_ral::path_e path,
+    string domain
+  );
+  virtual local task XwroteX (
+    bit [63:0] value,
+    vmm_ral::path_e path,
+    string domain
+  );
+  virtual function bit [63:0] get (
+  );
+  virtual task set (
+    bit [63:0] value
+  );
+  virtual function bit predict (
+    bit [63:0] value
+  );
+  virtual task reset (
+    vmm_ral::reset_e kind = vmm_ral::HARD
+  );
+  virtual function bit needs_update (
+  );
+  virtual function vmm_rw::status_e update_t (
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = ""
+  );
+  virtual function vmm_rw::status_e write_t (
+    bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e XwriteX (
+    bit [63:0] value,
+    vmm_ral::path_e path,
+    string domain,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e read_t (
+    var bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e XreadX (
+    var bit [63:0] value,
+    vmm_ral::path_e path,
+    string domain,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e poke_t (
+    bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e peek_t (
+    var bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e mirror_t (
+    vmm_ral::check_e check = vmm_ral::QUIET,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = ""
+  );
+  task set_frontdoor (
+    vmm_ral_reg_frontdoor ftdr,
+    string domain = ""
+  );
+  function vmm_ral_reg_frontdoor get_frontdoor (
+    string domain = ""
+  );
+  task set_backdoor (
+    vmm_ral_reg_backdoor bkdr
+  );
+  function vmm_ral_reg_backdoor get_backdoor (
+  );
+  task prepend_callback (
+    vmm_ral_reg_callbacks cb
+  );
+  task append_callback (
+    vmm_ral_reg_callbacks cb
+  );
+  task unregister_callback (
+    vmm_ral_reg_callbacks cb
+  );
+  virtual local task sample (
+    bit [63:0] data,
+    bit is_read,
+    integer domain
+  );
+  virtual task sample_field_values (
+  );
+}
+typedef class vmm_mam_region ;
+typedef class vmm_mam ;
+extern class vmm_ral_vreg_callbacks extends vmm_ral_callbacks { 
+  virtual task pre_write_t (
+    vmm_ral_vreg rg,
+    integer idx,
+    var bit [63:0] wdat,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_write_t (
+    vmm_ral_vreg rg,
+    integer idx,
+    bit [63:0] wdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+  virtual task pre_read_t (
+    vmm_ral_vreg rg,
+    integer idx,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_read_t (
+    vmm_ral_vreg rg,
+    integer idx,
+    var bit [63:0] rdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+}
+extern class vmm_ral_vreg { 
+  static rvm_log log;
+  task new (
+    vmm_ral_block parent,
+    string name,
+    integer n_bits,
+    bit [63:0] offset = 0,
+    vmm_ral_mem mem = null,
+    bit [63:0] size = 0,
+    integer incr = 0
+  );
+  task Xlock_modelX (
+  );
+  task register_field (
+    vmm_ral_vfield field
+  );
+  task XatomicX (
+    bit on
+  );
+  task reset (
+    vmm_ral::reset_e kind = vmm_ral::HARD
+  );
+  virtual function string get_name (
+  );
+  virtual function string get_fullname (
+  );
+  virtual function vmm_ral_block get_block (
+  );
+  virtual function bit implement (
+    bit [63:0] n,
+    vmm_ral_mem mem = null,
+    bit [63:0] offset = 0,
+    integer incr = 0
+  );
+  virtual function vmm_mam_region allocate (
+    bit [63:0] n,
+    vmm_mam mam
+  );
+  virtual function vmm_mam_region get_region (
+  );
+  virtual task release_region (
+  );
+  virtual function vmm_ral_mem get_memory (
+  );
+  virtual function integer get_n_domains (
+  );
+  virtual task get_domains (
+    var string domains[*]
+  );
+  virtual function vmm_ral::access_e get_access (
+    string domain = ""
+  );
+  virtual function vmm_ral::access_e get_rights (
+    string domain = ""
+  );
+  virtual function bit [63:0] get_offset_in_memory (
+    integer idx
+  );
+  virtual function bit [63:0] get_address_in_system (
+    integer idx,
+    string domain = ""
+  );
+  virtual function integer get_size (
+  );
+  virtual function integer get_n_bytes (
+  );
+  virtual function integer get_n_memlocs (
+  );
+  virtual function integer get_incr (
+  );
+  virtual task display (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual function string psdisplay (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual task get_fields (
+    var vmm_ral_vfield fields[*]
+  );
+  virtual function vmm_ral_vfield get_field_by_name (
+    string name
+  );
+  virtual function vmm_rw::status_e write_t (
+    integer idx,
+    bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e read_t (
+    integer idx,
+    var bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e poke_t (
+    integer idx,
+    bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e peek_t (
+    integer idx,
+    var bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  task prepend_callback (
+    vmm_ral_vreg_callbacks cb
+  );
+  task append_callback (
+    vmm_ral_vreg_callbacks cb
+  );
+  task unregister_callback (
+    vmm_ral_vreg_callbacks cb
+  );
+}
+typedef class vmm_mam_cfg ;
+typedef class vmm_ral_mem_burst ;
+extern class vmm_mam_region { 
+  bit [63:0] Xstart_offsetX;
+  bit [63:0] Xend_offsetX;
+  vmm_ral_vreg XvregX;
+  task new (
+    bit [63:0] start_offset,
+    bit [63:0] end_offset,
+    integer len,
+    integer n_bytes,
+    vmm_mam parent
+  );
+  function bit [63:0] get_start_offset (
+  );
+  function bit [63:0] get_end_offset (
+  );
+  function integer get_len (
+  );
+  function integer get_n_bytes (
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+  task release_region (
+  );
+  function vmm_ral_mem get_memory (
+  );
+  function vmm_ral_vreg get_virtual_registers (
+  );
+  function vmm_rw::status_e write_t (
+    bit [63:0] offset,
+    bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e read_t (
+    bit [63:0] offset,
+    var bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e burst_write_t (
+    vmm_ral_mem_burst burst,
+    bit [63:0] value[*],
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e burst_read_t (
+    vmm_ral_mem_burst burst,
+    var bit [63:0] value[*],
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e poke_t (
+    bit [63:0] offset,
+    bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e peek_t (
+    bit [63:0] offset,
+    var bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+}
+extern class vmm_mam_allocator { 
+  integer len;
+  rand bit [63:0] start_offset;
+  bit [63:0] min_offset;
+  bit [63:0] max_offset;
+  vmm_mam_region in_use [$];
+  constraint vmam_mam_allocator_valid;
+  constraint vmam_mam_allocator_no_overlap;
+}
+extern class vmm_mam { 
+  enum alloc_mode_e = GREEDY, THRIFTY;
+  enum locality_e = BROAD, NEARBY;
+  rvm_log log;
+  vmm_mam_allocator default_alloc;
+  task new (
+    string name,
+    vmm_mam_cfg cfg,
+    vmm_ral_mem mem = null
+  );
+  function vmm_mam_cfg reconfigure (
+    vmm_mam_cfg cfg = null
+  );
+  function vmm_mam_region reserve_region (
+    bit [63:0] start_offset,
+    integer n_bytes
+  );
+  function vmm_mam_region request_region (
+    integer n_bytes,
+    vmm_mam_allocator alloc = null
+  );
+  task release_region (
+    vmm_mam_region region
+  );
+  task release_all_regions (
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+  function vmm_mam_region for_each (
+    bit reset = 0
+  );
+  function vmm_ral_mem get_memory (
+  );
+}
+extern class vmm_mam_cfg { 
+  rand integer n_bytes;
+  rand bit [63:0] start_offset;
+  rand bit [63:0] end_offset;
+  rand vmm_mam::alloc_mode_e mode;
+  rand vmm_mam::locality_e locality;
+  constraint vmm_mam_cfg_valid;
+}
+extern class vmm_ral_mem_burst { 
+  rand integer n_beats;
+  rand bit [63:0] start_offset;
+  rand bit [63:0] incr_offset;
+  rand bit [63:0] max_offset;
+  rvm_data user_data;
+}
+extern class vmm_ral_mem_callbacks extends vmm_ral_callbacks { 
+  virtual task pre_write_t (
+    vmm_ral_mem mem,
+    var bit [63:0] offset,
+    var bit [63:0] wdat,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_write_t (
+    vmm_ral_mem mem,
+    bit [63:0] offset,
+    bit [63:0] wdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+  virtual task pre_read_t (
+    vmm_ral_mem mem,
+    var bit [63:0] offset,
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_read_t (
+    vmm_ral_mem mem,
+    bit [63:0] offset,
+    var bit [63:0] rdat,
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+  virtual task pre_burst_t (
+    vmm_ral_mem mem,
+    vmm_rw::kind_e kind,
+    vmm_ral_mem_burst burst,
+    var bit [63:0] wdat[*],
+    var vmm_ral::path_e path,
+    var string domain
+  );
+  virtual task post_burst_t (
+    vmm_ral_mem mem,
+    vmm_rw::kind_e kind,
+    vmm_ral_mem_burst burst,
+    var bit [63:0] data[*],
+    vmm_ral::path_e path,
+    string domain,
+    var vmm_rw::status_e status
+  );
+}
+extern virtual class vmm_ral_mem_frontdoor { 
+  static rvm_log log;
+  virtual function vmm_rw::status_e write_t (
+    bit [63:0] offset,
+    bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e read_t (
+    bit [63:0] offset,
+    var bit [63:0] data,
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e burst_write_t (
+    vmm_ral_mem_burst burst,
+    bit [63:0] data[*],
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+  virtual function vmm_rw::status_e burst_read_t (
+    vmm_ral_mem_burst burst,
+    var bit [63:0] data[*],
+    integer data_id,
+    integer scenario_id,
+    integer stream_id
+  );
+}
+extern class vmm_ral_mem { 
+  static rvm_log log;
+  vmm_mam mam;
+  enum init_e = UNKNOWNS, ZEROES, ONES, ADDRESS, VALUE, INCR, DECR;
+  vmm_ral_vreg XvregsX [$];
+  task new (
+    vmm_ral_block parent,
+    string name,
+    vmm_ral::access_e access,
+    bit [63:0] size,
+    integer n_bits,
+    bit [63:0] base_addr,
+    string domain = "",
+    integer cover_on = 0,
+    bit [1:0] rights = 2'b11,
+    bit unmapped = 0,
+    integer has_cover = 0
+  );
+  task Xlock_modelX (
+  );
+  task add_domain (
+    bit [63:0] offset,
+    string domain,
+    bit [1:0] rights = 2'b11,
+    bit unmapped = 0
+  );
+  task Xregister_ral_accessX (
+    vmm_ral_access access
+  );
+  virtual function string get_name (
+  );
+  virtual function string get_fullname (
+  );
+  virtual function integer get_n_domains (
+  );
+  virtual task get_domains (
+    var string domains[*]
+  );
+  virtual function vmm_ral::access_e get_access (
+    string domain = ""
+  );
+  virtual function vmm_ral::access_e get_rights (
+    string domain = ""
+  );
+  virtual task get_virtual_fields (
+    var vmm_ral_vfield fields[*]
+  );
+  virtual function vmm_ral_vfield get_virtual_field_by_name (
+    string name
+  );
+  virtual task get_virtual_registers (
+    var vmm_ral_vreg regs[*]
+  );
+  virtual function vmm_ral_vreg get_vreg_by_name (
+    string name
+  );
+  virtual function vmm_ral_vreg get_vreg_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual function vmm_ral_block get_block (
+  );
+  virtual function bit [63:0] get_offset_in_block (
+    bit [63:0] mem_addr = 0,
+    string domain = ""
+  );
+  virtual function bit [63:0] get_address_in_system (
+    bit [63:0] mem_addr = 0,
+    string domain = ""
+  );
+  virtual function bit [63:0] get_size (
+  );
+  virtual function integer get_n_bits (
+  );
+  function integer get_n_bytes (
+  );
+  virtual task display (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual function string psdisplay (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual function bit can_cover (
+    integer models
+  );
+  virtual function integer set_cover (
+    integer on
+  );
+  virtual function bit is_cover_on (
+    integer is_on = 7
+  );
+  virtual function bit init_t (
+    init_e pattern,
+    bit [63:0] data
+  );
+  virtual function vmm_rw::status_e write_t (
+    bit [63:0] mem_addr,
+    bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e read_t (
+    bit [63:0] mem_addr,
+    var bit [63:0] value,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e burst_write_t (
+    vmm_ral_mem_burst burst,
+    bit [63:0] value[*],
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e burst_read_t (
+    vmm_ral_mem_burst burst,
+    var bit [63:0] value[*],
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e poke_t (
+    bit [63:0] mem_addr,
+    bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function vmm_rw::status_e peek_t (
+    bit [63:0] mem_addr,
+    var bit [63:0] value,
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual task readmemh_t (
+    string filename
+  );
+  virtual task writememh_t (
+    string filename
+  );
+  task set_frontdoor (
+    vmm_ral_mem_frontdoor ftdr,
+    string domain = ""
+  );
+  function vmm_ral_mem_frontdoor get_frontdoor (
+    string domain = ""
+  );
+  task set_backdoor (
+    vmm_ral_mem_backdoor bkdr
+  );
+  function vmm_ral_mem_backdoor get_backdoor (
+  );
+  task prepend_callback (
+    vmm_ral_mem_callbacks cb
+  );
+  task append_callback (
+    vmm_ral_mem_callbacks cb
+  );
+  task unregister_callback (
+    vmm_ral_mem_callbacks cb
+  );
+}
+extern virtual class vmm_ral_block_or_sys { 
+  static rvm_log log;
+  vmm_ral::path_e default_access;
+  protected string domains [*];
+  protected vmm_ral_access ral_access;
+  task new (
+    vmm_ral_sys parent,
+    string block_or_sys,
+    string name,
+    string typename,
+    integer n_bytes,
+    vmm_ral::endianness_e endian,
+    bit [63:0] base_addr,
+    string domain = "",
+    integer cover_on = 0,
+    integer has_cover = 0
+  );
+  virtual task Xlock_modelX (
+  );
+  function bit Xis_lockedX (
+  );
+  virtual task add_domain (
+    integer n_bytes,
+    vmm_ral::endianness_e endian,
+    string domain
+  );
+  virtual task map_domain (
+    string domain,
+    string in_domain,
+    bit [63:0] base_addr
+  );
+  virtual task Xregister_ral_accessX (
+    vmm_ral_access access
+  );
+  task Xadd_constraintsX (
+    string name
+  );
+  virtual function string get_name (
+  );
+  virtual function string get_type (
+  );
+  virtual function string get_fullname (
+  );
+  virtual task get_domains (
+    var string names[*]
+  );
+  virtual function vmm_ral_sys get_parent (
+  );
+  virtual function bit [63:0] get_base_addr (
+    string domain = ""
+  );
+  virtual function integer get_n_bytes (
+    string domain = ""
+  );
+  virtual function vmm_ral::endianness_e get_endian (
+    string domain = ""
+  );
+  virtual function vmm_ral::path_e get_default_access (
+  );
+  virtual function string get_parent_domain (
+    string domain = ""
+  );
+  virtual function string get_external_domain (
+    string domain = ""
+  );
+  virtual task display (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual function string psdisplay (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual task get_fields (
+    var vmm_ral_field fields[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_field get_field_by_name (
+    string name
+  );
+  virtual task get_registers (
+    var vmm_ral_reg regs[*],
+    string domain = ""
+  );
+  virtual task get_virtual_registers (
+    var vmm_ral_vreg vregs[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_reg get_reg_by_name (
+    string name
+  );
+  virtual function vmm_ral_reg get_reg_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task get_memories (
+    var vmm_ral_mem mems[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_mem get_mem_by_name (
+    string name
+  );
+  virtual function vmm_ral_mem get_mem_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task get_constraints (
+    var string names[*]
+  );
+  virtual function bit can_cover (
+    integer models
+  );
+  virtual function integer set_cover (
+    integer on
+  );
+  virtual function bit is_cover_on (
+    integer is_on = 7
+  );
+  virtual task reset (
+    string domain = "",
+    vmm_ral::reset_e kind = vmm_ral::HARD
+  );
+  virtual function bit needs_update (
+  );
+  virtual function vmm_rw::status_e update_t (
+    vmm_ral::path_e path = vmm_ral::DEFAULT
+  );
+  virtual function vmm_rw::status_e mirror_t (
+    vmm_ral::check_e check = vmm_ral::QUIET,
+    vmm_ral::path_e path = vmm_ral::DEFAULT
+  );
+  virtual task readmemh_t (
+    string filename
+  );
+  virtual task writememh_t (
+    string filename
+  );
+  task prepend_callbacks (
+    vmm_ral_callbacks cbs
+  );
+  task append_callbacks (
+    vmm_ral_callbacks cbs
+  );
+  task unregister_callbacks (
+    vmm_ral_callbacks cbs
+  );
+  virtual function integer get_block_or_sys_size (
+    string domain = ""
+  );
+  virtual function bit set_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual function bit Xcheck_child_overlapX (
+    integer my_offset,
+    integer my_size,
+    string domain = "",
+    vmm_ral_block blk,
+    vmm_ral_sys sys
+  );
+  virtual function bit Xset_base_addrX (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  protected function integer get_domain_index (
+    string domain
+  );
+  virtual protected task domain_coverage (
+    string domain,
+    integer idx
+  );
+}
+extern class vmm_ral_block extends vmm_ral_block_or_sys { 
+  task new (
+    vmm_ral_sys parent,
+    string name,
+    string typename,
+    integer n_bytes,
+    vmm_ral::endianness_e endian,
+    bit [63:0] base_addr,
+    string domain = "",
+    integer cover_on = 0,
+    integer has_cover = 0
+  );
+  virtual task Xlock_modelX (
+  );
+  task register_reg (
+    vmm_ral_reg register
+  );
+  task register_vreg (
+    vmm_ral_vreg register
+  );
+  task register_mem (
+    vmm_ral_mem memory
+  );
+  virtual task Xregister_ral_accessX (
+    vmm_ral_access access
+  );
+  virtual function string psdisplay (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual task get_fields (
+    var vmm_ral_field fields[*],
+    string domain = ""
+  );
+  virtual task get_virtual_fields (
+    var vmm_ral_vfield vfields[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_field get_field_by_name (
+    string name
+  );
+  virtual function vmm_ral_vfield get_virtual_field_by_name (
+    string name
+  );
+  virtual task get_registers (
+    var vmm_ral_reg regs[*],
+    string domain = ""
+  );
+  virtual task get_virtual_registers (
+    var vmm_ral_vreg vregs[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_reg get_reg_by_name (
+    string name
+  );
+  virtual function vmm_ral_vreg get_vreg_by_name (
+    string name
+  );
+  virtual function vmm_ral_reg get_reg_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task get_memories (
+    var vmm_ral_mem mems[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_mem get_mem_by_name (
+    string name
+  );
+  virtual function vmm_ral_mem get_mem_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task get_constraints (
+    var string names[*]
+  );
+  virtual function integer set_cover (
+    integer is_on
+  );
+  virtual task reset (
+    string domain = "",
+    vmm_ral::reset_e kind = vmm_ral::HARD
+  );
+  virtual function bit needs_update (
+  );
+  virtual function vmm_rw::status_e update_t (
+    vmm_ral::path_e path = vmm_ral::DEFAULT
+  );
+  virtual function vmm_rw::status_e mirror_t (
+    vmm_ral::check_e check = vmm_ral::QUIET,
+    vmm_ral::path_e path = vmm_ral::DEFAULT
+  );
+  virtual task readmemh_t (
+    string filename
+  );
+  virtual task writememh_t (
+    string filename
+  );
+  virtual function integer get_block_or_sys_size (
+    string domain = ""
+  );
+  virtual function bit set_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task XsampleX (
+    bit [63:0] addr,
+    integer domain
+  );
+  virtual protected task sample (
+    bit [63:0] addr,
+    integer domain
+  );
+}
+extern class vmm_ral_sys_domain { 
+  vmm_ral_block blocks [$];
+  string blk_domains [$];
+  vmm_ral_sys subsys [$];
+  string sys_domains [$];
+}
+extern class vmm_ral_sys extends vmm_ral_block_or_sys { 
+  task new (
+    vmm_ral_sys parent = null,
+    string name,
+    string typename,
+    integer n_bytes,
+    vmm_ral::endianness_e endian,
+    bit [63:0] base_addr = 0,
+    string domain = "",
+    integer cover_on = 0,
+    integer has_cover = 0
+  );
+  virtual task Xlock_modelX (
+  );
+  virtual task add_domain (
+    integer n_bytes,
+    vmm_ral::endianness_e endian,
+    string domain
+  );
+  task register_block (
+    vmm_ral_block block,
+    string domain = "",
+    string in_domain = "",
+    bit [63:0] base_addr
+  );
+  task register_subsys (
+    vmm_ral_sys subsys,
+    string domain = "",
+    string in_domain = "",
+    bit [63:0] base_addr
+  );
+  virtual task Xregister_ral_accessX (
+    vmm_ral_access access
+  );
+  virtual function string psdisplay (
+    string prefix = "",
+    string domain = ""
+  );
+  virtual task get_fields (
+    var vmm_ral_field fields[*],
+    string domain = ""
+  );
+  virtual task get_virtual_fields (
+    var vmm_ral_vfield fields[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_field get_field_by_name (
+    string name
+  );
+  virtual function vmm_ral_vfield get_virtual_field_by_name (
+    string name
+  );
+  virtual task get_registers (
+    var vmm_ral_reg regs[*],
+    string domain = ""
+  );
+  virtual task get_virtual_registers (
+    var vmm_ral_vreg vregs[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_reg get_reg_by_name (
+    string name
+  );
+  virtual function vmm_ral_vreg get_vreg_by_name (
+    string name
+  );
+  virtual function vmm_ral_reg get_reg_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual function vmm_ral_vreg get_vreg_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual local function vmm_ral_reg Xget_reg_by_offsetX (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task get_memories (
+    var vmm_ral_mem mems[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_mem get_mem_by_name (
+    string name
+  );
+  virtual function vmm_ral_mem get_mem_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task get_blocks (
+    var vmm_ral_block blocks[*],
+    var string domains[*],
+    string domain = ""
+  );
+  virtual task get_all_blocks (
+    var vmm_ral_block blocks[*],
+    var string domains[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_block get_block_by_name (
+    string name
+  );
+  virtual function vmm_ral_block get_block_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual task get_subsys (
+    var vmm_ral_sys subsys[*],
+    var string domains[*],
+    string domain = ""
+  );
+  virtual task get_all_subsys (
+    var vmm_ral_sys subsys[*],
+    var string domains[*],
+    string domain = ""
+  );
+  virtual function vmm_ral_sys get_subsys_by_name (
+    string name
+  );
+  virtual function vmm_ral_sys get_subsys_by_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual function integer set_cover (
+    integer is_on
+  );
+  virtual task reset (
+    string domain = "",
+    vmm_ral::reset_e kind = vmm_ral::HARD
+  );
+  virtual function bit needs_update (
+  );
+  virtual function vmm_rw::status_e update_t (
+    vmm_ral::path_e path = vmm_ral::DEFAULT
+  );
+  virtual function vmm_rw::status_e mirror_t (
+    vmm_ral::check_e check = vmm_ral::QUIET,
+    vmm_ral::path_e path = vmm_ral::DEFAULT
+  );
+  virtual task readmemh_t (
+    string filename
+  );
+  virtual task writememh_t (
+    string filename
+  );
+  virtual function integer get_block_or_sys_size (
+    string domain = ""
+  );
+  virtual function bit set_offset (
+    bit [63:0] offset,
+    string domain = ""
+  );
+  virtual function bit Xcheck_child_overlapX (
+    integer my_offset,
+    integer my_size,
+    string domain = "",
+    vmm_ral_block blk,
+    vmm_ral_sys sys
+  );
+}
+extern class vmm_ral_access extends rvm_xactor { 
+  vmm_ral::path_e default_path;
+  protected vmm_ral_block_or_sys model;
+  protected vmm_rw_xactor rw_exec [string];
+  task new (
+  );
+  task set_model (
+    vmm_ral_block_or_sys model
+  );
+  function vmm_ral_block_or_sys get_model (
+  );
+  task add_xactor (
+    vmm_rw_xactor xact,
+    string domain = ""
+  );
+  function vmm_rw::status_e write_t (
+    bit [63:0] addr,
+    bit [63:0] data,
+    integer n_bits = 64,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e read_t (
+    bit [63:0] addr,
+    var bit [63:0] data,
+    integer n_bits = 64,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e burst_write_t (
+    bit [63:0] start,
+    bit [63:0] incr,
+    bit [63:0] max,
+    bit [63:0] data[*],
+    rvm_data user = null,
+    integer n_bits = 64,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e burst_read_t (
+    bit [63:0] start,
+    bit [63:0] incr,
+    bit [63:0] max,
+    integer n_beats,
+    var bit [63:0] data[*],
+    rvm_data user = null,
+    integer n_bits = 64,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  virtual function bit set_by_name (
+    string name,
+    bit [63:0] value
+  );
+  virtual function bit get_by_name (
+    string name,
+    var bit [63:0] value
+  );
+  function vmm_rw::status_e write_by_name_t (
+    string name,
+    bit [63:0] data,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e read_by_name_t (
+    string name,
+    var bit [63:0] data,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e write_mem_by_name_t (
+    string name,
+    bit [63:0] offset,
+    bit [63:0] data,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function vmm_rw::status_e read_mem_by_name_t (
+    string name,
+    bit [63:0] offset,
+    var bit [63:0] data,
+    vmm_ral::path_e path = vmm_ral::DEFAULT,
+    string domain = "",
+    integer data_id = -1,
+    integer scenario_id = -1,
+    integer stream_id = -1
+  );
+  function integer Xget_physical_addressesX (
+    bit [63:0] base_addr,
+    bit [63:0] mem_offset,
+    integer n_bytes,
+    vmm_ral_block_or_sys in_block,
+    string domain,
+    var bit [63:0] addr[*]
+  );
+}
+extern class vmm_ral_env extends rvm_env { 
+  vmm_ral_access ral;
+  task new (
+    string name = "RAL-Based Verif Env"
+  );
+  virtual task hw_reset_t (
+  );
+  virtual task sw_reset_t (
+    string domain = null
+  );
+  virtual task gen_cfg (
+  );
+  virtual task build (
+  );
+  virtual task reset_dut_t (
+  );
+  virtual task cfg_dut_t (
+  );
+  virtual task start_t (
+  );
+  virtual task wait_for_end_t (
+  );
+  virtual task stop_t (
+  );
+  virtual task cleanup_t (
+  );
+  virtual task restart (
+    bit reconfig = 0
+  );
+  virtual task report (
+  );
+}
+
+#endif
+#endif

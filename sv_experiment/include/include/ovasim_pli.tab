@@ -1,0 +1,18 @@
+$ovasim     check=ovasim_pli_check call=ovasim_pli_call misc=ovasim_pli_misc acc=r,cbk:*
+$ova_pli    check=ova_pli_check call=ova_pli_call misc=ova_pli_misc 
+$ova_stop   check=ova_stop_check call=ova_stop_call misc=ova_stop_misc 
+$ova_start  check=ova_start_check call=ova_start_call misc=ova_start_misc 
+$ova_severity_action check=ova_severity_action_check call=ova_severity_action_call misc=ova_severity_action_misc 
+$ova_category_action check=ova_category_action_check call=ova_category_action_call misc=ova_category_action_misc 
+$ova_severity_stop check=ova_severity_stop_check call=ova_severity_stop_call misc=ova_severity_stop_misc 
+$ova_severity_start check=ova_severity_start_check call=ova_severity_start_call misc=ova_severity_start_misc 
+$ova_category_stop check=ova_category_stop_check call=ova_category_stop_call misc=ova_category_stop_misc 
+$ova_category_start check=ova_category_start_check call=ova_category_start_call misc=ova_category_start_misc 
+$ova_assertion_stop check=ova_assertion_stop_check call=ova_assertion_stop_call misc=ova_assertion_stop_misc 
+$ova_assertion_start check=ova_assertion_start_check call=ova_assertion_start_call misc=ova_assertion_start_misc 
+$ova_set_category check=ova_set_category_check call=ova_set_category_call misc=ova_set_category_misc 
+$ova_set_severity check=ova_set_severity_check call=ova_set_severity_call misc=ova_set_severity_misc 
+$ova_get_category size=32 check=ova_get_category_check call=ova_get_category_call misc=ova_get_category_misc 
+$ova_get_severity size=32 check=ova_get_severity_check call=ova_get_severity_call misc=ova_get_severity_misc 
+$ovadumpoff check=ova_dumpoff_check call=ova_dumpoff_call misc=ova_dumpoff_misc 
+$ovadumpon  check=ova_dumpon_check call=ova_dumpon_call misc=ova_dumpon_misc 

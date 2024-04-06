@@ -1,0 +1,8 @@
+acc+=wn:vcs13_6_stimTbench+
+$openDump         call=openDump         check=checkOpenDump         size=32  args=2 misc=miscOpenDump
+$initVpdFile      call=initVpdFile      check=checkInitVpdFile      size=32  args=2
+$getStartTime     call=getStartTime     check=checkGetStartTime     size=64  args=1
+$getNextDelay     call=getNextDelay     check=checkGetNextDelay     size=64  args=2
+$checkAfter       call=checkAfter       check=checkCheckAfter       size=64  args=2
+$getNumDiffs      call=getNumDiffs      check=checkGetNumDiffs      size=32  args=1
+$maxInstCount     call=instCount        check=checkInstCount                 args=1  

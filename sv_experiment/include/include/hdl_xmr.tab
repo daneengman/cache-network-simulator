@@ -1,0 +1,4 @@
+$hdl_xmr call=Mhdl_Xmr_call check=Mhdl_Xmr_check acc+=rw:* 
+$hdl_xmr_force call=Mhdl_Verilog_Force_Value
+$hdl_xmr_release call=Mhdl_Verilog_Release_Force 
+$hdl_xmr_void call=Mhdl_Xmr_Void  check=Mhdl_Xmr_check 

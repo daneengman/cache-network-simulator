@@ -1,0 +1,364 @@
+#pragma vip(4ab23a31, 94a9a4c4, 00000000, 00001e1b, "Aug 25 2015", "21:31:39")
+/////////////////////////////////////////////////////////////////
+// Vera Header file created from vmm_sb.pp 
+/////////////////////////////////////////////////////////////////
+#ifndef INC_VMM_SB_VRH
+#define INC_VMM_SB_VRH
+
+#include "rvm_std_lib.vrh"
+
+#ifndef SYNOPSYS_NTB
+
+extern class vmm_sb_version { 
+  function integer major (
+  );
+  function integer minor (
+  );
+  function integer patch (
+  );
+  function string vendor (
+  );
+  task display (
+    string prefix = ""
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+}
+typedef class vmm_sb_ds_iter ;
+typedef class vmm_sb_ds_stream_iter ;
+extern class vmm_sb_ds_pkt_stream { 
+  rvm_data pkts [$];
+  integer n_inserted;
+  integer n_matched;
+  integer n_mismatched;
+  integer n_dropped;
+  integer n_not_found;
+}
+extern class vmm_sb_ds_exp_streams { 
+  vmm_sb_ds_pkt_stream pkt_streams [];
+}
+typedef class vmm_sb_ds_callbacks ;
+extern class vmm_sb_ds { 
+  vmm_sb_ds_exp_streams Xexp_streamsX [];
+  string Xinp_stream_descsX [];
+  string Xexp_stream_descsX [];
+  bit Xdefine_stream_calledX;
+  bit Xparallel_streamsX;
+  rvm_log log;
+  rvm_notify notify;
+  enum kind_e = EITHER, INPUT, EXPECT;
+  static integer INSERTED;
+  static integer EMPTY;
+  static integer MATCHED;
+  static integer MISMATCHED;
+  static integer DROPPED;
+  static integer NOT_FOUND;
+  static integer ORPHANED;
+  task new (
+    string name
+  );
+  virtual function integer stream_id (
+    rvm_data pkt,
+    kind_e kind = EITHER
+  );
+  task define_stream (
+    integer stream_id,
+    string descr = "",
+    kind_e kind = EITHER
+  );
+  virtual function bit insert (
+    rvm_data pkt,
+    kind_e kind = INPUT,
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  virtual function bit remove (
+    rvm_data pkt,
+    kind_e kind = INPUT,
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  virtual function bit transform (
+    rvm_data in_pkt,
+    var rvm_data out_pkts[*]
+  );
+  virtual function bit match (
+    rvm_data actual,
+    rvm_data expected
+  );
+  virtual function bit quick_compare (
+    rvm_data actual,
+    rvm_data expected
+  );
+  virtual function bit compare (
+    rvm_data actual,
+    rvm_data expected
+  );
+  enum ordering_e = IN_ORDER, WITH_LOSSES, OUT_ORDER;
+  virtual function rvm_data expect_in_order (
+    rvm_data pkt,
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1,
+    bit silent = 0
+  );
+  virtual function bit expect_with_losses (
+    rvm_data pkt,
+    var rvm_data matched,
+    var rvm_data lost[*],
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1,
+    bit silent = 0
+  );
+  virtual function rvm_data expect_out_of_order (
+    rvm_data pkt,
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1,
+    bit silent = 0
+  );
+  virtual task flush (
+  );
+  function vmm_sb_ds_iter new_sb_iter (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  function vmm_sb_ds_stream_iter new_stream_iter (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  task prepend_callback (
+    vmm_sb_ds_callbacks cb
+  );
+  task append_callback (
+    vmm_sb_ds_callbacks cb
+  );
+  task unregister_callback (
+    vmm_sb_ds_callbacks cb
+  );
+  function integer get_n_inserted (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  function integer get_n_pending (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  function integer get_n_matched (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  function integer get_n_mismatched (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  function integer get_n_dropped (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  function integer get_n_not_found (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  function integer get_n_orphaned (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  virtual task report (
+    integer exp_stream_id = -1,
+    integer inp_stream_id = -1
+  );
+  virtual task describe (
+  );
+  virtual task display (
+    string prefix = ""
+  );
+}
+extern class vmm_sb_ds_callbacks { 
+  virtual task pre_insert (
+    vmm_sb_ds sb,
+    rvm_data pkt,
+    vmm_sb_ds::kind_e kind,
+    var integer exp_stream_id,
+    var integer inp_stream_id,
+    var bit drop
+  );
+  virtual task post_insert (
+    vmm_sb_ds sb,
+    rvm_data pkt,
+    integer exp_stream_id,
+    integer inp_stream_id
+  );
+  virtual task matched (
+    vmm_sb_ds sb,
+    rvm_data pkt,
+    integer exp_stream_id,
+    integer inp_stream_id,
+    var integer count
+  );
+  virtual task mismatched (
+    vmm_sb_ds sb,
+    rvm_data pkt,
+    integer exp_stream_id,
+    integer inp_stream_id,
+    var integer count
+  );
+  virtual task dropped (
+    vmm_sb_ds sb,
+    rvm_data pkts[*],
+    integer exp_stream_id,
+    integer inp_stream_id,
+    var integer count
+  );
+  virtual task not_found (
+    vmm_sb_ds sb,
+    rvm_data pkt,
+    integer exp_stream_id,
+    integer inp_stream_id,
+    var integer count
+  );
+  virtual task orphaned (
+    vmm_sb_ds sb,
+    rvm_data pkts[*],
+    integer exp_stream_id,
+    integer inp_stream_id,
+    var integer count
+  );
+}
+extern class vmm_sb_ds_pkts extends rvm_data { 
+  rvm_data pkts [*];
+  vmm_sb_ds::kind_e kind;
+  integer inp_stream_id;
+  integer exp_stream_id;
+  task new (
+    rvm_data pkt,
+    vmm_sb_ds::kind_e kind,
+    integer exp_stream_id,
+    integer inp_stream_id
+  );
+}
+extern class vmm_sb_ds_iter { 
+  vmm_sb_ds_stream_iter stream_iter;
+  task new (
+    vmm_sb_ds sb,
+    integer exp_stream_id,
+    integer inp_stream_id
+  );
+  function bit first (
+  );
+  function bit is_ok (
+  );
+  function bit next (
+  );
+  function bit last (
+  );
+  function bit prev (
+  );
+  function integer length (
+  );
+  function integer pos (
+  );
+  function integer inp_stream_id (
+  );
+  function integer exp_stream_id (
+  );
+  function string describe (
+  );
+  function integer get_n_inserted (
+  );
+  function integer get_n_pending (
+  );
+  function integer get_n_matched (
+  );
+  function integer get_n_mismatched (
+  );
+  function integer get_n_dropped (
+  );
+  function integer get_n_not_found (
+  );
+  function integer get_n_orphaned (
+  );
+  function integer incr_n_inserted (
+    integer delta
+  );
+  function integer incr_n_pending (
+    integer delta
+  );
+  function integer incr_n_matched (
+    integer delta
+  );
+  function integer incr_n_mismatched (
+    integer delta
+  );
+  function integer incr_n_dropped (
+    integer delta
+  );
+  function integer incr_n_not_found (
+    integer delta
+  );
+  function integer incr_n_orphaned (
+    integer delta
+  );
+  function vmm_sb_ds_iter copy (
+  );
+  function vmm_sb_ds_stream_iter new_stream_iter (
+  );
+  function integer delete (
+  );
+  task display (
+    string prefix = ""
+  );
+  function vmm_sb_ds_pkt_stream Xget_pkt_streamX (
+  );
+}
+extern class vmm_sb_ds_stream_iter { 
+  task new (
+    vmm_sb_ds sb,
+    vmm_sb_ds_pkt_stream str,
+    integer exp_id,
+    integer inp_id
+  );
+  function bit first (
+  );
+  function bit is_ok (
+  );
+  function bit next (
+  );
+  function bit last (
+  );
+  function bit prev (
+  );
+  function integer inp_stream_id (
+  );
+  function integer exp_stream_id (
+  );
+  function string describe (
+  );
+  function integer length (
+  );
+  function rvm_data data (
+  );
+  function integer pos (
+  );
+  function bit find (
+    rvm_data pkt
+  );
+  task prepend (
+    rvm_data pkt
+  );
+  task append (
+    rvm_data pkt
+  );
+  function rvm_data delete (
+  );
+  function integer flush (
+  );
+  function integer preflush (
+  );
+  function integer postflush (
+  );
+  function vmm_sb_ds_stream_iter copy (
+  );
+}
+
+#endif
+#endif

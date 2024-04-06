@@ -1,0 +1,3859 @@
+//-----------------------------------------------------------------------------
+//
+// Copyright (c) 2003-2004 Synopsys, Inc.
+//
+// This library and the associated documentation are confidential and
+// proprietary to Synopsys, Inc.
+//
+// Your use or disclosure of this library is subject to the terms and
+// conditions of a written license agreement between you, or your
+// company, and Synopsys, Inc.
+//
+//-----------------------------------------------------------------------------
+//
+/////////////////////////////////////////////////////////////////
+// Vera Header file created from rvm_std_lib.vr 
+/////////////////////////////////////////////////////////////////
+#ifndef INC_RVM_STD_LIB_VRH
+#define INC_RVM_STD_LIB_VRH
+
+#include <vera_defines.vrh>
+#include <ListMacros.vrh>
+
+#ifndef SYNOPSYS_NTB
+
+
+port rvm_watchdog_port {
+	pin;
+}
+
+
+typedef class rvm_log ;
+typedef class rvm_data ;
+typedef class rvm_log_msg ;
+extern virtual class rvm_notify_event { 
+  virtual function rvm_data indicate_t (
+  );
+  virtual task reset_t (
+  );
+}
+extern class rvm_notify_callbacks { 
+  virtual task indicated (
+    rvm_data status
+  );
+}
+extern class rvm_notify_event_config { 
+  event the_event;
+  integer trig_mode;
+  bit [63:0] stamp;
+  rvm_data status;
+  integer n_waiting_for;
+  rvm_notify_event watch;
+  event reset;
+  event abort;
+  rvm_notify_callbacks cbs [$];
+}
+extern class rvm_notify { 
+  rvm_log log;
+  static integer ONE_SHOT_TRIGGER;
+  static integer ONE_BLAST_TRIGGER;
+  static integer HAND_SHAKE_TRIGGER;
+  static integer ON_OFF_TRIGGER;
+  task new (
+    rvm_log log
+  );
+  virtual function rvm_notify copy (
+    rvm_notify to = null
+  );
+  virtual function integer configure (
+    integer event_id = -1,
+    integer triggering = 2
+  );
+  virtual function integer is_configured (
+    integer event_id
+  );
+  virtual function bit is_on (
+    integer event_id
+  );
+  virtual function rvm_data wait_for_t (
+    integer event_id
+  );
+  virtual function rvm_data wait_for_off_t (
+    integer event_id
+  );
+  virtual function bit is_waited_for (
+    integer event_id
+  );
+  virtual task terminated (
+    integer event_id
+  );
+  virtual function bit [63:0] timestamp (
+    integer event_id
+  );
+  virtual task indicate (
+    integer event_id,
+    rvm_data status = null,
+    bit handshake = 0
+  );
+  virtual task reset (
+    integer event_id = -1,
+    bit hard = 0
+  );
+  virtual task set_event (
+    integer event_id,
+    rvm_notify_event ev = null
+  );
+  virtual function rvm_notify_event get_event (
+    integer event_id
+  );
+  task append_callback (
+    integer event_id,
+    rvm_notify_callbacks cbs
+  );
+  task unregister_callback (
+    integer event_id,
+    rvm_notify_callbacks cbs
+  );
+  virtual task display (
+    string prefix = ""
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+}
+typedef class rvm_xactor ;
+extern class rvm_data { 
+  integer stream_id;
+  integer scenario_id;
+  integer object_id;
+  rvm_notify notify;
+  static integer EXECUTE;
+  static integer STARTED;
+  static integer ENDED;
+  task new (
+    rvm_log log
+  );
+  function rvm_log set_log (
+    rvm_log log
+  );
+  virtual task display (
+    string prefix = ""
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  virtual function bit is_valid (
+    bit silent = 1,
+    integer kind = -1
+  );
+  virtual function rvm_data allocate (
+  );
+  virtual function rvm_data copy (
+    rvm_data cpy = null
+  );
+  virtual protected task copy_data (
+    rvm_data to
+  );
+  virtual function bit compare (
+    rvm_data to,
+    var string diff,
+    integer kind = -1
+  );
+  virtual function integer byte_size (
+    integer kind = -1
+  );
+  virtual function integer byte_pack (
+    var bit [7:0] bytes[*],
+    integer offset = 0,
+    integer kind = -1
+  );
+  virtual function integer byte_unpack (
+    bit [7:0] bytes[*],
+    integer offset = 0,
+    integer kind = -1
+  );
+  virtual function bit load (
+    integer file
+  );
+  virtual task save (
+    integer file
+  );
+  virtual function integer vmt_hook (
+    rvm_xactor xactor = null,
+    rvm_data obj = null
+  );
+}
+extern class VeraListNodervm_data { 
+  rvm_data _VERA_List_Node_Data_;
+  VeraListNodervm_data _VERA_List_Node_m_next_;
+  VeraListNodervm_data _VERA_List_Node_m_prev_;
+  task new (
+  );
+  function rvm_data data (
+  );
+}
+extern class VeraListIterator_rvm_data { 
+  VeraListNodervm_data _VERA_List_Iterator_M_node_;
+  integer _VERA_List_Id_;
+  task new (
+    VeraListNodervm_data node
+  );
+  task next (
+  );
+  task prev (
+  );
+  function rvm_data data (
+  );
+  function integer neq (
+    VeraListIterator_rvm_data iter
+  );
+  function integer eq (
+    VeraListIterator_rvm_data iter
+  );
+}
+extern class VeraList_rvm_data extends _Synopsys_Vera_List_ { 
+  task new (
+  );
+  function VeraListIterator_rvm_data start (
+  );
+  function VeraListIterator_rvm_data finish (
+  );
+  task insert (
+    VeraListIterator_rvm_data _pos,
+    rvm_data value
+  );
+  function VeraListIterator_rvm_data erase (
+    VeraListIterator_rvm_data position
+  );
+  function integer calculate_size (
+  );
+  function integer size (
+  );
+  function integer empty (
+  );
+  function rvm_data front (
+  );
+  function rvm_data back (
+  );
+  task swap (
+    VeraList_rvm_data L
+  );
+  task push_front (
+    rvm_data value
+  );
+  task push_back (
+    rvm_data value
+  );
+  task pop_front (
+  );
+  task pop_back (
+  );
+  task clear (
+  );
+  task purge (
+  );
+  function VeraListIterator_rvm_data erase_range (
+    VeraListIterator_rvm_data _first,
+    VeraListIterator_rvm_data _last
+  );
+  task insert_range (
+    VeraListIterator_rvm_data _pos,
+    VeraListIterator_rvm_data _first,
+    VeraListIterator_rvm_data _last
+  );
+  task assign (
+    VeraListIterator_rvm_data _first2,
+    VeraListIterator_rvm_data _last2
+  );
+}
+extern class VeraListNodervm_log { 
+  rvm_log _VERA_List_Node_Data_;
+  VeraListNodervm_log _VERA_List_Node_m_next_;
+  VeraListNodervm_log _VERA_List_Node_m_prev_;
+  task new (
+  );
+  function rvm_log data (
+  );
+}
+extern class VeraListIterator_rvm_log { 
+  VeraListNodervm_log _VERA_List_Iterator_M_node_;
+  integer _VERA_List_Id_;
+  task new (
+    VeraListNodervm_log node
+  );
+  task next (
+  );
+  task prev (
+  );
+  function rvm_log data (
+  );
+  function integer neq (
+    VeraListIterator_rvm_log iter
+  );
+  function integer eq (
+    VeraListIterator_rvm_log iter
+  );
+}
+extern class VeraList_rvm_log extends _Synopsys_Vera_List_ { 
+  task new (
+  );
+  function VeraListIterator_rvm_log start (
+  );
+  function VeraListIterator_rvm_log finish (
+  );
+  task insert (
+    VeraListIterator_rvm_log _pos,
+    rvm_log value
+  );
+  function VeraListIterator_rvm_log erase (
+    VeraListIterator_rvm_log position
+  );
+  function integer calculate_size (
+  );
+  function integer size (
+  );
+  function integer empty (
+  );
+  function rvm_log front (
+  );
+  function rvm_log back (
+  );
+  task swap (
+    VeraList_rvm_log L
+  );
+  task push_front (
+    rvm_log value
+  );
+  task push_back (
+    rvm_log value
+  );
+  task pop_front (
+  );
+  task pop_back (
+  );
+  task clear (
+  );
+  task purge (
+  );
+  function VeraListIterator_rvm_log erase_range (
+    VeraListIterator_rvm_log _first,
+    VeraListIterator_rvm_log _last
+  );
+  task insert_range (
+    VeraListIterator_rvm_log _pos,
+    VeraListIterator_rvm_log _first,
+    VeraListIterator_rvm_log _last
+  );
+  task assign (
+    VeraListIterator_rvm_log _first2,
+    VeraListIterator_rvm_log _last2
+  );
+}
+extern class VeraListNodeVeraListIterator_rvm_log { 
+  VeraListIterator_rvm_log _VERA_List_Node_Data_;
+  VeraListNodeVeraListIterator_rvm_log _VERA_List_Node_m_next_;
+  VeraListNodeVeraListIterator_rvm_log _VERA_List_Node_m_prev_;
+  task new (
+  );
+  function VeraListIterator_rvm_log data (
+  );
+}
+extern class VeraListIterator_VeraListIterator_rvm_log { 
+  VeraListNodeVeraListIterator_rvm_log _VERA_List_Iterator_M_node_;
+  integer _VERA_List_Id_;
+  task new (
+    VeraListNodeVeraListIterator_rvm_log node
+  );
+  task next (
+  );
+  task prev (
+  );
+  function VeraListIterator_rvm_log data (
+  );
+  function integer neq (
+    VeraListIterator_VeraListIterator_rvm_log iter
+  );
+  function integer eq (
+    VeraListIterator_VeraListIterator_rvm_log iter
+  );
+}
+extern class VeraList_VeraListIterator_rvm_log extends _Synopsys_Vera_List_ { 
+  task new (
+  );
+  function VeraListIterator_VeraListIterator_rvm_log start (
+  );
+  function VeraListIterator_VeraListIterator_rvm_log finish (
+  );
+  task insert (
+    VeraListIterator_VeraListIterator_rvm_log _pos,
+    VeraListIterator_rvm_log value
+  );
+  function VeraListIterator_VeraListIterator_rvm_log erase (
+    VeraListIterator_VeraListIterator_rvm_log position
+  );
+  function integer calculate_size (
+  );
+  function integer size (
+  );
+  function integer empty (
+  );
+  function VeraListIterator_rvm_log front (
+  );
+  function VeraListIterator_rvm_log back (
+  );
+  task swap (
+    VeraList_VeraListIterator_rvm_log L
+  );
+  task push_front (
+    VeraListIterator_rvm_log value
+  );
+  task push_back (
+    VeraListIterator_rvm_log value
+  );
+  task pop_front (
+  );
+  task pop_back (
+  );
+  task clear (
+  );
+  task purge (
+  );
+  function VeraListIterator_VeraListIterator_rvm_log erase_range (
+    VeraListIterator_VeraListIterator_rvm_log _first,
+    VeraListIterator_VeraListIterator_rvm_log _last
+  );
+  task insert_range (
+    VeraListIterator_VeraListIterator_rvm_log _pos,
+    VeraListIterator_VeraListIterator_rvm_log _first,
+    VeraListIterator_VeraListIterator_rvm_log _last
+  );
+  task assign (
+    VeraListIterator_VeraListIterator_rvm_log _first2,
+    VeraListIterator_VeraListIterator_rvm_log _last2
+  );
+}
+extern class rvm_log_modifier { 
+  integer msg_id;
+  integer type;
+  integer severity;
+  string pattern;
+  integer new_type;
+  integer new_severity;
+  integer handling;
+  task new (
+  );
+  task display (
+    string prefix = ""
+  );
+}
+extern class rvm_log_watchpoint { 
+  integer msg_id;
+  integer type;
+  integer severity;
+  string pattern;
+  bit issued;
+  event seen;
+  rvm_log_msg msg;
+  task new (
+  );
+  task display (
+    string prefix = ""
+  );
+}
+extern class rvm_log_msg { 
+  rvm_log log;
+  bit [63:0] timestamp;
+  integer id;
+  integer original_type;
+  integer original_severity;
+  integer effective_type;
+  integer effective_severity;
+  string label;
+  string text [$];
+  bit issued;
+  integer handling;
+  task new (
+    rvm_log log
+  );
+  task display (
+    string prefix = ""
+  );
+  function rvm_log_msg copy (
+  );
+}
+extern class rvm_log_msg_info { 
+  integer type;
+  integer severity;
+  string label;
+}
+extern class rvm_log_callbacks { 
+  virtual task pre_abort (
+    rvm_log log
+  );
+  virtual task pre_stop (
+    rvm_log log
+  );
+  virtual task pre_debug (
+    rvm_log log
+  );
+}
+extern class rvm_log_format { 
+  virtual function string format_msg (
+    string name,
+    string instance,
+    string msg_typ,
+    string severity,
+    integer id,
+    string label,
+    bit [63:0] timestamp,
+    string timeunit,
+    string lines[$]
+  );
+  virtual function string continue_msg (
+    string name,
+    string instance,
+    string msg_typ,
+    string severity,
+    integer id,
+    string label,
+    bit [63:0] timestamp,
+    string timeunit,
+    string lines[$]
+  );
+  virtual function string abort_on_error (
+    integer error_count,
+    integer error_limit
+  );
+  virtual function string pass_or_fail (
+    bit pass,
+    string name,
+    string instance,
+    integer fatals,
+    integer errors,
+    integer warnings,
+    integer dem_errs,
+    integer dem_warns,
+    string timeunit
+  );
+  virtual function string format (
+  );
+  virtual function string prefix (
+  );
+}
+extern class rvm_log_pattern_format extends rvm_log_format { 
+  task new (
+    string pattern,
+    string prefx
+  );
+  virtual function string format_msg (
+    string name,
+    string instance,
+    string msg_typ,
+    string severity,
+    integer id,
+    string label,
+    bit [63:0] timestamp,
+    string timeunit,
+    string lines[$]
+  );
+  virtual function string continue_msg (
+    string name,
+    string instance,
+    string msg_typ,
+    string severity,
+    integer id,
+    string label,
+    bit [63:0] timestamp,
+    string timeunit,
+    string lines[$]
+  );
+  virtual function string format (
+  );
+  virtual function string prefix (
+  );
+}
+extern class rvm_log { 
+  static integer DEFAULT;
+  static integer UNCHANGED;
+  static integer FAILURE_TYP;
+  static integer NOTE_TYP;
+  static integer DEBUG_TYP;
+  static integer REPORT_TYP;
+  static integer NOTIFY_TYP;
+  static integer TIMING_TYP;
+  static integer XHANDLING_TYP;
+  static integer PROTOCOL_TYP;
+  static integer TRANSACTION_TYP;
+  static integer COMMAND_TYP;
+  static integer CYCLE_TYP;
+  static integer USER_TYP [4];
+  static integer INTERNAL_TYP;
+  static integer DEFAULT_TYP;
+  static integer ALL_TYPES;
+  static integer FATAL_SEV;
+  static integer ERROR_SEV;
+  static integer WARNING_SEV;
+  static integer NORMAL_SEV;
+  static integer TRACE_SEV;
+  static integer DEBUG_SEV;
+  static integer VERBOSE_SEV;
+  static integer HIDDEN_SEV;
+  static integer IGNORE_SEV;
+  static integer DEFAULT_SEV;
+  static integer ALL_SEVERITIES;
+  static integer ABORT;
+  static integer COUNT_AS_ERROR;
+  static integer STOP;
+  static integer DEBUGGER;
+  static integer DUMP;
+  static integer CONTINUE;
+  task new (
+    string name,
+    string instance,
+    rvm_log under = null
+  );
+  virtual task is_above (
+    rvm_log log
+  );
+  task set_name (
+    string name
+  );
+  task set_instance (
+    string inst
+  );
+  virtual function rvm_log copy (
+    rvm_log to = null
+  );
+  task reset (
+    string name = "/./",
+    string instance = "/./",
+    bit recursive = 0
+  );
+  function rvm_log for_each (
+  );
+  virtual task list (
+    string name = "/./",
+    string instance = "/./",
+    bit recursive = 0
+  );
+  task kill (
+  );
+  virtual function string format (
+    string fmt,
+    string prefix
+  );
+  virtual function rvm_log_format set_format (
+    rvm_log_format formatter
+  );
+  virtual function string set_type_image (
+    integer type,
+    string image
+  );
+  virtual function string set_severity_image (
+    integer severity,
+    string image
+  );
+  virtual function string type_image (
+    integer type
+  );
+  virtual function string severity_image (
+    integer severity
+  );
+  virtual function string handling_image (
+    integer handling
+  );
+  virtual function integer default_handling (
+    integer severity
+  );
+  virtual function string get_name (
+  );
+  virtual function string get_instance (
+  );
+  virtual task report (
+    string name = "/./",
+    string instance = "/./",
+    bit recursive = 0
+  );
+  virtual task register_msg_info (
+    integer msg_id,
+    integer type,
+    integer severity,
+    string label
+  );
+  virtual function bit start_msg (
+    integer type,
+    integer severity = -1,
+    integer msg_id = -1
+  );
+  virtual function bit text (
+    string msg = null
+  );
+  virtual task end_msg (
+  );
+  virtual task enable_types (
+    integer types,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual task disable_types (
+    integer types,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual function integer modify (
+    string name = null,
+    string instance = null,
+    bit recursive = 0,
+    integer msg_id = -1,
+    integer type = 65535,
+    integer severity = 65535,
+    string text = null,
+    integer new_type = -2,
+    integer new_severity = -2,
+    integer handling = -2
+  );
+  virtual task unmodify (
+    integer modification_id = -1,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual task set_verbosity (
+    integer severity,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual function integer get_verbosity (
+  );
+  virtual task log_start (
+    integer file,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual task log_stop (
+    integer file,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual task stop_after_n_errs (
+    integer n
+  );
+  task stop_after_n_errors (
+    integer n
+  );
+  virtual function integer get_message_count (
+    integer severity = 65535,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual function rvm_log_msg wait_for_msg_t (
+    string name = null,
+    string instance = null,
+    bit recursive = 0,
+    integer msg_id = -1,
+    integer types = 65535,
+    integer severity = 65535,
+    string text = null,
+    bit issued = 1'bx
+  );
+  virtual function integer create_watchpoint (
+    integer msg_id = -1,
+    integer types = 65535,
+    integer severity = 65535,
+    string text = null,
+    bit issued = 1'bx
+  );
+  virtual task add_watchpoint (
+    integer watchpoint_id,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual task remove_watchpoint (
+    integer watchpoint_id = -1,
+    string name = null,
+    string instance = null,
+    bit recursive = 0
+  );
+  virtual function rvm_log_msg wait_for_watchpoint_t (
+    integer watchpoint_id
+  );
+  protected task pre_abort (
+  );
+  protected task pre_stop (
+  );
+  protected task pre_debug (
+  );
+  task append_callback (
+    rvm_log_callbacks cbs
+  );
+  task prepend_callback (
+    rvm_log_callbacks cbs
+  );
+  task register_callback (
+    rvm_log_callbacks cbs,
+    integer prepend = 0
+  );
+  task unregister_callback (
+    rvm_log_callbacks cbs
+  );
+  function bit fatal (
+    integer msg_id = -1
+  );
+  function bit error (
+    integer msg_id = -1
+  );
+  function bit warning (
+    integer msg_id = -1
+  );
+  function bit note (
+    integer msg_id = -1
+  );
+  function bit trace (
+    integer msg_id = -1
+  );
+  function bit debug (
+    integer msg_id = -1
+  );
+  function bit verbose (
+    integer msg_id = -1
+  );
+}
+extern class rvm_scenario extends rvm_data { 
+  rand integer kind;
+  rand integer length;
+  rand integer repeated;
+  static integer repeat_thresh;
+  constraint rvm_scenario_valid;
+  constraint repetition;
+  task new (
+    rvm_log log
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  function integer define_scenario (
+    string name,
+    integer max_len
+  );
+  task redefine_scenario (
+    integer kind,
+    string name,
+    integer max_len
+  );
+  function string scenario_name (
+    integer kind = 0
+  );
+  protected function integer get_max_length (
+  );
+  task set_parent_scenario (
+    rvm_scenario parent
+  );
+  function rvm_scenario get_parent_scenario (
+  );
+  virtual function rvm_data copy (
+    rvm_data to = null
+  );
+}
+extern virtual class rvm_channel_class { 
+  static bit [1:0] SOURCE;
+  static bit [1:0] SINK;
+  static bit [1:0] NO_ACTIVE;
+  static bit [1:0] ACT_PENDING;
+  static bit [1:0] ACT_STARTED;
+  static bit [1:0] ACT_COMPLETED;
+  rvm_log log;
+  rvm_notify notify;
+  static integer FULL;
+  static integer EMPTY;
+  static integer PUT;
+  static integer GOT;
+  static integer PEEKED;
+  static integer ACTIVATED;
+  static integer STARTED;
+  static integer COMPLETED;
+  static integer REMOVED;
+  static integer LOCKED;
+  static integer UNLOCKED;
+  static integer GRABBED;
+  static integer UNGRABBED;
+  static integer RECORDING;
+  static integer PLAYBACK;
+  static integer PLAYBACK_DONE;
+  task new (
+    string name,
+    string instance,
+    integer full = 1,
+    integer empty = 0,
+    bit fill_as_bytes = 1'b0
+  );
+  task reconfigure (
+    integer full = -1,
+    integer empty = -1,
+    bit fill_as_bytes = 1'bx
+  );
+  function integer full_level (
+  );
+  function integer empty_level (
+  );
+  function integer level (
+  );
+  function integer size (
+  );
+  function bit is_full (
+  );
+  task flush (
+  );
+  task sink (
+  );
+  task flow (
+  );
+  task reset (
+  );
+  task lock (
+    bit [1:0] who
+  );
+  task unlock (
+    bit [1:0] who
+  );
+  function bit is_locked (
+    bit [1:0] who
+  );
+  task display (
+    string prefix = ""
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+  task display_all (
+    string prefix = ""
+  );
+  task grab_t (
+    rvm_scenario grabber
+  );
+  task ungrab (
+    rvm_scenario grabber
+  );
+  function bit is_grabbed (
+  );
+  function bit try_grab (
+    rvm_scenario grabber
+  );
+  task put_t (
+    rvm_data obj,
+    integer offset = -1,
+    rvm_scenario grabber = null
+  );
+  task sneak (
+    rvm_data obj,
+    integer offset = -1,
+    rvm_scenario grabber = null
+  );
+  task put_array_t (
+    rvm_data objs[$],
+    integer offset = -1,
+    rvm_scenario grabber = null
+  );
+  function rvm_data unput (
+    integer offset = -1
+  );
+  function rvm_data get_t (
+    integer offset = 0
+  );
+  function rvm_data peek_t (
+    integer offset = 0
+  );
+  function rvm_data activate_t (
+    integer offset = 0
+  );
+  function rvm_data active_slot (
+  );
+  function rvm_data start (
+  );
+  function rvm_data complete (
+    rvm_data status = null
+  );
+  function rvm_data remove (
+  );
+  function bit [1:0] status (
+  );
+  function bit tee_mode (
+    bit is_on
+  );
+  function rvm_data tee_t (
+  );
+  task connect (
+    rvm_channel_class downstream
+  );
+  function rvm_data for_each (
+    bit reset = 0
+  );
+  function integer for_each_offset (
+  );
+  function bit record (
+    string filename
+  );
+  function bit playback_t (
+    string filename,
+    rvm_data factory,
+    bit metered = 0,
+    rvm_scenario grabber = null
+  );
+}
+extern class rvm_xactor_callbacks { 
+}
+extern class rvm_xactor { 
+  rvm_log log;
+  integer stream_id;
+  rvm_notify notify;
+  static integer XACTOR_IDLE;
+  static integer XACTOR_BUSY;
+  static integer XACTOR_STARTED;
+  static integer XACTOR_STOPPING;
+  static integer XACTOR_STOPPED;
+  static integer XACTOR_RESET;
+  static integer XACTOR_SOFT_RST;
+  static integer XACTOR_FIRM_RST;
+  static integer XACTOR_HARD_RST;
+  static integer XACTOR_PROTOCOL_RST;
+  protected integer reset_pending;
+  protected rvm_xactor_callbacks callbacks [$];
+  task new (
+    string name,
+    string instance,
+    integer stream_id = -1
+  );
+  function string get_name (
+  );
+  function string get_instance (
+  );
+  virtual task start_xactor (
+  );
+  virtual task stop_xactor (
+  );
+  virtual task reset_xactor (
+    integer rst_type = 0
+  );
+  virtual task kill_xactor (
+  );
+  virtual task save_rng_state (
+  );
+  virtual task restore_rng_state (
+  );
+  virtual task xactor_status (
+    string prefix = ""
+  );
+  virtual protected task main_t (
+  );
+  protected task wait_if_stopped_t (
+    integer n_threads = 1
+  );
+  protected task wait_if_stopped_or_empty_t (
+    rvm_channel_class chan,
+    integer n_threads = 1
+  );
+  protected function rvm_data next_transaction_t (
+    rvm_channel_class chan
+  );
+  task append_callback (
+    rvm_xactor_callbacks cb
+  );
+  task prepend_callback (
+    rvm_xactor_callbacks cb
+  );
+  task register_callback (
+    rvm_xactor_callbacks cb,
+    bit prepend = 0
+  );
+  task unregister_callback (
+    rvm_xactor_callbacks cb
+  );
+}
+typedef class rvm_ms_scenario ;
+typedef class rvm_ms_scenario_gen ;
+typedef class rvm_ms_scenario_election ;
+extern class rvm_ms_scenario extends rvm_scenario { 
+  static rvm_log log;
+  task new (
+    rvm_scenario parent = null
+  );
+  virtual task execute_t (
+    var integer n
+  );
+  virtual task Xset_context_genX (
+    rvm_ms_scenario_gen gen
+  );
+  virtual function rvm_ms_scenario_gen get_context_gen (
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  virtual function rvm_ms_scenario get_ms_scenario (
+    string scenario,
+    string gen = ""
+  );
+  virtual function rvm_channel_class get_channel (
+    string name
+  );
+  virtual task grab_channels (
+    var rvm_channel_class channels[$]
+  );
+  virtual function rvm_data copy (
+    rvm_data to = null
+  );
+}
+extern class rvm_ms_scenario_election { 
+  integer stream_id;
+  integer scenario_id;
+  integer n_scenarios;
+  integer last_selected [$];
+  integer next_in_set;
+  rvm_ms_scenario scenario_set [$];
+  rand integer select;
+  constraint rvm_ms_scenario_election_valid;
+  constraint round_robin;
+}
+extern class rvm_ms_scenario_gen_callbacks extends rvm_xactor_callbacks { 
+  virtual task pre_scenario_randomize_t (
+    rvm_ms_scenario_gen gen,
+    var rvm_ms_scenario scenario
+  );
+  virtual task post_scenario_gen_t (
+    rvm_ms_scenario_gen gen,
+    rvm_ms_scenario scenario,
+    var bit dropped
+  );
+}
+extern class rvm_ms_scenario_gen extends rvm_xactor { 
+  integer stop_after_n_insts;
+  integer stop_after_n_scenarios;
+  integer GENERATED;
+  integer DONE;
+  rvm_ms_scenario_election select_scenario;
+  rvm_ms_scenario scenario_set [$];
+  protected integer scenario_count;
+  protected integer inst_count;
+  task new (
+    string inst,
+    integer stream_id = -1
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  function integer get_n_insts (
+  );
+  function integer get_n_scenarios (
+  );
+  virtual task reset_xactor (
+    integer rst_typ = 0
+  );
+  virtual task register_channel (
+    string name,
+    rvm_channel_class chan
+  );
+  virtual function bit channel_exists (
+    string name
+  );
+  virtual task replace_channel (
+    string name,
+    rvm_channel_class chan
+  );
+  virtual task get_all_channel_names (
+    var string name[$]
+  );
+  virtual task get_names_by_channel (
+    rvm_channel_class chan,
+    var string name[$]
+  );
+  virtual function string get_channel_name (
+    rvm_channel_class chan
+  );
+  virtual function bit unregister_channel (
+    rvm_channel_class chan
+  );
+  virtual function rvm_channel_class unregister_channel_by_name (
+    string name
+  );
+  virtual function rvm_channel_class get_channel (
+    string name
+  );
+  virtual task register_ms_scenario (
+    string name,
+    rvm_ms_scenario scenario
+  );
+  virtual function bit ms_scenario_exists (
+    string name
+  );
+  virtual task replace_ms_scenario (
+    string name,
+    rvm_ms_scenario scenario
+  );
+  virtual task get_all_ms_scenario_names (
+    var string name[$]
+  );
+  virtual task get_names_by_ms_scenario (
+    rvm_ms_scenario scenario,
+    var string name[$]
+  );
+  virtual function string get_ms_scenario_name (
+    rvm_ms_scenario scenario
+  );
+  virtual function integer get_ms_scenario_index (
+    rvm_ms_scenario scenario
+  );
+  virtual function bit unregister_ms_scenario (
+    rvm_ms_scenario scenario
+  );
+  virtual function rvm_ms_scenario unregister_ms_scenario_by_name (
+    string name
+  );
+  virtual function rvm_ms_scenario get_ms_scenario (
+    string name
+  );
+  virtual task register_ms_scenario_gen (
+    string name,
+    rvm_ms_scenario_gen scenario_gen
+  );
+  virtual function bit ms_scenario_gen_exists (
+    string name
+  );
+  virtual task replace_ms_scenario_gen (
+    string name,
+    rvm_ms_scenario_gen scenario_gen
+  );
+  virtual task get_all_ms_scenario_gen_names (
+    var string name[$]
+  );
+  virtual task get_names_by_ms_scenario_gen (
+    rvm_ms_scenario_gen scenario_gen,
+    var string name[$]
+  );
+  virtual function string get_ms_scenario_gen_name (
+    rvm_ms_scenario_gen scenario_gen
+  );
+  virtual function bit unregister_ms_scenario_gen (
+    rvm_ms_scenario_gen scenario_gen
+  );
+  virtual function rvm_ms_scenario_gen unregister_ms_scenario_gen_by_name (
+    string name
+  );
+  virtual function rvm_ms_scenario_gen get_ms_scenario_gen (
+    string name
+  );
+  virtual protected task main_t (
+  );
+}
+extern class rvm_broadcast extends rvm_xactor { 
+  enum bcast_mode = AFAP=1, ALAP;
+  task new (
+    string name,
+    string instance,
+    rvm_channel_class source,
+    bit use_references = 1,
+    integer mode = 1
+  );
+  virtual task broadcast_mode (
+    integer mode
+  );
+  virtual function integer new_output (
+    rvm_channel_class channel,
+    bit use_references = 1'bx
+  );
+  virtual task bcast_to_output (
+    integer channel_id,
+    integer on_off
+  );
+  virtual protected function bit add_to_output (
+    integer decision_id,
+    integer output_id,
+    rvm_channel_class channel,
+    rvm_data obj
+  );
+  virtual task start_xactor (
+  );
+  virtual task stop_xactor (
+  );
+  virtual task reset_xactor (
+    integer rst_type = 0
+  );
+  virtual protected task main_t (
+  );
+}
+extern class rvm_scheduler_election { 
+  integer instance_id;
+  integer election_id;
+  integer n_sources;
+  rvm_channel_class sources [$];
+  integer ids [$];
+  integer next_idx;
+  integer id_history [$];
+  rvm_data obj_history [$];
+  rand integer source_idx;
+  rand integer obj_offset;
+  constraint rvm_scheduler_election_valid;
+  constraint default_round_robin;
+}
+extern class rvm_scheduler extends rvm_xactor { 
+  rvm_scheduler_election randomized_sched;
+  protected rvm_channel_class out_chan;
+  task new (
+    string name,
+    string instance,
+    rvm_channel_class destination,
+    integer instance_id = -1
+  );
+  virtual function integer new_source (
+    rvm_channel_class channel
+  );
+  virtual task sched_from_input (
+    integer channel_id,
+    integer on_off
+  );
+  virtual protected function rvm_data schedule (
+    rvm_channel_class sources[$],
+    integer input_ids[$]
+  );
+  virtual protected function rvm_data get_object (
+    rvm_channel_class source,
+    integer input_id,
+    integer offset
+  );
+  virtual task start_xactor (
+  );
+  virtual task stop_xactor (
+  );
+  virtual task reset_xactor (
+    integer rst_type = 0
+  );
+  virtual protected task main_t (
+  );
+}
+typedef class rvm_watchdog ;
+extern class rvm_watchdog_sig { 
+  rvm_watchdog_port sig;
+  rvm_watchdog dog;
+  event abort;
+  string name;
+  bit [63:0] stamp;
+  task new (
+    rvm_watchdog_port sig,
+    string name,
+    rvm_watchdog dog
+  );
+}
+extern class rvm_watchdog_channel { 
+  rvm_channel_class chan;
+  rvm_watchdog dog;
+  event abort;
+  task new (
+    rvm_channel_class chan,
+    rvm_watchdog dog,
+    bit is_empty = 1
+  );
+}
+extern class rvm_watchdog_xactor { 
+  rvm_xactor xact;
+  rvm_watchdog dog;
+  event abort;
+  task new (
+    rvm_xactor xact,
+    rvm_watchdog dog
+  );
+}
+extern class rvm_watchdog extends rvm_xactor { 
+  static integer TIMEOUT;
+  static integer n_busy;
+  task new (
+    string instance,
+    rvm_watchdog_port sigs = null,
+    integer fuse = 1000
+  );
+  virtual task reset_fuse (
+    bit hold = 0
+  );
+  virtual function integer fuse (
+    integer reset_fuse = -1
+  );
+  virtual task start_xactor (
+  );
+  virtual task stop_xactor (
+  );
+  virtual task reset_xactor (
+    integer rst_type = 0
+  );
+  virtual task watch_signal (
+    rvm_watchdog_port sig,
+    string name
+  );
+  virtual task unwatch_signal (
+    rvm_watchdog_port sig
+  );
+  virtual task watch_xactor (
+    rvm_xactor xact
+  );
+  virtual task unwatch_xactor (
+    rvm_xactor xact
+  );
+  virtual task watch_channel (
+    rvm_channel_class chan,
+    bit is_empty = 1
+  );
+  virtual task unwatch_channel (
+    rvm_channel_class chan
+  );
+  task display (
+    string prefix = ""
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  virtual protected task main_t (
+  );
+}
+typedef class rvm_voter ;
+extern class rvm_consensus { 
+  rvm_log log;
+  static integer NEW_VOTE;
+  rvm_notify notify;
+  event new_results;
+  task new (
+    string name,
+    string inst
+  );
+  function rvm_voter register_voter (
+    string name
+  );
+  task register_xactor (
+    rvm_xactor xact
+  );
+  task register_channel (
+    rvm_channel_class chan
+  );
+  task register_notification (
+    rvm_notify notify,
+    integer notification
+  );
+  task register_no_notification (
+    rvm_notify notify,
+    integer notification
+  );
+  task register_consensus (
+    rvm_consensus vote,
+    bit force_through = 0
+  );
+  task unregister_voter (
+    rvm_voter voter
+  );
+  task unregister_xactor (
+    rvm_xactor xact
+  );
+  task unregister_channel (
+    rvm_channel_class chan
+  );
+  task unregister_notification (
+    rvm_notify notify,
+    integer notification
+  );
+  task unregister_consensus (
+    rvm_consensus vote
+  );
+  task wait_for_consensus_t (
+  );
+  task wait_for_no_consensus_t (
+  );
+  function bit is_reached (
+  );
+  function bit is_forced (
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+  task yeas (
+    var string who[*],
+    var string why[*]
+  );
+  task nays (
+    var string who[*],
+    var string why[*]
+  );
+  task forcing (
+    var string who[*],
+    var string why[*]
+  );
+  task XvoteX (
+    bit was_agree,
+    bit agree,
+    bit was_forced,
+    bit forced
+  );
+}
+extern class rvm_voter { 
+  task new (
+    string name,
+    rvm_consensus vote
+  );
+  task oppose (
+    string why = "No reason specified"
+  );
+  task consent (
+    string why = "No reason specified"
+  );
+  task forced (
+    string why = "No reason specified"
+  );
+  function string get_name (
+  );
+  function bit get_vote (
+  );
+  function bit get_forced (
+  );
+  function string get_reason (
+  );
+  task xactor (
+    rvm_xactor xact
+  );
+  task channel (
+    rvm_channel_class chan
+  );
+  task notify (
+    rvm_notify ntfy,
+    integer notification,
+    bit is_on
+  );
+  task sub_consensus (
+    rvm_consensus vote,
+    bit force_through
+  );
+  task kill_voter (
+  );
+  function rvm_xactor get_xactor (
+  );
+  function rvm_channel_class get_channel (
+  );
+  function rvm_notify get_notify (
+  );
+  function integer get_notification (
+  );
+  function rvm_consensus get_consensus (
+  );
+}
+extern class rvm_env { 
+  rvm_log log;
+  rvm_notify notify;
+  static integer CFG_GENED;
+  static integer BUILT;
+  static integer DUT_RESET;
+  static integer DUT_CFGED;
+  static integer STARTED;
+  static integer RESTARTED;
+  static integer ENDED;
+  static integer STOPPED;
+  static integer CLEANED;
+  static integer DONE;
+  rvm_consensus end_vote;
+  task new (
+    string name = "Verif Env"
+  );
+  task run_t (
+  );
+  task pre_test_t (
+  );
+  virtual task gen_cfg (
+  );
+  virtual task build (
+  );
+  virtual task reset_dut_t (
+  );
+  virtual task cfg_dut_t (
+  );
+  virtual task start_t (
+  );
+  virtual task wait_for_end_t (
+  );
+  virtual task stop_t (
+  );
+  virtual task cleanup_t (
+  );
+  virtual task restart (
+    bit reconfig = 0
+  );
+  virtual task report (
+  );
+  virtual protected task save_rng_state (
+  );
+  virtual protected task restore_rng_state (
+  );
+}
+extern class rvm_atomic_gen_callbacks extends rvm_xactor_callbacks { 
+  virtual task post_inst_gen_t (
+    rvm_xactor gen,
+    rvm_data obj,
+    var bit drop
+  );
+}
+extern class rvm_scenario_gen_callbacks extends rvm_xactor_callbacks { 
+  virtual task post_scenario_gen_t (
+    rvm_xactor gen,
+    rvm_data scenario,
+    var bit drop
+  );
+}
+typedef class xvc_xactor ;
+extern class xvc_action_wait_all { 
+  integer ids [$];
+}
+extern class xvc_action_wait_for { 
+  xvc_action_wait_all any_of [$];
+}
+extern class xvc_action_indicate { 
+  integer ids [$];
+}
+extern class xvc_action extends rvm_data { 
+  integer is_interrupt;
+  xvc_action_wait_for wait_for;
+  xvc_action_indicate indicate;
+  rvm_xactor_callbacks callbacks [$];
+  task new (
+    string name,
+    rvm_log log
+  );
+  function string get_name (
+  );
+  virtual function xvc_action parse (
+    string argv[$]
+  );
+  virtual task execute (
+    rvm_channel_class exec_chan,
+    xvc_xactor xvc
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  virtual function bit is_valid (
+    bit silent = 1,
+    integer kind = -1
+  );
+  virtual function rvm_data allocate (
+  );
+  virtual function rvm_data copy (
+    rvm_data cpy = null
+  );
+  virtual function bit compare (
+    rvm_data to,
+    var string diff,
+    integer kind = -1
+  );
+  virtual function integer byte_size (
+    integer kind = -1
+  );
+  virtual function integer byte_pack (
+    var bit [7:0] bytes[*],
+    integer offset = 0,
+    integer kind = -1
+  );
+  virtual function integer byte_unpack (
+    bit [7:0] bytes[*],
+    integer offset = 0,
+    integer kind = -1
+  );
+  virtual function bit load (
+    integer file
+  );
+  virtual task save (
+    integer file
+  );
+}
+extern class xvc_action_channel extends rvm_channel_class { 
+  task new (
+    string name,
+    string instance,
+    integer full = 1,
+    integer empty = 0,
+    bit fill_as_bytes = 0
+  );
+  function xvc_action unput (
+    integer offset = -1
+  );
+  function xvc_action get_t (
+    integer offset = 0
+  );
+  task get (
+    var xvc_action obj,
+    integer offset = 0
+  );
+  function xvc_action peek_t (
+    integer offset = 0
+  );
+  task peek (
+    var xvc_action obj,
+    integer offset = 0
+  );
+  function xvc_action activate_t (
+    integer offset = 0
+  );
+  task activate (
+    var xvc_action obj,
+    integer offset = 0
+  );
+  function xvc_action active_slot (
+  );
+  function xvc_action start (
+  );
+  function xvc_action complete (
+  );
+  function xvc_action remove (
+  );
+  function xvc_action tee_t (
+  );
+  task tee (
+    var xvc_action obj
+  );
+  function xvc_action for_each (
+    bit reset = 0
+  );
+}
+extern class xvc_xactor extends rvm_xactor { 
+  xvc_action_channel action_chan;
+  xvc_action_channel interrupt_chan;
+  protected rvm_channel_class exec_chan;
+  protected rvm_xactor xactors [$];
+  task new (
+    string name,
+    string instance,
+    integer stream_id = -1,
+    xvc_action_channel action_chan = null,
+    xvc_action_channel interrupt_chan = null
+  );
+  task add_action (
+    xvc_action action
+  );
+  function xvc_action parse (
+    string argv[$]
+  );
+  task wait_if_interrupted_t (
+  );
+  virtual task start_xactor (
+  );
+  virtual task stop_xactor (
+  );
+  virtual task reset_xactor (
+    integer rst_type = 0
+  );
+  virtual task save_rng_state (
+  );
+  virtual task restore_rng_state (
+  );
+  virtual task xactor_status (
+    string prefix = ""
+  );
+  virtual protected task main_t (
+  );
+}
+extern class xvc_manager { 
+  rvm_log log;
+  rvm_log trace;
+  rvm_notify notify;
+  protected xvc_xactor xvcQ [$];
+  task new (
+    string instance = "Main"
+  );
+  function bit add_xvc (
+    xvc_xactor xvc
+  );
+  function bit remove_xvc (
+    xvc_xactor xvc
+  );
+  function bit split (
+    string command,
+    var string argv[$]
+  );
+}
+
+#endif
+#ifndef INC_RVM_STD_LIB_VRH2
+#define INC_RVM_STD_LIB_VRH2
+
+
+#ifndef __STDC__
+# define rvm_channel_(type) type/**/_channel
+#else
+# define rvm_channel_(type) type##_channel
+#endif
+
+#define rvm_channel_decl(objtype)  \
+ \
+class rvm_channel_(objtype) extends rvm_channel_class { \
+ \
+   task new(string name, string instance, integer full = 1, integer empty = 0, bit fill_as_bytes = 0); \
+ \
+   function objtype unput(integer offset = -1); \
+   function objtype get_t(integer offset = 0); \
+   task get(var objtype obj, integer offset = 0); \
+   function objtype peek_t(integer offset = 0); \
+   task peek(var objtype obj, integer offset = 0); \
+   function objtype activate_t(integer offset = 0); \
+   task activate(var objtype obj, integer offset = 0); \
+   function objtype active_slot(); \
+   function objtype start(); \
+   function objtype complete(); \
+   function objtype remove(); \
+   function objtype tee_t(); \
+   task tee(var objtype obj); \
+   function objtype for_each(bit reset = 0); \
+}
+
+#define extern_rvm_channel(objtype)  \
+extern rvm_channel_decl(objtype)
+
+#define rvm_channel(objtype)  \
+rvm_channel_decl(objtype) \
+\
+task rvm_channel_(objtype)::new(string name, string instance, integer full = 1, integer empty = 0, bit fill_as_bytes = 0) \
+{ \
+   objtype obj; \
+ \
+   super.new(name, instance, full, empty, fill_as_bytes); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::unput(integer offset = -1) \
+{ \
+   cast_assign(unput, super.unput(offset)); \
+} \
+ \
+ \
+task rvm_channel_(objtype)::get(var objtype obj, integer offset = 0) \
+{ \
+   cast_assign(obj, super.get_t(offset)); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::get_t(integer offset = 0) \
+{ \
+   cast_assign(get_t, super.get_t(offset)); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::peek_t(integer offset = 0) \
+{ \
+   cast_assign(peek_t, super.peek_t(offset)); \
+} \
+ \
+ \
+task rvm_channel_(objtype)::peek(var objtype obj, integer offset = 0) \
+{ \
+   cast_assign(obj, super.peek_t(offset)); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::activate_t(integer offset = 0) \
+{ \
+   cast_assign(activate_t, super.activate_t(offset)); \
+} \
+ \
+ \
+task rvm_channel_(objtype)::activate(var objtype obj, integer offset = 0) \
+{ \
+   cast_assign(obj, super.activate_t(offset)); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::active_slot() \
+{ \
+   cast_assign(active_slot, super.active_slot()); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::start() \
+{ \
+   cast_assign(start, super.start()); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::complete() \
+{ \
+   cast_assign(complete, super.complete()); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::remove() \
+{ \
+   cast_assign(remove, super.remove()); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::tee_t() \
+{ \
+   cast_assign(tee_t, super.tee_t()); \
+} \
+ \
+ \
+task rvm_channel_(objtype)::tee(var objtype obj) \
+{ \
+   cast_assign(obj, super.tee_t()); \
+} \
+ \
+ \
+function objtype rvm_channel_(objtype)::for_each(bit reset = 0) \
+{ \
+   cast_assign(for_each, super.for_each(reset)); \
+}
+
+
+
+#define rvm_warning(log, msg)  \
+do { \
+   if (log.start_msg(log.FAILURE_TYP, log.WARNING_SEV)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_error(log, msg)  \
+do { \
+   if (log.start_msg(log.FAILURE_TYP, log.ERROR_SEV)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_fatal(log, msg)  \
+do { \
+   if (log.start_msg(log.FAILURE_TYP, log.FATAL_SEV)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#ifdef RVM_NULL_LOG_MACROS
+
+#define rvm_trace(log, msg)  void = void
+#define rvm_debug(log, msg)  void = void
+#define rvm_verbose(log, msg)  void = void
+#define rvm_note(log, msg)  void = void
+#define rvm_report(log, msg)  void = void
+#define rvm_command(log, msg)  void = void
+#define rvm_protocol(log, msg)  void = void
+#define rvm_transaction(log, msg)  void = void
+#define rvm_cycle(log, msg)  void = void
+#define rvm_user(n, log, msg)  void = void
+
+#else
+
+#define rvm_trace(log, msg)  \
+do { \
+   if (log.start_msg(log.DEBUG_TYP, log.TRACE_SEV)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_debug(log, msg)  \
+do { \
+   if (log.start_msg(log.DEBUG_TYP, log.DEBUG_SEV)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_verbose(log, msg)  \
+do { \
+   if (log.start_msg(log.DEBUG_TYP, log.VERBOSE_SEV)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_note(log, msg)  \
+do { \
+   if (log.start_msg(log.NOTE_TYP)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_report(log, msg)  \
+do { \
+   if (log.start_msg(log.REPORT_TYP)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_command(log, msg)  \
+do { \
+   if (log.start_msg(log.COMMAND_TYP)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_protocol(log, msg)  \
+do { \
+   if (log.start_msg(log.PROTOCOL_TYP)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_transaction(log, msg)  \
+do { \
+   if (log.start_msg(log.TRANSACTION_TYP)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_cycle(log, msg)  \
+do { \
+   if (log.start_msg(log.CYCLE_TYP)) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#define rvm_user(n, log, msg)  \
+do { \
+   if (log.start_msg(log.USER_TYP[n])) { \
+      void = log.text(msg); \
+      log.end_msg(); \
+   } \
+} while (0)
+
+#endif
+#define RVM_NUMERIC_VERSION_MACROS
+
+#define RVM_VERSION 8
+
+#define RVM_MINOR   9
+
+#define RVM_PATCH   4
+
+
+
+
+
+#define rvm_channel__SOURCE 1
+#define rvm_channel__SINK   2
+#define rvm_channel__NO_ACTIVE     0
+#define rvm_channel__ACT_PENDING   1
+#define rvm_channel__ACT_STARTED   2
+#define rvm_channel__ACT_COMPLETED 3
+#define rvm_channel__FULL      999_999
+#define rvm_channel__EMPTY     999_998
+#define rvm_channel__PUT       999_997
+#define rvm_channel__GOT       999_996
+#define rvm_channel__PEEKED    999_995
+#define rvm_channel__ACTIVATED 999_994
+#define rvm_channel__STARTED   999_993
+#define rvm_channel__COMPLETED 999_992
+#define rvm_channel__REMOVED   999_991
+#define rvm_channel__LOCKED    999_990
+#define rvm_channel__UNLOCKED  999_989
+#define rvm_channel__GRABBED   999_988
+#define rvm_channel__UNGRABBED 999_987
+#define rvm_channel__RECORDING  999_986
+#define rvm_channel__PLAYBACK  999_985
+#define rvm_channel__PLAYBACK_DONE  999_984
+
+#define rvm_data__EXECUTE 999_999
+#define rvm_data__STARTED 999_998
+#define rvm_data__ENDED   999_997
+
+#define rvm_env__CFG_GENED 999_999
+#define rvm_env__BUILT     999_998
+#define rvm_env__DUT_RESET 999_997
+#define rvm_env__DUT_CFGED 999_996
+#define rvm_env__STARTED   999_995
+#define rvm_env__RESTARTED 999_994
+#define rvm_env__ENDED     999_993
+#define rvm_env__STOPPED   999_992
+#define rvm_env__CLEANED   999_991
+#define rvm_env__DONE      999_990
+
+#define rvm_log__DEFAULT   -1
+#define rvm_log__UNCHANGED -2
+#define rvm_log__FAILURE_TYP     (1 << 0)
+#define rvm_log__NOTE_TYP        (1 << 1)
+#define rvm_log__DEBUG_TYP       (1 << 2)
+#define rvm_log__REPORT_TYP      (1 << 3)
+#define rvm_log__NOTIFY_TYP      (1 << 4)
+#define rvm_log__TIMING_TYP      (1 << 5)
+#define rvm_log__XHANDLING_TYP   (1 << 6)
+#define rvm_log__PROTOCOL_TYP    (1 << 7)
+#define rvm_log__TRANSACTION_TYP (1 << 8)
+#define rvm_log__COMMAND_TYP     (1 << 9)
+#define rvm_log__CYCLE_TYP       (1 << 10)
+#define rvm_log__USER_TYP_0      (1 << 11)
+#define rvm_log__USER_TYP_1      (1 << 12)
+#define rvm_log__USER_TYP_2      (1 << 13)
+#define rvm_log__USER_TYP_3      (1 << 14)
+#define rvm_log__INTERNAL_TYP    (1 << 15)
+#define rvm_log__DEFAULT_TYP     -1
+#define rvm_log__ALL_TYPES       65535
+#define rvm_log__FATAL_SEV    (1 << 0)
+#define rvm_log__ERROR_SEV    (1 << 1)
+#define rvm_log__WARNING_SEV  (1 << 2)
+#define rvm_log__NORMAL_SEV   (1 << 3)
+#define rvm_log__TRACE_SEV    (1 << 4)
+#define rvm_log__DEBUG_SEV    (1 << 5)
+#define rvm_log__VERBOSE_SEV  (1 << 6)
+#define rvm_log__HIDDEN_SEV   (1 << 7)
+#define rvm_log__IGNORE_SEV   (1 << 8)
+#define rvm_log__DEFAULT_SEV  -1
+#define rvm_log__ALL_SEVERITIES 65535
+#define rvm_log__CONTINUE       (1 << 0)
+#define rvm_log__COUNT_AS_ERROR (1 << 1)
+#define rvm_log__DEBUGGER       (1 << 2)
+#define rvm_log__DUMP           (1 << 3)
+#define rvm_log__STOP           (1 << 4)
+#define rvm_log__ABORT          (1 << 5)
+
+#define rvm_notify__ONE_SHOT_TRIGGER   2
+#define rvm_notify__ONE_BLAST_TRIGGER  3
+#define rvm_notify__HAND_SHAKE_TRIGGER 4
+#define rvm_notify__ON_OFF_TRIGGER     5
+
+#define rvm_xactor__XACTOR_IDLE      999_999
+#define rvm_xactor__XACTOR_BUSY      999_998
+#define rvm_xactor__XACTOR_STARTED   999_997
+#define rvm_xactor__XACTOR_STOPPED   999_996
+#define rvm_xactor__XACTOR_RESET     999_995
+#define rvm_xactor__XACTOR_STOPPING  999_994
+#define rvm_xactor__XACTOR_SOFT_RST     1
+#define rvm_xactor__XACTOR_FIRM_RST     0
+#define rvm_xactor__XACTOR_HARD_RST     2
+#define rvm_xactor__XACTOR_PROTOCOL_RST 3
+
+#define rvm_broadcast__AFAP 1
+#define rvm_broadcast__ALAP 2
+
+#define rvm_watchdog__TIMEOUT 999_980
+
+#define rvm_consensus__NEW_VOTE 999_999
+#define RVM_SCHEDULER_IS_XACTOR
+#define RVM_BROADCAST_IS_XACTOR
+
+
+#define rvm_OO_callback(facade, call) \
+ \
+foreach (this.callbacks, rvm_iii) { \
+   facade cb; \
+   if (!cast_assign(cb, this.callbacks[rvm_iii], CHECK)) continue; \
+ \
+   cb.call; \
+} \
+void = void
+
+
+#ifndef __STDC__
+# define rvm_atomic_gen_(class)           class/**/_atomic_gen
+# define rvm_atomic_gen_callbacks_(class) class/**/_atomic_gen_callbacks
+#else
+# define rvm_atomic_gen_(class)           class##_atomic_gen
+# define rvm_atomic_gen_callbacks_(class) class##_atomic_gen_callbacks
+#endif
+
+
+#define rvm_atomic_gen_callbacks_decl(class_name) \
+class rvm_atomic_gen_callbacks_(class_name) extends rvm_xactor_callbacks { \
+   virtual task post_inst_gen_t(rvm_atomic_gen_(class_name) gen, \
+                                class_name                  obj, \
+                                var bit                     drop); \
+}
+
+#define rvm_atomic_gen_decl(class_name, channel_name) \
+class rvm_atomic_gen_(class_name) extends rvm_xactor { \
+ \
+   /* begin_visible_encrypted_fields */ \
+   integer stop_after_n_insts; \
+   class_name randomized_obj; \
+   /* end_visible_encrypted_fields */ \
+ \
+   integer GENERATED; \
+   integer DONE; \
+ \
+   channel_name out_chan; \
+ \
+   local integer scenario_count; \
+   local integer obj_count; \
+ \
+   task new(string       instance, \
+            integer      stream_id = -1, \
+            channel_name out_chan  = null); \
+ \
+   virtual function bit inject_t(class_name obj); \
+ \
+   task post_inst_gen_t(class_name obj, \
+                        var bit    drop); \
+ \
+   virtual task reset_xactor(integer rst_type = 0); \
+   virtual protected task main_t(); \
+ \
+   virtual protected task vmt_hook(class_name obj); \
+}
+
+
+#define extern_rvm_atomic_gen(class_name)  \
+extern_rvm_atomic_gen_using(class_name, rvm_channel_(class_name))
+
+#define extern_rvm_atomic_gen_using(class_name, channel_name)  \
+typedef class rvm_atomic_gen_(class_name); \
+extern rvm_atomic_gen_callbacks_decl(class_name) \
+extern rvm_atomic_gen_decl(class_name, channel_name)
+
+
+#define rvm_atomic_gen(class_name, text)  \
+rvm_atomic_gen_using(class_name, rvm_channel_(class_name), text)
+
+#define rvm_atomic_gen_using(class_name, channel_name, text)  \
+typedef class rvm_atomic_gen_(class_name); \
+rvm_atomic_gen_callbacks_decl(class_name) \
+rvm_atomic_gen_decl(class_name, channel_name) \
+ \
+task rvm_atomic_gen_callbacks_(class_name)::post_inst_gen_t(rvm_atomic_gen_(class_name) gen, \
+                                          	            class_name                  obj, \
+                                                            var bit                     drop) \
+{} \
+ \
+ \
+task rvm_atomic_gen_(class_name)::new(string       instance, \
+                   	  	      integer      stream_id = -1, \
+                                      channel_name out_chan  = null) \
+{ \
+   super.new({text, " Atomic Generator"}, instance, stream_id); \
+ \
+   if (out_chan == null) { \
+      out_chan = new({text, " Atomic Generator output channel"}, \
+                     instance); \
+   } \
+   this.out_chan = out_chan; \
+   this.log.is_above(this.out_chan.log); \
+ \
+   this.scenario_count = 0; \
+   this.obj_count = 0; \
+   this.stop_after_n_insts = 0; \
+ \
+   this.GENERATED = this.notify.configure(*, this.notify.ONE_SHOT_TRIGGER); \
+   this.DONE      = this.notify.configure(*, this.notify.ON_OFF_TRIGGER); \
+ \
+   this.randomized_obj = new; \
+} \
+ \
+ \
+task rvm_atomic_gen_(class_name)::reset_xactor(integer rst_type = 0) \
+{ \
+   super.reset_xactor(rst_type); \
+   this.obj_count = 0; \
+   this.out_chan.flush(); \
+} \
+ \
+ \
+task rvm_atomic_gen_(class_name)::main_t() \
+{ \
+   fork \
+      super.main_t(); \
+   join none \
+ \
+   this.obj_count = 0; \
+   while (this.stop_after_n_insts <= 0 || \
+          this.obj_count < this.stop_after_n_insts) { \
+ \
+      this.wait_if_stopped_t(); \
+ \
+      this.randomized_obj.stream_id   = this.stream_id; \
+      this.randomized_obj.scenario_id = this.scenario_count; \
+      this.randomized_obj.object_id   = this.obj_count; \
+ \
+      if (!this.randomized_obj.randomize()) { \
+         rvm_fatal(this.log, "Cannot randomize atomic instance"); \
+         continue; \
+      } \
+ \
+      { \
+         class_name obj; \
+ \
+         cast_assign(obj, this.randomized_obj.copy()); \
+         void = this.inject_t(obj); \
+      } \
+   } \
+ \
+   this.notify.indicate(this.DONE); \
+   this.notify.indicate(this.XACTOR_STOPPED); \
+   this.notify.indicate(this.XACTOR_IDLE); \
+   this.notify.reset(this.XACTOR_BUSY); \
+   this.scenario_count++; \
+} \
+ \
+ \
+function bit rvm_atomic_gen_(class_name)::inject_t(class_name obj) { \
+   bit drop = 0; \
+ \
+   this.vmt_hook(obj); \
+ \
+   this.post_inst_gen_t(obj, drop); \
+   rvm_OO_callback(rvm_atomic_gen_callbacks, \
+                   post_inst_gen_t(this, obj, drop)); \
+   rvm_OO_callback(rvm_atomic_gen_callbacks_(class_name), \
+                   post_inst_gen_t(this, obj, drop)); \
+ \
+   if (!drop) { \
+      this.obj_count++; \
+      this.notify.indicate(this.GENERATED, obj); \
+      this.out_chan.put_t(obj); \
+   } \
+ \
+   inject_t = !drop; \
+} \
+ \
+task rvm_atomic_gen_(class_name)::post_inst_gen_t(class_name obj, \
+                                                  var bit    drop) \
+{ \
+} \
+ \
+task rvm_atomic_gen_(class_name)::vmt_hook(class_name obj) \
+{ \
+   void = obj.vmt_hook(); \
+}
+#ifdef RVM_SV_INTEROP
+
+
+#ifndef __STDC__
+# define rvm_scenario_(class)                class/**/_scenario
+# define rvm_scenario_valid_(class)   class/**/_scenario_valid
+# define rvm_inject_item_scenario_(class)    class/**/_inject_item_scenario
+# define rvm_atomic_scenario_(class)         class/**/_atomic_scenario
+# define rvm_scenario_election_(class)       class/**/_scenario_election
+# define rvm_scenario_election_valid_(class) class/**/_scenario_election_valid
+# define rvm_scenario_gen_(class)            class/**/_scenario_gen
+# define rvm_scenario_gen_callbacks_(class)  class/**/_scenario_gen_callbacks
+#else
+# define rvm_scenario_(class)                class##_scenario
+# define rvm_scenario_valid_(class)   class##_scenario_valid
+# define rvm_inject_item_scenario_(class)    class##_inject_item_scenario
+# define rvm_atomic_scenario_(class)         class##_atomic_scenario
+# define rvm_scenario_election_(class)       class##_scenario_election
+# define rvm_scenario_election_valid_(class) class##_scenario_election_valid
+# define rvm_scenario_gen_(class)            class##_scenario_gen
+# define rvm_scenario_gen_callbacks_(class)  class##_scenario_gen_callbacks
+#endif
+
+#ifndef VMM_KIND_BEFORE
+#define VMM_KIND_BEFORE
+#endif
+#ifndef VMM_SIZE_BEFORE
+#define VMM_SIZE_BEFORE
+#endif
+
+
+#define rvm_scenario_decl(class_name, channel_name) \
+class rvm_scenario_(class_name) extends rvm_scenario { \
+ \
+   static rvm_log log; \
+ \
+   /* begin_visible_encrypted_fields */ \
+   rand class_name items[*] dynamic_size length; \
+        class_name using; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint rvm_scenario_valid_(class_name); \
+ \
+   task new(); \
+   virtual function rvm_data copy(rvm_data to = null); \
+   virtual function string psdisplay(string prefix = ""); \
+   task allocate_scenario(class_name using = null); \
+   task fill_scenario(class_name using = null); \
+   task pre_randomize(); \
+   virtual task execute_t(var integer n); \
+   virtual function integer apply_t(channel_name channel); \
+   local virtual function rvm_log get_vmm_log(); \
+}
+
+
+#define extern_rvm_scenario_decl(class_name, channel_name) \
+extern class rvm_scenario_(class_name) extends rvm_scenario { \
+ \
+   static rvm_log log; \
+ \
+   /* begin_visible_encrypted_fields */ \
+   rand class_name items[*]; \
+        class_name using; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint rvm_scenario_valid_(class_name); \
+ \
+   task new(); \
+   virtual function string psdisplay(string prefix = ""); \
+   task allocate_scenario(class_name using = null); \
+   task fill_scenario(class_name using = null); \
+   task pre_randomize(); \
+   virtual task execute_t(var integer n); \
+   virtual function integer apply_t(channel_name channel); \
+}
+
+
+#define rvm_inject_item_scenario_decl(class_name, channel_name) \
+class rvm_inject_item_scenario_(class_name) extends rvm_scenario_(class_name) { \
+ \
+   virtual function integer apply_t(channel_name channel); \
+}
+
+
+#define rvm_atomic_scenario_decl(class_name, channel_name) \
+class rvm_atomic_scenario_(class_name) extends rvm_scenario_(class_name) { \
+ \
+   /* begin_visible_encrypted_fields */ \
+   integer ATOMIC; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint atomic_scenario; \
+ \
+   task new(); \
+   virtual function string psdisplay(string prefix = ""); \
+   task pre_randomize(); \
+   virtual function integer apply_t(channel_name channel); \
+}
+
+
+#define rvm_scenario_election_decl(class_name) \
+class rvm_scenario_election_(class_name) { \
+   /* begin_visible_encrypted_fields */ \
+   integer stream_id; \
+   integer scenario_id; \
+   integer n_scenarios; \
+   integer last_selected[$]; \
+   integer next_in_set; \
+ \
+   rvm_scenario_(class_name) scenario_set[$]; \
+ \
+   rand integer select; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint rvm_scenario_election_valid_(class_name); \
+   constraint round_robin; \
+}
+
+
+#define rvm_scenario_gen_callbacks_decl(class_name) \
+class rvm_scenario_gen_callbacks_(class_name) extends rvm_xactor_callbacks { \
+   virtual task pre_scenario_randomize_t(rvm_scenario_gen_(class_name) gen, \
+                                         var rvm_scenario_(class_name) scenario); \
+ \
+   virtual task post_scenario_gen_t(rvm_scenario_gen_(class_name) gen, \
+                                    rvm_scenario_(class_name)     scenario, \
+                                    var bit                       drop); \
+}
+
+#define rvm_scenario_gen_decl(class_name, channel_name) \
+class rvm_scenario_gen_(class_name) extends rvm_xactor { \
+ \
+   /* begin_visible_encrypted_fields */ \
+   integer stop_after_n_insts; \
+   integer stop_after_n_scenarios; \
+   rvm_scenario_election_(class_name) select_scenario; \
+   rvm_scenario_(class_name) scenario_set[$]; \
+   /* end_visible_encrypted_fields */ \
+ \
+   integer GENERATED; \
+   integer DONE; \
+ \
+  protected rvm_scenario_(class_name) scenario_registry[string]; \
+ \
+   channel_name out_chan; \
+ \
+   protected integer scenario_count; \
+   protected integer inst_count; \
+ \
+   task new(string       instance, \
+            integer      stream_id = -1,\
+            channel_name out_chan  = null); \
+ \
+   function integer get_n_insts(); \
+   function integer get_n_scenarios(); \
+ \
+   virtual function bit inject_item_t(class_name item); \
+   virtual function bit inject_t(rvm_scenario_(class_name) scenario); \
+ \
+   virtual task register_scenario(string name, \
+                                    rvm_scenario_(class_name) scenario);\
+   virtual function bit scenario_exists(string name); \
+   virtual task replace_scenario_t(string name, \
+                                   rvm_scenario_(class_name) scenario);\
+   virtual task get_all_scenario_names(var string name[$]); \
+   virtual task get_names_by_scenario(rvm_scenario_(class_name) scenario, \
+                                        var string name[$]); \
+   virtual function string get_scenario_name(rvm_scenario_(class_name) scenario); \
+   virtual function integer get_scenario_index(rvm_scenario_(class_name) scenario); \
+   virtual function bit unregister_scenario(rvm_scenario_(class_name) scenario); \
+   virtual function rvm_scenario_(class_name) unregister_scenario_by_name(string name); \
+   virtual function rvm_scenario_(class_name) get_scenario(string name); \
+ \
+   virtual protected task vmt_hook(rvm_scenario_(class_name) scenario); \
+ \
+   task pre_scenario_randomize_t(var rvm_scenario_(class_name) scenario); \
+   task post_scenario_gen_t(rvm_scenario_(class_name) scenario, \
+                            var bit                 drop); \
+ \
+   virtual task reset_xactor(integer rst_type = 0); \
+   virtual protected task main_t(); \
+}
+
+
+#define extern_rvm_scenario_gen(class_name) \
+extern_rvm_scenario_gen_using(class_name, rvm_channel_(class_name))
+
+#define extern_rvm_scenario_gen_using(class_name, channel_name) \
+extern_rvm_scenario_decl(class_name, channel_name) \
+extern rvm_inject_item_scenario_decl(class_name, channel_name) \
+extern rvm_atomic_scenario_decl(class_name, channel_name) \
+extern rvm_scenario_election_decl(class_name) \
+typedef class rvm_scenario_gen_(class_name); \
+extern rvm_scenario_gen_callbacks_decl(class_name) \
+extern rvm_scenario_gen_decl(class_name, channel_name)
+
+
+#define rvm_scenario_gen(class_name, descr) \
+rvm_scenario_gen_using(class_name, rvm_channel_(class_name), descr)
+
+#define rvm_scenario_gen_using(class_name, channel_name, descr) \
+rvm_scenario_decl(class_name, channel_name) \
+rvm_inject_item_scenario_decl(class_name, channel_name) \
+rvm_atomic_scenario_decl(class_name, channel_name) \
+rvm_scenario_election_decl(class_name) \
+typedef class rvm_scenario_gen_(class_name); \
+rvm_scenario_gen_callbacks_decl(class_name) \
+rvm_scenario_gen_decl(class_name, channel_name) \
+ \
+constraint rvm_scenario_(class_name)::rvm_scenario_valid_(class_name) { \
+   solve length before items.size() VMM_SIZE_BEFORE; \
+} \
+ \
+task rvm_scenario_(class_name)::new() { \
+   super.new(null); \
+   if (this.log == null) { \
+      this.log = new({descr, " Scenario"}, "Class"); \
+      this.notify.log = this.log; \
+   } \
+ \
+   using = null; \
+} \
+\
+function rvm_log rvm_scenario_(class_name)::get_vmm_log() { \
+   get_vmm_log = this.log; \
+}\
+\
+function rvm_data rvm_scenario_(class_name)::copy(rvm_data to = null) { \
+   rvm_scenario_(class_name) cpy; \
+ \
+   if (to == null) cpy = new(); \
+   else if (!cast_assign(cpy, to)) { \
+      string msg = {"Cannot copy to non-", descr, " instance"}; \
+      rvm_fatal(this.log, msg); \
+      copy = null; \
+      return; \
+   } \
+ \
+   cpy.items = new [this.items.size()]; \
+   foreach (this.items, i) { \
+      if (this.items[i] == null) cpy.items[i] = null; \
+      else cast_assign(cpy.items[i], this.items[i].copy()); \
+   } \
+   if (this.using == null) cpy.using = null; \
+   else cast_assign(cpy.using, this.using.copy()); \
+ \
+   copy = cpy; \
+   return; \
+} \
+ \
+function string rvm_scenario_(class_name)::psdisplay(string prefix = "") { \
+   integer i; \
+ \
+   psdisplay = super.psdisplay(prefix); \
+   foreach (this.items, i) { \
+      psdisplay = {psdisplay, this.items[i].psdisplay(psprintf("%s   Item #%0d: ", prefix, i))}; \
+   } \
+} \
+ \
+task rvm_scenario_(class_name)::allocate_scenario(class_name using = null) { \
+   this.items = new [this.get_max_length()]; \
+   foreach (this.items, i) { \
+      if (using == null) this.items[i] = new; \
+      else cast_assign(this.items[i], using.copy()); \
+ \
+      this.items[i].stream_id   = this.stream_id; \
+      this.items[i].scenario_id = this.scenario_id; \
+      this.items[i].object_id   = i; \
+   } \
+} \
+ \
+task rvm_scenario_(class_name)::fill_scenario(class_name using = null) { \
+   if (this.items.size() < this.get_max_length()) { \
+      this.items = new [this.get_max_length()] (this.items); \
+   } \
+   foreach (this.items, i) { \
+      if (this.items[i] == null) { \
+         if (using == null) this.items[i] = new; \
+         else cast_assign(this.items[i], using.copy()); \
+      } \
+ \
+      this.items[i].stream_id   = this.stream_id; \
+      this.items[i].scenario_id = this.scenario_id; \
+      this.items[i].object_id   = i; \
+   } \
+} \
+ \
+task rvm_scenario_(class_name)::pre_randomize() { \
+   this.fill_scenario(this.using); \
+} \
+ \
+task rvm_scenario_(class_name)::execute_t(var integer n) { \
+   rvm_error(this.log, "Must call rvm_scenario::apply_t() for single-stream scenarios, not rvm_scenario::execute_t()."); \
+} \
+ \
+function integer rvm_scenario_(class_name)::apply_t(channel_name channel) { \
+   integer i; \
+ \
+   for (i = 0; i < this.length; i++) { \
+      class_name item; \
+      cast_assign(item, this.items[i].copy()); \
+      channel.put_t(item); \
+   } \
+ \
+   apply_t = this.length; \
+} \
+ \
+ \
+function integer rvm_inject_item_scenario_(class_name)::apply_t(channel_name channel) \
+{ \
+   channel.put_t(this.items[0]); \
+   apply_t = 1; \
+} \
+ \
+ \
+constraint rvm_atomic_scenario_(class_name)::atomic_scenario { \
+   if (kind == ATOMIC) { \
+      length == 1; \
+      repeated == 0; \
+   } \
+} \
+ \
+task rvm_atomic_scenario_(class_name)::new() { \
+   super.new(); \
+ \
+   this.ATOMIC = this.define_scenario("Atomic", 1); \
+ \
+   this.kind     = this.ATOMIC; \
+   this.length   = 1; \
+} \
+ \
+function string rvm_atomic_scenario_(class_name)::psdisplay(string prefix = "") \
+{ \
+   psdisplay = super.psdisplay(prefix); \
+} \
+ \
+task rvm_atomic_scenario_(class_name)::pre_randomize() { \
+   super.pre_randomize(); \
+} \
+ \
+function integer rvm_atomic_scenario_(class_name)::apply_t(channel_name channel) \
+{ \
+   apply_t = super.apply_t(channel); \
+} \
+ \
+ \
+constraint rvm_scenario_election_(class_name)::rvm_scenario_election_valid_(class_name) { \
+   select >= 0; \
+   select < n_scenarios; \
+} \
+ \
+constraint rvm_scenario_election_(class_name)::round_robin { \
+   select == next_in_set; \
+} \
+ \
+ \
+task rvm_scenario_gen_callbacks_(class_name)::pre_scenario_randomize_t(rvm_scenario_gen_(class_name) gen, \
+                                                                       var rvm_scenario_(class_name) scenario) \
+{} \
+ \
+ \
+task rvm_scenario_gen_callbacks_(class_name)::post_scenario_gen_t(rvm_scenario_gen_(class_name) gen, \
+                                                                  rvm_scenario_(class_name)     scenario, \
+                                                                  var bit                       drop) \
+{} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::new(string       instance, \
+                                        integer      stream_id = -1, \
+                                        channel_name out_chan  = null) \
+{ \
+   super.new({descr, " Scenario Generator"}, instance, stream_id); \
+ \
+   if (out_chan == null) { \
+      out_chan = new({descr, " Scenario Generator output channel"}, \
+                     instance); \
+   } \
+   this.out_chan = out_chan; \
+   this.log.is_above(this.out_chan.log); \
+ \
+   this.scenario_count = 0; \
+   this.inst_count = 0; \
+   this.stop_after_n_insts     = 0; \
+   this.stop_after_n_scenarios = 0; \
+ \
+   this.select_scenario = new; \
+   { \
+     rvm_atomic_scenario_(class_name) sc = new; \
+     this.register_scenario("Atomic", sc); \
+   } \
+ \
+   this.GENERATED = this.notify.configure(); \
+   this.DONE      = this.notify.configure(*, this.notify.ON_OFF_TRIGGER); \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::register_scenario(string name, \
+                                                      rvm_scenario_(class_name) scenario) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         return; \
+      } \
+\
+      if(assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_error(this.log, psprintf("%s already has an entry in the scenario registry", name)); \
+         return; \
+      } \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario passed for %s is a null value", name)); \
+         return; \
+      } \
+\
+      this.scenario_registry[name] = scenario; \
+\
+      foreach(this.scenario_set,i) { \
+         if(this.scenario_set[i] == scenario) \
+            return; \
+      } \
+      this.scenario_set.push_back(scenario); \
+} \
+\
+function bit rvm_scenario_gen_(class_name)::scenario_exists(string name) \
+{ \
+        if(name == "") { \
+            rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+            scenario_exists = 0; \
+            return; \
+        } \
+\
+        if(assoc_index(CHECK,this.scenario_registry,name)) \
+            scenario_exists = 1; \
+        else \
+            scenario_exists = 0; \
+} \
+\
+task rvm_scenario_gen_(class_name)::replace_scenario_t(string name, \
+                        rvm_scenario_(class_name) scenario) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         return; \
+      } \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario passed for %s is a null value", name)); \
+         return; \
+      } \
+\
+      if(!assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_error(this.log, psprintf("cannot replace a unregistered %s entry [use register_scenario]", name)); \
+         return ; \
+      } \
+\
+      foreach(this.scenario_set,i) { \
+         if(this.scenario_set[i] == this.scenario_registry[name]) { \
+            this.scenario_set.delete(i); \
+            break; \
+         } \
+      } \
+      this.scenario_registry[name] = scenario; \
+      foreach(this.scenario_set,i) { \
+          if(this.scenario_set[i] == scenario) \
+              return; \
+      } \
+      this.scenario_set.push_back(scenario); \
+} \
+\
+task rvm_scenario_gen_(class_name)::get_all_scenario_names(var string name[$]) \
+{ \
+      string s; \
+\
+      if(assoc_index(FIRST,this.scenario_registry,s)) { \
+         do { \
+            name.push_back(s); \
+         } while(assoc_index(NEXT,this.scenario_registry,s)); \
+      } \
+      if(name.size() == 0) { \
+         rvm_warning(this.log, psprintf("There are no entries in the scenario generator registry")); \
+      } \
+} \
+\
+task rvm_scenario_gen_(class_name)::get_names_by_scenario(rvm_scenario_(class_name) scenario, \
+                             var string name[$]) \
+{ \
+      string s; \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario is a null value")); \
+         return; \
+      } \
+\
+      if(assoc_index(FIRST,this.scenario_registry,s)) { \
+         do { \
+            if(this.scenario_registry[s] == scenario) \
+               name.push_back(s); \
+         } while(assoc_index(NEXT,this.scenario_registry,s)); \
+      } \
+      if(name.size() == 0) { \
+         rvm_warning(this.log, psprintf("There are no entries in the scenario registry")); \
+      } \
+} \
+\
+function string rvm_scenario_gen_(class_name)::get_scenario_name(rvm_scenario_(class_name) scenario) \
+{ \
+        string s[$]; \
+\
+        if(scenario == null) { \
+            rvm_error(this.log, psprintf("scenario is a null value")); \
+            get_scenario_name = ""; \
+            return ; \
+        } \
+\
+        this.get_names_by_scenario(scenario, s); \
+\
+        if(s.size()) \
+            get_scenario_name = s[0]; \
+        else \
+            get_scenario_name = ""; \
+} \
+\
+function integer rvm_scenario_gen_(class_name)::get_scenario_index(rvm_scenario_(class_name) scenario) \
+{ \
+       get_scenario_index = -1; \
+       foreach(this.scenario_set,i) { \
+          if(this.scenario_set[i] == scenario) { \
+             get_scenario_index = i; \
+             return ; \
+          } \
+       } \
+       if(get_scenario_index == -1) { \
+          rvm_warning(this.log, psprintf("Cannot find the index for the scenario")); \
+       } \
+} \
+\
+function bit rvm_scenario_gen_(class_name)::unregister_scenario(rvm_scenario_(class_name) scenario) \
+{ \
+      string s; \
+      unregister_scenario=0; \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario is a null value")); \
+         return; \
+      } \
+      if(assoc_index(FIRST,this.scenario_registry,s)) { \
+         do { \
+            if(this.scenario_registry[s] == scenario) { \
+               assoc_index(DELETE,this.scenario_registry,s); \
+               unregister_scenario=1; \
+            } \
+         } while(assoc_index(NEXT,this.scenario_registry,s)); \
+      } \
+      if(unregister_scenario==0) { \
+         rvm_warning(this.log, psprintf("There are no entries in the scenario registry")); \
+      } \
+      if(unregister_scenario) { \
+         foreach(this.scenario_set,i) { \
+            if(this.scenario_set[i] == scenario) { \
+               this.scenario_set.delete(i); \
+               break; \
+            } \
+         } \
+      } \
+} \
+\
+function rvm_scenario_(class_name) rvm_scenario_gen_(class_name)::unregister_scenario_by_name(string name) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         unregister_scenario_by_name = null; \
+         return ; \
+      } \
+      if(!assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_warning(this.log, psprintf("There is no entry for %s in the scenario registry", name)); \
+         unregister_scenario_by_name = null; \
+         return; \
+      } \
+      else { \
+         unregister_scenario_by_name = this.scenario_registry[name]; \
+         foreach(this.scenario_set,i) { \
+            if(this.scenario_set[i] == this.scenario_registry[name]) { \
+               this.scenario_set.delete(i); \
+               break; \
+            } \
+         } \
+         assoc_index(DELETE,this.scenario_registry,name); \
+      } \
+} \
+\
+function rvm_scenario_(class_name) rvm_scenario_gen_(class_name)::get_scenario(string name) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         get_scenario = null; \
+         return; \
+      } \
+      if(!assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_error(this.log, psprintf("%s does not have an entry in the scenario registry", name)); \
+         get_scenario = null; \
+         return; \
+      } \
+\
+      get_scenario = this.scenario_registry[name]; \
+      if(get_scenario == null) \
+         rvm_warning(this.log, psprintf("%s has a null scenario associated with it in the scenario registry", name)); \
+\
+} \
+\
+function integer rvm_scenario_gen_(class_name)::get_n_insts() \
+{ \
+   get_n_insts = this.inst_count; \
+} \
+ \
+ \
+function integer rvm_scenario_gen_(class_name)::get_n_scenarios() \
+{ \
+   get_n_scenarios = this.scenario_count; \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::vmt_hook(rvm_scenario_(class_name) scenario) \
+{ \
+   foreach (scenario.items, i) { \
+      void = scenario.items[i].vmt_hook(); \
+   } \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::pre_scenario_randomize_t(var rvm_scenario_(class_name) scenario) \
+{} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::post_scenario_gen_t(rvm_scenario_(class_name) scenario, \
+                                                      var bit                 drop) \
+{} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::reset_xactor(integer rst_type = 0) \
+{ \
+   super.reset_xactor(rst_type); \
+   this.scenario_count = 0; \
+   this.inst_count     = 0; \
+   this.out_chan.flush(); \
+   this.select_scenario.last_selected.delete(); \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::main_t() \
+{ \
+   rvm_scenario_(class_name) the_scenario; \
+   fork \
+      super.main_t(); \
+   join none \
+ \
+   while ((this.stop_after_n_insts <= 0 || this.inst_count < this.stop_after_n_insts) && \
+          (this.stop_after_n_scenarios <= 0 || this.scenario_count < this.stop_after_n_scenarios)) { \
+ \
+      this.wait_if_stopped_t(); \
+ \
+      this.select_scenario.stream_id    = this.stream_id; \
+      this.select_scenario.scenario_id  = this.scenario_count; \
+      this.select_scenario.n_scenarios  = this.scenario_set.size(); \
+      this.select_scenario.scenario_set = this.scenario_set; \
+      this.select_scenario.next_in_set  = \
+         (this.select_scenario.last_selected.size() == 0) ? 0 : ((this.select_scenario.last_selected.last() + 1) % this.scenario_set.size()); \
+ \
+      if (!this.select_scenario.randomize()) { \
+         rvm_fatal(this.log, "Cannot select scenario descriptor"); \
+         continue; \
+      } \
+ \
+      if (this.select_scenario.select < 0 || \
+          this.select_scenario.select >= this.scenario_set.size()) { \
+         rvm_fatal(this.log, psprintf("Select scenario #%0d is not within available set (0-%0d)", \
+                                      this.select_scenario.select, \
+                                      this.scenario_set.size()-1)); \
+         continue; \
+      } \
+      this.select_scenario.last_selected.push_back(this.select_scenario.select); \
+      while (this.select_scenario.last_selected.size() > 10) { \
+         void = this.select_scenario.last_selected.pop_front(); \
+      } \
+ \
+      the_scenario = this.scenario_set[this.select_scenario.select]; \
+      if (the_scenario == null) { \
+         rvm_fatal(this.log, psprintf("Select scenario #%0d does not exist", \
+                                      this.select_scenario.select)); \
+         continue; \
+      } \
+ \
+      the_scenario.stream_id   = this.stream_id; \
+      the_scenario.scenario_id = this.scenario_count; \
+      the_scenario.fill_scenario(the_scenario.using); \
+      foreach (the_scenario.items, i) { \
+         the_scenario.items[i].stream_id   = the_scenario.stream_id; \
+         the_scenario.items[i].scenario_id = the_scenario.scenario_id; \
+         the_scenario.items[i].object_id   = i; \
+      } \
+      this.pre_scenario_randomize_t(the_scenario); \
+      if (the_scenario == null) continue; \
+      rvm_OO_callback(rvm_scenario_gen_callbacks_(class_name), \
+                      pre_scenario_randomize_t(this, the_scenario)); \
+      if (the_scenario == null) continue; \
+ \
+      if (!the_scenario.randomize()) { \
+         rvm_fatal(this.log, psprintf("Cannot randomize scenario descriptor #%0d", \
+                                      this.select_scenario.select)); \
+         continue; \
+      } \
+ \
+      void = this.inject_t(the_scenario); \
+   } \
+ \
+   this.notify.indicate(this.DONE); \
+   this.notify.indicate(this.XACTOR_STOPPED); \
+   this.notify.indicate(this.XACTOR_IDLE); \
+   this.notify.reset(this.XACTOR_BUSY); \
+   this.scenario_count++; \
+} \
+ \
+ \
+function bit rvm_scenario_gen_(class_name)::inject_item_t(class_name item) \
+{ \
+   rvm_inject_item_scenario_(class_name) scenario = new; \
+ \
+   scenario.items    = new [1]; \
+   scenario.items[0] = item; \
+   scenario.repeated = 0; \
+ \
+   inject_item_t = this.inject_t(scenario); \
+} \
+ \
+ \
+function bit rvm_scenario_gen_(class_name)::inject_t(rvm_scenario_(class_name) scenario) \
+{ \
+   bit drop = 0; \
+ \
+   scenario.stream_id   = this.stream_id; \
+   scenario.scenario_id = this.scenario_count; \
+   foreach (scenario.items, i) { \
+      scenario.items[i].stream_id   = scenario.stream_id; \
+      scenario.items[i].scenario_id = scenario.scenario_id; \
+      scenario.items[i].object_id   = i; \
+   } \
+ \
+   this.vmt_hook(scenario); \
+ \
+   this.post_scenario_gen_t(scenario, drop); \
+   rvm_OO_callback(rvm_scenario_gen_callbacks, \
+                   post_scenario_gen_t(this, scenario, drop)); \
+   rvm_OO_callback(rvm_scenario_gen_callbacks_(class_name), \
+                   post_scenario_gen_t(this, scenario, drop)); \
+ \
+   if (!drop) { \
+      this.scenario_count++; \
+      this.notify.indicate(this.GENERATED, scenario); \
+ \
+      if (scenario.repeated > scenario.repeat_thresh) { \
+         rvm_warning(this.log, psprintf("A scenario will be repeated %0d times...", \
+                                         scenario.repeated)); \
+      } \
+      repeat (scenario.repeated + 1) { \
+         this.inst_count += scenario.apply_t(this.out_chan); \
+      } \
+   } \
+ \
+   inject_t = !drop; \
+}
+#else
+
+
+#ifndef __STDC__
+# define rvm_scenario_(class)                class/**/_scenario
+# define rvm_scenario_valid_(class)   class/**/_scenario_valid
+# define rvm_inject_item_scenario_(class)    class/**/_inject_item_scenario
+# define rvm_atomic_scenario_(class)         class/**/_atomic_scenario
+# define rvm_scenario_election_(class)       class/**/_scenario_election
+# define rvm_scenario_election_valid_(class) class/**/_scenario_election_valid
+# define rvm_scenario_gen_(class)            class/**/_scenario_gen
+# define rvm_scenario_gen_callbacks_(class)  class/**/_scenario_gen_callbacks
+#else
+# define rvm_scenario_(class)                class##_scenario
+# define rvm_scenario_valid_(class)   class##_scenario_valid
+# define rvm_inject_item_scenario_(class)    class##_inject_item_scenario
+# define rvm_atomic_scenario_(class)         class##_atomic_scenario
+# define rvm_scenario_election_(class)       class##_scenario_election
+# define rvm_scenario_election_valid_(class) class##_scenario_election_valid
+# define rvm_scenario_gen_(class)            class##_scenario_gen
+# define rvm_scenario_gen_callbacks_(class)  class##_scenario_gen_callbacks
+#endif
+
+#ifndef VMM_KIND_BEFORE
+#define VMM_KIND_BEFORE
+#endif
+#ifndef VMM_SIZE_BEFORE
+#define VMM_SIZE_BEFORE
+#endif
+
+
+#define rvm_scenario_decl(class_name, channel_name) \
+class rvm_scenario_(class_name) extends rvm_scenario { \
+ \
+   static rvm_log log; \
+ \
+   /* begin_visible_encrypted_fields */ \
+   rand class_name items[*] dynamic_size length; \
+        class_name using; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint rvm_scenario_valid_(class_name); \
+ \
+   task new(); \
+   virtual function rvm_data copy(rvm_data to = null); \
+   virtual function string psdisplay(string prefix = ""); \
+   task allocate_scenario(class_name using = null); \
+   task fill_scenario(class_name using = null); \
+   task pre_randomize(); \
+   virtual task execute_t(var integer n); \
+   virtual function integer apply_t(channel_name channel); \
+}
+
+
+#define extern_rvm_scenario_decl(class_name, channel_name) \
+extern class rvm_scenario_(class_name) extends rvm_scenario { \
+ \
+   static rvm_log log; \
+ \
+   /* begin_visible_encrypted_fields */ \
+   rand class_name items[*]; \
+        class_name using; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint rvm_scenario_valid_(class_name); \
+ \
+   task new(); \
+   virtual function string psdisplay(string prefix = ""); \
+   task allocate_scenario(class_name using = null); \
+   task fill_scenario(class_name using = null); \
+   task pre_randomize(); \
+   virtual task execute_t(var integer n); \
+   virtual function integer apply_t(channel_name channel); \
+}
+
+
+#define rvm_inject_item_scenario_decl(class_name, channel_name) \
+class rvm_inject_item_scenario_(class_name) extends rvm_scenario_(class_name) { \
+ \
+   virtual function integer apply_t(channel_name channel); \
+}
+
+
+#define rvm_atomic_scenario_decl(class_name, channel_name) \
+class rvm_atomic_scenario_(class_name) extends rvm_scenario_(class_name) { \
+ \
+   /* begin_visible_encrypted_fields */ \
+   integer ATOMIC; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint atomic_scenario; \
+ \
+   task new(); \
+   virtual function string psdisplay(string prefix = ""); \
+   task pre_randomize(); \
+   virtual function integer apply_t(channel_name channel); \
+}
+
+
+#define rvm_scenario_election_decl(class_name) \
+class rvm_scenario_election_(class_name) { \
+   /* begin_visible_encrypted_fields */ \
+   integer stream_id; \
+   integer scenario_id; \
+   integer n_scenarios; \
+   integer last_selected[$]; \
+   integer next_in_set; \
+ \
+   rvm_scenario_(class_name) scenario_set[$]; \
+ \
+   rand integer select; \
+   /* end_visible_encrypted_fields */ \
+ \
+   constraint rvm_scenario_election_valid_(class_name); \
+   constraint round_robin; \
+}
+
+
+#define rvm_scenario_gen_callbacks_decl(class_name) \
+class rvm_scenario_gen_callbacks_(class_name) extends rvm_xactor_callbacks { \
+   virtual task pre_scenario_randomize_t(rvm_scenario_gen_(class_name) gen, \
+                                         var rvm_scenario_(class_name) scenario); \
+ \
+   virtual task post_scenario_gen_t(rvm_scenario_gen_(class_name) gen, \
+                                    rvm_scenario_(class_name)     scenario, \
+                                    var bit                       drop); \
+}
+
+#define rvm_scenario_gen_decl(class_name, channel_name) \
+class rvm_scenario_gen_(class_name) extends rvm_xactor { \
+ \
+   /* begin_visible_encrypted_fields */ \
+   integer stop_after_n_insts; \
+   integer stop_after_n_scenarios; \
+   rvm_scenario_election_(class_name) select_scenario; \
+   rvm_scenario_(class_name) scenario_set[$]; \
+   /* end_visible_encrypted_fields */ \
+ \
+   integer GENERATED; \
+   integer DONE; \
+ \
+  protected rvm_scenario_(class_name) scenario_registry[string]; \
+ \
+   channel_name out_chan; \
+ \
+   protected integer scenario_count; \
+   protected integer inst_count; \
+ \
+   task new(string       instance, \
+            integer      stream_id = -1,\
+            channel_name out_chan  = null); \
+ \
+   function integer get_n_insts(); \
+   function integer get_n_scenarios(); \
+ \
+   virtual function bit inject_item_t(class_name item); \
+   virtual function bit inject_t(rvm_scenario_(class_name) scenario); \
+ \
+   virtual task register_scenario(string name, \
+                                    rvm_scenario_(class_name) scenario);\
+   virtual function bit scenario_exists(string name); \
+   virtual task replace_scenario_t(string name, \
+                                   rvm_scenario_(class_name) scenario);\
+   virtual task get_all_scenario_names(var string name[$]); \
+   virtual task get_names_by_scenario(rvm_scenario_(class_name) scenario, \
+                                        var string name[$]); \
+   virtual function string get_scenario_name(rvm_scenario_(class_name) scenario); \
+   virtual function integer get_scenario_index(rvm_scenario_(class_name) scenario); \
+   virtual function bit unregister_scenario(rvm_scenario_(class_name) scenario); \
+   virtual function rvm_scenario_(class_name) unregister_scenario_by_name(string name); \
+   virtual function rvm_scenario_(class_name) get_scenario(string name); \
+ \
+   virtual protected task vmt_hook(rvm_scenario_(class_name) scenario); \
+ \
+   task pre_scenario_randomize_t(var rvm_scenario_(class_name) scenario); \
+   task post_scenario_gen_t(rvm_scenario_(class_name) scenario, \
+                            var bit                 drop); \
+ \
+   virtual task reset_xactor(integer rst_type = 0); \
+   virtual protected task main_t(); \
+}
+
+
+#define extern_rvm_scenario_gen(class_name) \
+extern_rvm_scenario_gen_using(class_name, rvm_channel_(class_name))
+
+#define extern_rvm_scenario_gen_using(class_name, channel_name) \
+extern_rvm_scenario_decl(class_name, channel_name) \
+extern rvm_inject_item_scenario_decl(class_name, channel_name) \
+extern rvm_atomic_scenario_decl(class_name, channel_name) \
+extern rvm_scenario_election_decl(class_name) \
+typedef class rvm_scenario_gen_(class_name); \
+extern rvm_scenario_gen_callbacks_decl(class_name) \
+extern rvm_scenario_gen_decl(class_name, channel_name)
+
+
+#define rvm_scenario_gen(class_name, descr) \
+rvm_scenario_gen_using(class_name, rvm_channel_(class_name), descr)
+
+#define rvm_scenario_gen_using(class_name, channel_name, descr) \
+rvm_scenario_decl(class_name, channel_name) \
+rvm_inject_item_scenario_decl(class_name, channel_name) \
+rvm_atomic_scenario_decl(class_name, channel_name) \
+rvm_scenario_election_decl(class_name) \
+typedef class rvm_scenario_gen_(class_name); \
+rvm_scenario_gen_callbacks_decl(class_name) \
+rvm_scenario_gen_decl(class_name, channel_name) \
+ \
+constraint rvm_scenario_(class_name)::rvm_scenario_valid_(class_name) { \
+   solve length before items.size() VMM_SIZE_BEFORE; \
+} \
+ \
+task rvm_scenario_(class_name)::new() { \
+   super.new(this.log); \
+   if (this.log == null) { \
+      this.log = new({descr, " Scenario"}, "Class"); \
+      this.notify.log = this.log; \
+   } \
+ \
+   using = null; \
+} \
+ \
+function rvm_data rvm_scenario_(class_name)::copy(rvm_data to = null) { \
+   rvm_scenario_(class_name) cpy; \
+ \
+   if (to == null) cpy = new(); \
+   else if (!cast_assign(cpy, to)) { \
+      string msg = {"Cannot copy to non-", descr, " instance"}; \
+      rvm_fatal(this.log, msg); \
+      copy = null; \
+      return; \
+   } \
+ \
+   cpy.items = new [this.items.size()]; \
+   foreach (this.items, i) { \
+      if (this.items[i] == null) cpy.items[i] = null; \
+      else cast_assign(cpy.items[i], this.items[i].copy()); \
+   } \
+   if (this.using == null) cpy.using = null; \
+   else cast_assign(cpy.using, this.using.copy()); \
+ \
+   copy = cpy; \
+   return; \
+} \
+ \
+function string rvm_scenario_(class_name)::psdisplay(string prefix = "") { \
+   integer i; \
+ \
+   psdisplay = super.psdisplay(prefix); \
+   foreach (this.items, i) { \
+      psdisplay = {psdisplay, this.items[i].psdisplay(psprintf("%s   Item #%0d: ", prefix, i))}; \
+   } \
+} \
+ \
+task rvm_scenario_(class_name)::allocate_scenario(class_name using = null) { \
+   this.items = new [this.get_max_length()]; \
+   foreach (this.items, i) { \
+      if (using == null) this.items[i] = new; \
+      else cast_assign(this.items[i], using.copy()); \
+ \
+      this.items[i].stream_id   = this.stream_id; \
+      this.items[i].scenario_id = this.scenario_id; \
+      this.items[i].object_id   = i; \
+   } \
+} \
+ \
+task rvm_scenario_(class_name)::fill_scenario(class_name using = null) { \
+   if (this.items.size() < this.get_max_length()) { \
+      this.items = new [this.get_max_length()] (this.items); \
+   } \
+   foreach (this.items, i) { \
+      if (this.items[i] == null) { \
+         if (using == null) this.items[i] = new; \
+         else cast_assign(this.items[i], using.copy()); \
+      } \
+ \
+      this.items[i].stream_id   = this.stream_id; \
+      this.items[i].scenario_id = this.scenario_id; \
+      this.items[i].object_id   = i; \
+   } \
+} \
+ \
+task rvm_scenario_(class_name)::pre_randomize() { \
+   this.fill_scenario(this.using); \
+} \
+ \
+task rvm_scenario_(class_name)::execute_t(var integer n) { \
+   rvm_error(this.log, "Must call rvm_scenario::apply_t() for single-stream scenarios, not rvm_scenario::execute_t()."); \
+} \
+ \
+function integer rvm_scenario_(class_name)::apply_t(channel_name channel) { \
+   integer i; \
+ \
+   for (i = 0; i < this.length; i++) { \
+      class_name item; \
+      cast_assign(item, this.items[i].copy()); \
+      channel.put_t(item); \
+   } \
+ \
+   apply_t = this.length; \
+} \
+ \
+ \
+function integer rvm_inject_item_scenario_(class_name)::apply_t(channel_name channel) \
+{ \
+   channel.put_t(this.items[0]); \
+   apply_t = 1; \
+} \
+ \
+ \
+constraint rvm_atomic_scenario_(class_name)::atomic_scenario { \
+   if (kind == ATOMIC) { \
+      length == 1; \
+      repeated == 0; \
+   } \
+} \
+ \
+task rvm_atomic_scenario_(class_name)::new() { \
+   super.new(); \
+ \
+   this.ATOMIC = this.define_scenario("Atomic", 1); \
+ \
+   this.kind     = this.ATOMIC; \
+   this.length   = 1; \
+} \
+ \
+function string rvm_atomic_scenario_(class_name)::psdisplay(string prefix = "") \
+{ \
+   psdisplay = super.psdisplay(prefix); \
+} \
+ \
+task rvm_atomic_scenario_(class_name)::pre_randomize() { \
+   super.pre_randomize(); \
+} \
+ \
+function integer rvm_atomic_scenario_(class_name)::apply_t(channel_name channel) \
+{ \
+   apply_t = super.apply_t(channel); \
+} \
+ \
+ \
+constraint rvm_scenario_election_(class_name)::rvm_scenario_election_valid_(class_name) { \
+   select >= 0; \
+   select < n_scenarios; \
+} \
+ \
+constraint rvm_scenario_election_(class_name)::round_robin { \
+   select == next_in_set; \
+} \
+ \
+ \
+task rvm_scenario_gen_callbacks_(class_name)::pre_scenario_randomize_t(rvm_scenario_gen_(class_name) gen, \
+                                                                       var rvm_scenario_(class_name) scenario) \
+{} \
+ \
+ \
+task rvm_scenario_gen_callbacks_(class_name)::post_scenario_gen_t(rvm_scenario_gen_(class_name) gen, \
+                                                                  rvm_scenario_(class_name)     scenario, \
+                                                                  var bit                       drop) \
+{} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::new(string       instance, \
+                                        integer      stream_id = -1, \
+                                        channel_name out_chan  = null) \
+{ \
+   super.new({descr, " Scenario Generator"}, instance, stream_id); \
+ \
+   if (out_chan == null) { \
+      out_chan = new({descr, " Scenario Generator output channel"}, \
+                     instance); \
+   } \
+   this.out_chan = out_chan; \
+   this.log.is_above(this.out_chan.log); \
+ \
+   this.scenario_count = 0; \
+   this.inst_count = 0; \
+   this.stop_after_n_insts     = 0; \
+   this.stop_after_n_scenarios = 0; \
+ \
+   this.select_scenario = new; \
+   { \
+     rvm_atomic_scenario_(class_name) sc = new; \
+     this.register_scenario("Atomic", sc); \
+   } \
+ \
+   this.GENERATED = this.notify.configure(); \
+   this.DONE      = this.notify.configure(*, this.notify.ON_OFF_TRIGGER); \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::register_scenario(string name, \
+                                                      rvm_scenario_(class_name) scenario) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         return; \
+      } \
+\
+      if(assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_error(this.log, psprintf("%s already has an entry in the scenario registry", name)); \
+         return; \
+      } \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario passed for %s is a null value", name)); \
+         return; \
+      } \
+\
+      this.scenario_registry[name] = scenario; \
+\
+      foreach(this.scenario_set,i) { \
+         if(this.scenario_set[i] == scenario) \
+            return; \
+      } \
+      this.scenario_set.push_back(scenario); \
+} \
+\
+function bit rvm_scenario_gen_(class_name)::scenario_exists(string name) \
+{ \
+        if(name == "") { \
+            rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+            scenario_exists = 0; \
+            return; \
+        } \
+\
+        if(assoc_index(CHECK,this.scenario_registry,name)) \
+            scenario_exists = 1; \
+        else \
+            scenario_exists = 0; \
+} \
+\
+task rvm_scenario_gen_(class_name)::replace_scenario_t(string name, \
+                        rvm_scenario_(class_name) scenario) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         return; \
+      } \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario passed for %s is a null value", name)); \
+         return; \
+      } \
+\
+      if(!assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_error(this.log, psprintf("cannot replace a unregistered %s entry [use register_scenario]", name)); \
+         return ; \
+      } \
+\
+      foreach(this.scenario_set,i) { \
+         if(this.scenario_set[i] == this.scenario_registry[name]) { \
+            this.scenario_set.delete(i); \
+            break; \
+         } \
+      } \
+      this.scenario_registry[name] = scenario; \
+      foreach(this.scenario_set,i) { \
+          if(this.scenario_set[i] == scenario) \
+              return; \
+      } \
+      this.scenario_set.push_back(scenario); \
+} \
+\
+task rvm_scenario_gen_(class_name)::get_all_scenario_names(var string name[$]) \
+{ \
+      string s; \
+\
+      if(assoc_index(FIRST,this.scenario_registry,s)) { \
+         do { \
+            name.push_back(s); \
+         } while(assoc_index(NEXT,this.scenario_registry,s)); \
+      } \
+      if(name.size() == 0) { \
+         rvm_warning(this.log, psprintf("There are no entries in the scenario generator registry")); \
+      } \
+} \
+\
+task rvm_scenario_gen_(class_name)::get_names_by_scenario(rvm_scenario_(class_name) scenario, \
+                             var string name[$]) \
+{ \
+      string s; \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario is a null value")); \
+         return; \
+      } \
+\
+      if(assoc_index(FIRST,this.scenario_registry,s)) { \
+         do { \
+            if(this.scenario_registry[s] == scenario) \
+               name.push_back(s); \
+         } while(assoc_index(NEXT,this.scenario_registry,s)); \
+      } \
+      if(name.size() == 0) { \
+         rvm_warning(this.log, psprintf("There are no entries in the scenario registry")); \
+      } \
+} \
+\
+function string rvm_scenario_gen_(class_name)::get_scenario_name(rvm_scenario_(class_name) scenario) \
+{ \
+        string s[$]; \
+\
+        if(scenario == null) { \
+            rvm_error(this.log, psprintf("scenario is a null value")); \
+            get_scenario_name = ""; \
+            return ; \
+        } \
+\
+        this.get_names_by_scenario(scenario, s); \
+\
+        if(s.size()) \
+            get_scenario_name = s[0]; \
+        else \
+            get_scenario_name = ""; \
+} \
+\
+function integer rvm_scenario_gen_(class_name)::get_scenario_index(rvm_scenario_(class_name) scenario) \
+{ \
+       get_scenario_index = -1; \
+       foreach(this.scenario_set,i) { \
+          if(this.scenario_set[i] == scenario) { \
+             get_scenario_index = i; \
+             return ; \
+          } \
+       } \
+       if(get_scenario_index == -1) { \
+          rvm_warning(this.log, psprintf("Cannot find the index for the scenario")); \
+       } \
+} \
+\
+function bit rvm_scenario_gen_(class_name)::unregister_scenario(rvm_scenario_(class_name) scenario) \
+{ \
+      string s; \
+      unregister_scenario=0; \
+\
+      if(scenario == null) { \
+         rvm_error(this.log, psprintf("scenario is a null value")); \
+         return; \
+      } \
+      if(assoc_index(FIRST,this.scenario_registry,s)) { \
+         do { \
+            if(this.scenario_registry[s] == scenario) { \
+               assoc_index(DELETE,this.scenario_registry,s); \
+               unregister_scenario=1; \
+            } \
+         } while(assoc_index(NEXT,this.scenario_registry,s)); \
+      } \
+      if(unregister_scenario==0) { \
+         rvm_warning(this.log, psprintf("There are no entries in the scenario registry")); \
+      } \
+      if(unregister_scenario) { \
+         foreach(this.scenario_set,i) { \
+            if(this.scenario_set[i] == scenario) { \
+               this.scenario_set.delete(i); \
+               break; \
+            } \
+         } \
+      } \
+} \
+\
+function rvm_scenario_(class_name) rvm_scenario_gen_(class_name)::unregister_scenario_by_name(string name) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         unregister_scenario_by_name = null; \
+         return ; \
+      } \
+      if(!assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_warning(this.log, psprintf("There is no entry for %s in the scenario registry", name)); \
+         unregister_scenario_by_name = null; \
+         return; \
+      } \
+      else { \
+         unregister_scenario_by_name = this.scenario_registry[name]; \
+         foreach(this.scenario_set,i) { \
+            if(this.scenario_set[i] == this.scenario_registry[name]) { \
+               this.scenario_set.delete(i); \
+               break; \
+            } \
+         } \
+         assoc_index(DELETE,this.scenario_registry,name); \
+      } \
+} \
+\
+function rvm_scenario_(class_name) rvm_scenario_gen_(class_name)::get_scenario(string name) \
+{ \
+      if(name == "") { \
+         rvm_error(this.log, psprintf("Invalid '%s' string was passed", name)); \
+         get_scenario = null; \
+         return; \
+      } \
+      if(!assoc_index(CHECK,this.scenario_registry,name)) { \
+         rvm_error(this.log, psprintf("%s does not have an entry in the scenario registry", name)); \
+         get_scenario = null; \
+         return; \
+      } \
+\
+      get_scenario = this.scenario_registry[name]; \
+      if(get_scenario == null) \
+         rvm_warning(this.log, psprintf("%s has a null scenario associated with it in the scenario registry", name)); \
+\
+} \
+\
+function integer rvm_scenario_gen_(class_name)::get_n_insts() \
+{ \
+   get_n_insts = this.inst_count; \
+} \
+ \
+ \
+function integer rvm_scenario_gen_(class_name)::get_n_scenarios() \
+{ \
+   get_n_scenarios = this.scenario_count; \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::vmt_hook(rvm_scenario_(class_name) scenario) \
+{ \
+   foreach (scenario.items, i) { \
+      void = scenario.items[i].vmt_hook(); \
+   } \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::pre_scenario_randomize_t(var rvm_scenario_(class_name) scenario) \
+{} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::post_scenario_gen_t(rvm_scenario_(class_name) scenario, \
+                                                      var bit                 drop) \
+{} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::reset_xactor(integer rst_type = 0) \
+{ \
+   super.reset_xactor(rst_type); \
+   this.scenario_count = 0; \
+   this.inst_count     = 0; \
+   this.out_chan.flush(); \
+   this.select_scenario.last_selected.delete(); \
+} \
+ \
+ \
+task rvm_scenario_gen_(class_name)::main_t() \
+{ \
+   rvm_scenario_(class_name) the_scenario; \
+   fork \
+      super.main_t(); \
+   join none \
+ \
+   while ((this.stop_after_n_insts <= 0 || this.inst_count < this.stop_after_n_insts) && \
+          (this.stop_after_n_scenarios <= 0 || this.scenario_count < this.stop_after_n_scenarios)) { \
+ \
+      this.wait_if_stopped_t(); \
+ \
+      this.select_scenario.stream_id    = this.stream_id; \
+      this.select_scenario.scenario_id  = this.scenario_count; \
+      this.select_scenario.n_scenarios  = this.scenario_set.size(); \
+      this.select_scenario.scenario_set = this.scenario_set; \
+      this.select_scenario.next_in_set  = \
+         (this.select_scenario.last_selected.size() == 0) ? 0 : ((this.select_scenario.last_selected.last() + 1) % this.scenario_set.size()); \
+ \
+      if (!this.select_scenario.randomize()) { \
+         rvm_fatal(this.log, "Cannot select scenario descriptor"); \
+         continue; \
+      } \
+ \
+      if (this.select_scenario.select < 0 || \
+          this.select_scenario.select >= this.scenario_set.size()) { \
+         rvm_fatal(this.log, psprintf("Select scenario #%0d is not within available set (0-%0d)", \
+                                      this.select_scenario.select, \
+                                      this.scenario_set.size()-1)); \
+         continue; \
+      } \
+      this.select_scenario.last_selected.push_back(this.select_scenario.select); \
+      while (this.select_scenario.last_selected.size() > 10) { \
+         void = this.select_scenario.last_selected.pop_front(); \
+      } \
+ \
+      the_scenario = this.scenario_set[this.select_scenario.select]; \
+      if (the_scenario == null) { \
+         rvm_fatal(this.log, psprintf("Select scenario #%0d does not exist", \
+                                      this.select_scenario.select)); \
+         continue; \
+      } \
+ \
+      the_scenario.stream_id   = this.stream_id; \
+      the_scenario.scenario_id = this.scenario_count; \
+      the_scenario.fill_scenario(the_scenario.using); \
+      foreach (the_scenario.items, i) { \
+         the_scenario.items[i].stream_id   = the_scenario.stream_id; \
+         the_scenario.items[i].scenario_id = the_scenario.scenario_id; \
+         the_scenario.items[i].object_id   = i; \
+      } \
+      this.pre_scenario_randomize_t(the_scenario); \
+      if (the_scenario == null) continue; \
+      rvm_OO_callback(rvm_scenario_gen_callbacks_(class_name), \
+                      pre_scenario_randomize_t(this, the_scenario)); \
+      if (the_scenario == null) continue; \
+ \
+      if (!the_scenario.randomize()) { \
+         rvm_fatal(this.log, psprintf("Cannot randomize scenario descriptor #%0d", \
+                                      this.select_scenario.select)); \
+         continue; \
+      } \
+ \
+      void = this.inject_t(the_scenario); \
+   } \
+ \
+   this.notify.indicate(this.DONE); \
+   this.notify.indicate(this.XACTOR_STOPPED); \
+   this.notify.indicate(this.XACTOR_IDLE); \
+   this.notify.reset(this.XACTOR_BUSY); \
+   this.scenario_count++; \
+} \
+ \
+ \
+function bit rvm_scenario_gen_(class_name)::inject_item_t(class_name item) \
+{ \
+   rvm_inject_item_scenario_(class_name) scenario = new; \
+ \
+   scenario.items    = new [1]; \
+   scenario.items[0] = item; \
+   scenario.repeated = 0; \
+ \
+   inject_item_t = this.inject_t(scenario); \
+} \
+ \
+ \
+function bit rvm_scenario_gen_(class_name)::inject_t(rvm_scenario_(class_name) scenario) \
+{ \
+   bit drop = 0; \
+ \
+   scenario.stream_id   = this.stream_id; \
+   scenario.scenario_id = this.scenario_count; \
+   foreach (scenario.items, i) { \
+      scenario.items[i].stream_id   = scenario.stream_id; \
+      scenario.items[i].scenario_id = scenario.scenario_id; \
+      scenario.items[i].object_id   = i; \
+   } \
+ \
+   this.vmt_hook(scenario); \
+ \
+   this.post_scenario_gen_t(scenario, drop); \
+   rvm_OO_callback(rvm_scenario_gen_callbacks, \
+                   post_scenario_gen_t(this, scenario, drop)); \
+   rvm_OO_callback(rvm_scenario_gen_callbacks_(class_name), \
+                   post_scenario_gen_t(this, scenario, drop)); \
+ \
+   if (!drop) { \
+      this.scenario_count++; \
+      this.notify.indicate(this.GENERATED, scenario); \
+ \
+      if (scenario.repeated > scenario.repeat_thresh) { \
+         rvm_warning(this.log, psprintf("A scenario will be repeated %0d times...", \
+                                         scenario.repeated)); \
+      } \
+      repeat (scenario.repeated + 1) { \
+         this.inst_count += scenario.apply_t(this.out_chan); \
+      } \
+   } \
+ \
+   inject_t = !drop; \
+}
+#endif
+#endif
+#endif

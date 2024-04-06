@@ -1,0 +1,1 @@
+$hdl_xmr call=Mhdl_Xmr_call check=Mhdl_Xmr_check acc+=rw:* acc+=mp:* acc+=tchk:* acc+=gate:*

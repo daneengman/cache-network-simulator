@@ -1,0 +1,258 @@
+#pragma vip(69869931, ed4afd98, 00000000, 000015e8, "Aug 25 2015", "21:31:39")
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+// This is an unpublished, proprietary work of Synopsys, Inc., and is
+// fully protected under copyright and trade secret laws. You may not
+// view, use, disclose, copy, or distribute this file or any information
+// contained herein except pursuant to a valid written license from
+// Synopsys.
+//
+// SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL - SYNOPSYS CONFIDENTIAL
+//
+
+/////////////////////////////////////////////////////////////////
+// Vera Header file created from vmm_perf.pp 
+/////////////////////////////////////////////////////////////////
+#ifndef INC_VMM_PERF_VRH
+#define INC_VMM_PERF_VRH
+
+#include "rvm_std_lib.vrh"
+
+#ifndef SYNOPSYS_NTB
+
+typedef class vmm_sql_db ;
+extern class vmm_sql_table { 
+  enum datakind_e = PERF_TABLE, SYS_TABLE, USR_TABLE_DEFAULT=255;
+  protected vmm_sql_db db;
+  protected string schema;
+  protected string schema_data;
+  string name;
+  bit [7:0] datakind;
+  task new (
+    string name,
+    string schema_data,
+    vmm_sql_db db,
+    bit [7:0] datakind = 255
+  );
+  function string get_tblname (
+  );
+  function vmm_sql_db get_db (
+  );
+  function integer insert (
+    string data
+  );
+  function string Xget_schemaX (
+  );
+  function string Xget_schema_dataX (
+  );
+}
+extern virtual class vmm_sql_db { 
+  protected vmm_sql_table tables [$];
+  protected vmm_sql_table tables_table;
+  rvm_log log;
+  task new (
+  );
+  function string get_dbname (
+  );
+  function string get_info (
+    string format
+  );
+  function vmm_sql_table get_table (
+    string tablename
+  );
+  function integer get_table_names (
+    var string tablenames[*],
+    string regexp = "."
+  );
+  function vmm_sql_table create_table (
+    string tablename,
+    string scheme,
+    bit [7:0] datakind = 255
+  );
+  virtual function integer status (
+  );
+  virtual function integer statement (
+    string sql_stmt
+  );
+  virtual task commit (
+  );
+  virtual task close (
+  );
+  virtual local function integer get_unique_id (
+  );
+  function vmm_sql_table Xcreate_table_baseX (
+    string tablename,
+    string scheme,
+    bit [7:0] datakind = 255,
+    bit add_to_tables = 1
+  );
+  task Xcreate_system_tablesX (
+  );
+  function string Xexpand_name_optsX (
+    string instr,
+    string opt
+  );
+  function string Xexpand_nameX (
+    string regexp
+  );
+}
+extern class vmm_sql_db_ascii extends vmm_sql_db { 
+  task new (
+    string dbname,
+    bit append = 0
+  );
+  virtual function integer status (
+  );
+  virtual function integer statement (
+    string sql_stmt
+  );
+  virtual task close (
+  );
+  virtual local function integer get_unique_id (
+  );
+}
+typedef class vmm_sql_db_sqlite ;
+extern class vmm_sql_db_sqlite extends vmm_sql_db { 
+  task new (
+    string dbname
+  );
+  virtual function integer status (
+  );
+  virtual function integer statement (
+    string sql_stmt
+  );
+  virtual task commit (
+  );
+  virtual task close (
+  );
+  virtual function integer get_unique_id (
+  );
+}
+extern class vmm_perf_tenure { 
+  task new (
+    integer initiator_id = 0,
+    integer target_id = 0,
+    rvm_data tr = null
+  );
+  function integer get_tenure_id (
+  );
+  function integer get_initiator_id (
+  );
+  function integer get_target_id (
+  );
+  function rvm_data get_tr (
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+}
+extern class vmm_perf_data { 
+  bit [63:0] start_time;
+  bit [63:0] end_time;
+  bit [63:0] resume_time;
+  bit [63:0] active_time;
+  string more_data;
+  bit aborted;
+  vmm_perf_tenure tenure;
+}
+typedef class vmm_perf_analyzer ;
+extern class vmm_perf_analyzer_callbacks { 
+  virtual task analyze_tenure (
+    vmm_perf_analyzer analyzer,
+    vmm_perf_tenure tenure,
+    var bit [63:0] start_time,
+    var bit [63:0] end_time,
+    var bit [63:0] active_time,
+    var bit aborted,
+    var string more_data,
+    var bit filtered
+  );
+}
+extern class vmm_perf_analyzer { 
+  enum reset_e = SOFT, HARD;
+  rvm_log log;
+  task new (
+    string name = "",
+    vmm_sql_db sql_db,
+    integer max_n_initiators = 0,
+    integer max_n_targets = 0,
+    integer max_n_concurrent = 1,
+    string user_schema = ""
+  );
+  virtual function bit [63:0] now (
+  );
+  task start_tenure (
+    vmm_perf_tenure tenure
+  );
+  task suspend_tenure (
+    vmm_perf_tenure tenure
+  );
+  task resume_tenure (
+    vmm_perf_tenure tenure
+  );
+  task end_tenure (
+    vmm_perf_tenure tenure,
+    string more_data = ""
+  );
+  task abort_tenure (
+    vmm_perf_tenure tenure,
+    string more_data = ""
+  );
+  function bit add_tenure (
+    integer initiator_id = -1,
+    integer target_id = -1,
+    bit [63:0] start_time,
+    bit [63:0] end_time,
+    rvm_data tr = null,
+    bit [63:0] active_time = 0,
+    bit aborted = 0,
+    string more_data = ""
+  );
+  virtual function string psdisplay (
+    string prefix = ""
+  );
+  task report (
+    string name = "",
+    bit brief = 1
+  );
+  function vmm_sql_db get_db (
+  );
+  task save_db (
+    string name = ""
+  );
+  task save_db_txt (
+    string name = ""
+  );
+  task reset (
+    reset_e rst_typ = SOFT
+  );
+  task append_callback (
+    vmm_perf_analyzer_callbacks cb
+  );
+  task prepend_callback (
+    vmm_perf_analyzer_callbacks cb
+  );
+  task unregister_callback (
+    vmm_perf_analyzer_callbacks cb
+  );
+}
+extern class vmm_perf_version { 
+  function integer major (
+  );
+  function integer minor (
+  );
+  function integer patch (
+  );
+  function string vendor (
+  );
+  function integer display (
+    string prefix = ""
+  );
+  function string psdisplay (
+    string prefix = ""
+  );
+}
+
+#endif
+#endif

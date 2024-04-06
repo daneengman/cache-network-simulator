@@ -1,0 +1,376 @@
+/*
+ ++---------------------------------------------------------------------++
+ ||                     VERA System Verifier (TM)                       ||
+ ||                                                                     ||
+ ||             Copyright (c) 1995-2002 by Synopsys, Inc.               ||
+ ||                      All Rights Reserved                            ||
+ ||                                                                     ||
+ ||      For support, send email to vera-support@synopsys.com           ||
+ ||                                                                     ||
+ ||  This program is proprietary and confidential information of        ||
+ ||  Synopsys Inc. and may be used and disclosed only as authorized in  ||
+ ||  a license agreement controlling such use and disclosure.           ||
+ ++---------------------------------------------------------------------++
+*/
+
+#ifndef INC_LISTMACROS_VRH
+#define INC_LISTMACROS_VRH
+
+#define _VERA_TRUE 1
+#define _VERA_FALSE 0
+
+#ifndef _SYN_VERA_LIST_
+#define _SYN_VERA_LIST_
+extern class _Synopsys_Vera_List_ {
+  static integer _Synopsys_Vera_List_Id_;
+  protected integer _VERA_List_Id_;
+}
+#endif
+
+#ifndef __STDC__
+# define VeraListNode(type) VeraListNode/**/type
+# define VeraListIterator_(type) VeraListIterator_/**/type
+# define VeraList_(type) VeraList_/**/type
+#else
+# define VeraListNode(type) VeraListNode##type
+# define VeraListIterator_(type) VeraListIterator_##type
+# define VeraList_(type) VeraList_##type
+#endif
+
+#define MakeVeraType(type)  \
+class VeraListNode(type) { \
+type _VERA_List_Node_Data_; \
+VeraListNode(type) _VERA_List_Node_m_next_; \
+VeraListNode(type) _VERA_List_Node_m_prev_; \
+task new() { _VERA_List_Node_m_prev_ = this; _VERA_List_Node_m_next_ = this ; } \
+local function VeraListNode(type) getnext() { \
+getnext = _VERA_List_Node_m_next_; \
+} \
+local function VeraListNode(type) getprev() { \
+getprev = _VERA_List_Node_m_prev_; \
+} \
+function type data() { \
+data = _VERA_List_Node_Data_; \
+} \
+} 
+
+
+#define MakeVeraIteratorType(type) MakeVeraType(type) \
+class VeraListIterator_(type) { \
+   VeraListNode(type)  _VERA_List_Iterator_M_node_; \
+   integer _VERA_List_Id_; \
+   task new(VeraListNode(type) node) \
+   { \
+         _VERA_List_Iterator_M_node_ = node; \
+   } \
+   task next() { \
+        _VERA_List_Iterator_M_node_ = _VERA_List_Iterator_M_node_._VERA_List_Node_m_next_; \
+   } \
+   task prev() { \
+        _VERA_List_Iterator_M_node_ = _VERA_List_Iterator_M_node_._VERA_List_Node_m_prev_; \
+   } \
+   function type data() { \
+        data = _VERA_List_Iterator_M_node_.data(); \
+   } \
+   function integer neq(VeraListIterator_(type) iter) \
+   { \
+      if(iter._VERA_List_Iterator_M_node_ != _VERA_List_Iterator_M_node_) \
+         neq = 1; \
+      else \
+         neq = 0; \
+   } \
+   function integer eq(VeraListIterator_(type) iter) \
+   { \
+      if(iter._VERA_List_Iterator_M_node_ == _VERA_List_Iterator_M_node_) \
+         eq = 1; \
+      else \
+         eq = 0; \
+   } \
+} 
+
+#define MakeVeraList(type) %pragma+vmac_MakeVeraList.type; \
+ MakeVeraIteratorType(type) \
+   class VeraList_(type) extends _Synopsys_Vera_List_ { \
+   local VeraListNode(type) _VERA_List_M_node_ = new; \
+   local integer _VERA_List_size_; \
+   task new() { \
+        _VERA_List_M_node_._VERA_List_Node_m_next_ = _VERA_List_M_node_; \
+        _VERA_List_M_node_._VERA_List_Node_m_prev_ = _VERA_List_M_node_; \
+        _VERA_List_size_ = 0; \
+        _VERA_List_Id_ = _Synopsys_Vera_List_Id_++; \
+   } \
+   function VeraListIterator_(type) start() {  \
+        VeraListIterator_(type) temp = new(_VERA_List_M_node_._VERA_List_Node_m_next_);  \
+	temp._VERA_List_Id_ = _VERA_List_Id_; \
+        start = temp; \
+   } \
+   function VeraListIterator_(type) finish() {   \
+        VeraListIterator_(type) temp = new(_VERA_List_M_node_);  \
+	temp._VERA_List_Id_ = _VERA_List_Id_; \
+        finish = temp;  \
+   } \
+   task insert(VeraListIterator_(type) _pos, type value) \
+   { \
+        if (_pos._VERA_List_Iterator_M_node_ == null) printf("\n ListError: Invalid_iterator(argument) in insert() \n"); \
+	else \
+        if (_pos._VERA_List_Id_ != _VERA_List_Id_) printf("\n ListError: Iterator(argument) in insert() MUST point into the caller list \n"); \
+	else { \
+        VeraListNode(type) tmp_node = new; \
+        VeraListNode(type) pos_node_handle; \
+        VeraListNode(type) t_node ; \
+        tmp_node._VERA_List_Node_Data_ = value; \
+        pos_node_handle = _pos._VERA_List_Iterator_M_node_; \
+        tmp_node._VERA_List_Node_m_next_ = _pos._VERA_List_Iterator_M_node_; \
+        tmp_node._VERA_List_Node_m_prev_ = _pos._VERA_List_Iterator_M_node_._VERA_List_Node_m_prev_; \
+        t_node = _pos._VERA_List_Iterator_M_node_._VERA_List_Node_m_prev_; \
+        t_node._VERA_List_Node_m_next_ = tmp_node; \
+        _pos._VERA_List_Iterator_M_node_._VERA_List_Node_m_prev_ = tmp_node;  \
+        if(pos_node_handle == _pos._VERA_List_Iterator_M_node_._VERA_List_Node_m_next_) \
+           _pos._VERA_List_Iterator_M_node_._VERA_List_Node_m_next_ = tmp_node; \
+        _VERA_List_size_ = _VERA_List_size_ + 1; \
+	} \
+   }   \
+   function VeraListIterator_(type) erase(VeraListIterator_(type) position) { \
+        if (_VERA_List_size_ == 0) printf("\n ListError: Empty List \n");  \
+	else \
+        if (position._VERA_List_Iterator_M_node_ == null) printf("\n ListError: Invalid_iterator(argument) in erase() \n");  \
+	else \
+        if (position.eq(finish())) printf("\n ListError: Invalid_iterator(argument pointing to finish) in erase() \n");  \
+	else \
+        if (position._VERA_List_Id_ != _VERA_List_Id_) printf("\n ListError: Iterator(argument) in erase() MUST point into the caller list \n"); \
+        else { \
+        VeraListIterator_(type) temp = new(position._VERA_List_Iterator_M_node_._VERA_List_Node_m_next_);  \
+        VeraListNode(type) _next_node = position._VERA_List_Iterator_M_node_._VERA_List_Node_m_next_; \
+        VeraListNode(type) _prev_node = position._VERA_List_Iterator_M_node_._VERA_List_Node_m_prev_; \
+        _prev_node._VERA_List_Node_m_next_ = _next_node; \
+        _next_node._VERA_List_Node_m_prev_ = _prev_node; \
+        _VERA_List_size_ = _VERA_List_size_ - 1; \
+        position._VERA_List_Iterator_M_node_ = null; \
+        erase = temp ;  \
+        } \
+   } \
+   function integer calculate_size() { \
+	VeraListNode(type) tmp_node_handle = _VERA_List_M_node_._VERA_List_Node_m_next_; \
+	integer no_of_nodes = 0; \
+	while (tmp_node_handle != _VERA_List_M_node_) \
+	{ \
+		no_of_nodes++;	 \
+		tmp_node_handle = tmp_node_handle._VERA_List_Node_m_next_; \
+	} \
+	calculate_size = no_of_nodes; \
+   } \
+   function integer size() { \
+        size = _VERA_List_size_; \
+   } \
+   function integer empty() { \
+        if ((_VERA_List_M_node_ == _VERA_List_M_node_._VERA_List_Node_m_next_) || (_VERA_List_M_node_._VERA_List_Node_m_next_ == null)) \
+        empty = _VERA_TRUE; \
+        else \
+        empty = _VERA_FALSE; \
+   } \
+   function type front() { \
+	front = _VERA_List_M_node_._VERA_List_Node_m_next_.data(); \
+   } \
+   function type back() { \
+	back = _VERA_List_M_node_._VERA_List_Node_m_prev_.data(); \
+   } \
+   task swap( VeraList_(type) L ) \
+   { \
+	VeraListNode(type) tmp_node_handle1 = _VERA_List_M_node_._VERA_List_Node_m_next_; \
+	VeraListNode(type) tmp_node_handle2 = L._VERA_List_M_node_._VERA_List_Node_m_next_; \
+	type VeraListDummy; \
+	if (_VERA_List_size_ != L.size())  \
+	printf(" Unequal sized Lists cannot be swapped\n"); \
+	else	 \
+	while (tmp_node_handle1 != _VERA_List_M_node_) \
+	{ \
+		VeraListDummy = tmp_node_handle1.data(); \
+		tmp_node_handle1._VERA_List_Node_Data_ = tmp_node_handle2.data(); \
+		tmp_node_handle2._VERA_List_Node_Data_ = VeraListDummy; \
+		tmp_node_handle1 = tmp_node_handle1._VERA_List_Node_m_next_; \
+		tmp_node_handle2 = tmp_node_handle2._VERA_List_Node_m_next_; \
+	}	 \
+   } \
+   task push_front(type value) \
+   { \
+        insert(start(), value); \
+   } \
+   task push_back(type value) \
+   { \
+        insert(finish(), value); \
+   } \
+   task pop_front() \
+   { \
+        void = erase(start());  \
+   } \
+   task pop_back() \
+   { \
+        VeraListIterator_(type) _tmp = finish(); \
+        _tmp.prev(); \
+        void = erase(_tmp); \
+   } \
+   task clear() { \
+	VeraListNode(type) tmp_node_handle = _VERA_List_M_node_._VERA_List_Node_m_next_; \
+	VeraListNode(type) tmp_node_handle_del; \
+	while (tmp_node_handle != _VERA_List_M_node_) \
+	{ \
+		tmp_node_handle_del = tmp_node_handle; \
+		tmp_node_handle = tmp_node_handle._VERA_List_Node_m_next_; \
+		tmp_node_handle_del._VERA_List_Node_m_next_ = null; \
+		tmp_node_handle_del._VERA_List_Node_m_prev_ = null; \
+	} \
+        _VERA_List_M_node_._VERA_List_Node_m_next_ = _VERA_List_M_node_; \
+        _VERA_List_M_node_._VERA_List_Node_m_prev_ = _VERA_List_M_node_; \
+        _VERA_List_size_ = 0; \
+   } \
+   task purge() { \
+	VeraListNode(type) tmp_node_handle = _VERA_List_M_node_._VERA_List_Node_m_next_; \
+	VeraListNode(type) tmp_node_handle_del; \
+	while (tmp_node_handle != _VERA_List_M_node_) \
+	{ \
+		tmp_node_handle_del = tmp_node_handle; \
+		tmp_node_handle = tmp_node_handle._VERA_List_Node_m_next_; \
+		tmp_node_handle_del._VERA_List_Node_m_next_ = null; \
+		tmp_node_handle_del._VERA_List_Node_m_prev_ = null; \
+	} \
+        _VERA_List_M_node_._VERA_List_Node_m_next_ = null; \
+        _VERA_List_M_node_._VERA_List_Node_m_prev_ = null; \
+        _VERA_List_size_ = 0; \
+   } \
+   function VeraListIterator_(type) erase_range( VeraListIterator_(type) _first, VeraListIterator_(type) _last) \
+   { \
+	integer i = 0; \
+	VeraListIterator_(type)  pos_handle = _first; \
+	VeraListIterator_(type)  temp = _first; \
+        if (_first._VERA_List_Id_ != _VERA_List_Id_)  i = 1; \
+	else \
+        if (_last._VERA_List_Id_ != _VERA_List_Id_)  i = 2; \
+	if(i) \
+        printf("\n ListError: Iterator(argument %d) in erase_range() MUST point into the caller list \n", i); \
+	else {\
+        if (_first._VERA_List_Iterator_M_node_ == null) i = 1; \
+        else \
+        if (_last._VERA_List_Iterator_M_node_ == null) i = 2;  \
+        if (i) printf("\n ListError: Invalid_iterator(argument %d) in erase_range() \n",i); \
+	else {\
+        while(pos_handle.neq(_last)) \
+        { \
+	   if(pos_handle.neq(finish())) { \
+           temp = erase(pos_handle); \
+           pos_handle = temp; \
+	   } else \
+	   pos_handle.next(); \
+        } \
+        erase_range = _last; \
+	} \
+	} \
+   } \
+   task insert_range(VeraListIterator_(type) _pos, VeraListIterator_(type) _first, VeraListIterator_(type) _last) \
+   { \
+	integer i = 0; \
+	VeraListIterator_(type)  pos_handle = _first; \
+        if (_pos._VERA_List_Id_ != _VERA_List_Id_) printf("\n ListError: Iterator(argument 1) in insert_range() MUST point into the caller list \n"); \
+	else \
+        if (_first._VERA_List_Id_ != _last._VERA_List_Id_) printf("\n ListError: Iterators in insert_range() MUST point into the same list \n"); \
+	else { \
+        if (_pos._VERA_List_Iterator_M_node_ == null) i = 1; \
+	else \
+        if (_first._VERA_List_Iterator_M_node_ == null) i = 2; \
+	else \
+        if (_last._VERA_List_Iterator_M_node_ == null) i = 3; \
+        if (i) printf("\n ListError: Invalid_iterator(argument %d) in insert_range() \n",i); \
+	else { \
+        for( ; pos_handle.neq(_last); ) \
+        { \
+          insert(_pos, pos_handle.data()); \
+          pos_handle.next(); \
+        } \
+        } \
+        } \
+   } \
+   task assign(VeraListIterator_(type) _first2, VeraListIterator_(type)  _last2) \
+   { \
+	integer i = 0; \
+	VeraListIterator_(type) _first1 = start(); \
+        if (_first2._VERA_List_Id_ != _last2._VERA_List_Id_) printf("\n ListError: Iterators(arguments) in assign()  MUST point into the same list \n"); \
+	else \
+        if (_first2._VERA_List_Iterator_M_node_ == null) i = 1; \
+	else \
+        if (_last2._VERA_List_Iterator_M_node_ == null) i = 2; \
+        if (i) printf("\n ListError: Invalid_Iterator(argument %d) in assign() \n",i); \
+	else { \
+        for( ; (_first1.neq(finish())) && (_first2.neq(_last2)); ) \
+        { \
+           _first1._VERA_List_Iterator_M_node_._VERA_List_Node_Data_ = _first2._VERA_List_Iterator_M_node_.data();  \
+           _first1.next(); \
+           _first2.next(); \
+        } \
+        if(_first2.eq(_last2)) { \
+          void = erase_range(_first1, finish()); \
+	} \
+        else \
+          insert_range(finish(), _first2, _last2); \
+        _VERA_List_size_ = calculate_size(); \
+	} \
+    } \
+} %pragma-vmac_MakeVeraList;
+
+// end of class VeraList<type>  
+
+/**************************************************/
+/*         Version 1.0                            */
+/*         PROPRIETARY AND CONFIDENTIAL           */ 
+/*         SYNOPSYS INC.                          */ 
+/*         COPYRIGHT (c) 1999 BY SYNOPSYS INC.    */ 
+/**************************************************/
+
+
+#define MakeVeraExternType(type)  \
+extern class VeraListNode(type) { \
+type _VERA_List_Node_Data_; \
+VeraListNode(type) _VERA_List_Node_m_next_; \
+VeraListNode(type) _VERA_List_Node_m_prev_; \
+function type data() ; \
+} 
+
+
+#define MakeVeraExternIteratorType(type) MakeVeraExternType(type) \
+extern class VeraListIterator_(type) { \
+   VeraListNode(type)  _VERA_List_Iterator_M_node_; \
+   task new(VeraListNode(type) node); \
+   task next() ; \
+   task prev() ; \
+   function type data() ; \
+   function integer neq(VeraListIterator_(type) iter); \
+   function integer eq(VeraListIterator_(type) iter); \
+} 
+
+#define ExternVeraList(type) %pragma+vmac_ExternVeraList.type; \
+ MakeVeraExternIteratorType(type) \
+extern  class VeraList_(type) extends _Synopsys_Vera_List_ { \
+   function VeraListIterator_(type) start() ;  \
+   function VeraListIterator_(type) finish() ;   \
+   task insert(VeraListIterator_(type) _pos, type value); \
+   function VeraListIterator_(type) erase(VeraListIterator_(type) position);  \
+   function integer calculate_size() ; \
+   function integer size() ; \
+   function integer empty() ; \
+   function type front() ; \
+   function type back() ; \
+   task swap( VeraList_(type) L ) ;\
+   task push_front(type value) ;\
+   task push_back(type value); \
+   task pop_front() ;\
+   task pop_back() ;\
+   task clear() ; \
+   task purge() ; \
+   function VeraListIterator_(type) erase_range( VeraListIterator_(type) _first, VeraListIterator_(type) _last) ;\
+   task insert_range(VeraListIterator_(type) _pos, VeraListIterator_(type) _first, VeraListIterator_(type) _last) ;\
+   task assign(VeraListIterator_(type) _first2, VeraListIterator_(type)  _last2) ;\
+} %pragma-vmac_ExternVeraList;
+
+// end of extern class VeraList<type>  
+
+#endif
+/* To delete a list completely, call userlist.purge(), this would release all the memory allocated for list. If the user need to use the same list again, user should do userlist = new(). 
+   This is different from userlist.clear(), which deletes all the elements in the list, but the list header is not removed so that the subsequent list addition calls like userlist.push_back() etc can work without having to do a new() on userlist.  */
