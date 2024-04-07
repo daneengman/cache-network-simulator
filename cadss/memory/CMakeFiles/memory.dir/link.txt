@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99   -shared -Wl,-soname,libmemory.so -o libmemory.so CMakeFiles/memory.dir/memory.c.o 

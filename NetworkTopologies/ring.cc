@@ -2,13 +2,18 @@
 #include <vector>
 #include <string>
 
-struct {            
+class Packet {     
+public:
     int source;             // node packet is sent from
     int dest;               // destination node of the packet
     int packet_id;          // id of the packet
-    bool recieved;          // if packet is recieved by the corresponding node
+    bool received;          // if packet is received by the corresponding node
     int packetSize;         // assume packetSize is 1 for now
-} typedef Packet;
+
+    void printPacket() {
+        std::cout << "Source: " << source << "\nDest: " << dest << "\n Packet ID: " << packet_id << "\n Received: " << received << "\n Packet size: " << packetSize << std::endl;
+    }
+};
 
 // currently only forwards the packet to the next node for ring structure
 class NetworkNode {
@@ -40,32 +45,46 @@ public:
 
     // if contains packet in buffer, send packet to one of the destination nodes
     // currently only sends to the one and only destination node in ring
-    void sendPacket() {
-        // if no packets to be sent, don't do anything
-        if (buffer.size() == 0 && initialSendBuffer.size() == 0) return;
-
+    void updateState() {
+        
         // check if packets needs to be send in buffer
         if (buffer.size() != 0) {
             // for ring, send the packet to the next node
             // force it to recieve right now? Will only recieve one packet anyways
             nodesConnectedTo[0].recievePacket(buffer[0]);
             buffer.erase(buffer.begin(), buffer.begin());
-            return;
-        }
-
-        nodesConnectedTo[0].recievePacket(initialSendBuffer[0]); 
-        initialSendBuffer.erase(initialSendBuffer.begin(), initialSendBuffer.begin());       
+        } 
+        else if (initialSendBuffer.size() != 0) {
+            printf("sent1Node\n");
+            nodesConnectedTo[0].recievePacket(initialSendBuffer[0]); 
+            initialSendBuffer.erase(initialSendBuffer.begin(), initialSendBuffer.begin());       
+        } 
     }
 
     void recievePacket(Packet &pak) {
-        // if packet recieved, the desintaion is to the current node
+        // if packet received, the desintaion is to the current node
         if (pak.dest == nodeAddress) {
-            pak.recieved == true;
+            pak.received == true;
             return;
         }
         
         // if packet needs to be forward add it to buffer
         buffer.push_back(pak);
+    }
+
+    void printState() {
+        std::cout << "\n\n\nNode Address: " << nodeAddress;
+        std::cout << "\ninitialSendBuffer:\n";
+        if (initialSendBuffer.size() == 0) std::cout << "Empty\n";
+        for (Packet packet: initialSendBuffer)
+            packet.printPacket();
+
+        std::cout << "Buffer:\n";
+        if (buffer.size() == 0) std::cout << "Empty\n";
+        for (Packet packet: buffer) 
+            packet.printPacket();
+
+        
     }
 };
 
@@ -97,16 +116,21 @@ int main() {
     // create one packet to send from node 0 to node 4
     Packet thePacket;
     thePacket.source = 0;
-    thePacket.dest = 4;
-    thePacket.recieved = false;
+    thePacket.dest = 3;
+    thePacket.received = false;
+    thePacket.packetSize = 2; // doesn't matter rn
+
+    nodes[0].initialPacketsSend(thePacket);
 
     // run until all packets reached destination
-    while (!thePacket.recieved) {
+    while (!thePacket.received) {
         std::cout << "Clock Tick: " << clockTick << std::endl;
         clockTick++;
         for (int i = 0; i < numNodes; i++) {
-            nodes[i].sendPacket();
+            nodes[i].updateState();
         }
+        for (NetworkNode node: nodes)
+            node.printState();
     }
 
     return 0;

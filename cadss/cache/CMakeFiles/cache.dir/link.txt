@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99   -shared -Wl,-soname,libcache.so -o libcache.so CMakeFiles/cache.dir/cache.c.o 

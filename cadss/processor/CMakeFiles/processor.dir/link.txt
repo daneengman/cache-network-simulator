@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99   -shared -Wl,-soname,libprocessor.so -o libprocessor.so CMakeFiles/processor.dir/processor.c.o 

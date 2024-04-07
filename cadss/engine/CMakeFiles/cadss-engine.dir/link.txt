@@ -1,0 +1,1 @@
+/usr/bin/gcc  -O0 -ggdb3 -DDEBUG -std=gnu99    CMakeFiles/cadss-engine.dir/engine.c.o CMakeFiles/cadss-engine.dir/config.c.o CMakeFiles/cadss-engine.dir/debug.c.o  -o ../cadss-engine -rdynamic -ldl 

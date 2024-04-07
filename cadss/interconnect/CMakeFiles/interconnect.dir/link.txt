@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99   -shared -Wl,-soname,libinterconnect.so -o libinterconnect.so CMakeFiles/interconnect.dir/interconnect.c.o 
