@@ -15,6 +15,9 @@
 ########################
 
 //Path to a program.
+CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
+
+//Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
@@ -24,8 +27,16 @@ CMAKE_BUILD_TYPE:STRING=
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//CXX compiler.
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+//CXX compiler
+CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
+
+//A wrapper around 'ar' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-11
+
+//A wrapper around 'ranlib' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-11
 
 //Flags used by the compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -44,11 +55,16 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the compiler during Release with Debug Info builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler.
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc
+//C compiler
+CMAKE_C_COMPILER:STRING=/usr/bin/gcc
 
-//Path to a program.
-CMAKE_C_COMPILER_WITH_PATH:FILEPATH=/usr/bin/gcc
+//A wrapper around 'ar' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-11
+
+//A wrapper around 'ranlib' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-11
 
 //Flags used by the compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -66,6 +82,9 @@ CMAKE_C_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 
 //Flags used by the compiler during Release with Debug Info builds.
 CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
+
+//Path to a program.
+CMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND
 
 //Flags used by the linker.
 CMAKE_EXE_LINKER_FLAGS:STRING=' '
@@ -119,10 +138,19 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
+CMAKE_PROJECT_DESCRIPTION:STATIC=
+
+//Value Computed by CMake
+CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
+
+//Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=cadss
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
+
+//Path to a program.
+CMAKE_READELF:FILEPATH=/usr/bin/readelf
 
 //Flags used by the linker during the creation of dll's.
 CMAKE_SHARED_LINKER_FLAGS:STRING=' '
@@ -176,8 +204,8 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 //Value Computed by CMake
 branch_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/branch
 
-//Dependencies for target
-branch_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+branch_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 branch_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/branch
@@ -185,8 +213,8 @@ branch_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-n
 //Value Computed by CMake
 cache_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/cache
 
-//Dependencies for target
-cache_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+cache_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 cache_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/cache
@@ -195,10 +223,16 @@ cache_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-ne
 cadss-engine_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine
 
 //Value Computed by CMake
+cadss-engine_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
 cadss-engine_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine
 
 //Value Computed by CMake
 cadss_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+
+//Value Computed by CMake
+cadss_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 cadss_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
@@ -206,8 +240,8 @@ cadss_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-ne
 //Value Computed by CMake
 coherence_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence
 
-//Dependencies for target
-coherence_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+coherence_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 coherence_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence
@@ -215,8 +249,8 @@ coherence_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cach
 //Value Computed by CMake
 interconnect-ring_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring
 
-//Dependencies for target
-interconnect-ring_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+interconnect-ring_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 interconnect-ring_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring
@@ -224,8 +258,8 @@ interconnect-ring_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15
 //Value Computed by CMake
 interconnect_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect
 
-//Dependencies for target
-interconnect_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+interconnect_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 interconnect_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect
@@ -233,8 +267,8 @@ interconnect_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/c
 //Value Computed by CMake
 memory_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/memory
 
-//Dependencies for target
-memory_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+memory_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 memory_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/memory
@@ -242,8 +276,8 @@ memory_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-n
 //Value Computed by CMake
 processor_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor
 
-//Dependencies for target
-processor_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+processor_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 processor_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor
@@ -251,14 +285,17 @@ processor_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cach
 //Value Computed by CMake
 simpleCache_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simpleCache
 
-//Dependencies for target
-simpleCache_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+simpleCache_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 simpleCache_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simpleCache
 
 //Value Computed by CMake
 taskLib_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib
+
+//Value Computed by CMake
+taskLib_IS_TOP_LEVEL:STATIC=OFF
 
 //Dependencies for the target
 taskLib_LIB_DEPENDS:STATIC=general;z;
@@ -269,8 +306,8 @@ taskLib_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-
 //Value Computed by CMake
 trace_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace
 
-//Dependencies for target
-trace_LIB_DEPENDS:STATIC=
+//Value Computed by CMake
+trace_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 trace_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace
@@ -280,20 +317,20 @@ trace_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-ne
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: CMAKE_ADDR2LINE
+CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_BUILD_TOOL
-CMAKE_BUILD_TOOL-ADVANCED:INTERNAL=1
 //What is the target build tool cmake is generating for.
 CMAKE_BUILD_TOOL:INTERNAL=/usr/bin/gmake
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
 //Major version of cmake used to create the current loaded cache
-CMAKE_CACHE_MAJOR_VERSION:INTERNAL=2
+CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=8
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=22
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=12
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -304,6 +341,10 @@ CMAKE_CPACK_COMMAND:INTERNAL=/usr/bin/cpack
 CMAKE_CTEST_COMMAND:INTERNAL=/usr/bin/ctest
 //ADVANCED property for variable: CMAKE_CXX_COMPILER
 CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
+CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
+CMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
 CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
@@ -316,8 +357,10 @@ CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER
 CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER_WITH_PATH
-CMAKE_C_COMPILER_WITH_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_AR
+CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
+CMAKE_C_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
 CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
@@ -328,6 +371,8 @@ CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_DLLTOOL
+CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
 CMAKE_EDIT_COMMAND:INTERNAL=/usr/bin/ccmake
 //Executable file format
@@ -346,6 +391,10 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of generator.
 CMAKE_GENERATOR:INTERNAL=Unix Makefiles
+//Generator instance identifier.
+CMAKE_GENERATOR_INSTANCE:INTERNAL=
+//Name of generator platform.
+CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Start directory with the top level CMakeLists.txt file for this
@@ -371,14 +420,20 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
 CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=12
+//number of local generators
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=12
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
 CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
+//Platform information initialized
+CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_RANLIB
 CMAKE_RANLIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_READELF
+CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/share/cmake
+CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.22
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

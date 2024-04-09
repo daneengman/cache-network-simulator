@@ -31,7 +31,7 @@ interconn* self;
 coher* coherComp;
 memory* memComp;
 
-int CADSS_VERBOSE = 0;
+int CADSS_VERBOSE = 1;
 int processorCount = 4;
 
 static const char* req_state_map[] = {

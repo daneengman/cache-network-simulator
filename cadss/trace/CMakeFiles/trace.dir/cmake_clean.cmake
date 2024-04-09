@@ -1,10 +1,11 @@
-FILE(REMOVE_RECURSE
+file(REMOVE_RECURSE
   "CMakeFiles/trace.dir/trace.c.o"
+  "CMakeFiles/trace.dir/trace.c.o.d"
   "libtrace.pdb"
   "libtrace.so"
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang C)
-  INCLUDE(CMakeFiles/trace.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang C)
+  include(CMakeFiles/trace.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -1,1 +1,1 @@
-/usr/bin/gcc  -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99   -shared -Wl,-soname,libcoherence.so -o libcoherence.so CMakeFiles/coherence.dir/coherence.c.o CMakeFiles/coherence.dir/protocol.c.o CMakeFiles/coherence.dir/stree.c.o 
+/usr/bin/gcc -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99 -shared -Wl,-soname,libcoherence.so -o libcoherence.so CMakeFiles/coherence.dir/coherence.c.o CMakeFiles/coherence.dir/protocol.c.o CMakeFiles/coherence.dir/stree.c.o 
