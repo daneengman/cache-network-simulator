@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -O2 -g -DNDEBUG -std=c++11   -shared -Wl,-soname,libtaskLib.so -o libtaskLib.so CMakeFiles/taskLib.dir/TaskGraphAPI.cpp.o CMakeFiles/taskLib.dir/TaskGraph.cpp.o CMakeFiles/taskLib.dir/TaskGraphInfo.cpp.o CMakeFiles/taskLib.dir/Task.cpp.o CMakeFiles/taskLib.dir/Backend.cpp.o CMakeFiles/taskLib.dir/Action.cpp.o CMakeFiles/taskLib.dir/ct_file.c.o -lz 
