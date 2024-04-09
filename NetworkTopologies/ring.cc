@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <assert.h>
 
 class Packet {     
 public:
@@ -9,11 +10,15 @@ public:
     int packet_id;          // id of the packet
     bool received;          // if packet is received by the corresponding node
     int packetSize;         // assume packetSize is 1 for now
+    int lastUpdated;
 
     void printPacket() {
         std::cout << "Source: " << source << "\nDest: " << dest << "\n Packet ID: " << packet_id << "\n Received: " << received << "\n Packet size: " << packetSize << std::endl;
     }
 };
+
+// count number of ticks for each topology
+int clockTick = 0;
 
 // currently only forwards the packet to the next node for ring structure
 class NetworkNode {
@@ -21,9 +26,9 @@ public:
     
     int nodeAddress;
     //std::vector<NetworkNode*> nodesConnectedFrom;
-    std::vector<NetworkNode> nodesConnectedTo;
-    std::vector<Packet> buffer;
-    std::vector<Packet> initialSendBuffer;
+    std::vector<NetworkNode *> nodesConnectedTo;
+    std::vector<Packet *> buffer;
+    std::vector<Packet *> initialSendBuffer;
     // NetworkNode(int nodeAddress) : nodeAddress(nodeAddress){}
     NetworkNode(int addr) : nodeAddress(addr) {}
 
@@ -31,40 +36,47 @@ public:
     //     nodesConnectedFrom.push_back(node);
     // }
 
-    void connectTo(NetworkNode node) {
-        nodesConnectedTo.push_back(node);
+    void connectTo(NetworkNode &node) {
+        nodesConnectedTo.push_back(&node);
     }
 
     int getNodeAddress() const {
         return nodeAddress;
     }
 
-    void initialPacketsSend (Packet pak) {
+    void packetSend (Packet *pak) {
+        std::cout << "Sending packet " << pak << std::endl;
         initialSendBuffer.push_back(pak);
     }
 
     // if contains packet in buffer, send packet to one of the destination nodes
     // currently only sends to the one and only destination node in ring
     void updateState() {
-        
         // check if packets needs to be send in buffer
         if (buffer.size() != 0) {
             // for ring, send the packet to the next node
             // force it to recieve right now? Will only recieve one packet anyways
-            nodesConnectedTo[0].recievePacket(buffer[0]);
-            buffer.erase(buffer.begin(), buffer.begin());
+            if (buffer[0]->lastUpdated != clockTick) {
+                buffer[0]->lastUpdated = clockTick;
+                std::cout << "Propogating from " << nodeAddress << std::endl;
+                (*(nodesConnectedTo[0])).recievePacket(buffer[0]);
+                buffer.erase(buffer.begin(), buffer.begin() + 1);
+            }
         } 
         else if (initialSendBuffer.size() != 0) {
             printf("sent1Node\n");
-            nodesConnectedTo[0].recievePacket(initialSendBuffer[0]); 
-            initialSendBuffer.erase(initialSendBuffer.begin(), initialSendBuffer.begin());       
+            (*(nodesConnectedTo[0])).recievePacket(initialSendBuffer[0]); 
+            initialSendBuffer.erase(initialSendBuffer.begin(), initialSendBuffer.begin() + 1);       
         } 
     }
 
-    void recievePacket(Packet &pak) {
+    void recievePacket(Packet *pak) {
+        printf("Hello world\n");
         // if packet received, the desintaion is to the current node
-        if (pak.dest == nodeAddress) {
-            pak.received == true;
+        if (pak->dest == nodeAddress) {
+            pak->received = true;
+            printf("Recieved packet %p at node %i\n", (void *)pak, nodeAddress);
+            pak->printPacket();
             return;
         }
         
@@ -76,13 +88,13 @@ public:
         std::cout << "\n\n\nNode Address: " << nodeAddress;
         std::cout << "\ninitialSendBuffer:\n";
         if (initialSendBuffer.size() == 0) std::cout << "Empty\n";
-        for (Packet packet: initialSendBuffer)
-            packet.printPacket();
+        for (Packet *packet: initialSendBuffer)
+            packet->printPacket();
 
         std::cout << "Buffer:\n";
         if (buffer.size() == 0) std::cout << "Empty\n";
-        for (Packet packet: buffer) 
-            packet.printPacket();
+        for (Packet *packet: buffer) 
+            packet->printPacket();
 
         
     }
@@ -98,8 +110,7 @@ int main() {
     printf("hello\n");
     std::vector<NetworkNode> nodes;
     
-    // count number of ticks for each topology
-    int clockTick = 0;
+    
     int numNodes = 4;
     printf("hello\n");
     // instantiate nodes
@@ -119,8 +130,10 @@ int main() {
     thePacket.dest = 3;
     thePacket.received = false;
     thePacket.packetSize = 2; // doesn't matter rn
+    thePacket.lastUpdated = -1;
 
-    nodes[0].initialPacketsSend(thePacket);
+    nodes[0].packetSend(&thePacket);
+    
 
     // run until all packets reached destination
     while (!thePacket.received) {
@@ -131,7 +144,14 @@ int main() {
         }
         for (NetworkNode node: nodes)
             node.printState();
+        std::cout << "\n\n\nPacket state:\n";
+        thePacket.printPacket();
+        if (clockTick > 5) {
+            assert(false);
+        }
     }
+
+    printf("time: %i\n", clockTick);
 
     return 0;
 }
