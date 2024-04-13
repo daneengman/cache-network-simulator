@@ -10,13 +10,13 @@ extern "C"
 {
 #endif
 
-void init();
+void init_network();
 
 void sendPacket(int src, packet_t *packet);
 
-void tick();
+void tick_network();
 
-void destroy();
+void destroy_network();
 
 #ifdef __cplusplus
 }

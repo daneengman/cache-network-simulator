@@ -4,6 +4,8 @@
 #include <memory.h>
 #include <interconnect.h>
 
+#include "c_connection.h"
+
 typedef enum _bus_req_state
 {
     NONE,
@@ -31,8 +33,8 @@ interconn* self;
 coher* coherComp;
 memory* memComp;
 
-int CADSS_VERBOSE = 1;
-int processorCount = 4;
+int CADSS_VERBOSE = 0;
+int processorCount = 1;
 
 static const char* req_state_map[] = {
     [NONE] = "None",
@@ -48,7 +50,7 @@ static const char* req_type_map[]
        [DATA] = "Data",   [SHARED] = "Shared", [MEMORY] = "Memory"};
 
 const int CACHE_DELAY = 10;
-const int CACHE_TRANSFER = 100;
+const int CACHE_TRANSFER = 10;
 
 void registerCoher(coher* cc);
 void busReq(bus_req_type brt, uint64_t addr, int procNum);
@@ -144,6 +146,15 @@ interconn* init(inter_sim_args* isa)
     memComp = isa->memory;
     memComp->registerInterconnect(self);
 
+    init_network();
+    packet_t *packet = malloc(sizeof(packet_t));
+    packet->dest = 4;
+    packet->source = 0;
+    sendPacket(0,packet);
+    while (!packet->received)
+        tick_network();
+    printf("\n\nMessage sent!\n\n");
+
     return self;
 }
 
@@ -168,22 +179,11 @@ void memReqCallback(int procNum, uint64_t addr)
     }
 }
 
-// typedef enum _bus_req_type
-// {
-//     NO_REQ,
-//     BUSRD,
-//     BUSWR,
-//     DATA,
-//     SHARED,
-//     MEMORY
-// } bus_req_type;
-
-// this is probably the thing we need to modify
-// this gets called when another processor wants a copy of our variable and is going to invalidate ours
 void busReq(bus_req_type brt, uint64_t addr, int procNum)
 {
-    // if nothing outstanding, make a new request
-    if (pendingRequest == NULL) {
+    printf("Bus request %s\n",req_type_map[brt]);
+    if (pendingRequest == NULL)
+    {
         assert(brt != SHARED);
 
         bus_req* nextReq = calloc(1, sizeof(bus_req));
@@ -198,23 +198,19 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
 
         return;
     }
-    // if this is a shared request, note that we want it? 
     else if (brt == SHARED && pendingRequest->addr == addr)
     {
         pendingRequest->shared = 1;
         return;
     }
-    // this is a data request, uhhhhh
     else if (brt == DATA && pendingRequest->addr == addr)
-    {   
-        // right now there is a single pending data request, ideally we would handle multiple at a time
+    {
         assert(pendingRequest->currentState == WAITING_MEMORY);
         pendingRequest->data = 1;
         pendingRequest->currentState = TRANSFERING_CACHE;
         countDown = CACHE_TRANSFER;
         return;
     }
-    // nothing is on the bus
     else
     {
         assert(brt != SHARED);
@@ -230,7 +226,6 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
     }
 }
 
-// also probably important
 int tick()
 {
     memComp->si.tick();
@@ -308,7 +303,7 @@ int tick()
     }
     else if (countDown == 0)
     {
-        for (int i = 0; i < processorCount; i++) // place a request on the bus
+        for (int i = 0; i < processorCount; i++)
         {
             int pos = (i + lastProc) % processorCount;
             if (queuedRequests[pos] != NULL)
@@ -380,8 +375,10 @@ int busReqCacheTransfer(uint64_t addr, int procNum)
 {
     assert(pendingRequest);
 
-    if (addr == pendingRequest->addr && procNum == pendingRequest->procNum)
+    if (addr == pendingRequest->addr && procNum == pendingRequest->procNum) {
+        // printf(" cache return\n");
         return (pendingRequest->currentState == TRANSFERING_CACHE);
+    }
 
     return 0;
 }

@@ -353,7 +353,7 @@ engine/CMakeFiles/cadss-engine.dir/clean:
 trace/CMakeFiles/trace.dir/all:
 	$(MAKE) $(MAKESILENT) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/depend
 	$(MAKE) $(MAKESILENT) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=32,33 "Built target trace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=33,34 "Built target trace"
 .PHONY : trace/CMakeFiles/trace.dir/all
 
 # Build rule for subdir invocation for target.
@@ -379,7 +379,7 @@ trace/CMakeFiles/trace.dir/clean:
 trace/taskLib/CMakeFiles/taskLib.dir/all:
 	$(MAKE) $(MAKESILENT) -f trace/taskLib/CMakeFiles/taskLib.dir/build.make trace/taskLib/CMakeFiles/taskLib.dir/depend
 	$(MAKE) $(MAKESILENT) -f trace/taskLib/CMakeFiles/taskLib.dir/build.make trace/taskLib/CMakeFiles/taskLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=24,25,26,27,28,29,30,31 "Built target taskLib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=25,26,27,28,29,30,31,32 "Built target taskLib"
 .PHONY : trace/taskLib/CMakeFiles/taskLib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -405,7 +405,7 @@ trace/taskLib/CMakeFiles/taskLib.dir/clean:
 processor/CMakeFiles/processor.dir/all:
 	$(MAKE) $(MAKESILENT) -f processor/CMakeFiles/processor.dir/build.make processor/CMakeFiles/processor.dir/depend
 	$(MAKE) $(MAKESILENT) -f processor/CMakeFiles/processor.dir/build.make processor/CMakeFiles/processor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=19,20 "Built target processor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=20,21 "Built target processor"
 .PHONY : processor/CMakeFiles/processor.dir/all
 
 # Build rule for subdir invocation for target.
@@ -483,12 +483,12 @@ interconnect/CMakeFiles/interconnect.dir/clean:
 interconnect-ring/CMakeFiles/interconnect-ring.dir/all:
 	$(MAKE) $(MAKESILENT) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/depend
 	$(MAKE) $(MAKESILENT) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=15,16 "Built target interconnect-ring"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=15,16,17 "Built target interconnect-ring"
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/all
 
 # Build rule for subdir invocation for target.
 interconnect-ring/CMakeFiles/interconnect-ring.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 interconnect-ring/CMakeFiles/interconnect-ring.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 0
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/rule
@@ -509,7 +509,7 @@ interconnect-ring/CMakeFiles/interconnect-ring.dir/clean:
 simpleCache/CMakeFiles/simpleCache.dir/all:
 	$(MAKE) $(MAKESILENT) -f simpleCache/CMakeFiles/simpleCache.dir/build.make simpleCache/CMakeFiles/simpleCache.dir/depend
 	$(MAKE) $(MAKESILENT) -f simpleCache/CMakeFiles/simpleCache.dir/build.make simpleCache/CMakeFiles/simpleCache.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=21,22,23 "Built target simpleCache"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=22,23,24 "Built target simpleCache"
 .PHONY : simpleCache/CMakeFiles/simpleCache.dir/all
 
 # Build rule for subdir invocation for target.
@@ -535,7 +535,7 @@ simpleCache/CMakeFiles/simpleCache.dir/clean:
 memory/CMakeFiles/memory.dir/all:
 	$(MAKE) $(MAKESILENT) -f memory/CMakeFiles/memory.dir/build.make memory/CMakeFiles/memory.dir/depend
 	$(MAKE) $(MAKESILENT) -f memory/CMakeFiles/memory.dir/build.make memory/CMakeFiles/memory.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=17,18 "Built target memory"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles --progress-num=18,19 "Built target memory"
 .PHONY : memory/CMakeFiles/memory.dir/all
 
 # Build rule for subdir invocation for target.

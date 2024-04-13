@@ -130,6 +130,30 @@ interconnect-ring/fast:
 	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) $(MAKESILENT) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/build
 .PHONY : interconnect-ring/fast
 
+c_connection.o: c_connection.cpp.o
+.PHONY : c_connection.o
+
+# target to build an object file
+c_connection.cpp.o:
+	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) $(MAKESILENT) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o
+.PHONY : c_connection.cpp.o
+
+c_connection.i: c_connection.cpp.i
+.PHONY : c_connection.i
+
+# target to preprocess a source file
+c_connection.cpp.i:
+	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) $(MAKESILENT) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.i
+.PHONY : c_connection.cpp.i
+
+c_connection.s: c_connection.cpp.s
+.PHONY : c_connection.s
+
+# target to generate assembly for a file
+c_connection.cpp.s:
+	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) $(MAKESILENT) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.s
+.PHONY : c_connection.cpp.s
+
 interconnect.o: interconnect.c.o
 .PHONY : interconnect.o
 
@@ -163,6 +187,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... interconnect-ring"
+	@echo "... c_connection.o"
+	@echo "... c_connection.i"
+	@echo "... c_connection.s"
 	@echo "... interconnect.o"
 	@echo "... interconnect.i"
 	@echo "... interconnect.s"

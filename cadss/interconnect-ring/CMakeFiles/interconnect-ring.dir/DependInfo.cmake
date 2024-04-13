@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/interconnect.c" "interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o" "gcc" "interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o.d"
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp" "interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o" "gcc" "interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o.d"
   )
 
 # Targets to which this target links.
