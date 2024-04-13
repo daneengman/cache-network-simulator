@@ -16,8 +16,8 @@ public:
     int nodeAddress;
     //std::vector<NetworkNode*> nodesConnectedFrom;
     std::vector<NetworkNode *> nodesConnectedTo;
-    std::vector<Packet *> buffer;
-    std::vector<Packet *> initialSendBuffer;
+    std::vector<packet_t *> buffer;
+    std::vector<packet_t *> initialSendBuffer;
     // NetworkNode(int nodeAddress) : nodeAddress(nodeAddress){}
     NetworkNode(int addr) : nodeAddress(addr) {}
 
@@ -33,7 +33,7 @@ public:
         return nodeAddress;
     }
 
-    void packetSend (Packet *pak) {
+    void packetSend (packet_t *pak) {
         std::cout << "Sending packet " << pak << std::endl;
         initialSendBuffer.push_back(pak);
     }
@@ -59,13 +59,14 @@ public:
         } 
     }
 
-    void recievePacket(Packet *pak) {
+    void recievePacket(packet_t *pak) {
         printf("Hello world\n");
         // if packet received, the desintaion is to the current node
         if (pak->dest == nodeAddress) {
             pak->received = true;
             printf("Recieved packet %p at node %i\n", (void *)pak, nodeAddress);
-            pak->printPacket();
+            // pak->printPacket();
+            printPacket(pak);
             return;
         }
         
@@ -77,21 +78,24 @@ public:
         std::cout << "\n\n\nNode Address: " << nodeAddress;
         std::cout << "\ninitialSendBuffer:\n";
         if (initialSendBuffer.size() == 0) std::cout << "Empty\n";
-        for (Packet *packet: initialSendBuffer)
-            packet->printPacket();
+        for (packet_t *packet: initialSendBuffer)
+            // packet->printPacket();
+            printPacket(packet);
 
         std::cout << "Buffer:\n";
         if (buffer.size() == 0) std::cout << "Empty\n";
-        for (Packet *packet: buffer) 
-            packet->printPacket();
+        for (packet_t *packet: buffer) 
+            printPacket(packet);
     }
 };
 
-class RingNetwork {
+// TODO this should probably inherit from a network parent class
+class Network {
 public:
     // count number of ticks for each topology
     int clockTick = 0;
-    int numNodes = 4;
+    int numNodes;
+    NetworkNode(int theNumNodes) : numNodes(theNumNodes) {}
 
     std::vector<NetworkNode> nodes;
 
@@ -106,7 +110,7 @@ public:
         }
     }
 
-    void sendPacket(int src, Packet *packet) {
+    void sendPacket(int src, packet_t *packet) {
         nodes[src].packetSend(packet);
     }
 
