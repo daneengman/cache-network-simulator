@@ -1,15 +1,12 @@
-file(REMOVE_RECURSE
-  "../cadss-engine"
-  "../cadss-engine.pdb"
-  "CMakeFiles/cadss-engine.dir/config.c.o"
-  "CMakeFiles/cadss-engine.dir/config.c.o.d"
-  "CMakeFiles/cadss-engine.dir/debug.c.o"
-  "CMakeFiles/cadss-engine.dir/debug.c.o.d"
+FILE(REMOVE_RECURSE
   "CMakeFiles/cadss-engine.dir/engine.c.o"
-  "CMakeFiles/cadss-engine.dir/engine.c.o.d"
+  "CMakeFiles/cadss-engine.dir/config.c.o"
+  "CMakeFiles/cadss-engine.dir/debug.c.o"
+  "../cadss-engine.pdb"
+  "../cadss-engine"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C)
-  include(CMakeFiles/cadss-engine.dir/cmake_clean_${lang}.cmake OPTIONAL)
-endforeach()
+FOREACH(lang C)
+  INCLUDE(CMakeFiles/cadss-engine.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

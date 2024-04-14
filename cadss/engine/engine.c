@@ -469,6 +469,8 @@ int main(int argc, char** argv)
     psim->destroy();
     trace->destroy();
 
+    isim->destroy();
+
     dlclose(csim->handle);
     free(csim);
     dlclose(psim->handle);

@@ -3,6 +3,8 @@
 #include <memory.h>
 #include <interconnect.h>
 
+#include <stdio.h>
+
 #include "memory_internal.h"
 
 void registerInterconnect(interconn* interconnect);

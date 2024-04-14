@@ -13,6 +13,8 @@ memory.h
 -
 interconnect.h
 -
+stdio.h
+-
 memory_internal.h
 /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/memory/memory_internal.h
 

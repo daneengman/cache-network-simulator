@@ -1,25 +1,31 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
-set(CMAKE_DEPENDS_LANGUAGES
+SET(CMAKE_DEPENDS_LANGUAGES
+  "C"
+  "CXX"
   )
-
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.c" "trace/taskLib/CMakeFiles/taskLib.dir/ct_file.c.o" "gcc" "trace/taskLib/CMakeFiles/taskLib.dir/ct_file.c.o.d"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.cpp" "trace/taskLib/CMakeFiles/taskLib.dir/Action.cpp.o" "gcc" "trace/taskLib/CMakeFiles/taskLib.dir/Action.cpp.o.d"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Backend.cpp" "trace/taskLib/CMakeFiles/taskLib.dir/Backend.cpp.o" "gcc" "trace/taskLib/CMakeFiles/taskLib.dir/Backend.cpp.o.d"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Task.cpp" "trace/taskLib/CMakeFiles/taskLib.dir/Task.cpp.o" "gcc" "trace/taskLib/CMakeFiles/taskLib.dir/Task.cpp.o.d"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.cpp" "trace/taskLib/CMakeFiles/taskLib.dir/TaskGraph.cpp.o" "gcc" "trace/taskLib/CMakeFiles/taskLib.dir/TaskGraph.cpp.o.d"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.cpp" "trace/taskLib/CMakeFiles/taskLib.dir/TaskGraphAPI.cpp.o" "gcc" "trace/taskLib/CMakeFiles/taskLib.dir/TaskGraphAPI.cpp.o.d"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.cpp" "trace/taskLib/CMakeFiles/taskLib.dir/TaskGraphInfo.cpp.o" "gcc" "trace/taskLib/CMakeFiles/taskLib.dir/TaskGraphInfo.cpp.o.d"
+# The set of files for implicit dependencies of each language:
+SET(CMAKE_DEPENDS_CHECK_C
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/CMakeFiles/taskLib.dir/ct_file.c.o"
   )
+SET(CMAKE_C_COMPILER_ID "GNU")
+SET(CMAKE_DEPENDS_CHECK_CXX
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.cpp" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/CMakeFiles/taskLib.dir/Action.cpp.o"
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Backend.cpp" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/CMakeFiles/taskLib.dir/Backend.cpp.o"
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Task.cpp" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/CMakeFiles/taskLib.dir/Task.cpp.o"
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.cpp" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/CMakeFiles/taskLib.dir/TaskGraph.cpp.o"
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.cpp" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/CMakeFiles/taskLib.dir/TaskGraphAPI.cpp.o"
+  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.cpp" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/CMakeFiles/taskLib.dir/TaskGraphInfo.cpp.o"
+  )
+SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+SET(CMAKE_TARGET_LINKED_INFO_FILES
   )
 
-# Fortran module output directory.
-set(CMAKE_Fortran_TARGET_MODULE_DIR "")
+# The include file search paths:
+SET(CMAKE_C_TARGET_INCLUDE_PATH
+  "trace/taskLib/../../common"
+  )
+SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

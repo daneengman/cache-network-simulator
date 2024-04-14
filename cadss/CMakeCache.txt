@@ -27,8 +27,8 @@ CMAKE_BUILD_TYPE:STRING=
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//CXX compiler
-CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
+//CXX compiler.
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -55,8 +55,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the compiler during Release with Debug Info builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:STRING=/usr/bin/gcc
+//C compiler.
+CMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -207,6 +207,9 @@ branch_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-n
 //Value Computed by CMake
 branch_IS_TOP_LEVEL:STATIC=OFF
 
+//Dependencies for target
+branch_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 branch_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/branch
 
@@ -215,6 +218,9 @@ cache_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-ne
 
 //Value Computed by CMake
 cache_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for target
+cache_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
 cache_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/cache
@@ -243,6 +249,9 @@ coherence_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cach
 //Value Computed by CMake
 coherence_IS_TOP_LEVEL:STATIC=OFF
 
+//Dependencies for target
+coherence_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 coherence_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence
 
@@ -252,14 +261,29 @@ interconnect-ring_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15
 //Value Computed by CMake
 interconnect-ring_IS_TOP_LEVEL:STATIC=OFF
 
+//Dependencies for target
+interconnect-ring_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 interconnect-ring_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring
+
+//Value Computed by CMake
+interconnectBusSV_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectBusSV
+
+//Dependencies for target
+interconnectBusSV_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+interconnectBusSV_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectBusSV
 
 //Value Computed by CMake
 interconnect_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect
 
 //Value Computed by CMake
 interconnect_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for target
+interconnect_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
 interconnect_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect
@@ -270,6 +294,9 @@ memory_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-n
 //Value Computed by CMake
 memory_IS_TOP_LEVEL:STATIC=OFF
 
+//Dependencies for target
+memory_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 memory_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/memory
 
@@ -279,6 +306,9 @@ processor_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cach
 //Value Computed by CMake
 processor_IS_TOP_LEVEL:STATIC=OFF
 
+//Dependencies for target
+processor_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 processor_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor
 
@@ -287,6 +317,9 @@ simpleCache_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/ca
 
 //Value Computed by CMake
 simpleCache_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for target
+simpleCache_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
 simpleCache_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simpleCache
@@ -309,6 +342,9 @@ trace_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-ne
 //Value Computed by CMake
 trace_IS_TOP_LEVEL:STATIC=OFF
 
+//Dependencies for target
+trace_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 trace_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace
 
@@ -321,16 +357,18 @@ trace_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-ne
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_BUILD_TOOL
+CMAKE_BUILD_TOOL-ADVANCED:INTERNAL=1
 //What is the target build tool cmake is generating for.
 CMAKE_BUILD_TOOL:INTERNAL=/usr/bin/gmake
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
 //Major version of cmake used to create the current loaded cache
-CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
+CMAKE_CACHE_MAJOR_VERSION:INTERNAL=2
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=22
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=8
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=12
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -419,7 +457,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=12
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=13
 //number of local generators
 CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=12
 //ADVANCED property for variable: CMAKE_OBJCOPY
@@ -433,7 +471,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.22
+CMAKE_ROOT:INTERNAL=/usr/share/cmake
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

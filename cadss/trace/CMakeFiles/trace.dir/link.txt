@@ -1,1 +1,1 @@
-/usr/bin/gcc -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99 -shared -Wl,-soname,libtrace.so -o libtrace.so CMakeFiles/trace.dir/trace.c.o 
+/usr/bin/gcc  -fPIC -O0 -ggdb3 -DDEBUG -std=gnu99   -shared -Wl,-soname,libtrace.so -o libtrace.so CMakeFiles/trace.dir/trace.c.o 
