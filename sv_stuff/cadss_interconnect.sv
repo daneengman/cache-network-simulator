@@ -1,5 +1,5 @@
 module cadss_interconnect (
-  output logic clk, rst_l;
+  output logic clk, rst_l
 );
 
   // Importing DPI functions for socket communication
@@ -14,12 +14,20 @@ module cadss_interconnect (
   // Define buffer size for receiving messages
   parameter int BUFFER_SIZE = 1024;
 
+  task clk_tick;
+    clk <= 1;
+    #5 clk <= 0;
+    #5;
+  endtask
+
   // Entry point for server
   initial begin
     int socket_fd;
     int client_socket_fd;
     byte buffer[BUFFER_SIZE];
     byte send_buffer[] = '{"h","e","l","l","o"," ","w","o","r","l","d"};
+    int count;
+    int res;
 
     // Open socket on specified port
     socket_fd = sv_socket_open(SERVER_PORT);
@@ -37,29 +45,45 @@ module cadss_interconnect (
       $display("Client connected");
     end
 
-    // Receive message from client
-    if (sv_socket_receive(client_socket_fd, buffer, BUFFER_SIZE) < 0) begin
-      $fatal("Failed to receive message from client");
-    end else begin
-      $display("Received message from client");
-      // for (int i = 0; i < $size(buffer); i++) begin
-      //   $display("%c",buffer[i]);
+    count = 0;
+    while (1) begin
+      $display("Sending....");
+      res = sv_socket_receive(client_socket_fd, buffer, BUFFER_SIZE);
+      
+      if (res == 1)
+        clk_tick();
+      else if (res == -1) begin
+        $display("Received quit command...");
+        break;
+      end else
+        $display("Received nothing comprehensible");
+
+      if (sv_socket_send(client_socket_fd, send_buffer, $size(send_buffer)) < 0) begin
+        $fatal("Failed to send response to client");
+      end else begin
+        $display("Response sent to client");
+      end
+
+      if (count > 10) begin
+        $error("Too many fails");
+        $finish();
+      end
+      
+
+      // if (sv_socket_send(client_socket_fd, send_buffer, $size(send_buffer)) < 0) begin
+      //   $fatal("Failed to send response to client");
+      // end else begin
+      //   $display("Response sent to client");
       // end
-    end
-
-    // Send response back to client
-    
-
-    if (sv_socket_send(client_socket_fd, send_buffer, $size(send_buffer)) < 0) begin
-      $fatal("Failed to send response to client");
-    end else begin
-      $display("Response sent to client");
+      count++;
     end
 
     // Close sockets
     $display("Closing connection");
     $fclose(client_socket_fd);
     $fclose(socket_fd);
+
+    $finish();
   end
 
 endmodule

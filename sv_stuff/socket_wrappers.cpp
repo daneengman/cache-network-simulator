@@ -1,23 +1,19 @@
-// In your C code (e.g., socket_functions.c)
-
-// #include <manifest.h>
-// #include <bsdtypes.h>
 #include <sys/socket.h>
-// #include <in.h>
 #include <netdb.h>
 #include <stdio.h>
+#include <string.h>
 
 #include <iostream>
 #include <svdpi.h>
 
 // DPI function to open a socket
 extern "C" int sv_socket_open(int port) {
-    struct sockaddr_in server; /* server address information          */
+    struct sockaddr_in server;
     int s;
 
     if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
-        printf("Socket()");
+        printf("Socket error");
         return -1;
     }
 
@@ -27,13 +23,13 @@ extern "C" int sv_socket_open(int port) {
 
     if (bind(s, (struct sockaddr *)&server, sizeof(server)) < 0)
     {
-        printf("Bind()");
+        printf("Bind error");
         return -1;
     }
 
     if (listen(s, 1) != 0)
     {
-        printf("Listen()");
+        printf("Listen error");
         return -1;
     }
 
@@ -42,8 +38,6 @@ extern "C" int sv_socket_open(int port) {
 
 // DPI function to accept a connection
 extern "C" int sv_socket_accept(int socket_fd) {
-    // Implement accept logic here
-    // For example:
     struct sockaddr_in client;
     
     socklen_t namelen = sizeof(client);
@@ -58,20 +52,23 @@ extern "C" int sv_socket_accept(int socket_fd) {
 
 // DPI function to receive data from a socket
 extern "C" int sv_socket_receive(int socket_fd, unsigned char *buffer, int size) {
-    // Implement receive logic here
-    // int bytes_received = recv(socket_fd, buffer, size, 0);
     uint8_t buf[1024];
     int bytes_received = recv(socket_fd, buf, 1024, 0);
     printf("Received message: %s\n",buf);
-    // Additional error handling logic if needed
-    return bytes_received;
+    printf("Bytes received: %i\n",bytes_received);
+    printf("Result of tick comp: %i", strcmp((const char *)buf,"tick\n"));
+    if (strcmp((const char *)buf,"tick\n") == 0)
+        return 1;
+    else if (strcmp((const char *)buf,"quit\n") == 0)
+        return -1;
+    else
+        return 0;
 }
 
 // DPI function to send data over a socket
 extern "C" int sv_socket_send(int socket_fd, const unsigned char *buffer, int size) {
-    // Implement send logic here
-    int bytes_sent = send(socket_fd, buffer, size, 0);
-    // Additional error handling logic if needed
+    uint8_t buf[1024] = "hello from sv-c\n";
+    int bytes_sent = send(socket_fd, buf, strlen((const char *)buf), 0);
     return bytes_sent;
 }
 

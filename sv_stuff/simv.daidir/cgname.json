@@ -1,12 +1,17 @@
 {
-    "sv_server": [
-        "sv_server",
-        "NI4bB",
-        "module"
-    ],
     "std": [
         "std",
         "reYIK",
+        "module"
+    ],
+    "top": [
+        "top",
+        "Emx8S",
+        "module"
+    ],
+    "cadss_interconnect": [
+        "cadss_interconnect",
+        "kBiSq",
         "module"
     ],
     "...MASTER...": [

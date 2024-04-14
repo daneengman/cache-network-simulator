@@ -1,4 +1,4 @@
-import_DPI sv_socket_open sv_server
-import_DPI sv_socket_accept sv_server
-import_DPI sv_socket_receive sv_server
-import_DPI sv_socket_send sv_server
+import_DPI sv_socket_open cadss_interconnect
+import_DPI sv_socket_accept cadss_interconnect
+import_DPI sv_socket_receive cadss_interconnect
+import_DPI sv_socket_send cadss_interconnect

@@ -1,98 +1,65 @@
 {
+    "CompileStrategy": "fullobj",
+    "CompileStatus": "Successful",
+    "LVLData": [
+        "SIM"
+    ],
     "MlibObjs": {},
-    "Misc": {
-        "csrc": "csrc",
-        "cwd": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_stuff",
-        "daidir": "simv.daidir",
-        "csrc_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_stuff/csrc",
-        "daidir_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_stuff/simv.daidir",
-        "default_output_dir": "csrc",
-        "archive_dir": "archive.21"
-    },
     "PrevCompiledModules": {
-        "sv_server": {
-            "NI4bB_d": {
-                "checksum": 4294967295,
-                "bytes": 16056,
-                "mod": "sv_server",
-                "mode": 4,
-                "out": "NI4bB_d.o",
-                "archive": "archive.21/_prev_archive_1.a"
-            }
-        },
         "std": {
             "reYIK_d": {
+                "out": "reYIK_d.o",
                 "checksum": 4294967295,
+                "mode": 4,
                 "bytes": 28470,
                 "mod": "std",
-                "out": "reYIK_d.o",
+                "archive": "archive.39/_prev_archive_1.a"
+            }
+        },
+        "cadss_interconnect": {
+            "kBiSq_d": {
+                "out": "kBiSq_d.o",
+                "checksum": 4294967295,
                 "mode": 4,
-                "archive": "archive.21/_prev_archive_1.a"
+                "bytes": 20551,
+                "mod": "cadss_interconnect",
+                "archive": "archive.39/_prev_archive_1.a"
+            }
+        },
+        "top": {
+            "Emx8S_d": {
+                "out": "Emx8S_d.o",
+                "checksum": 4294967295,
+                "mode": 4,
+                "bytes": 6012,
+                "mod": "top",
+                "archive": "archive.39/_prev_archive_1.a"
             }
         },
         "...MASTER...": {
             "amcQw_d": {
                 "checksum": 4294967295,
-                "bytes": 7287,
-                "mod": "...MASTER...",
                 "mode": 4,
-                "out": "objs/amcQw_d.o"
+                "out": "objs/amcQw_d.o",
+                "bytes": 7645,
+                "mod": "...MASTER..."
             }
         }
     },
-    "PEModules": [],
-    "stat": {
-        "ru_self_cgstart": {
-            "ru_nvcsw": 123,
-            "ru_maxrss_kb": 48288,
-            "ru_utime_sec": 0.021791000000000001,
-            "ru_stime_sec": 0.020753000000000001,
-            "ru_minflt": 11704,
-            "ru_majflt": 0,
-            "ru_nivcsw": 2
-        },
-        "ru_childs_cgstart": {
-            "ru_nvcsw": 0,
-            "ru_maxrss_kb": 0,
-            "ru_utime_sec": 0.0,
-            "ru_stime_sec": 0.0,
-            "ru_minflt": 0,
-            "ru_majflt": 0,
-            "ru_nivcsw": 0
-        },
-        "ru_childs_end": {
-            "ru_nvcsw": 0,
-            "ru_maxrss_kb": 0,
-            "ru_utime_sec": 0.0,
-            "ru_stime_sec": 0.0,
-            "ru_minflt": 0,
-            "ru_majflt": 0,
-            "ru_nivcsw": 0
-        },
-        "Frontend(%)": 99.488654522211576,
-        "totalObjSize": 65974,
-        "nMops": 0,
-        "nQuads": 0,
-        "ru_self_end": {
-            "ru_nvcsw": 162,
-            "ru_maxrss_kb": 51408,
-            "ru_utime_sec": 0.021902999999999999,
-            "ru_stime_sec": 0.027876999999999999,
-            "ru_minflt": 12864,
-            "ru_majflt": 0,
-            "ru_nivcsw": 2
-        },
-        "CodeGen(%)": 0.51134547778841954
-    },
     "NameTable": {
-        "sv_server": [
-            "sv_server",
-            "NI4bB",
-            "module"
-        ],
         "std": [
             "std",
             "reYIK",
+            "module"
+        ],
+        "top": [
+            "top",
+            "Emx8S",
+            "module"
+        ],
+        "cadss_interconnect": [
+            "cadss_interconnect",
+            "kBiSq",
             "module"
         ],
         "...MASTER...": [
@@ -101,20 +68,69 @@
             "module"
         ]
     },
-    "CompileStrategy": "fullobj",
-    "CurCompileUdps": {},
     "SIMBData": {
-        "out": "amcQwB.o",
-        "bytes": 58687
+        "bytes": 59607,
+        "out": "amcQwB.o"
     },
+    "stat": {
+        "ru_self_cgstart": {
+            "ru_utime_sec": 0.027261000000000001,
+            "ru_majflt": 0,
+            "ru_stime_sec": 0.017524999999999999,
+            "ru_maxrss_kb": 47372,
+            "ru_minflt": 12519,
+            "ru_nvcsw": 132,
+            "ru_nivcsw": 1
+        },
+        "ru_childs_cgstart": {
+            "ru_utime_sec": 0.0,
+            "ru_majflt": 0,
+            "ru_stime_sec": 0.0,
+            "ru_maxrss_kb": 0,
+            "ru_minflt": 0,
+            "ru_nvcsw": 0,
+            "ru_nivcsw": 0
+        },
+        "nMops": 0,
+        "nQuads": 4,
+        "ru_childs_end": {
+            "ru_utime_sec": 0.0,
+            "ru_majflt": 0,
+            "ru_stime_sec": 0.0,
+            "ru_maxrss_kb": 0,
+            "ru_minflt": 0,
+            "ru_nvcsw": 0,
+            "ru_nivcsw": 0
+        },
+        "outputSizePerQuad": 16813.0,
+        "totalObjSize": 67252,
+        "ru_self_end": {
+            "ru_utime_sec": 0.029451999999999999,
+            "ru_majflt": 0,
+            "ru_stime_sec": 0.021852,
+            "ru_maxrss_kb": 50768,
+            "ru_minflt": 13770,
+            "ru_nvcsw": 171,
+            "ru_nivcsw": 1
+        },
+        "Frontend(%)": 92.560776857259285,
+        "CodeGen(%)": 7.439223142740726
+    },
+    "CurCompileUdps": {},
     "CurCompileModules": [
         "...MASTER..."
     ],
-    "LVLData": [
-        "SIM"
-    ],
+    "Misc": {
+        "cwd": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_stuff",
+        "daidir_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_stuff/simv.daidir",
+        "daidir": "simv.daidir",
+        "csrc": "csrc",
+        "csrc_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_stuff/csrc",
+        "archive_dir": "archive.39",
+        "default_output_dir": "csrc"
+    },
+    "PEModules": [],
     "CompileProcesses": [
-        "cgproc.30162.json"
-    ],
-    "CompileStatus": "Successful"
+        "cgproc.32201.json"
+    ]
 }

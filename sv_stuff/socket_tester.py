@@ -8,7 +8,9 @@ PORT = 12345  # The port used by the server
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     for i in range(5):
-        s.sendall(b"tick")
+        print("\t\tPython: Sending tick...")
+        s.sendall(b"tick\n")
         data = s.recv(1024)
-        print(f"Received {data!r}")
-    s.sendall(b"quit")
+        print(f"\t\tPython: Received {data!r}")
+    print("\t\tPython: Sending quit...")
+    s.sendall(b"quit\n")
