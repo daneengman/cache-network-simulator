@@ -1,6 +1,8 @@
-module cadss_interconnect (
-  output logic clk, rst_l
-);
+module cadss_interconnect ();
+
+  logic clk, rst_l;
+
+  ring interconnect(.*);
 
   // Importing DPI functions for socket communication
   import "DPI-C" function int sv_socket_open(int port);

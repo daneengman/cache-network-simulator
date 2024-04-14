@@ -1,5 +1,5 @@
 0 
-23
+22
 -Mamsrun=
 -Masflags=
 -Mcc=gcc
@@ -22,7 +22,6 @@
 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/bin/vcs1
 cadss_interconnect.sv
 ring.sv
-top.sv
 45
 sysc_uni_pwd=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/sv_stuff
 XDG_SESSION_ID=350
@@ -70,14 +69,13 @@ CVS_RSH=ssh
 BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
 AKLOG=/usr/bin/aklog
 0
-3
-1713110315 top.sv
+2
 1713111300 ring.sv
-1713122069 cadss_interconnect.sv
+1713122427 cadss_interconnect.sv
 5
 1713122257 socket_wrappers.cpp
 0 
 1440563255 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libvirsim.so
 1440562843 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so
 1440562824 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libsnpsmalloc.so
-1713122259 simv.daidir
+1713122436 simv.daidir
