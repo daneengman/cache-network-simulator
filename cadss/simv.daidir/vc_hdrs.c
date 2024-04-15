@@ -128,27 +128,49 @@ __attribute__((weak)) int sv_socket_send(/* INPUT */int A_1, const /* INPUT */sv
 }
 #endif /* __VCS_IMPORT_DPI_STUB_sv_socket_send */
 
-#ifndef __VCS_IMPORT_DPI_STUB_ack_tick
-#define __VCS_IMPORT_DPI_STUB_ack_tick
-__attribute__((weak)) int ack_tick()
+#ifndef __VCS_IMPORT_DPI_STUB_ack
+#define __VCS_IMPORT_DPI_STUB_ack
+__attribute__((weak)) int ack(/* INPUT */int A_1)
 {
     static int _vcs_dpi_stub_initialized_ = 0;
-    static int (*_vcs_dpi_fp_)() = NULL;
+    static int (*_vcs_dpi_fp_)(/* INPUT */int A_1) = NULL;
     if (!_vcs_dpi_stub_initialized_) {
         _vcs_dpi_stub_initialized_ = 1;
-        _vcs_dpi_fp_ = (int (*)()) dlsym(RTLD_NEXT, "ack_tick");
+        _vcs_dpi_fp_ = (int (*)(int A_1)) dlsym(RTLD_NEXT, "ack");
     }
     if (_vcs_dpi_fp_) {
-        return _vcs_dpi_fp_();
+        return _vcs_dpi_fp_(A_1);
     } else {
         const char *fileName;
         int lineNumber;
         svGetCallerInfo(&fileName, &lineNumber);
-        vcsMsgReport1("DPI-DIFNF", fileName, lineNumber, 0, 0, "ack_tick");
+        vcsMsgReport1("DPI-DIFNF", fileName, lineNumber, 0, 0, "ack");
         return 0;
     }
 }
-#endif /* __VCS_IMPORT_DPI_STUB_ack_tick */
+#endif /* __VCS_IMPORT_DPI_STUB_ack */
+
+#ifndef __VCS_IMPORT_DPI_STUB_process_cache_transfer
+#define __VCS_IMPORT_DPI_STUB_process_cache_transfer
+__attribute__((weak)) int process_cache_transfer(/* OUTPUT */int *A_1, /* OUTPUT */long long *A_2, /* OUTPUT */int *A_3, /* OUTPUT */int *A_4)
+{
+    static int _vcs_dpi_stub_initialized_ = 0;
+    static int (*_vcs_dpi_fp_)(/* OUTPUT */int *A_1, /* OUTPUT */long long *A_2, /* OUTPUT */int *A_3, /* OUTPUT */int *A_4) = NULL;
+    if (!_vcs_dpi_stub_initialized_) {
+        _vcs_dpi_stub_initialized_ = 1;
+        _vcs_dpi_fp_ = (int (*)(int* A_1, long long* A_2, int* A_3, int* A_4)) dlsym(RTLD_NEXT, "process_cache_transfer");
+    }
+    if (_vcs_dpi_fp_) {
+        return _vcs_dpi_fp_(A_1, A_2, A_3, A_4);
+    } else {
+        const char *fileName;
+        int lineNumber;
+        svGetCallerInfo(&fileName, &lineNumber);
+        vcsMsgReport1("DPI-DIFNF", fileName, lineNumber, 0, 0, "process_cache_transfer");
+        return 0;
+    }
+}
+#endif /* __VCS_IMPORT_DPI_STUB_process_cache_transfer */
 
 
 #ifdef __cplusplus

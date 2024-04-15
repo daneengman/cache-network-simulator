@@ -64,7 +64,7 @@ static const char* req_type_map[]
 
 
 const int CACHE_DELAY = 10;
-const int CACHE_TRANSFER = 10;
+const int CACHE_TRANSFER = 100;
 
 void registerCoher(coher* cc);
 void busReq(bus_req_type brt, uint64_t addr, int procNum);
@@ -182,13 +182,24 @@ interconn* init(inter_sim_args* isa)
         assert(false);
     }
 
-    // TODO initiate reset sequence
+    // command reset
+    if (send(sockfd, "reset\n", strlen("reset\n"), 0) == -1) {
+        perror("send");
+        assert(false);
+    }
+    // printf("\t\tSent reset, waiting for response\n");
+    char buffer[1024] = {0};
+    if (recv(sockfd, buffer, sizeof(buffer), 0) == -1) {
+        perror("recv");
+        exit(EXIT_FAILURE);
+    }
 
     return self;
 }
 
 int countDown = 0;
 int lastProc = 0; // for round robin arbitration
+int waitOnCacheTransfer = 0;
 
 void registerCoher(coher* cc)
 {
@@ -209,7 +220,7 @@ void memReqCallback(int procNum, uint64_t addr)
 }
 
 void busReq(bus_req_type brt, uint64_t addr, int procNum)
-{
+{   
     printf("Bus request %s\n",req_type_map[brt]);
     if (pendingRequest == NULL)
     {
@@ -217,13 +228,15 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
 
         bus_req* nextReq = calloc(1, sizeof(bus_req));
         nextReq->brt = brt;
-        nextReq->currentState = WAITING_CACHE;
+        nextReq->currentState = WAITING_CACHE; // go look in the cache and see if we own it? 
         nextReq->addr = addr;
         nextReq->procNum = procNum;
         nextReq->dataAvail = 0;
 
         pendingRequest = nextReq;
         countDown = CACHE_DELAY;
+
+
 
         return;
     }
@@ -237,7 +250,25 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
         assert(pendingRequest->currentState == WAITING_MEMORY);
         pendingRequest->data = 1;
         pendingRequest->currentState = TRANSFERING_CACHE;
-        countDown = CACHE_TRANSFER;
+        // TODO place these into wrapper functions
+        if (send(sockfd, "cacheTransfer\n", strlen("cacheTransfer\n"), 0) == -1) {
+            perror("send");
+            assert(false);
+        }
+        // printf("\t\tSent tick, waiting for response\n");
+        char buffer[1024] = {0};
+        if (recv(sockfd, buffer, sizeof(buffer), 0) == -1) {
+            perror("recv");
+            exit(EXIT_FAILURE);
+        }
+        char message[1024];
+        sprintf(message, "brt: %i, addr: %li, procNumSource: %i, procNumDest: %i", brt, addr, procNum, pendingRequest->procNum);
+        if (send(sockfd, message, strlen(message), 0) == -1) {
+            perror("send");
+            assert(false);
+        }
+        countDown = CACHE_TRANSFER; // Another processor called busReq from its coherence engine and now is working on sending it - we want to more accurately simulate this
+        waitOnCacheTransfer = 1;
         return;
     }
     else
@@ -266,13 +297,16 @@ int tick()
         perror("send");
         assert(false);
     }
-    printf("\t\tSent tick, waiting for response\n");
+    // printf("\t\tSent tick, waiting for response\n");
     char buffer[1024] = {0};
     if (recv(sockfd, buffer, sizeof(buffer), 0) == -1) {
         perror("recv");
         exit(EXIT_FAILURE);
     }
-    printf("\t\tC Program Received '%s'\n", buffer);
+    int cacheTransferCountDown;
+    sscanf(buffer, "ack countdown: %i\n", &cacheTransferCountDown);
+    // printf("\t\tC Program Received '%s'\n", buffer);
+    // TODO handle if it is ack or informing us of something, handle appropriately 
 
     if (self->dbgEnv.cadssDbgWatchedComp && !self->dbgEnv.cadssDbgNotifyState)
     {
@@ -283,6 +317,10 @@ int tick()
     {
         assert(pendingRequest != NULL);
         countDown--;
+
+        if (waitOnCacheTransfer) {
+            countDown = cacheTransferCountDown;
+        }
 
         // If the count-down has elapsed (or there hasn't been a
         // cache-to-cache transfer, the memory will respond with
@@ -342,6 +380,7 @@ int tick()
                 interconnNotifyState();
                 free(pendingRequest);
                 pendingRequest = NULL;
+                waitOnCacheTransfer = 0;
             }
         }
     }
@@ -420,7 +459,6 @@ int busReqCacheTransfer(uint64_t addr, int procNum)
     assert(pendingRequest);
 
     if (addr == pendingRequest->addr && procNum == pendingRequest->procNum) {
-        // printf(" cache return\n");
         return (pendingRequest->currentState == TRANSFERING_CACHE);
     }
 
@@ -435,13 +473,11 @@ int finish(int outFd)
 
 int destroy(void)
 {
-    printf("Finished!\n");
     if (send(sockfd, "quit\n", strlen("quit\n"), 0) == -1) {
         perror("send");
         assert(false);
     }
     close(sockfd);
-    printf("Destroyed!\n");
     memComp->si.destroy();
     return 0;
 }

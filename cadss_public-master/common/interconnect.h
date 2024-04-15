@@ -6,12 +6,12 @@ struct _memory;
 
 typedef enum _bus_req_type
 {
-    NO_REQ,
-    BUSRD,
-    BUSWR,
-    DATA,
-    SHARED,
-    MEMORY
+    NO_REQ = 0,
+    BUSRD = 1,
+    BUSWR = 2,
+    DATA = 3,
+    SHARED = 4,
+    MEMORY = 5
 } bus_req_type;
 
 #include "coherence.h"

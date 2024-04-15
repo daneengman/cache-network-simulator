@@ -9,7 +9,14 @@ module cadss_interconnect ();
   import "DPI-C" function int sv_socket_accept(int socket_fd);
   import "DPI-C" function int sv_socket_receive(int socket_fd, byte buffer[], int size);
   import "DPI-C" function int sv_socket_send(int socket_fd, byte buffer[], int size);
-  import "DPI-C" function int ack_tick();
+  import "DPI-C" function int ack(int countdown);
+  import "DPI-C" function int process_cache_transfer(output int brt, output longint addr, output int procNumSource, output int procNumDest);
+//   extern "C" int process_bus_request(int *brt, uint64_t *addr, int *procNum) {
+//     ack();
+//     uint8_t buf[1024];
+//     int bytes_received = recv(socket_fd, buf, 1024, 0);
+//     sscanf(buf, "brt: %i, addr: %li, procNum: %i", brt, addr, procNum);
+// }
 
   // Define port for server to listen on
   parameter int SERVER_PORT = 18240;
@@ -23,6 +30,11 @@ module cadss_interconnect ();
     #5;
   endtask
 
+  task reset;
+    rst_l <= 0;
+    rst_l = 1;
+  endtask
+
   // Entry point for server
   initial begin
     int socket_fd;
@@ -31,6 +43,11 @@ module cadss_interconnect ();
     byte send_buffer[] = '{"h","e","l","l","o"," ","w","o","r","l","d"};
     int count;
     int res;
+    int brt;
+    longint addr;
+    int procNumSource;
+    int procNumDest;
+    int countdown;
 
     // Open socket on specified port
     socket_fd = sv_socket_open(SERVER_PORT);
@@ -53,14 +70,27 @@ module cadss_interconnect ();
       res = sv_socket_receive(client_socket_fd, buffer, BUFFER_SIZE);
       
       if (res == 1) begin
-        $display("Received tick");
+        // $display("Received tick");
         clk_tick();
-        ack_tick();
+        if (countdown != 0) begin
+          countdown--;
+        end
+        ack(countdown);
       end
 
-      else if (res == -1) begin
+      else if (res == 0) begin
         $display("Received quit command...");
         break;
+      end else if (res == 2) begin 
+        $display("Resetting interconnect...");
+        reset();
+        count = 0;
+        ack(countdown);
+      end else if (res == 3) begin 
+        ack(countdown);
+        process_cache_transfer(brt, addr, procNumSource, procNumDest);
+        $display("Received %d, %d, %d, %d",brt,addr,procNumSource,procNumDest);
+        countdown = 400; // TODO change this
       end else begin
         $error("Received nothing comprehensible");
         $finish();
@@ -72,7 +102,7 @@ module cadss_interconnect ();
       //   $display("Response sent to client");
       // end
 
-      if (count > 1000) begin
+      if (count > 10000) begin
         $error("Too many fails");
         $finish();
       end

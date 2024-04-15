@@ -1,102 +1,51 @@
 {
-    "CompileStatus": "Successful",
-    "LVLData": [
-        "SIM"
-    ],
     "MlibObjs": {},
+    "CurCompileModules": [
+        "...MASTER...",
+        "cadss_interconnect"
+    ],
+    "CompileStatus": "Successful",
+    "CurCompileUdps": {},
     "PrevCompiledModules": {
+        "cadss_interconnect": {
+            "kBiSq_d": {
+                "bytes": 22906,
+                "out": "kBiSq_d.o",
+                "mod": "cadss_interconnect",
+                "mode": 4,
+                "checksum": 4294967295,
+                "archive": "archive.36/_251517_archive_1.a"
+            }
+        },
         "std": {
             "reYIK_d": {
                 "bytes": 28470,
-                "mod": "std",
-                "checksum": 4294967295,
-                "mode": 4,
                 "out": "reYIK_d.o",
-                "archive": "archive.14/_prev_archive_1.a"
-            }
-        },
-        "cadss_interconnect": {
-            "kBiSq_d": {
-                "bytes": 19321,
-                "mod": "cadss_interconnect",
-                "archive": "archive.14/_82509_archive_1.a",
-                "out": "kBiSq_d.o",
+                "mod": "std",
+                "mode": 4,
                 "checksum": 4294967295,
-                "mode": 4
+                "archive": "archive.36/_prev_archive_1.a"
             }
         },
         "...MASTER...": {
             "amcQw_d": {
                 "bytes": 7295,
-                "mod": "...MASTER...",
                 "out": "objs/amcQw_d.o",
-                "checksum": 4294967295,
-                "mode": 4
+                "mod": "...MASTER...",
+                "mode": 4,
+                "checksum": 4294967295
             }
         }
     },
-    "stat": {
-        "ru_self_cgstart": {
-            "ru_utime_sec": 0.048904999999999997,
-            "ru_stime_sec": 0.034336999999999999,
-            "ru_maxrss_kb": 46928,
-            "ru_minflt": 12431,
-            "ru_majflt": 0,
-            "ru_nivcsw": 4,
-            "ru_nvcsw": 126
-        },
-        "ru_childs_cgstart": {
-            "ru_utime_sec": 0.0,
-            "ru_stime_sec": 0.0,
-            "ru_maxrss_kb": 0,
-            "ru_minflt": 0,
-            "ru_majflt": 0,
-            "ru_nivcsw": 0,
-            "ru_nvcsw": 0
-        },
-        "nMops": 188,
-        "nQuads": 137,
-        "ru_childs_end": {
-            "ru_utime_sec": 0.0,
-            "ru_stime_sec": 0.0,
-            "ru_maxrss_kb": 0,
-            "ru_minflt": 0,
-            "ru_majflt": 0,
-            "ru_nivcsw": 0,
-            "ru_nvcsw": 0
-        },
-        "CodeGen(%)": 11.669616732290578,
-        "totalObjSize": 86239,
-        "ru_self_end": {
-            "ru_utime_sec": 0.055365999999999999,
-            "ru_stime_sec": 0.054377000000000002,
-            "ru_maxrss_kb": 53360,
-            "ru_minflt": 14367,
-            "ru_majflt": 0,
-            "ru_nivcsw": 5,
-            "ru_nvcsw": 190
-        },
-        "outputSizePerQuad": 629.0,
-        "Frontend(%)": 88.330383267709422
-    },
-    "Misc": {
-        "cwd": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss",
-        "archive_dir": "archive.14",
-        "csrc_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/csrc",
-        "csrc": "csrc",
-        "default_output_dir": "csrc",
-        "daidir": "simv.daidir",
-        "daidir_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simv.daidir"
-    },
     "NameTable": {
-        "std": [
-            "std",
-            "reYIK",
-            "module"
-        ],
         "cadss_interconnect": [
             "cadss_interconnect",
             "kBiSq",
+            "module"
+        ],
+        "std": [
+            "std",
+            "reYIK",
             "module"
         ],
         "...MASTER...": [
@@ -106,17 +55,68 @@
         ]
     },
     "CompileStrategy": "fullobj",
-    "CurCompileModules": [
-        "...MASTER...",
-        "cadss_interconnect"
-    ],
-    "CurCompileUdps": {},
+    "stat": {
+        "outputSizePerQuad": 438.0,
+        "Frontend(%)": 86.775240311026749,
+        "ru_self_cgstart": {
+            "ru_nivcsw": 4,
+            "ru_minflt": 12457,
+            "ru_stime_sec": 0.029891999999999998,
+            "ru_utime_sec": 0.056691999999999999,
+            "ru_maxrss_kb": 47008,
+            "ru_majflt": 0,
+            "ru_nvcsw": 127
+        },
+        "nMops": 297,
+        "nQuads": 206,
+        "ru_childs_cgstart": {
+            "ru_nivcsw": 0,
+            "ru_minflt": 0,
+            "ru_stime_sec": 0.0,
+            "ru_utime_sec": 0.0,
+            "ru_maxrss_kb": 0,
+            "ru_majflt": 0,
+            "ru_nvcsw": 0
+        },
+        "totalObjSize": 90416,
+        "ru_self_end": {
+            "ru_nivcsw": 5,
+            "ru_minflt": 14408,
+            "ru_stime_sec": 0.048245000000000003,
+            "ru_utime_sec": 0.065332000000000001,
+            "ru_maxrss_kb": 53512,
+            "ru_majflt": 0,
+            "ru_nvcsw": 193
+        },
+        "ru_childs_end": {
+            "ru_nivcsw": 0,
+            "ru_minflt": 0,
+            "ru_stime_sec": 0.0,
+            "ru_utime_sec": 0.0,
+            "ru_maxrss_kb": 0,
+            "ru_majflt": 0,
+            "ru_nvcsw": 0
+        },
+        "CodeGen(%)": 13.224759688973247
+    },
     "SIMBData": {
         "out": "amcQwB.o",
-        "bytes": 59623
+        "bytes": 60215
     },
+    "LVLData": [
+        "SIM"
+    ],
     "PEModules": [],
     "CompileProcesses": [
-        "cgproc.82509.json"
-    ]
+        "cgproc.251517.json"
+    ],
+    "Misc": {
+        "cwd": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss",
+        "csrc": "csrc",
+        "daidir_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simv.daidir",
+        "csrc_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/csrc",
+        "archive_dir": "archive.36",
+        "daidir": "simv.daidir",
+        "default_output_dir": "csrc"
+    }
 }

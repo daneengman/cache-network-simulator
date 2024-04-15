@@ -7,4 +7,6 @@
 
  extern int sv_socket_send(/* INPUT */int socket_fd, const /* INPUT */svOpenArrayHandle buffer, /* INPUT */int size);
 
- extern int ack_tick();
+ extern int ack(/* INPUT */int countdown);
+
+ extern int process_cache_transfer(/* OUTPUT */int *brt, /* OUTPUT */long long *addr, /* OUTPUT */int *procNumSource, /* OUTPUT */int *procNumDest);
