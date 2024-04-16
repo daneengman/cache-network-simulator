@@ -67,7 +67,8 @@ extern "C" int sv_socket_accept(int socket_fd) {
 }
 
 // DPI function to receive data from a socket
-extern "C" int sv_socket_receive(int socket_fd, unsigned char *buffer, int size) {
+// TODO rename this
+extern "C" int sv_socket_receive(int socket_fd) {
     uint8_t buf[1024];
     int bytes_received = recv(socket_fd, buf, 1024, 0);
     // printf("Receiving with socketfd %i\n",socket_fd);
@@ -114,7 +115,7 @@ int socket_send(const unsigned char *buffer, int size) {
 
 extern "C" int ack(int countdown) {
     char buffer[1024];
-    int len = sprintf(buffer, "ack countdown: %i\n", countdown);
+    int len = sprintf(buffer, "ack received: %i\n", countdown);
     int bytes_sent = socket_send((const unsigned char *)buffer, len);
     // printf("Sent ack with result %i\n",bytes_sent);
 }

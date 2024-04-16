@@ -1,53 +1,51 @@
 module cadss_interconnect ();
-
+  localparam NUM_PROC = 4;
+  
   logic clk, rst_l;
+  logic [NUM_PROC-1:0] request;
+  logic [NUM_PROC-1:0][$clog2(NUM_PROC):0] request_dest;
+  logic processed_request;
+  logic [NUM_PROC-1:0] request_avail;
 
-  bus interconnect(.*);
+  bus #(.NUM_PROC(NUM_PROC)) interconnect(.*);
 
   // Importing DPI functions for socket communication
   import "DPI-C" function int sv_socket_open(int port);
   import "DPI-C" function int sv_socket_accept(int socket_fd);
-  import "DPI-C" function int sv_socket_receive(int socket_fd, byte buffer[], int size);
-  import "DPI-C" function int sv_socket_send(int socket_fd, byte buffer[], int size);
+  import "DPI-C" function int sv_socket_receive(int socket_fd);
   import "DPI-C" function int ack(int countdown);
   import "DPI-C" function int process_cache_transfer(output int brt, output longint addr, output int procNumSource, output int procNumDest);
-//   extern "C" int process_bus_request(int *brt, uint64_t *addr, int *procNum) {
-//     ack();
-//     uint8_t buf[1024];
-//     int bytes_received = recv(socket_fd, buf, 1024, 0);
-//     sscanf(buf, "brt: %i, addr: %li, procNum: %i", brt, addr, procNum);
-// }
 
   // Define port for server to listen on
   parameter int SERVER_PORT = 18240;
 
-  // Define buffer size for receiving messages
-  parameter int BUFFER_SIZE = 1024;
-
   task clk_tick;
     clk <= 1;
     #5 clk <= 0;
+    request <= '0;
+    request_dest = '0;
     #5;
   endtask
 
   task reset;
     rst_l <= 0;
     rst_l = 1;
+    request <= '0;
+    request_dest = '0;
   endtask
 
   // Entry point for server
   initial begin
     int socket_fd;
     int client_socket_fd;
-    byte buffer[BUFFER_SIZE];
-    byte send_buffer[] = '{"h","e","l","l","o"," ","w","o","r","l","d"};
-    int count;
+    int parse_result;
     int res;
     int brt;
     longint addr;
     int procNumSource;
     int procNumDest;
     int countdown;
+    int fail_count;
 
     // Open socket on specified port
     socket_fd = sv_socket_open(SERVER_PORT);
@@ -65,55 +63,49 @@ module cadss_interconnect ();
       $display("Client connected");
     end
 
-    count = 0;
     while (1) begin
-      res = sv_socket_receive(client_socket_fd, buffer, BUFFER_SIZE);
+      parse_result = sv_socket_receive(client_socket_fd);
       
-      if (res == 1) begin
+      if (parse_result == 1) begin
         // $display("Received tick");
         clk_tick();
-        if (countdown != 0) begin
-          countdown--;
+        for (int i = 0; i < NUM_PROC; i++) begin
+          if (request_avail[i])
+            ack(i);
         end
-        ack(countdown);
+        ack(-1);
       end
 
-      else if (res == 0) begin
+      else if (parse_result == 0) begin
         $display("Received quit command...");
         break;
-      end else if (res == 2) begin 
+      end else if (parse_result == 2) begin 
         $display("Resetting interconnect...");
         reset();
-        count = 0;
-        ack(countdown);
-      end else if (res == 3) begin 
-        ack(countdown);
+        ack(-1);
+      end else if (parse_result == 3) begin 
+        ack(-1);
         process_cache_transfer(brt, addr, procNumSource, procNumDest);
         $display("Received %d, %d, %d, %d",brt,addr,procNumSource,procNumDest);
-        countdown = 400; // TODO change this
+        request[procNumSource] = 1'b1;
+        request_dest[procNumSource] = procNumDest;
       end else begin
         $error("Received nothing comprehensible");
         $finish();
       end
 
-      // if (sv_socket_send(client_socket_fd, send_buffer, $size(send_buffer)) < 0) begin
-      //   $fatal("Failed to send response to client");
-      // end else begin
-      //   $display("Response sent to client");
-      // end
-
-      if (count > 10000) begin
+      if (fail_count > 10000) begin
         $error("Too many fails");
         $finish();
       end
       
 
       // if (sv_socket_send(client_socket_fd, send_buffer, $size(send_buffer)) < 0) begin
-      //   $fatal("Failed to send response to client");
+      //   $fatal("Failed to send parse_resultponse to client");
       // end else begin
       //   $display("Response sent to client");
       // end
-      count++;
+      fail_count++;
     end
 
     // Close sockets

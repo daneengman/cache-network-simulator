@@ -303,9 +303,20 @@ int tick()
         perror("recv");
         exit(EXIT_FAILURE);
     }
-    int cacheTransferCountDown;
-    sscanf(buffer, "ack countdown: %i\n", &cacheTransferCountDown);
-    // printf("\t\tC Program Received '%s'\n", buffer);
+    int cacheTransferFinished = 0;
+    int received;
+    bool finished = false;
+    printf("\t\tC Program Received '%s'\n", buffer);
+    char *str_p = buffer;
+    while (!finished) {
+        sscanf(str_p, "ack receied: %i\n", &received);
+        if (received == -1) 
+            finished = true;
+        else
+            cacheTransferFinished = 1;
+        str_p = strchr(str_p,'\n') + 1;
+    }
+    
     // TODO handle if it is ack or informing us of something, handle appropriately 
 
     if (self->dbgEnv.cadssDbgWatchedComp && !self->dbgEnv.cadssDbgNotifyState)
@@ -319,7 +330,7 @@ int tick()
         countDown--;
 
         if (waitOnCacheTransfer) {
-            countDown = cacheTransferCountDown;
+            countDown = (cacheTransferFinished) ? 0 : 1;
         }
 
         // If the count-down has elapsed (or there hasn't been a

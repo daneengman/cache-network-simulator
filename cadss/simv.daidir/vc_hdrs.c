@@ -86,16 +86,16 @@ __attribute__((weak)) int sv_socket_accept(/* INPUT */int A_1)
 
 #ifndef __VCS_IMPORT_DPI_STUB_sv_socket_receive
 #define __VCS_IMPORT_DPI_STUB_sv_socket_receive
-__attribute__((weak)) int sv_socket_receive(/* INPUT */int A_1, const /* INPUT */svOpenArrayHandle A_2, /* INPUT */int A_3)
+__attribute__((weak)) int sv_socket_receive(/* INPUT */int A_1)
 {
     static int _vcs_dpi_stub_initialized_ = 0;
-    static int (*_vcs_dpi_fp_)(/* INPUT */int A_1, const /* INPUT */svOpenArrayHandle A_2, /* INPUT */int A_3) = NULL;
+    static int (*_vcs_dpi_fp_)(/* INPUT */int A_1) = NULL;
     if (!_vcs_dpi_stub_initialized_) {
         _vcs_dpi_stub_initialized_ = 1;
-        _vcs_dpi_fp_ = (int (*)(int A_1, const svOpenArrayHandle A_2, int A_3)) dlsym(RTLD_NEXT, "sv_socket_receive");
+        _vcs_dpi_fp_ = (int (*)(int A_1)) dlsym(RTLD_NEXT, "sv_socket_receive");
     }
     if (_vcs_dpi_fp_) {
-        return _vcs_dpi_fp_(A_1, A_2, A_3);
+        return _vcs_dpi_fp_(A_1);
     } else {
         const char *fileName;
         int lineNumber;
@@ -105,28 +105,6 @@ __attribute__((weak)) int sv_socket_receive(/* INPUT */int A_1, const /* INPUT *
     }
 }
 #endif /* __VCS_IMPORT_DPI_STUB_sv_socket_receive */
-
-#ifndef __VCS_IMPORT_DPI_STUB_sv_socket_send
-#define __VCS_IMPORT_DPI_STUB_sv_socket_send
-__attribute__((weak)) int sv_socket_send(/* INPUT */int A_1, const /* INPUT */svOpenArrayHandle A_2, /* INPUT */int A_3)
-{
-    static int _vcs_dpi_stub_initialized_ = 0;
-    static int (*_vcs_dpi_fp_)(/* INPUT */int A_1, const /* INPUT */svOpenArrayHandle A_2, /* INPUT */int A_3) = NULL;
-    if (!_vcs_dpi_stub_initialized_) {
-        _vcs_dpi_stub_initialized_ = 1;
-        _vcs_dpi_fp_ = (int (*)(int A_1, const svOpenArrayHandle A_2, int A_3)) dlsym(RTLD_NEXT, "sv_socket_send");
-    }
-    if (_vcs_dpi_fp_) {
-        return _vcs_dpi_fp_(A_1, A_2, A_3);
-    } else {
-        const char *fileName;
-        int lineNumber;
-        svGetCallerInfo(&fileName, &lineNumber);
-        vcsMsgReport1("DPI-DIFNF", fileName, lineNumber, 0, 0, "sv_socket_send");
-        return 0;
-    }
-}
-#endif /* __VCS_IMPORT_DPI_STUB_sv_socket_send */
 
 #ifndef __VCS_IMPORT_DPI_STUB_ack
 #define __VCS_IMPORT_DPI_STUB_ack
