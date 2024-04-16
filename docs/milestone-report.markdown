@@ -1,19 +1,9 @@
 ---
 layout: page
-title: ""
-url: "https://daneengman.github.io/cache-network-simulator/"
+title: "Milestone Report"
+url: "https://daneengman.github.io/cache-network-simulator/milestone-report"
 ---
 
-
-
-## Summary
-
-We plan to augment Professor Railing's Computer Architecture Design
-Simulator for Students by developing a cycle-accurate network topology
-simulator that can simulate how cache coherency messages would propagate
-about the network. We plan to use this We will write the network
-simulator in SystemVerilog and integrate it into the existing C++
-framework by using the SystemVerilog DPI.
 
 ## Updated Schedule
 
@@ -83,3 +73,42 @@ power analysis based on synthesis, prepare presentation.
 
 Cushion time if other weeks take longer than expected, otherwise will be
 spent refining analysis and presentation.
+
+## Updated Poster Session Plans
+
+We continue to plan to demonstrate the effects of different networks on
+different traces, focusing on traces with high cache sharing that
+induces higher network traffic. We will compare different networks along
+with network parameters such as bandwidth and latency. To saturate the
+network we hope to simulate OOO execution. We will focus on analysis for
+the last weeks, comparing a variety of traces and how the trace's
+characteristics lead to the results demonstrated in plots.
+
+Our \"nice-to-haves\" are simulating the effects of different cache
+coherence methods and how that works with different networks (does more
+advanced cache coherence mean a cheaper or lower area interconnect can
+be used?). We also hope to analyze power and area of our designs, and
+put this in relative comparison with general CPUs, although we are
+unsure if our simulator tools will be robust enough to support this.
+
+## Setbacks and Challenges
+
+We did not anticipate the difficulty in connecting
+SystemVerilog to other languages, and we particularly
+underestimated the difficulty in integrating with CMake.
+Although we had some experience with CMake, we did not
+realize the difficulties in running with our SystemVerilog
+simulator, VCS. We briefly considered changing to a different
+language, but decided our experience with SystemVerilog would
+be more beneficial and would allow more accurate simulation without
+turning the project into writing a simulator-writing project rather than
+network analysis project.
+
+## Future Issues and Concerns
+
+We are most concerned with generating sufficient traffic for our network
+for an interesting analysis, given the current in-order execution that
+blocks on a memory request. We are interested in instead simulating an
+Out-Of-Order processor with analysis only stretching to the memory level
+(limiting the necessary complexity), but are unsure the difficulty of
+this or if it is feasible.

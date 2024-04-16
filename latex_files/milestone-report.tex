@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{booktabs}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\urlstyle{same}
+
+\title{15-418 Milestone Report}
+
+\author{Yu-Ching Wu (yuchingw) and Dane Engman (dengman)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Up-To-Date Website URL}
+\url{https://daneengman.github.io/cache-network-simulator/}
+
+\section{Updated Schedule}
+\subsection{Past Weeks}
+    \subsubsection*{Week 1 (March 27\textsuperscript{th}-April 3\textsuperscript{rd})}
+    Goal: Run basic traces on CADSS and integrate with a very simple SystemVerilog network.
+
+    Actual Progress: Ran basic traces on CADSS, discussed with Tony how we can modify for more advanced designs, experimented with a network design in $\texttt{C++}$.
+    
+    \subsubsection*{Week 2 (April 4\textsuperscript{th}-April 10\textsuperscript{th})} Goal: Develop a more complete network in SystemVerilog and test its integration with the simulator
+    
+     Actual Progress: Completed ring simulator in $\texttt{C++}$, experimented with integrating $\texttt{C++}$ with existing $\texttt{C}$ codebase. Made decision to switch back to $\texttt{SystemVerilog}$. 
+    
+    \subsubsection*{Week 3 (April 11\textsuperscript{th}-April 17\textsuperscript{th})} Goal: Develop 3 basic networks and compare performance. Describe results for midpoint result.
+
+    Actual Progress: Developed $\texttt{SystemVerilog}$ server with $\texttt{C++ DPI}$ calls to socket functions, and a corresponding client integrated into the $\texttt{CADSS}$ simulator in $\texttt{C}$. Integrated bus and ring networks. Updated $\texttt{CADSS}$ interconnect to support multiple in-flight messages. 
+
+    \subsection{Future Weeks}
+    \subsubsection*{Week 4 (April 18\textsuperscript{th}-April 24\textsuperscript{th}), Part 1} 
+    Dane: Update $\texttt{CADSS}$ simulator to support OOO execution to more accurately load network with traffic. 
+    
+    Yu-Ching: Write tree network in $\texttt{SystemVerilog}$. % You can change this to a different network or cut-through vs other ring topology if you want
+    \subsubsection*{Week 4 (April 18\textsuperscript{th}-April 24\textsuperscript{th}), Part 2} 
+    Dane: Update $\texttt{CADSS}$ simulator to support other cache coherence models (i.e. MESI) and analyze the difference on network traffic. % Do we want to ask railing in meeting if we should actually do this?
+    
+    Yu-Ching: Modify networks to more accurately reflect messages (with messages composed of individual flits) and support different techniques (cut-through vs. buffering, etc.)  % You can change this to a different network or cut-through vs other ring topology if you want
+    \subsubsection*{Week 5 (April 25\textsuperscript{th}-May 1\textsuperscript{st}), Part 1} 
+    Dane: Select traces that demonstrate notable trends in different network interconnects and capacities. Write scripts or otherwise collect data for final analysis.% Do we want to ask railing in meeting if we should actually do this?
+    
+    Yu-Ching: Finish any desired network topologies and modifications. 
+    \subsubsection*{Week 5 (April 25\textsuperscript{th}-May 1\textsuperscript{st}), Part 2} 
+    Both partners: Complete final analysis, add an additional analysis like power analysis based on synthesis, prepare presentation. 
+    \subsubsection*{Week 6 (May 2\textsuperscript{nd}-May 6\textsuperscript{th})} 
+    Cushion time if other weeks take longer than expected, otherwise will be spent refining analysis and presentation. 
+
+\section{Updated Poster Session Plans}
+We continue to plan to demonstrate the effects of different networks on different traces, focusing on traces with high cache sharing that induces higher network traffic. We will compare different networks along with network parameters such as bandwidth and latency. To saturate the network we hope to simulate OOO execution. We will focus on analysis for the last weeks, comparing a variety of traces and how the trace's characteristics lead to the results demonstrated in plots. 
+
+Our "nice-to-haves" are simulating the effects of different cache coherence methods and how that works with different networks (does more advanced cache coherence mean a cheaper or lower area interconnect can be used?). We also hope to analyze power and area of our designs, and put this in relative comparison with general CPUs, although we are unsure if our simulator tools will be robust enough to support this. 
+    
+\section{Setbacks and Challenges}
+We did not anticipate the difficulty in connecting $\texttt{SystemVerilog}$ to other languages, and we particularly underestimated the difficulty in integrating with $\texttt{CMake}$. Although we had some experience with $\texttt{CMake}$, we did not realize the difficulties in running with our $\texttt{SystemVerilog}$ simulator, $\texttt{VCS}$. We briefly considered changing to a different language, but decided our experience with $\texttt{SystemVerilog}$ would be more beneficial and would allow more accurate simulation without turning the project into writing a simulator-writing project rather than network analysis project. 
+
+\section{Future Issues and Concerns}
+We are most concerned with generating sufficient traffic for our network for an interesting analysis, given the current in-order execution that blocks on a memory request. We are interested in instead simulating an Out-Of-Order processor with analysis only stretching to the memory level (limiting the necessary complexity), but are unsure the difficulty of this or if it is feasible. 
+% The milestone exists is to give you a deadline roughly halfway into the project. The following
+% are suggestions for information to include in your milestone write-up. Your goal in the writeup
+% is to assure the course staff (and yourself) that your project is proceeding as you said it would
+% in your proposal. If it is not, your milestone writeup should emphasize what has been causing
+% you problems, and provide an adjusted schedule and adjusted goals. As projects differ, not all
+% items in the list below are relevant to all projects.
+% • Make sure your project schedule on your main project page is up to date with work
+% completed so far, and well as with a revised plan of work for the coming weeks. As by this
+% time you should have a good understanding of what is required to complete your project,
+% I want to see a very detailed schedule for the coming weeks. I suggest breaking time down
+% into half-week increments. Each increment should have at least one task, and for each task
+% put a person’s name on it.
+% • One to two paragraphs, summarize the work that you have completed so far. (This should
+% be easy if you have been maintaining this information on your project page.)
+% • Describe how you are doing with respect to the goals and deliverables stated in your
+% proposal. Do you still believe you will be able to produce all your deliverables? If not,
+% why? What about the ”nice to haves”? In your milestone writeup we want a new list of
+% goals that you plan to hit for the poster session.
+% • What do you plan to show at the poster session? Will it be a demo? Will it be a graph?
+% • Do you have preliminary results at this time? If so, it would be great to included them in
+% your milestone write-up. :o
+% • List the issues that concern you the most. Are there any remaining unknowns (things you
+% simply don’t know how to solve, or resource you don’t know how to get) or is it just a
+% matter of coding and doing the work? If you do not wish to put this information on a
+% public web site you are welcome to email the staff directly.
+% 4
+% • Meet with the course staff to discuss your progress.
+% • Submit your milestone report by (i) posting it to your project web page, and (ii)
+% uploading it (a full PDF, not just a link) into Gradescope.
+
+
+\end{document}
