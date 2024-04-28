@@ -1,0 +1,98 @@
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:03 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 177.
+$finish at simulation time                   35
+Simulation complete, time is 35.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:04 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 178.
+$finish at simulation time                   35
+Simulation complete, time is 35.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:07 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 181.
+$finish at simulation time                   55
+Simulation complete, time is 55.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:09 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 181.
+$finish at simulation time                   55
+Simulation complete, time is 55.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:11 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 181.
+$finish at simulation time                   55
+Simulation complete, time is 55.
+Warning: [AD-MD] Missing dump for active drivers
+  Missing dump for the following signals when doing active drivers analysis:
+      * network_test.DUT.genblk1[0].n.buffer.Q from time 35
+      * network_test.DUT.genblk1[0].n.buffer.data_out from time 35
+      * network_test.DUT.genblk1[0].n.buffer.getPtr from time 35
+  Some drivers couldn't be analyzed and will be shown as active.
+  Please dump the listed signals if you need more precise active drivers 
+  analysis.
+2022.06/gui/dve/libraries/syn/generic.sdb'
+1 driver (1 active statement) found for signal: network_test.DUT.packetSendNext[0]
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:12 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 181.
+$finish at simulation time                   55
+Simulation complete, time is 55.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:14 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 181.
+$finish at simulation time                   55
+Simulation complete, time is 55.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:23 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 181.
+$finish at simulation time                   55
+Simulation complete, time is 55.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:25 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 181.
+$finish at simulation time                   55
+Simulation complete, time is 55.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:26 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 183.
+$finish at simulation time                   75
+Simulation complete, time is 75.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 28 09:26 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ring.sv", line 183.
+$finish at simulation time                   75
+Simulation complete, time is 75.
