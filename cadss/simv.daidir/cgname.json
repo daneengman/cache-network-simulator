@@ -1,12 +1,17 @@
 {
-    "cadss_interconnect": [
-        "cadss_interconnect",
-        "kBiSq",
-        "module"
-    ],
     "std": [
         "std",
         "reYIK",
+        "module"
+    ],
+    "bus_0000": [
+        "bus_0000",
+        "ppRQn",
+        "module"
+    ],
+    "cadss_interconnect": [
+        "cadss_interconnect",
+        "kBiSq",
         "module"
     ],
     "...MASTER...": [

@@ -298,25 +298,27 @@ int tick()
         assert(false);
     }
     // printf("\t\tSent tick, waiting for response\n");
-    char buffer[1024] = {0};
-    if (recv(sockfd, buffer, sizeof(buffer), 0) == -1) {
-        perror("recv");
-        exit(EXIT_FAILURE);
-    }
+    
     int cacheTransferFinished = 0;
     int received;
     bool finished = false;
-    printf("\t\tC Program Received '%s'\n", buffer);
-    char *str_p = buffer;
+    // printf("\t\tC Program Received '%s'\n", buffer);
+    // char *str_p = buffer;
     // printf("Hello world1\n");
     while (!finished) {
-        sscanf(str_p, "ack received: %i\n", &received);
-        // printf("Received = %i\n",received);
+        char buffer[1024] = {0};
+        if (recv(sockfd, buffer, sizeof(buffer), 0) == -1) {
+            perror("recv");
+            exit(EXIT_FAILURE);
+        }
+        sscanf(buffer, "ack received: %i\n", &received);
+        printf("Received = %i\n",received);
         if (received == -1) 
             finished = true;
         else {
+            printf("\t\tC Program Received '%s'\n", buffer);
             cacheTransferFinished = 1;
-            str_p = strchr(str_p,'\n') + 1;
+            // buffer = strchr(str_p,'\n') + 1;
         }
     }
     // printf("Hello world3\n");
