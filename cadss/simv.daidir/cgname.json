@@ -1,12 +1,17 @@
 {
+    "NetworkPkg": [
+        "NetworkPkg",
+        "IfCxx",
+        "module"
+    ],
+    "_vcs_unit__380360504": [
+        "_vcs_unit__380360504",
+        "DWH6I",
+        "module"
+    ],
     "std": [
         "std",
         "reYIK",
-        "module"
-    ],
-    "bus_0000": [
-        "bus_0000",
-        "ppRQn",
         "module"
     ],
     "cadss_interconnect": [
@@ -17,6 +22,11 @@
     "...MASTER...": [
         "SIM",
         "amcQw",
+        "module"
+    ],
+    "node": [
+        "node",
+        "Jg9WB",
         "module"
     ]
 }

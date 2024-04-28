@@ -277,6 +277,15 @@ interconnectBusSV_LIB_DEPENDS:STATIC=
 interconnectBusSV_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectBusSV
 
 //Value Computed by CMake
+interconnectRingSV_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectRingSV
+
+//Dependencies for target
+interconnectRingSV_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+interconnectRingSV_SOURCE_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectRingSV
+
+//Value Computed by CMake
 interconnect_BINARY_DIR:STATIC=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect
 
 //Value Computed by CMake
@@ -457,7 +466,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=13
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=14
 //number of local generators
 CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=12
 //ADVANCED property for variable: CMAKE_OBJCOPY

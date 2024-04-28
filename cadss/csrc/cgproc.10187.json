@@ -1,0 +1,21 @@
+{
+    "Modules": {
+        "node": {},
+        "...MASTER...": {},
+        "NetworkPkg": {},
+        "_vcs_unit__380360504": {},
+        "std": {},
+        "cadss_interconnect": {}
+    },
+    "CompUnits": {
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "out": "objs/amcQw_d.o",
+            "bytes": 7599,
+            "mode": 4,
+            "checksum": 4294967295
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": []
+}
