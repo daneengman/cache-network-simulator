@@ -308,15 +308,18 @@ int tick()
     bool finished = false;
     printf("\t\tC Program Received '%s'\n", buffer);
     char *str_p = buffer;
+    // printf("Hello world1\n");
     while (!finished) {
-        sscanf(str_p, "ack receied: %i\n", &received);
+        sscanf(str_p, "ack received: %i\n", &received);
+        // printf("Received = %i\n",received);
         if (received == -1) 
             finished = true;
-        else
+        else {
             cacheTransferFinished = 1;
-        str_p = strchr(str_p,'\n') + 1;
+            str_p = strchr(str_p,'\n') + 1;
+        }
     }
-    
+    // printf("Hello world3\n");
     // TODO handle if it is ack or informing us of something, handle appropriately 
 
     if (self->dbgEnv.cadssDbgWatchedComp && !self->dbgEnv.cadssDbgNotifyState)

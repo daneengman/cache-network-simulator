@@ -1,0 +1,18 @@
+{
+    "Modules": {
+        "...MASTER...": {},
+        "cadss_interconnect": {},
+        "std": {}
+    },
+    "CompUnits": {
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "checksum": 4294967295,
+            "out": "objs/amcQw_d.o",
+            "bytes": 7295,
+            "mode": 4
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": []
+}

@@ -1,5 +1,5 @@
 0 
-22
+23
 -Mamsrun=
 -Masflags=
 -Mcc=gcc
@@ -7,7 +7,7 @@
 -Mcplusplus=g++
 -Mcrt0=
 -Mcrtn=
--Mcsrc=interconnectBusSV/sv/socket_wrappers.cpp
+-Mcsrc=
 -Mexternalobj=
 -Mldflags= -rdynamic
 -Mobjects= /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libvirsim.so /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libsnpsmalloc.so
@@ -16,19 +16,20 @@
 -Msyslibs=-ldl
 -Mvcsaceobjs=
 -Mxcflags= -pipe -fPIC -I/afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/include
+-Xvcs_run_simv=1
 -gen_obj
 -picarchive
 -sverilog
 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/bin/vcs1
-interconnectBusSV/sv/bus.sv
-interconnectBusSV/sv/cadss_interconnect.sv
+bus.sv
+bus_tester.sv
 55
-sysc_uni_pwd=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+sysc_uni_pwd=/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectBusSV/sv
 no_proxy=localhost,127.0.0.1,.cmu.edu,.cmu.local
 https_proxy=http://proximus.ece.cmu.edu:3128/
 http_proxy=http://proximus.ece.cmu.edu:3128/
 ftp_proxy=http://proximus.ece.cmu.edu:3128/
-XDG_SESSION_ID=26239
+XDG_SESSION_ID=142992
 XDG_RUNTIME_DIR=/run/user/2684643
 XDG_DATA_DIRS=/afs/andrew.cmu.edu/usr13/dengman/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
 VMR_MODE_FLAG=32
@@ -46,9 +47,9 @@ UNAME=/bin/uname
 TOOL_HOME=/afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64
 SYNOPSYS_LICENSE=/afs/ece.cmu.edu/support/synopsys/license.dat
 SYNOPSYS_HOME=/afs/ece.cmu.edu/support/synopsys/synopsys.release
-SSH_TTY=/dev/pts/7
-SSH_CONNECTION=128.2.131.23 37480 172.19.136.193 22
-SSH_CLIENT=128.2.131.23 37480 22
+SSH_TTY=/dev/pts/97
+SSH_CONNECTION=128.2.131.23 50110 172.19.136.194 22
+SSH_CLIENT=128.2.131.23 50110 22
 SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
 SELINUX_USE_CURRENT_RANGE=
 SELINUX_ROLE_REQUESTED=
@@ -80,12 +81,10 @@ BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
 AKLOG=/usr/bin/aklog
 0
 2
-1713299648 interconnectBusSV/sv/bus.sv
-1713299596 interconnectBusSV/sv/cadss_interconnect.sv
-5
-1713299466 interconnectBusSV/sv/socket_wrappers.cpp
+1713300211 bus_tester.sv
+1713299648 bus.sv
+4
 0 
 1440563255 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libvirsim.so
 1440562843 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so
 1440562824 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libsnpsmalloc.so
-1714315954 simv.daidir
