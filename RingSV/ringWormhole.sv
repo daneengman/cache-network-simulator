@@ -3,7 +3,6 @@
 `include "Network.svh"
 `include "NetworkPkg.svg"
 
-// i n
 // ring interconnection networkc
 // outputs packets recieved by each node in each clock cycle
 // can only recieve a packet to be sent each clock cycle

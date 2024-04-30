@@ -18,15 +18,22 @@ module ring (
   output logic [`NUMNODES-1:0] recieved, // a packet is received by the current node
   output logic [`NUMNODES-1:0] full
 );
+
+  //   (input  logic [WIDTH-1:0] D,
+  //  input  logic             en, clear, load, clock, up,
+  //  output logic [WIDTH-1:0] Q);
+    logic [31:0] count;
+
+    Counter #(32) up(.D('b0), .Q(count), .en(1'b1), .clear(rst_l), .load('b0), .clock(clk), .up(1'b1));
     // packetSentNext is the packet from one node to the other
     // packetNodeRec is the packed either from outside or from other node, priority is given to other node first
     pkt_t [`NUMNODES-1:0] packetSendNext, packetNodeRec;
     logic [`NUMNODES-1:0] packetOut, packetIn;
-
+  
     genvar i;
     generate
       for (i = 0; i < `NUMNODES; i++) begin
-          node n(.clk, .rst_l,
+          node n(.clk(count[1] == 1'b0), .rst_l,
                  .nodeID(i),
                  .packetSendIn(packetNodeRec[i]),
                  .packetIn(packetIn[i]),
