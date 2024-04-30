@@ -1,0 +1,20 @@
+`include "interconnectRingSV/sv/Network.svh"
+
+`ifndef NETWORK_PKG
+  `define NETWORK_PKG
+
+  package NetworkPkg;
+    /* NoC Specification Structures and Enumerations
+     * Students are encouraged to use these definintions in their code for
+     * better readability and debugging */
+
+    // Generic fixed size packet
+    typedef struct packed {
+      logic [`ID_SIZE-1:0] src;
+      logic [`ID_SIZE-1:0] dest;
+      logic [`DATA_WIDTH-1:0] data;
+    } pkt_t;
+  endpackage : NetworkPkg
+
+  import NetworkPkg::*;
+`endif

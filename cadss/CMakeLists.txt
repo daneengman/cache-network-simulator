@@ -18,6 +18,7 @@ add_subdirectory(coherence)
 add_subdirectory(interconnect)
 add_subdirectory(interconnect-ring)
 add_subdirectory(interconnectBusSV)
+add_subdirectory(interconnectRingSV)
 add_subdirectory(simpleCache)
 add_subdirectory(memory)
 

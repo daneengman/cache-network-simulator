@@ -28,8 +28,8 @@ module cadss_interconnect ();
   endtask
 
   task reset;
-    rst_l <= 0;
-    rst_l = 1;
+    rst_l = 0;
+    rst_l <= 1;
     request <= '0;
     request_dest = '0;
   endtask
@@ -69,9 +69,13 @@ module cadss_interconnect ();
       if (parse_result == 1) begin
         // $display("Received tick");
         clk_tick();
+        $display(bus.countdown);
+        $display(bus.bus_held);
         for (int i = 0; i < NUM_PROC; i++) begin
-          if (request_avail[i])
+          if (request_avail[i]) begin
+            // $display("Something finished");
             ack(i);
+          end
         end
         ack(-1);
       end

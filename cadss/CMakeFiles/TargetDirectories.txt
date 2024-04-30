@@ -5,6 +5,7 @@
 /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect/CMakeFiles/interconnect.dir
 /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir
 /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectBusSV/CMakeFiles/interconnectBusSV.dir
+/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectRingSV/CMakeFiles/interconnectRingSV.dir
 /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/memory/CMakeFiles/memory.dir
 /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor/CMakeFiles/processor.dir
 /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simpleCache/CMakeFiles/simpleCache.dir
