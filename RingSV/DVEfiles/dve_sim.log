@@ -23,3 +23,14 @@
 17:16:41    38 --> ...                                                      [tcl] config syscaddsourcenames
 17:16:41    39 --> ...                                                          [tcl] config syscaddstructtypes
 17:16:41    40 --> ...                                                              [tcl] synopsys::listing -disable
+17:36:13    41 --> ...                                                                  [tcl] if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
+17:36:13    42 --> ...                                                                      [tcl] synopsys::finish
+17:36:13    43 --> ...                                                                          [tcl] set ucliGUI::state
+17:36:13    44 --> ...                                                                              [tcl] gui_update_simulator_buttons
+17:36:13    45 --> ...                                                                                  [tcl] set ucliGUI::state
+17:36:13    46 --> ...                                                                                      [tcl] catch {senv activeDomain} dveMisc::result 
+17:36:13    47 --> ...                                                                                          [tcl] set dveMisc::result
+17:36:13    48 --> ...                                                                                              [tcl] gui_update_simulator_buttons
+17:36:13    49 --> ...                                                                                                  [tcl] catch {senv activeDomain} dveMisc::result 
+17:36:13    50 --> ...  [tcl] set dveMisc::result
+17:36:13    51 --> ...      [tcl] ucli_exit

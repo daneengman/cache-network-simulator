@@ -3,3 +3,29 @@ Contains Synopsys proprietary information.
 Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  May  4 17:16 2024
 VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
 The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+Error: [VPD-UTLVF] Unable to lock the VPD file.
+  An error occurred while attempt to lock the VPD file. Errno condition: "No 
+  such file or directory".
+  This error can occur when accessing a vpd file in a different file system 
+  like clearcase. Try specifying a vpd file on a local file system or local 
+  disk.
+*** FATAL: Simulation stopped due to a runtime error (such as null object access) in the HDL code.  Please see above in the log for more details, and/or recompile with '-check_all' to get more information printed to the log.
+The simulation cannot be continued. The current simulation state can be observed in DVE/UCLI.
+
+Error-[VPD-UTLVF] Unable to lock the VPD file.
+  An error occurred while attempt to lock the VPD file. Errno condition: "No 
+  such file or directory".
+  This error can occur when accessing a vpd file in a different file system 
+  like clearcase. Try specifying a vpd file on a local file system or local 
+  disk.
+
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 0
+CPU Time:      0.290 seconds;       Data structure size:   0.0Mb
+Sat May  4 17:36:13 2024
+Error: [VPD-UTLVF] Unable to lock the VPD file.
+  An error occurred while attempt to lock the VPD file. Errno condition: "No 
+  such file or directory".
+  This error can occur when accessing a vpd file in a different file system 
+  like clearcase. Try specifying a vpd file on a local file system or local 
+  disk.
