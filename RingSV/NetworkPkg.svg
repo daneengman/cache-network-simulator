@@ -12,6 +12,7 @@
     typedef struct packed {
       logic [`ID_SIZE-1:0] src;
       logic [`ID_SIZE-1:0] dest;
+      logic [47:0] memoryAddress; 
       logic [`DATA_WIDTH-1:0] data;
     } pkt_t;
   endpackage : NetworkPkg

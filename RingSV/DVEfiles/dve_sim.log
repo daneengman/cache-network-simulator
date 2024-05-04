@@ -1,205 +1,25 @@
-09:26:49    1787 --> ...                                                  [tcl] ucliGUI::start /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv -ucligui 
-09:26:49    1788 --> ...                                                      [tcl] set ucliGUI::state
-09:26:49    1789 --> ...                                                          [tcl] gui_update_simulator_buttons
-09:26:49    1790 --> ...                                                              [tcl] set ucliGUI::state
-09:26:49    1791 --> ...                                                                  [tcl] ucliCore::getToolPID
-09:26:49    1792 --> ...                                                                      [tcl] synopsys::env hasTB
-09:26:49    1793 --> ...                                                                          [tcl] trigger_hier_stack_context_switch 0
-09:26:49    1794 --> ...                                                                              [tcl] synUtils::setDVEInitPhase 1
-09:26:49    1795 --> ...                                                                                  [tcl] gui_get_env SIMSETUP::SIMVPD
-09:26:49    1796 --> ...                                                                                      [tcl] synopsys::dump -type VPD -file /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd -locking
-09:26:49    1797 --> ...                                                                                          [tcl] synopsys::dump -autoflush on -fid VPD10
-09:26:49    1798 --> ...                                                                                              [tcl] set ::dve_fid VPD10
-09:26:49    1799 --> ...                                                                                                  [tcl] synUtils::setDVEInitPhase 0
-09:26:49    1800 --> ...  [tcl] ucliCore::getToolPID
-09:26:49    1801 --> ...      [tcl] synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpmeAB8A
-09:26:49    1802 --> ...          [tcl] synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.yuchingw.228540}
-09:26:49    1803 --> ...              [tcl] synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.yuchingw.228540}
-09:26:50    1804 --> ...                  [tcl] config endofsim noexit
-09:26:50    1805 --> ...                      [tcl] config onfail enable all
-09:26:50    1806 --> ...                          [tcl] config syscaddplainmembers
-09:26:50    1807 --> ...                              [tcl] config syscaddsourcenames
-09:26:50    1808 --> ...                                  [tcl] config syscaddstructtypes
-09:26:50    1809 --> ...                                      [tcl] synopsys::listing -disable
-09:26:50    1810 --> ...                                          [tcl] # Begin_DVE_Session_Save_Info
-09:26:50    1811 --> ...                                              [tcl] # DVE restart session
-09:26:50    1812 --> ...                                                  [tcl] # Saved on Sun Apr 28 09:26:48 2024
-09:26:50    1813 --> ...                                                      [tcl] # Designs open: 1
-09:26:50    1814 --> ...                                                          [tcl] #   Sim: /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv
-09:26:50    1815 --> ...                                                              [tcl] # Toplevel windows open: 2
-09:26:50    1816 --> ...                                                                  [tcl] # 	TopLevel.1
-09:26:50    1817 --> ...                                                                      [tcl] # 	TopLevel.2
-09:26:50    1818 --> ...                                                                          [tcl] #   Source.1: network_test.DUT.genblk1[0].n.buffer
-09:26:50    1819 --> ...                                                                              [tcl] #   Wave.1: 47 signals
-09:26:50    1820 --> ...                                                                                  [tcl] #   Group count = 7
-09:26:50    1821 --> ...                                                                                      [tcl] #   Group DUT signal count = 13
-09:26:50    1822 --> ...                                                                                          [tcl] #   Group DUT_1 signal count = 12
-09:26:50    1823 --> ...                                                                                              [tcl] #   Group DUT_2 signal count = 12
-09:26:50    1824 --> ...                                                                                                  [tcl] #   Group genblk1[2].n signal count = 12
-09:26:50    1825 --> ...  [tcl] #   Group genblk1[1].n signal count = 12
-09:26:50    1826 --> ...      [tcl] #   Group genblk1[0].n signal count = 11
-09:26:50    1827 --> ...          [tcl] # End_DVE_Session_Save_Info
-09:26:50    1828 --> ...              [tcl] # DVE version: T-2022.06_Full64
-09:26:50    1829 --> ...                  [tcl] # DVE build date: May 31 2022 20:53:03
-09:26:50    1830 --> ...                      [tcl] #<Session mode="Restart" path=".restartSimSession.tcl" type="Debug">
-09:26:50    1831 --> ...                          [tcl] gui_set_loading_session_type Restart
-09:26:50    1832 --> ...                              [tcl] gui_continuetime_set
-09:26:50    1833 --> ...                                  [tcl] gui_clear_window -type Wave
-09:26:50    1834 --> ...                                      [tcl] gui_clear_window -type List
-09:26:50    1835 --> ...                                          [tcl] # Application preferences
-09:26:50    1836 --> ...                                              [tcl] gui_set_pref_value -key app_default_font -value {Helvetica,10,-1,5,50,0,0,0,0,0}
-09:26:50    1837 --> ...                                                  [tcl] gui_src_preferences -tabstop 8 -maxbits 24 -windownumber 1
-09:26:50    1838 --> ...                                                      [tcl] #<WindowLayout>
-09:26:50    1839 --> ...                                                          [tcl] # DVE top-level session
-09:26:50    1840 --> ...                                                              [tcl] # Create and position top-level window: TopLevel.1
-09:26:50    1841 --> ...                                                                  [tcl] set TopLevel.1 TopLevel.1
-09:26:50    1842 --> ...                                                                      [tcl] # Docked window settings
-09:26:50    1843 --> ...                                                                          [tcl] set HSPane.1 HSPane.1
-09:26:50    1844 --> ...                                                                              [tcl] set Hier.1 Hier.1
-09:26:50    1845 --> ...                                                                                  [tcl] set DLPane.1 DLPane.1
-09:26:50    1846 --> ...                                                                                      [tcl] set Data.1 Data.1
-09:26:50    1847 --> ...                                                                                          [tcl] set Console.1 Console.1
-09:26:50    1848 --> ...                                                                                              [tcl] set DriverLoad.1 DriverLoad.1
-09:26:50    1849 --> ...                                                                                                  [tcl] gui_sync_global -id ${TopLevel.1} -option true
-09:26:50    1850 --> ...  [tcl] # MDI window settings
-09:26:50    1851 --> ...      [tcl] set Source.1 Source.1
-09:26:50    1852 --> ...          [tcl] gui_update_layout -id ${Source.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false}}
-09:26:50    1853 --> ...              [tcl] # End MDI window settings
-09:26:50    1854 --> ...                  [tcl] # Create and position top-level window: TopLevel.2
-09:26:50    1855 --> ...                      [tcl] set TopLevel.2 TopLevel.2
-09:26:50    1856 --> ...                          [tcl] # Docked window settings
-09:26:50    1857 --> ...                              [tcl] gui_sync_global -id ${TopLevel.2} -option true
-09:26:50    1858 --> ...                                  [tcl] # MDI window settings
-09:26:50    1859 --> ...                                      [tcl] set Wave.1 Wave.1
-09:26:50    1860 --> ...                                          [tcl] gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 495} {child_wave_right 1206} {child_wave_colname 236} {child_wave_colvalue 255} {child_wave_col1 0} {child_wave_col2 1}}
-09:26:50    1861 --> ...                                              [tcl] # End MDI window settings
-09:26:50    1862 --> ...                                                  [tcl] #</WindowLayout>
-09:26:50    1863 --> ...                                                      [tcl] #<Database>
-09:26:50    1864 --> ...                                                          [tcl] gui_set_precision 1s
-09:26:50    1865 --> ...                                                              [tcl] gui_set_time_units 1s
-09:26:50    1866 --> ...                                                                  [tcl] #</Database>
-09:26:50    1867 --> ...                                                                      [tcl] # DVE Global setting session:
-09:26:50    1868 --> ...                                                                          [tcl] # Global: Breakpoints
-09:26:50    1869 --> ...                                                                              [tcl] # Global: Bus
-09:26:50    1870 --> ...                                                                                  [tcl] # Global: Expressions
-09:26:50    1871 --> ...                                                                                      [tcl] # Global: Signal Time Shift
-09:26:50    1872 --> ...                                                                                          [tcl] # Global: Signal Compare
-09:26:50    1873 --> ...                                                                                              [tcl] # Global: Signal Groups
-09:26:50    1874 --> ...                                                                                                  [tcl] gui_load_child_values {network_test.DUT.genblk1[0].n}
-09:26:50    1875 --> ...  [tcl] synopsys::dump -add {{network_test.DUT.genblk1[0].n}} -scope "." -depth 1 -fid VPD10
-09:26:50    1876 --> ...      [tcl] gui_load_child_values {network_test.DUT}
-09:26:50    1877 --> ...          [tcl] synopsys::dump -add {network_test.DUT} -scope "." -depth 1 -fid VPD10
-09:26:50    1878 --> ...              [tcl] gui_load_child_values {network_test.DUT.genblk1[1].n}
-09:26:50    1879 --> ...                  [tcl] synopsys::dump -add {{network_test.DUT.genblk1[1].n}} -scope "." -depth 1 -fid VPD10
-09:26:50    1880 --> ...                      [tcl] gui_load_child_values {network_test.DUT.genblk1[2].n}
-09:26:50    1881 --> ...                          [tcl] synopsys::dump -add {{network_test.DUT.genblk1[2].n}} -scope "." -depth 1 -fid VPD10
-09:26:50    1882 --> ...                              [tcl] set _session_group_28 DUT
-09:26:50    1883 --> ...                                  [tcl] gui_sg_create "$_session_group_28"
-09:26:50    1884 --> ...                                      [tcl] set DUT "$_session_group_28"
-09:26:50    1885 --> ...                                          [tcl] gui_sg_addsignal -group "$_session_group_28" { network_test.DUT.packetNodeRec network_test.DUT.packetSendNext network_test.DUT.packetOut network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.full network_test.DUT.clk network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.packetIn network_test.DUT.recieved network_test.DUT.recievedOut }
-09:26:50    1886 --> ...                                              [tcl] set _session_group_29 $_session_group_28|
-09:26:50    1887 --> ...                                                  [tcl] append _session_group_29 {genblk1[0].n}
-09:26:50    1888 --> ...                                                      [tcl] gui_sg_create "$_session_group_29"
-09:26:50    1889 --> ...                                                          [tcl] set {DUT|genblk1[0].n} "$_session_group_29"
-09:26:50    1890 --> ...                                                              [tcl] gui_sg_addsignal -group "$_session_group_29" { {network_test.DUT.genblk1[0].n.nodeID} {network_test.DUT.genblk1[0].n.packetSendNext} {network_test.DUT.genblk1[0].n.packetOut} {network_test.DUT.genblk1[0].n.empty} {network_test.DUT.genblk1[0].n.packetSendIn} {network_test.DUT.genblk1[0].n.full} {network_test.DUT.genblk1[0].n.clk} {network_test.DUT.genblk1[0].n.rst_l} {network_test.DUT.genblk1[0].n.packetRecieved} {network_test.DUT.genblk1[0].n.packetIn} {network_test.DUT.genblk1[0].n.recieved} }
-09:26:50    1891 --> ...                                                                  [tcl] set _session_group_30 DUT_1
-09:26:50    1892 --> ...                                                                      [tcl] gui_sg_create "$_session_group_30"
-09:26:50    1893 --> ...                                                                          [tcl] set DUT_1 "$_session_group_30"
-09:26:50    1894 --> ...                                                                              [tcl] gui_sg_addsignal -group "$_session_group_30" { network_test.DUT.packetNodeRec network_test.DUT.packetSendNext network_test.DUT.packetOut network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.clk network_test.DUT.full network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.packetIn network_test.DUT.recieved network_test.DUT.recievedOut }
-09:26:50    1895 --> ...                                                                                  [tcl] set _session_group_31 DUT_2
-09:26:50    1896 --> ...                                                                                      [tcl] gui_sg_create "$_session_group_31"
-09:26:50    1897 --> ...                                                                                          [tcl] set DUT_2 "$_session_group_31"
-09:26:50    1898 --> ...                                                                                              [tcl] gui_sg_addsignal -group "$_session_group_31" { network_test.DUT.packetNodeRec network_test.DUT.packetSendNext network_test.DUT.packetOut network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.clk network_test.DUT.full network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.packetIn network_test.DUT.recieved network_test.DUT.recievedOut }
-09:26:50    1899 --> ...                                                                                                  [tcl] set _session_group_32 {genblk1[2].n}
-09:26:50    1900 --> ...  [tcl] gui_sg_create "$_session_group_32"
-09:26:50    1901 --> ...      [tcl] set {genblk1[2].n} "$_session_group_32"
-09:26:50    1902 --> ...          [tcl] gui_sg_addsignal -group "$_session_group_32" { {network_test.DUT.genblk1[2].n.nodeID} {network_test.DUT.genblk1[2].n.clk} {network_test.DUT.genblk1[2].n.rst_l} {network_test.DUT.genblk1[2].n.packetSendIn} {network_test.DUT.genblk1[2].n.packetIn} {network_test.DUT.genblk1[2].n.packetSendNext} {network_test.DUT.genblk1[2].n.packetOut} {network_test.DUT.genblk1[2].n.packetRecieved} {network_test.DUT.genblk1[2].n.recieved} {network_test.DUT.genblk1[2].n.full} {network_test.DUT.genblk1[2].n.empty} {network_test.DUT.genblk1[2].n.$unit} }
-09:26:50    1903 --> ...              [tcl] dveMisc::vbusExpand {network_test.DUT.genblk1[2].n}
-09:26:50    1904 --> ...                  [tcl] set _session_group_33 {genblk1[1].n}
-09:26:50    1905 --> ...                      [tcl] gui_sg_create "$_session_group_33"
-09:26:50    1906 --> ...                          [tcl] set {genblk1[1].n} "$_session_group_33"
-09:26:50    1907 --> ...                              [tcl] gui_sg_addsignal -group "$_session_group_33" { {network_test.DUT.genblk1[1].n.nodeID} {network_test.DUT.genblk1[1].n.clk} {network_test.DUT.genblk1[1].n.rst_l} {network_test.DUT.genblk1[1].n.packetSendIn} {network_test.DUT.genblk1[1].n.packetIn} {network_test.DUT.genblk1[1].n.packetSendNext} {network_test.DUT.genblk1[1].n.packetOut} {network_test.DUT.genblk1[1].n.packetRecieved} {network_test.DUT.genblk1[1].n.recieved} {network_test.DUT.genblk1[1].n.full} {network_test.DUT.genblk1[1].n.empty} {network_test.DUT.genblk1[1].n.$unit} }
-09:26:50    1908 --> ...                                  [tcl] dveMisc::vbusExpand {network_test.DUT.genblk1[1].n}
-09:26:50    1909 --> ...                                      [tcl] set _session_group_34 {genblk1[0].n}
-09:26:50    1910 --> ...                                          [tcl] gui_sg_create "$_session_group_34"
-09:26:50    1911 --> ...                                              [tcl] set {genblk1[0].n} "$_session_group_34"
-09:26:50    1912 --> ...                                                  [tcl] gui_sg_addsignal -group "$_session_group_34" { {network_test.DUT.genblk1[0].n.nodeID} {network_test.DUT.genblk1[0].n.packetSendNext} {network_test.DUT.genblk1[0].n.packetOut} {network_test.DUT.genblk1[0].n.empty} {network_test.DUT.genblk1[0].n.packetSendIn} {network_test.DUT.genblk1[0].n.clk} {network_test.DUT.genblk1[0].n.full} {network_test.DUT.genblk1[0].n.rst_l} {network_test.DUT.genblk1[0].n.packetRecieved} {network_test.DUT.genblk1[0].n.packetIn} {network_test.DUT.genblk1[0].n.recieved} }
-09:26:50    1913 --> ...                                                      [tcl] # Global: Highlighting
-09:26:50    1914 --> ...                                                          [tcl] # Global: Stack
-09:26:50    1915 --> ...                                                              [tcl] gui_change_stack_mode -mode list
-09:26:50    1916 --> ...                                                                  [tcl] # Post database loading setting...
-09:26:50    1917 --> ...                                                                      [tcl] # Save global setting...
-09:26:50    1918 --> ...                                                                          [tcl] # Wave/List view global setting
-09:26:50    1919 --> ...                                                                              [tcl] gui_cov_show_value -switch false
-09:26:50    1920 --> ...                                                                                  [tcl] # Close all empty TopLevel windows
-09:26:50    1921 --> ...                                                                                      [tcl] foreach __top [gui_ekki_get_window_ids -type TopLevel] {     if { [llength [gui_ekki_get_window_ids -parent $__top]] == 0} {         gui_close_window -window $__top     } }
-09:26:50    1922 --> ...                                                                                          [tcl] gui_set_loading_session_type noSession
-09:26:50    1923 --> ...                                                                                              [tcl] # DVE View/pane content session:
-09:26:50    1924 --> ...                                                                                                  [tcl] # Hier 'Hier.1'
-09:26:50    1925 --> ...  [tcl] gui_show_window -window ${Hier.1}
-09:26:50    1926 --> ...      [tcl] gui_list_set_filter -id ${Hier.1} -list { {Package 1} {All 0} {Process 1} {VirtPowSwitch 0} {UnnamedProcess 1} {UDP 0} {Function 1} {Block 1} {SrsnAndSpaCell 0} {OVA Unit 1} {LeafScCell 1} {LeafVlgCell 1} {Interface 1} {LeafVhdCell 1} {$unit 1} {NamedBlock 1} {Task 1} {VlgPackage 1} {ClassDef 1} {VirtIsoCell 0} }
-09:26:50    1927 --> ...          [tcl] gui_list_set_filter -id ${Hier.1} -text {*}
-09:26:50    1928 --> ...              [tcl] gui_change_design -id ${Hier.1} -design Sim
-09:26:50    1929 --> ...                  [tcl] catch {gui_list_expand -id ${Hier.1} network_test}
-09:26:50    1930 --> ...                      [tcl] catch {gui_list_select -id ${Hier.1} {network_test.DUT}}
-09:26:50    1931 --> ...                          [tcl] dveMisc::vbusExpand network_test.DUT
-09:26:50    1932 --> ...                              [tcl] gui_view_scroll -id ${Hier.1} -vertical -set 0
-09:26:50    1933 --> ...                                  [tcl] gui_view_scroll -id ${Hier.1} -horizontal -set 0
-09:26:50    1934 --> ...                                      [tcl] # Data 'Data.1'
-09:26:50    1935 --> ...                                          [tcl] gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
-09:26:50    1936 --> ...                                              [tcl] gui_list_set_filter -id ${Data.1} -text {*}
-09:26:50    1937 --> ...                                                  [tcl] gui_list_show_data -id ${Data.1} {network_test.DUT.genblk1[0].n}
-09:26:50    1938 --> ...                                                      [tcl] dveMisc::vbusExpand {network_test.DUT.genblk1[0].n}
-09:26:50    1939 --> ...                                                          [tcl] gui_view_scroll -id ${Data.1} -vertical -set 0
-09:26:50    1940 --> ...                                                              [tcl] gui_view_scroll -id ${Data.1} -horizontal -set 0
-09:26:50    1941 --> ...                                                                  [tcl] gui_view_scroll -id ${Hier.1} -vertical -set 0
-09:26:50    1942 --> ...                                                                      [tcl] gui_view_scroll -id ${Hier.1} -horizontal -set 0
-09:26:50    1943 --> ...                                                                          [tcl] # Source 'Source.1'
-09:26:50    1944 --> ...                                                                              [tcl] gui_src_value_annotate -id ${Source.1} -switch false
-09:26:50    1945 --> ...                                                                                  [tcl] gui_set_env TOGGLE::VALUEANNOTATE 0
-09:26:50    1946 --> ...                                                                                      [tcl] gui_open_source -id ${Source.1}  -replace -active {network_test.DUT.genblk1[0].n.buffer} /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/ring.sv
-09:26:51    1947 --> ...                                                                                          [tcl] gui_view_scroll -id ${Source.1} -vertical -set 405
-09:26:51    1948 --> ...                                                                                              [tcl] gui_src_set_reusable -id ${Source.1}
-09:26:51    1949 --> ...                                                                                                  [tcl] # DriverLoad 'DriverLoad.1'
-09:26:51    1950 --> ...  [tcl] gui_get_drivers -session -id ${DriverLoad.1} -signal {network_test.DUT.packetSendNext[0]} -time 35 -starttime 55
-09:26:51    1951 --> ...      [tcl] synopsys::dump -add {network_test.DUT.packetSendNext} -aggregates  -fid VPD10
-09:26:51    1952 --> ...          [tcl] # View 'Wave.1'
-09:26:51    1953 --> ...              [tcl] gui_wv_sync -id ${Wave.1} -switch false
-09:26:51    1954 --> ...                  [tcl] set groupExD [gui_get_pref_value -category Wave -key exclusiveSG]
-09:26:51    1955 --> ...                      [tcl] gui_set_pref_value -category Wave -key exclusiveSG -value {false}
-09:26:51    1956 --> ...                          [tcl] set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
-09:26:51    1957 --> ...                              [tcl] gui_list_set_height -id Wave -height 25
-09:26:51    1958 --> ...                                  [tcl] set origGroupCreationState [gui_list_create_group_when_add -wave]
-09:26:51    1959 --> ...                                      [tcl] gui_list_create_group_when_add -wave -disable
-09:26:51    1960 --> ...                                          [tcl] gui_wv_zoom_timerange -id ${Wave.1} 30 81
-09:26:51    1961 --> ...                                              [tcl] gui_list_add_group -id ${Wave.1} -after {New Group} {DUT_2}
-09:26:51    1962 --> ...                                                  [tcl] gui_list_add_group -id ${Wave.1} -after {New Group} {{genblk1[2].n}}
-09:26:51    1963 --> ...                                                      [tcl] synopsys::dump -add {_vcs_unit__2261685882 } -aggregates  -fid VPD10
-09:26:51    1964 --> ...                                                          [tcl] gui_list_add_group -id ${Wave.1} -after {New Group} {{genblk1[1].n}}
-09:26:51    1965 --> ...                                                              [tcl] gui_list_add_group -id ${Wave.1} -after {New Group} {{genblk1[0].n}}
-09:26:51    1966 --> ...                                                                  [tcl] gui_list_select -id ${Wave.1} {network_test.DUT.packetOut }
-09:26:51    1967 --> ...                                                                      [tcl] gui_seek_criteria -id ${Wave.1} {Any Edge}
-09:26:51    1968 --> ...                                                                          [tcl] gui_set_env TOGGLE::DEFAULT_WAVE_WINDOW ${Wave.1}
-09:26:51    1969 --> ...                                                                              [tcl] gui_set_pref_value -category Wave -key exclusiveSG -value $groupExD
-09:26:51    1970 --> ...                                                                                  [tcl] gui_list_set_height -id Wave -height $origWaveHeight
-09:26:51    1971 --> ...                                                                                      [tcl] if {$origGroupCreationState} { 	gui_list_create_group_when_add -wave -enable }
-09:26:51    1972 --> ...                                                                                          [tcl] if { $groupExD } {  gui_msg_report -code DVWW028 }
-09:26:51    1973 --> ...                                                                                              [tcl] gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
-09:26:51    1974 --> ...                                                                                                  [tcl] gui_list_set_filter -id ${Wave.1} -text {*}
-09:26:51    1975 --> ...  [tcl] gui_list_set_insertion_bar  -id ${Wave.1} -group {genblk1[0].n}  -position in
-09:26:51    1976 --> ...      [tcl] gui_view_scroll -id ${Wave.1} -vertical -set 0
-09:26:51    1977 --> ...          [tcl] gui_show_grid -id ${Wave.1} -enable false
-09:26:51    1978 --> ...              [tcl] # Restore toplevel window zorder
-09:26:51    1979 --> ...                  [tcl] # The toplevel window could be closed if it has no view/pane
-09:26:51    1980 --> ...                      [tcl] if {[gui_exist_window -window ${TopLevel.1}]} { 	gui_set_active_window -window ${TopLevel.1} 	gui_set_active_window -window ${Source.1} 	gui_set_active_window -window ${HSPane.1} }
-09:26:51    1981 --> ...                          [tcl] if {[gui_exist_window -window ${TopLevel.2}]} { 	gui_set_active_window -window ${TopLevel.2} 	gui_set_active_window -window ${Wave.1} }
-09:26:51    1982 --> ...                              [tcl] #</Session>
-09:26:52    1983 --> ...                                  [tcl] synopsys::run
-09:26:52    1984 --> ...                                      [tcl] set ucliGUI::state
-09:26:52    1985 --> ...                                          [tcl] gui_update_simulator_buttons
-09:26:52    1986 --> ...                                              [tcl] set ucliGUI::state
-09:26:52    1987 --> ...                                                  [tcl] set ucliGUI::state
-09:26:52    1988 --> ...                                                      [tcl] set ucliGUI::state
-09:26:52    1989 --> ...                                                          [tcl] catch {senv activeDomain} dveMisc::result 
-09:26:52    1990 --> ...                                                              [tcl] set dveMisc::result
-09:26:52    1991 --> ...                                                                  [tcl] gui_update_simulator_buttons
+17:16:39    16 -->                                                             [tcl] ucliGUI::connect -toolargs -ucligui -toolexe ./simv -pid 6973 -toolin /tmp/vcs_20240504211632_6947_yuchingw..stdin -toolout /tmp/vcs_20240504211632_6947_yuchingw..stdout  
+17:16:39    17 -->                                                                 [tcl] set ucliGUI::state
+17:16:39    18 -->                                                                     [tcl] gui_update_simulator_buttons
+17:16:41    19 -->                                                                         [tcl] set ucliGUI::state
+17:16:41    20 -->                                                                             [tcl] ucliCore::getToolPID
+17:16:41    21 -->                                                                                 [tcl] synopsys::env hasTB
+17:16:41    22 -->                                                                                     [tcl] trigger_hier_stack_context_switch 0
+17:16:41    23 -->                                                                                         [tcl] synUtils::setDVEInitPhase 1
+17:16:41    24 -->                                                                                             [tcl] gui_get_env SIMSETUP::SIMVPD
+17:16:41    25 --> ...  [tcl] synopsys::dump -type VPD -file /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd -locking
+17:16:41    26 --> ...      [tcl] synopsys::dump -autoflush on -fid VPD0
+17:16:41    27 --> ...          [tcl] set ::dve_fid VPD0
+17:16:41    28 --> ...              [tcl] synUtils::setDVEInitPhase 0
+17:16:41    29 --> ...                  [tcl] ucliCore::getToolPID
+17:16:41    30 --> ...                      [tcl] synUtils::sendTool -active _icl_setToolSocket /tmp/smlnp44VKEj
+17:16:41    31 --> ...                          [tcl] synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.yuchingw.6973}
+17:16:41    32 --> ...                              [tcl] synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.yuchingw.6973}
+17:16:41    33 --> ...                                  [tcl] dveMisc::vbusExpand counter
+17:16:41    34 --> ...                                      [tcl] dveMisc::vbusExpand _vcs_unit__1620825976
+17:16:41    35 --> ...                                          [tcl] config endofsim noexit
+17:16:41    36 --> ...                                              [tcl] config onfail enable all
+17:16:41    37 --> ...                                                  [tcl] config syscaddplainmembers
+17:16:41    38 --> ...                                                      [tcl] config syscaddsourcenames
+17:16:41    39 --> ...                                                          [tcl] config syscaddstructtypes
+17:16:41    40 --> ...                                                              [tcl] synopsys::listing -disable

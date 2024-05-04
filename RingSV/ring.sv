@@ -229,8 +229,14 @@ module network_test();
       packetSendIn[0].dest = 8'h2;
       packetSendIn[0].data = 128'h1234;
 
+      wait(received == 1'b1);
+
+      packetCoreIn <= 3'b001;
+      packetSendIn[0].src = 8'h0;
+      packetSendIn[0].dest = 8'h2;
+      packetSendIn[0].data = 128'h1234;
+
       @(posedge clk);
-      // packetCoreIn <= 3'b000;
       @(posedge clk);
       @(posedge clk);
       @(posedge clk);

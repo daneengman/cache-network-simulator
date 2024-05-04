@@ -1,20 +1,15 @@
 # Begin_DVE_Session_Save_Info
 # DVE restart session
-# Saved on Sun Apr 28 09:26:48 2024
+# Saved on Sat May 4 17:31:50 2024
 # Designs open: 1
 #   Sim: /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv
 # Toplevel windows open: 2
 # 	TopLevel.1
 # 	TopLevel.2
-#   Source.1: network_test.DUT.genblk1[0].n.buffer
-#   Wave.1: 47 signals
-#   Group count = 7
-#   Group DUT signal count = 13
-#   Group DUT_1 signal count = 12
-#   Group DUT_2 signal count = 12
-#   Group genblk1[2].n signal count = 12
-#   Group genblk1[1].n signal count = 12
-#   Group genblk1[0].n signal count = 11
+#   Source.1: counter
+#   Wave.1: 15 signals
+#   Group count = 1
+#   Group DUT signal count = 15
 # End_DVE_Session_Save_Info
 
 # DVE version: T-2022.06_Full64
@@ -46,7 +41,6 @@ set Hier.1 Hier.1
 set DLPane.1 DLPane.1
 set Data.1 Data.1
 set Console.1 Console.1
-set DriverLoad.1 DriverLoad.1
 gui_sync_global -id ${TopLevel.1} -option true
 
 # MDI window settings
@@ -65,7 +59,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 
 # MDI window settings
 set Wave.1 Wave.1
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 495} {child_wave_right 1206} {child_wave_colname 236} {child_wave_colvalue 255} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 557} {child_wave_right 1357} {child_wave_colname 276} {child_wave_colvalue 277} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -92,54 +86,13 @@ gui_set_time_units 1s
 # Global: Signal Compare
 
 # Global: Signal Groups
-gui_load_child_values {network_test.DUT.genblk1[0].n}
-gui_load_child_values {network_test.DUT}
-gui_load_child_values {network_test.DUT.genblk1[1].n}
-gui_load_child_values {network_test.DUT.genblk1[2].n}
 
 
-set _session_group_28 DUT
-gui_sg_create "$_session_group_28"
-set DUT "$_session_group_28"
+set _session_group_41 DUT
+gui_sg_create "$_session_group_41"
+set DUT "$_session_group_41"
 
-gui_sg_addsignal -group "$_session_group_28" { network_test.DUT.packetNodeRec network_test.DUT.packetSendNext network_test.DUT.packetOut network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.full network_test.DUT.clk network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.packetIn network_test.DUT.recieved network_test.DUT.recievedOut }
-
-set _session_group_29 $_session_group_28|
-append _session_group_29 {genblk1[0].n}
-gui_sg_create "$_session_group_29"
-set {DUT|genblk1[0].n} "$_session_group_29"
-
-gui_sg_addsignal -group "$_session_group_29" { {network_test.DUT.genblk1[0].n.nodeID} {network_test.DUT.genblk1[0].n.packetSendNext} {network_test.DUT.genblk1[0].n.packetOut} {network_test.DUT.genblk1[0].n.empty} {network_test.DUT.genblk1[0].n.packetSendIn} {network_test.DUT.genblk1[0].n.full} {network_test.DUT.genblk1[0].n.clk} {network_test.DUT.genblk1[0].n.rst_l} {network_test.DUT.genblk1[0].n.packetRecieved} {network_test.DUT.genblk1[0].n.packetIn} {network_test.DUT.genblk1[0].n.recieved} }
-
-set _session_group_30 DUT_1
-gui_sg_create "$_session_group_30"
-set DUT_1 "$_session_group_30"
-
-gui_sg_addsignal -group "$_session_group_30" { network_test.DUT.packetNodeRec network_test.DUT.packetSendNext network_test.DUT.packetOut network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.clk network_test.DUT.full network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.packetIn network_test.DUT.recieved network_test.DUT.recievedOut }
-
-set _session_group_31 DUT_2
-gui_sg_create "$_session_group_31"
-set DUT_2 "$_session_group_31"
-
-gui_sg_addsignal -group "$_session_group_31" { network_test.DUT.packetNodeRec network_test.DUT.packetSendNext network_test.DUT.packetOut network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.clk network_test.DUT.full network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.packetIn network_test.DUT.recieved network_test.DUT.recievedOut }
-
-set _session_group_32 {genblk1[2].n}
-gui_sg_create "$_session_group_32"
-set {genblk1[2].n} "$_session_group_32"
-
-gui_sg_addsignal -group "$_session_group_32" { {network_test.DUT.genblk1[2].n.nodeID} {network_test.DUT.genblk1[2].n.clk} {network_test.DUT.genblk1[2].n.rst_l} {network_test.DUT.genblk1[2].n.packetSendIn} {network_test.DUT.genblk1[2].n.packetIn} {network_test.DUT.genblk1[2].n.packetSendNext} {network_test.DUT.genblk1[2].n.packetOut} {network_test.DUT.genblk1[2].n.packetRecieved} {network_test.DUT.genblk1[2].n.recieved} {network_test.DUT.genblk1[2].n.full} {network_test.DUT.genblk1[2].n.empty} {network_test.DUT.genblk1[2].n.$unit} }
-
-set _session_group_33 {genblk1[1].n}
-gui_sg_create "$_session_group_33"
-set {genblk1[1].n} "$_session_group_33"
-
-gui_sg_addsignal -group "$_session_group_33" { {network_test.DUT.genblk1[1].n.nodeID} {network_test.DUT.genblk1[1].n.clk} {network_test.DUT.genblk1[1].n.rst_l} {network_test.DUT.genblk1[1].n.packetSendIn} {network_test.DUT.genblk1[1].n.packetIn} {network_test.DUT.genblk1[1].n.packetSendNext} {network_test.DUT.genblk1[1].n.packetOut} {network_test.DUT.genblk1[1].n.packetRecieved} {network_test.DUT.genblk1[1].n.recieved} {network_test.DUT.genblk1[1].n.full} {network_test.DUT.genblk1[1].n.empty} {network_test.DUT.genblk1[1].n.$unit} }
-
-set _session_group_34 {genblk1[0].n}
-gui_sg_create "$_session_group_34"
-set {genblk1[0].n} "$_session_group_34"
-
-gui_sg_addsignal -group "$_session_group_34" { {network_test.DUT.genblk1[0].n.nodeID} {network_test.DUT.genblk1[0].n.packetSendNext} {network_test.DUT.genblk1[0].n.packetOut} {network_test.DUT.genblk1[0].n.empty} {network_test.DUT.genblk1[0].n.packetSendIn} {network_test.DUT.genblk1[0].n.clk} {network_test.DUT.genblk1[0].n.full} {network_test.DUT.genblk1[0].n.rst_l} {network_test.DUT.genblk1[0].n.packetRecieved} {network_test.DUT.genblk1[0].n.packetIn} {network_test.DUT.genblk1[0].n.recieved} }
+gui_sg_addsignal -group "$_session_group_41" { network_test.DUT.nodeID network_test.DUT.packetSendNext network_test.DUT.selected network_test.DUT.empty network_test.DUT.packetSel network_test.DUT.beingSelected network_test.DUT.read network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.full network_test.DUT.clk network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.recieved network_test.DUT.recievedOut }
 
 # Global: Highlighting
 
@@ -176,8 +129,10 @@ gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Data.1} -text {*}
-gui_list_show_data -id ${Data.1} {network_test.DUT.genblk1[0].n}
-gui_view_scroll -id ${Data.1} -vertical -set 0
+gui_list_show_data -id ${Data.1} {network_test.DUT}
+gui_show_window -window ${Data.1}
+catch { gui_list_select -id ${Data.1} {network_test.DUT.read }}
+gui_view_scroll -id ${Data.1} -vertical -set 82
 gui_view_scroll -id ${Data.1} -horizontal -set 0
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
@@ -185,12 +140,9 @@ gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Source 'Source.1'
 gui_src_value_annotate -id ${Source.1} -switch false
 gui_set_env TOGGLE::VALUEANNOTATE 0
-gui_open_source -id ${Source.1}  -replace -active {network_test.DUT.genblk1[0].n.buffer} /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/ring.sv
-gui_view_scroll -id ${Source.1} -vertical -set 405
+gui_open_source -id ${Source.1}  -replace -active counter /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/library.sv
+gui_view_scroll -id ${Source.1} -vertical -set 30
 gui_src_set_reusable -id ${Source.1}
-
-# DriverLoad 'DriverLoad.1'
-gui_get_drivers -session -id ${DriverLoad.1} -signal {network_test.DUT.packetSendNext[0]} -time 35 -starttime 55
 
 # View 'Wave.1'
 gui_wv_sync -id ${Wave.1} -switch false
@@ -200,12 +152,17 @@ set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
 gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
-gui_wv_zoom_timerange -id ${Wave.1} 30 81
-gui_list_add_group -id ${Wave.1} -after {New Group} {DUT_2}
-gui_list_add_group -id ${Wave.1} -after {New Group} {{genblk1[2].n}}
-gui_list_add_group -id ${Wave.1} -after {New Group} {{genblk1[1].n}}
-gui_list_add_group -id ${Wave.1} -after {New Group} {{genblk1[0].n}}
-gui_list_select -id ${Wave.1} {network_test.DUT.packetOut }
+gui_wv_zoom_timerange -id ${Wave.1} 0 545
+gui_list_add_group -id ${Wave.1} -after {New Group} {DUT}
+gui_list_expand -id ${Wave.1} network_test.DUT.packetSendNext
+gui_list_expand -id ${Wave.1} network_test.DUT.selected
+gui_list_expand -id ${Wave.1} network_test.DUT.empty
+gui_list_expand -id ${Wave.1} network_test.DUT.packetSel
+gui_list_expand -id ${Wave.1} network_test.DUT.beingSelected
+gui_list_expand -id ${Wave.1} network_test.DUT.read
+gui_list_expand -id ${Wave.1} network_test.DUT.recieved
+gui_list_expand -id ${Wave.1} network_test.DUT.recievedOut
+gui_list_select -id ${Wave.1} {{network_test.DUT.read[2]} }
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
@@ -221,16 +178,16 @@ if { $groupExD } {
 }
 gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Wave.1} -text {*}
-gui_list_set_insertion_bar  -id ${Wave.1} -group {genblk1[0].n}  -position in
+gui_list_set_insertion_bar  -id ${Wave.1} -group DUT  -item {network_test.DUT.packetSendIn[3:0]} -position below
 
-gui_view_scroll -id ${Wave.1} -vertical -set 0
+gui_view_scroll -id ${Wave.1} -vertical -set 157
 gui_show_grid -id ${Wave.1} -enable false
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
 if {[gui_exist_window -window ${TopLevel.1}]} {
 	gui_set_active_window -window ${TopLevel.1}
 	gui_set_active_window -window ${Source.1}
-	gui_set_active_window -window ${HSPane.1}
+	gui_set_active_window -window ${DLPane.1}
 }
 if {[gui_exist_window -window ${TopLevel.2}]} {
 	gui_set_active_window -window ${TopLevel.2}

@@ -166,7 +166,7 @@ endmodule : FIFO
  *    - When re is asserted will start to send packets for DATA_WIDTH/flit size +1 cycles, assuming flit size > 16 
  *    - When we is asserted will take in packets for DATA_WIDTH/flit size +1 cycles, assuming flit size > 16 
  */
-module FIFO #(parameter WIDTH=32, HEIGHT=16) (
+module FIFO_PISO #(parameter WIDTH=32, HEIGHT=16) (
     input logic              clock, reset_n,
     input logic [WIDTH-1:0]  data_in,
     input logic              we, re, 
@@ -207,6 +207,8 @@ module FIFO #(parameter WIDTH=32, HEIGHT=16) (
         end
       end
     end
+
+
 endmodule : FIFO
 
 module network_test();

@@ -1,4 +1,3 @@
-ucliGUI::start /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv -ucligui 
 set ucliGUI::state
 set ucliGUI::state
 ucliCore::getToolPID
@@ -6,119 +5,16 @@ synopsys::env hasTB
 trigger_hier_stack_context_switch 0
 synUtils::setDVEInitPhase 1
 synopsys::dump -type VPD -file /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd -locking
-synopsys::dump -autoflush on -fid VPD10
-set ::dve_fid VPD10
+synopsys::dump -autoflush on -fid VPD0
+set ::dve_fid VPD0
 synUtils::setDVEInitPhase 0
 ucliCore::getToolPID
-synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpmeAB8A
-synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.yuchingw.228540}
-synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.yuchingw.228540}
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnp44VKEj
+synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.yuchingw.6973}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.yuchingw.6973}
 config endofsim noexit
 config onfail enable all
 config syscaddplainmembers
 config syscaddsourcenames
 config syscaddstructtypes
 synopsys::listing -disable
-# Begin_DVE_Session_Save_Info
-# DVE restart session
-# Saved on Sun Apr 28 09:26:48 2024
-# Designs open: 1
-#   Sim: /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv
-# Toplevel windows open: 2
-# 	TopLevel.1
-# 	TopLevel.2
-#   Source.1: network_test.DUT.genblk1[0].n.buffer
-#   Wave.1: 47 signals
-#   Group count = 7
-#   Group DUT signal count = 13
-#   Group DUT_1 signal count = 12
-#   Group DUT_2 signal count = 12
-#   Group genblk1[2].n signal count = 12
-#   Group genblk1[1].n signal count = 12
-#   Group genblk1[0].n signal count = 11
-# End_DVE_Session_Save_Info
-# DVE version: T-2022.06_Full64
-# DVE build date: May 31 2022 20:53:03
-#<Session mode="Restart" path=".restartSimSession.tcl" type="Debug">
-# Application preferences
-#<WindowLayout>
-# DVE top-level session
-# Create and position top-level window: TopLevel.1
-set TopLevel.1 TopLevel.1
-# Docked window settings
-set HSPane.1 HSPane.1
-set Hier.1 Hier.1
-set DLPane.1 DLPane.1
-set Data.1 Data.1
-set Console.1 Console.1
-set DriverLoad.1 DriverLoad.1
-# MDI window settings
-set Source.1 Source.1
-# End MDI window settings
-# Create and position top-level window: TopLevel.2
-set TopLevel.2 TopLevel.2
-# Docked window settings
-# MDI window settings
-set Wave.1 Wave.1
-# End MDI window settings
-#</WindowLayout>
-#<Database>
-#</Database>
-# DVE Global setting session:
-# Global: Breakpoints
-# Global: Bus
-# Global: Expressions
-# Global: Signal Time Shift
-# Global: Signal Compare
-# Global: Signal Groups
-synopsys::dump -add {{network_test.DUT.genblk1[0].n}} -scope "." -depth 1 -fid VPD10
-synopsys::dump -add {network_test.DUT} -scope "." -depth 1 -fid VPD10
-synopsys::dump -add {{network_test.DUT.genblk1[1].n}} -scope "." -depth 1 -fid VPD10
-synopsys::dump -add {{network_test.DUT.genblk1[2].n}} -scope "." -depth 1 -fid VPD10
-set _session_group_28 DUT
-set DUT "$_session_group_28"
-set _session_group_29 $_session_group_28|
-append _session_group_29 {genblk1[0].n}
-set {DUT|genblk1[0].n} "$_session_group_29"
-set _session_group_30 DUT_1
-set DUT_1 "$_session_group_30"
-set _session_group_31 DUT_2
-set DUT_2 "$_session_group_31"
-set _session_group_32 {genblk1[2].n}
-set {genblk1[2].n} "$_session_group_32"
-set _session_group_33 {genblk1[1].n}
-set {genblk1[1].n} "$_session_group_33"
-set _session_group_34 {genblk1[0].n}
-set {genblk1[0].n} "$_session_group_34"
-# Global: Highlighting
-# Global: Stack
-# Post database loading setting...
-# Save global setting...
-# Wave/List view global setting
-# Close all empty TopLevel windows
-foreach __top [gui_ekki_get_window_ids -type TopLevel] {     if { [llength [gui_ekki_get_window_ids -parent $__top]] == 0} {         gui_close_window -window $__top     } }
-# DVE View/pane content session:
-# Hier 'Hier.1'
-catch {gui_list_expand -id ${Hier.1} network_test}
-catch {gui_list_select -id ${Hier.1} {network_test.DUT}}
-# Data 'Data.1'
-# Source 'Source.1'
-# DriverLoad 'DriverLoad.1'
-synopsys::dump -add {network_test.DUT.packetSendNext} -aggregates  -fid VPD10
-# View 'Wave.1'
-set groupExD [gui_get_pref_value -category Wave -key exclusiveSG]
-set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
-set origGroupCreationState [gui_list_create_group_when_add -wave]
-synopsys::dump -add {_vcs_unit__2261685882 } -aggregates  -fid VPD10
-if {$origGroupCreationState} { 	gui_list_create_group_when_add -wave -enable }
-if { $groupExD } {  gui_msg_report -code DVWW028 }
-# Restore toplevel window zorder
-# The toplevel window could be closed if it has no view/pane
-if {[gui_exist_window -window ${TopLevel.1}]} { 	gui_set_active_window -window ${TopLevel.1} 	gui_set_active_window -window ${Source.1} 	gui_set_active_window -window ${HSPane.1} }
-if {[gui_exist_window -window ${TopLevel.2}]} { 	gui_set_active_window -window ${TopLevel.2} 	gui_set_active_window -window ${Wave.1} }
-#</Session>
-synopsys::run
-set ucliGUI::state
-set ucliGUI::state
-set ucliGUI::state
-set ucliGUI::state

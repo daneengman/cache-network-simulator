@@ -1,3 +1,5 @@
 /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/Network.svh
 /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/NetworkPkg.svg
-/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/ring.sv
+/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/crossbar.sv
+/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/library.sv
+/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/library_test.sv
