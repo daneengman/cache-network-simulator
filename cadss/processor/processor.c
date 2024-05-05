@@ -20,6 +20,9 @@ int* pendingMem = NULL;
 int* pendingBranch = NULL;
 int64_t* memOpTag = NULL;
 
+#define CUTOFF 10000
+long int processorOpCount = 0;
+
 //
 // init
 //
@@ -146,9 +149,12 @@ int tick(void)
 
         // TODO: get and manage ops for each processor core
         nextOp = tr->getNextOp(i);
-
+        if (i == 0)
+            processorOpCount++;
+        // printf("nextOp: op %i,dest reg %i, src reg 0 %i, src reg 1 %i\n",nextOp->op,nextOp->dest_reg,nextOp->src_reg[0],nextOp->src_reg[1]);
         if (nextOp == NULL)
             continue;
+        // printf("nextOp: op %i,dest reg %i, src reg 0 %i, src reg 1 %i\n",nextOp->op,nextOp->dest_reg,nextOp->src_reg[0],nextOp->src_reg[1]);
 
         progress = 1;
 
@@ -159,9 +165,12 @@ int tick(void)
                 pendingMem[i] = 1;
                 cs->memoryRequest(nextOp, i, makeTag(i, memOpTag[i]),
                                   memOpCallback);
+                // if (nextOp->dest_reg != -1 || nextOp->src_reg[0] != -1 || nextOp->src_reg[1] != -1)
+                //     printf("nextOp: op %i,dest reg %i, src reg 0 %i, src reg 1 %i\n",nextOp->op,nextOp->dest_reg,nextOp->src_reg[0],nextOp->src_reg[1]);
                 break;
 
             case BRANCH:
+                printf("Hello world\n");
                 pendingBranch[i]
                     = (bs->branchRequest(nextOp, i) == nextOp->nextPCAddress)
                           ? 0
@@ -170,11 +179,17 @@ int tick(void)
 
             case ALU:
             case ALU_LONG:
-
+                // printf("nextOp: op %i,dest reg %i, src reg 0 %i, src reg 1 %i\n",nextOp->op,nextOp->dest_reg,nextOp->src_reg[0],nextOp->src_reg[1]);
                 break;
         }
 
+
         free(nextOp);
+    }
+
+    if (processorOpCount > CUTOFF) {
+        printf("Reached cutoff point, stopping");
+        return 0;
     }
 
     return progress;

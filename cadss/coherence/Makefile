@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_SOURCE_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_BINARY_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/CMakeFiles/progress.marks
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/CMakeFiles/progress.marks
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/clean
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 coherence/CMakeFiles/coherence.dir/rule:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/CMakeFiles/coherence.dir/rule
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 coherence/CMakeFiles/coherence.dir/rule
 .PHONY : coherence/CMakeFiles/coherence.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ coherence: coherence/CMakeFiles/coherence.dir/rule
 
 # fast build rule for target.
 coherence/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/build
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/build
 .PHONY : coherence/fast
 
 coherence.o: coherence.c.o
@@ -120,7 +120,7 @@ coherence.o: coherence.c.o
 
 # target to build an object file
 coherence.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/coherence.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/coherence.c.o
 .PHONY : coherence.c.o
 
 coherence.i: coherence.c.i
@@ -128,7 +128,7 @@ coherence.i: coherence.c.i
 
 # target to preprocess a source file
 coherence.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/coherence.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/coherence.c.i
 .PHONY : coherence.c.i
 
 coherence.s: coherence.c.s
@@ -136,7 +136,7 @@ coherence.s: coherence.c.s
 
 # target to generate assembly for a file
 coherence.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/coherence.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/coherence.c.s
 .PHONY : coherence.c.s
 
 protocol.o: protocol.c.o
@@ -144,7 +144,7 @@ protocol.o: protocol.c.o
 
 # target to build an object file
 protocol.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/protocol.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/protocol.c.o
 .PHONY : protocol.c.o
 
 protocol.i: protocol.c.i
@@ -152,7 +152,7 @@ protocol.i: protocol.c.i
 
 # target to preprocess a source file
 protocol.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/protocol.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/protocol.c.i
 .PHONY : protocol.c.i
 
 protocol.s: protocol.c.s
@@ -160,7 +160,7 @@ protocol.s: protocol.c.s
 
 # target to generate assembly for a file
 protocol.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/protocol.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/protocol.c.s
 .PHONY : protocol.c.s
 
 stree.o: stree.c.o
@@ -168,7 +168,7 @@ stree.o: stree.c.o
 
 # target to build an object file
 stree.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/stree.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/stree.c.o
 .PHONY : stree.c.o
 
 stree.i: stree.c.i
@@ -176,7 +176,7 @@ stree.i: stree.c.i
 
 # target to preprocess a source file
 stree.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/stree.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/stree.c.i
 .PHONY : stree.c.i
 
 stree.s: stree.c.s
@@ -184,7 +184,7 @@ stree.s: stree.c.s
 
 # target to generate assembly for a file
 stree.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/stree.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f coherence/CMakeFiles/coherence.dir/build.make coherence/CMakeFiles/coherence.dir/stree.c.s
 .PHONY : stree.c.s
 
 # Help Target
@@ -216,6 +216,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -221,7 +221,9 @@ void memReqCallback(int procNum, uint64_t addr)
 
 void busReq(bus_req_type brt, uint64_t addr, int procNum)
 {   
+#ifdef VERBOSE
     printf("Bus request %s\n",req_type_map[brt]);
+#endif
     if (pendingRequest == NULL)
     {
         assert(brt != SHARED);
@@ -286,6 +288,8 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
     }
 }
 
+// #define VERBOSE
+
 int tick()
 {
 
@@ -312,11 +316,13 @@ int tick()
             exit(EXIT_FAILURE);
         }
         sscanf(buffer, "ack received: %i\n", &received);
-        printf("Received = %i\n",received);
+        // printf("Received = %i\n",received);
         if (received == -1) 
             finished = true;
         else {
+#ifdef VERBOSE
             printf("\t\tC Program Received '%s'\n", buffer);
+#endif
             cacheTransferFinished = 1;
             // buffer = strchr(str_p,'\n') + 1;
         }

@@ -3,11 +3,11 @@
 
 # compile C with /usr/bin/gcc
 # compile CXX with /usr/bin/c++
-C_FLAGS = -O0 -ggdb3 -DDEBUG -std=gnu99 -fPIC -I/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/../common   
+C_FLAGS = -O0 -ggdb3 -DDEBUG -std=gnu99 -fPIC -I/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/../common   
 
 C_DEFINES = -Dinterconnect_ring_EXPORTS
 
-CXX_FLAGS = -O0 -DDEBUG -std=c++11 -fPIC -I/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/../common   
+CXX_FLAGS = -O0 -DDEBUG -std=c++11 -fPIC -I/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/../common   
 
 CXX_DEFINES = -Dinterconnect_ring_EXPORTS
 

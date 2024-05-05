@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_SOURCE_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_BINARY_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/CMakeFiles/progress.marks
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/CMakeFiles/progress.marks
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/clean
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 trace/CMakeFiles/trace.dir/rule:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/CMakeFiles/trace.dir/rule
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 trace/CMakeFiles/trace.dir/rule
 .PHONY : trace/CMakeFiles/trace.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ trace: trace/CMakeFiles/trace.dir/rule
 
 # fast build rule for target.
 trace/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/build
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/build
 .PHONY : trace/fast
 
 trace.o: trace.c.o
@@ -120,7 +120,7 @@ trace.o: trace.c.o
 
 # target to build an object file
 trace.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/trace.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/trace.c.o
 .PHONY : trace.c.o
 
 trace.i: trace.c.i
@@ -128,7 +128,7 @@ trace.i: trace.c.i
 
 # target to preprocess a source file
 trace.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/trace.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/trace.c.i
 .PHONY : trace.c.i
 
 trace.s: trace.c.s
@@ -136,7 +136,7 @@ trace.s: trace.c.s
 
 # target to generate assembly for a file
 trace.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/trace.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f trace/CMakeFiles/trace.dir/build.make trace/CMakeFiles/trace.dir/trace.c.s
 .PHONY : trace.c.s
 
 # Help Target
@@ -162,6 +162,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

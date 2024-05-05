@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/coher_internal.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/coher_internal.h
 interconnect.h
 -
 stdio.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/coherence.c
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/coherence.c
 coherence.h
 -
 trace.h
@@ -20,19 +20,11 @@ trace.h
 getopt.h
 -
 coher_internal.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/coher_internal.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/coher_internal.h
 stree.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/stree.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/stree.h
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/protocol.c
-coher_internal.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/coher_internal.h
-
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/stree.c
-stree.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/stree.h
-
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/stree.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/stree.h
 stdbool.h
 -
 stdio.h

@@ -5,11 +5,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/interconnect.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/interconnect.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

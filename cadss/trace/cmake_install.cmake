@@ -1,4 +1,4 @@
-# Install script for directory: /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace
+# Install script for directory: /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

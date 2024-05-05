@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect/interconnect.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect/CMakeFiles/interconnect.dir/interconnect.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect/interconnect.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect/CMakeFiles/interconnect.dir/interconnect.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

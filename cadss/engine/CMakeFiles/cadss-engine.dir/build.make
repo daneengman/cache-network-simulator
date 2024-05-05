@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_SOURCE_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_BINARY_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # Include any dependencies generated for this target.
 include engine/CMakeFiles/cadss-engine.dir/depend.make
@@ -54,17 +54,17 @@ include engine/CMakeFiles/cadss-engine.dir/flags.make
 
 engine/CMakeFiles/cadss-engine.dir/engine.c.o: engine/CMakeFiles/cadss-engine.dir/flags.make
 engine/CMakeFiles/cadss-engine.dir/engine.c.o: engine/engine.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object engine/CMakeFiles/cadss-engine.dir/engine.c.o"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/cadss-engine.dir/engine.c.o   -c /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/engine.c
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/cadss-engine.dir/engine.c.o   -c /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.c
 
 engine/CMakeFiles/cadss-engine.dir/engine.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cadss-engine.dir/engine.c.i"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/engine.c > CMakeFiles/cadss-engine.dir/engine.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.c > CMakeFiles/cadss-engine.dir/engine.c.i
 
 engine/CMakeFiles/cadss-engine.dir/engine.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cadss-engine.dir/engine.c.s"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/engine.c -o CMakeFiles/cadss-engine.dir/engine.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.c -o CMakeFiles/cadss-engine.dir/engine.c.s
 
 engine/CMakeFiles/cadss-engine.dir/engine.c.o.requires:
 .PHONY : engine/CMakeFiles/cadss-engine.dir/engine.c.o.requires
@@ -77,17 +77,17 @@ engine/CMakeFiles/cadss-engine.dir/engine.c.o.provides.build: engine/CMakeFiles/
 
 engine/CMakeFiles/cadss-engine.dir/config.c.o: engine/CMakeFiles/cadss-engine.dir/flags.make
 engine/CMakeFiles/cadss-engine.dir/config.c.o: engine/config.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object engine/CMakeFiles/cadss-engine.dir/config.c.o"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/cadss-engine.dir/config.c.o   -c /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/config.c
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/cadss-engine.dir/config.c.o   -c /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.c
 
 engine/CMakeFiles/cadss-engine.dir/config.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cadss-engine.dir/config.c.i"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/config.c > CMakeFiles/cadss-engine.dir/config.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.c > CMakeFiles/cadss-engine.dir/config.c.i
 
 engine/CMakeFiles/cadss-engine.dir/config.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cadss-engine.dir/config.c.s"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/config.c -o CMakeFiles/cadss-engine.dir/config.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.c -o CMakeFiles/cadss-engine.dir/config.c.s
 
 engine/CMakeFiles/cadss-engine.dir/config.c.o.requires:
 .PHONY : engine/CMakeFiles/cadss-engine.dir/config.c.o.requires
@@ -100,17 +100,17 @@ engine/CMakeFiles/cadss-engine.dir/config.c.o.provides.build: engine/CMakeFiles/
 
 engine/CMakeFiles/cadss-engine.dir/debug.c.o: engine/CMakeFiles/cadss-engine.dir/flags.make
 engine/CMakeFiles/cadss-engine.dir/debug.c.o: engine/debug.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object engine/CMakeFiles/cadss-engine.dir/debug.c.o"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/cadss-engine.dir/debug.c.o   -c /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/debug.c
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/cadss-engine.dir/debug.c.o   -c /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/debug.c
 
 engine/CMakeFiles/cadss-engine.dir/debug.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cadss-engine.dir/debug.c.i"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/debug.c > CMakeFiles/cadss-engine.dir/debug.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/debug.c > CMakeFiles/cadss-engine.dir/debug.c.i
 
 engine/CMakeFiles/cadss-engine.dir/debug.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cadss-engine.dir/debug.c.s"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/debug.c -o CMakeFiles/cadss-engine.dir/debug.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/debug.c -o CMakeFiles/cadss-engine.dir/debug.c.s
 
 engine/CMakeFiles/cadss-engine.dir/debug.c.o.requires:
 .PHONY : engine/CMakeFiles/cadss-engine.dir/debug.c.o.requires
@@ -136,7 +136,7 @@ cadss-engine: engine/CMakeFiles/cadss-engine.dir/debug.c.o
 cadss-engine: engine/CMakeFiles/cadss-engine.dir/build.make
 cadss-engine: engine/CMakeFiles/cadss-engine.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable ../cadss-engine"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cadss-engine.dir/link.txt --verbose=$(VERBOSE)
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cadss-engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 engine/CMakeFiles/cadss-engine.dir/build: cadss-engine
@@ -148,10 +148,10 @@ engine/CMakeFiles/cadss-engine.dir/requires: engine/CMakeFiles/cadss-engine.dir/
 .PHONY : engine/CMakeFiles/cadss-engine.dir/requires
 
 engine/CMakeFiles/cadss-engine.dir/clean:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine && $(CMAKE_COMMAND) -P CMakeFiles/cadss-engine.dir/cmake_clean.cmake
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine && $(CMAKE_COMMAND) -P CMakeFiles/cadss-engine.dir/cmake_clean.cmake
 .PHONY : engine/CMakeFiles/cadss-engine.dir/clean
 
 engine/CMakeFiles/cadss-engine.dir/depend:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/DependInfo.cmake --color=$(COLOR)
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : engine/CMakeFiles/cadss-engine.dir/depend
 

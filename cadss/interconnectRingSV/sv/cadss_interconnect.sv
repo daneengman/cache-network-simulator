@@ -16,11 +16,13 @@ module cadss_interconnect ();
   pkt_t [`NUMNODES-1:0] packetSendIn;
   logic [`NUMNODES-1:0] packetCoreIn; // a packet from the core is sent in
   logic [`NUMNODES-1:0] recievedOut; // asserted if took packet from the outside system
-  logic [`NUMNODES-1:0][`ID_SIZE+`ID_SIZE+`DATA_WIDTH-1:0] packetRecieved;
+  pkt_t [`NUMNODES-1:0] packetRecieved;
   logic [`NUMNODES-1:0] recieved; // a packet is received by the current node
   logic [`NUMNODES-1:0] full;
 
   ring interconnect(.*);
+
+  int inFlight = 0;
 
   // Importing DPI functions for socket communication
   import "DPI-C" function int sv_socket_open(int port);
@@ -89,6 +91,7 @@ module cadss_interconnect ();
           if (recieved[i]) begin
             // $display("Something finished");
             ack(i);
+            inFlight--;
           end
         end
         ack(-1);
@@ -104,7 +107,15 @@ module cadss_interconnect ();
       end else if (parse_result == 3) begin 
         ack(-1);
         process_cache_transfer(brt, addr, procNumSource, procNumDest);
+        inFlight++;
+        if (inFlight > 1) begin
+          $display(inFlight);
+          $finish;
+        end
+        $display($time,,"Received %d, %d, %d, %d",brt,addr,procNumSource,procNumDest);
+`ifdef VERBOSE
         $display("Received %d, %d, %d, %d",brt,addr,procNumSource,procNumDest);
+`endif
         packetCoreIn[procNumSource] = 1'b1;
         packetSendIn[procNumSource].dest = procNumDest;
         packetSendIn[procNumSource].src = procNumSource;
@@ -124,7 +135,7 @@ module cadss_interconnect ();
       // end else begin
       //   $display("Response sent to client");
       // end
-      fail_count++;
+      // fail_count++;
     end
 
     // Close sockets

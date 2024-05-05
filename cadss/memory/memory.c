@@ -70,7 +70,7 @@ int tick()
         if (interComp->busReqCacheTransfer(pendingRequest->addr,
                                            pendingRequest->procNum))
         {
-            printf("Squelched\n");
+            // printf("Squelched\n");
             pendingRequest->squelch = 1;
             countDown = 0;
             goto done;
@@ -84,7 +84,7 @@ done:
     {
         if (!pendingRequest->squelch)
         {
-            printf("Finished handling\n");
+            // printf("Finished handling\n");
             pendingRequest->callback(pendingRequest->procNum,
                                      pendingRequest->addr);
         }

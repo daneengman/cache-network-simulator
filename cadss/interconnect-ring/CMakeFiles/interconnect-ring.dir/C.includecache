@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/c_connection.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/c_connection.h
 packet.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/packet.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/packet.h
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/interconnect.c
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/interconnect.c
 getopt.h
 -
 stdio.h
@@ -20,9 +20,9 @@ memory.h
 interconnect.h
 -
 c_connection.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/c_connection.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/c_connection.h
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/packet.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/packet.h
 stdio.h
 -
 stdbool.h

@@ -96,7 +96,9 @@ extern "C" int process_cache_transfer(int *brt, uint64_t *addr, int *procNumSour
     // while (bytes_received <= 0) {
         int bytes_received = recv(client_socket_fd, buf, 1024, 0);
     // }
+#ifdef VERBOSE
     printf("Received %i bytes reading %s\n",bytes_received, (const char *)buf);
+#endif
     sscanf((const char *)buf, "brt: %i, addr: %li, procNumSource: %i, procNumDest: %i", brt, addr, procNumSource, procNumDest);
 }
 

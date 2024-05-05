@@ -1,0 +1,419 @@
+Chronologic VCS simulator copyright 1991-2015
+Contains Synopsys proprietary information.
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  May  4 17:23 2024
+VCD+ Writer K-2015.09_Full64 Copyright (c) 1991-2015 by Synopsys Inc.
+The file '/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/inter.vpd' was opened successfully.
+Server started and listening on port 18240
+Client connected
+Resetting interconnect...
+                5120 Received brt           3, addr              5276544, source           0, dest           1
+          0
+                6230 Received brt           3, addr             15655248, source           1, dest           2
+          0
+                7340 Received brt           3, addr             15655248, source           2, dest           3
+          0
+                8450 Received brt           3, addr              5276544, source           1, dest           0
+          0
+               10570 Received brt           3, addr              5276544, source           0, dest           2
+          0
+               15710 Received brt           3, addr              5276560, source           1, dest           2
+          0
+               17830 Received brt           3, addr              5276544, source           2, dest           0
+          0
+               22960 Received brt           3, addr              5276576, source           1, dest           3
+          0
+               24070 Received brt           3, addr              5276608, source           0, dest           1
+          0
+               26180 Received brt           3, addr              5276576, source           3, dest           2
+          0
+               27290 Received brt           3, addr              5276576, source           2, dest           3
+          0
+               28400 Received brt           3, addr              5276560, source           2, dest           1
+          0
+               29510 Received brt           3, addr              5276576, source           3, dest           2
+          0
+               30620 Received brt           3, addr              5276592, source           1, dest           3
+               30730 Received brt           3, addr              5276576, source           2, dest           1
+          2
+          1
+          0
+               31840 Received brt           3, addr              5276592, source           3, dest           2
+          0
+               32950 Received brt           3, addr              5276592, source           2, dest           3
+          0
+               35070 Received brt           3, addr              5276592, source           1, dest           2
+          0
+               36180 Received brt           3, addr              5276608, source           0, dest           3
+               36280 Received brt           3, addr              5276608, source           1, dest           0
+          2
+          1
+          0
+               38400 Received brt           3, addr              5276608, source           0, dest           2
+               38500 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               41630 Received brt           3, addr              5276560, source           1, dest           2
+               41740 Received brt           3, addr              5276576, source           1, dest           3
+          2
+          1
+          0
+               42850 Received brt           3, addr              5276576, source           3, dest           1
+          0
+               43970 Received brt           3, addr              5276608, source           0, dest           3
+          0
+               45080 Received brt           3, addr              5276592, source           2, dest           1
+          0
+               46200 Received brt           3, addr              5276576, source           1, dest           3
+               46310 Received brt           3, addr              5276608, source           2, dest           0
+          2
+          1
+          0
+               50450 Received brt           3, addr              5276608, source           0, dest           1
+          0
+               52580 Received brt           3, addr              5276608, source           1, dest           0
+          0
+               53690 Received brt           3, addr              5276560, source           2, dest           1
+          0
+               54800 Received brt           3, addr              5276592, source           1, dest           2
+          0
+               55920 Received brt           3, addr              5276576, source           2, dest           1
+          0
+               58050 Received brt           3, addr              5276592, source           2, dest           1
+          0
+               59160 Received brt           3, addr              5276608, source           0, dest           2
+               59260 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               60380 Received brt           3, addr              5276608, source           0, dest           1
+               60480 Received brt           3, addr              5276608, source           2, dest           0
+          2
+          1
+          0
+               61590 Received brt           3, addr              5276560, source           1, dest           2
+          0
+               62700 Received brt           3, addr              5276608, source           0, dest           3
+               62800 Received brt           3, addr              5276608, source           1, dest           0
+          2
+          1
+          0
+               63910 Received brt           3, addr              5276560, source           2, dest           1
+               64020 Received brt           3, addr              5276576, source           1, dest           2
+          2
+          1
+          0
+               66140 Received brt           3, addr              5276576, source           2, dest           1
+               66250 Received brt           3, addr              5276592, source           1, dest           2
+          2
+          1
+          0
+               68380 Received brt           3, addr              5276608, source           0, dest           2
+               68480 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               70600 Received brt           3, addr              5276592, source           2, dest           1
+               70710 Received brt           3, addr              5276560, source           1, dest           2
+          2
+          1
+          0
+               72840 Received brt           3, addr              5276576, source           1, dest           2
+          0
+               74960 Received brt           3, addr              5276608, source           0, dest           1
+               75060 Received brt           3, addr              5276608, source           2, dest           0
+          2
+               75170 Received brt           3, addr              5276592, source           1, dest           2
+          3
+          2
+          1
+Warning: [DVIT111] 
+The design was not compiled with stack debug option.
+Stack debugging cannot be supported for Stack and Local Panes.
+To enable stack debugging capabilities, please compile the design with option '-debug_access+all'.
+Please recompile using the '-debug_access<+options>' switch and incremental options as required.  Recommended options are '-debug_access' for post-process debug, '-debug_access+classdbg' for testbench debug, and '-debug_access+all' for all debug capabilities.  Refer the VCS user guide for more granular options for debug control under the switch '-debug_access' and refer to '-debug_region' for region control.
+Chronologic VCS simulator copyright 1991-2015
+Contains Synopsys proprietary information.
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  May  4 17:25 2024
+VCD+ Writer K-2015.09_Full64 Copyright (c) 1991-2015 by Synopsys Inc.
+The file '/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/inter.vpd' was opened successfully.
+Server started and listening on port 18240
+Client connected
+Resetting interconnect...
+                5120 Received brt           3, addr              5276544, source           0, dest           1
+          0
+                6230 Received brt           3, addr             15655248, source           1, dest           2
+          0
+                7340 Received brt           3, addr             15655248, source           2, dest           3
+          0
+                8450 Received brt           3, addr              5276544, source           1, dest           0
+          0
+               10570 Received brt           3, addr              5276544, source           0, dest           2
+          0
+               15710 Received brt           3, addr              5276560, source           1, dest           2
+          0
+               17830 Received brt           3, addr              5276544, source           2, dest           0
+          0
+               22960 Received brt           3, addr              5276576, source           1, dest           3
+          0
+               24070 Received brt           3, addr              5276608, source           0, dest           1
+          0
+               26180 Received brt           3, addr              5276576, source           3, dest           2
+          0
+               27290 Received brt           3, addr              5276576, source           2, dest           3
+          0
+               28400 Received brt           3, addr              5276560, source           2, dest           1
+          0
+               29510 Received brt           3, addr              5276576, source           3, dest           2
+          0
+               30620 Received brt           3, addr              5276592, source           1, dest           3
+               30730 Received brt           3, addr              5276576, source           2, dest           1
+          2
+          1
+          0
+               31840 Received brt           3, addr              5276592, source           3, dest           2
+          0
+               32950 Received brt           3, addr              5276592, source           2, dest           3
+          0
+               35070 Received brt           3, addr              5276592, source           1, dest           2
+          0
+               36180 Received brt           3, addr              5276608, source           0, dest           3
+               36280 Received brt           3, addr              5276608, source           1, dest           0
+          2
+          1
+          0
+               38400 Received brt           3, addr              5276608, source           0, dest           2
+               38500 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               41630 Received brt           3, addr              5276560, source           1, dest           2
+               41740 Received brt           3, addr              5276576, source           1, dest           3
+          2
+          1
+          0
+               42850 Received brt           3, addr              5276576, source           3, dest           1
+          0
+               43970 Received brt           3, addr              5276608, source           0, dest           3
+          0
+               45080 Received brt           3, addr              5276592, source           2, dest           1
+          0
+               46200 Received brt           3, addr              5276576, source           1, dest           3
+               46310 Received brt           3, addr              5276608, source           2, dest           0
+          2
+          1
+          0
+               50450 Received brt           3, addr              5276608, source           0, dest           1
+          0
+               52580 Received brt           3, addr              5276608, source           1, dest           0
+          0
+               53690 Received brt           3, addr              5276560, source           2, dest           1
+          0
+               54800 Received brt           3, addr              5276592, source           1, dest           2
+          0
+               55920 Received brt           3, addr              5276576, source           2, dest           1
+          0
+               58050 Received brt           3, addr              5276592, source           2, dest           1
+          0
+               59160 Received brt           3, addr              5276608, source           0, dest           2
+               59260 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               60380 Received brt           3, addr              5276608, source           0, dest           1
+               60480 Received brt           3, addr              5276608, source           2, dest           0
+          2
+          1
+          0
+               61590 Received brt           3, addr              5276560, source           1, dest           2
+          0
+               62700 Received brt           3, addr              5276608, source           0, dest           3
+               62800 Received brt           3, addr              5276608, source           1, dest           0
+          2
+          1
+          0
+               63910 Received brt           3, addr              5276560, source           2, dest           1
+               64020 Received brt           3, addr              5276576, source           1, dest           2
+          2
+          1
+          0
+               66140 Received brt           3, addr              5276576, source           2, dest           1
+               66250 Received brt           3, addr              5276592, source           1, dest           2
+          2
+          1
+          0
+               68380 Received brt           3, addr              5276608, source           0, dest           2
+               68480 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               70600 Received brt           3, addr              5276592, source           2, dest           1
+               70710 Received brt           3, addr              5276560, source           1, dest           2
+          2
+          1
+          0
+               72840 Received brt           3, addr              5276576, source           1, dest           2
+          0
+               74960 Received brt           3, addr              5276608, source           0, dest           1
+               75060 Received brt           3, addr              5276608, source           2, dest           0
+          2
+               75170 Received brt           3, addr              5276592, source           1, dest           2
+          3
+          2
+          1
+Warning: [DVIT111] 
+The design was not compiled with stack debug option.
+Stack debugging cannot be supported for Stack and Local Panes.
+To enable stack debugging capabilities, please compile the design with option '-debug_access+all'.
+Please recompile using the '-debug_access<+options>' switch and incremental options as required.  Recommended options are '-debug_access' for post-process debug, '-debug_access+classdbg' for testbench debug, and '-debug_access+all' for all debug capabilities.  Refer the VCS user guide for more granular options for debug control under the switch '-debug_access' and refer to '-debug_region' for region control.
+Chronologic VCS simulator copyright 1991-2015
+Contains Synopsys proprietary information.
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  May  4 17:29 2024
+VCD+ Writer K-2015.09_Full64 Copyright (c) 1991-2015 by Synopsys Inc.
+The file '/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/inter.vpd' was opened successfully.
+Server started and listening on port 18240
+Client connected
+Resetting interconnect...
+                5120 Received brt           3, addr              5276544, source           0, dest           1
+          0
+                6230 Received brt           3, addr             15655248, source           1, dest           2
+          0
+                7340 Received brt           3, addr             15655248, source           2, dest           3
+          0
+                8450 Received brt           3, addr              5276544, source           1, dest           0
+          0
+               10570 Received brt           3, addr              5276544, source           0, dest           2
+          0
+               15710 Received brt           3, addr              5276560, source           1, dest           2
+          0
+               17830 Received brt           3, addr              5276544, source           2, dest           0
+          0
+               22960 Received brt           3, addr              5276576, source           1, dest           3
+          0
+               24070 Received brt           3, addr              5276608, source           0, dest           1
+          0
+               26180 Received brt           3, addr              5276576, source           3, dest           2
+          0
+               27290 Received brt           3, addr              5276576, source           2, dest           3
+          0
+               28400 Received brt           3, addr              5276560, source           2, dest           1
+          0
+               29510 Received brt           3, addr              5276576, source           3, dest           2
+          0
+               30620 Received brt           3, addr              5276592, source           1, dest           3
+               30730 Received brt           3, addr              5276576, source           2, dest           1
+          2
+          1
+          0
+               31840 Received brt           3, addr              5276592, source           3, dest           2
+          0
+               32950 Received brt           3, addr              5276592, source           2, dest           3
+          0
+               35070 Received brt           3, addr              5276592, source           1, dest           2
+          0
+               36180 Received brt           3, addr              5276608, source           0, dest           3
+               36280 Received brt           3, addr              5276608, source           1, dest           0
+          2
+          1
+          0
+               38400 Received brt           3, addr              5276608, source           0, dest           2
+               38500 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               41630 Received brt           3, addr              5276560, source           1, dest           2
+               41740 Received brt           3, addr              5276576, source           1, dest           3
+          2
+          1
+          0
+               42850 Received brt           3, addr              5276576, source           3, dest           1
+          0
+               43970 Received brt           3, addr              5276608, source           0, dest           3
+          0
+               45080 Received brt           3, addr              5276592, source           2, dest           1
+          0
+               46200 Received brt           3, addr              5276576, source           1, dest           3
+               46310 Received brt           3, addr              5276608, source           2, dest           0
+          2
+          1
+          0
+               50450 Received brt           3, addr              5276608, source           0, dest           1
+          0
+               52580 Received brt           3, addr              5276608, source           1, dest           0
+          0
+               53690 Received brt           3, addr              5276560, source           2, dest           1
+          0
+               54800 Received brt           3, addr              5276592, source           1, dest           2
+          0
+               55920 Received brt           3, addr              5276576, source           2, dest           1
+          0
+               58050 Received brt           3, addr              5276592, source           2, dest           1
+          0
+               59160 Received brt           3, addr              5276608, source           0, dest           2
+               59260 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               60380 Received brt           3, addr              5276608, source           0, dest           1
+               60480 Received brt           3, addr              5276608, source           2, dest           0
+          2
+          1
+          0
+               61590 Received brt           3, addr              5276560, source           1, dest           2
+          0
+               62700 Received brt           3, addr              5276608, source           0, dest           3
+               62800 Received brt           3, addr              5276608, source           1, dest           0
+          2
+          1
+          0
+               63910 Received brt           3, addr              5276560, source           2, dest           1
+               64020 Received brt           3, addr              5276576, source           1, dest           2
+          2
+          1
+          0
+               66140 Received brt           3, addr              5276576, source           2, dest           1
+               66250 Received brt           3, addr              5276592, source           1, dest           2
+          2
+          1
+          0
+               68380 Received brt           3, addr              5276608, source           0, dest           2
+               68480 Received brt           3, addr              5276608, source           3, dest           0
+          2
+          1
+          0
+               70600 Received brt           3, addr              5276592, source           2, dest           1
+               70710 Received brt           3, addr              5276560, source           1, dest           2
+          2
+          1
+          0
+               72840 Received brt           3, addr              5276576, source           1, dest           2
+          0
+               74960 Received brt           3, addr              5276608, source           0, dest           1
+               75060 Received brt           3, addr              5276608, source           2, dest           0
+          2
+               75170 Received brt           3, addr              5276592, source           1, dest           2
+          3
+          2
+          1
+Warning: [DVIT111] 
+The design was not compiled with stack debug option.
+Stack debugging cannot be supported for Stack and Local Panes.
+To enable stack debugging capabilities, please compile the design with option '-debug_access+all'.
+Please recompile using the '-debug_access<+options>' switch and incremental options as required.  Recommended options are '-debug_access' for post-process debug, '-debug_access+classdbg' for testbench debug, and '-debug_access+all' for all debug capabilities.  Refer the VCS user guide for more granular options for debug control under the switch '-debug_access' and refer to '-debug_region' for region control.
+Warning: [DVSW501] 
+Program cannot run to the current selection in the source window.
+Error: synopsys::step
+Error-[UCLI-CMD-LINE-CAPABILITY] Line stepping not enabled
+  Line stepping and file/line BPs are not enabled for this design. 
+  To enable it, recompile the design with '-debug_access+r+line' or 
+  '-debug_access+all' flag.  Please recompile using the 
+  '-debug_access<+options>' switch and incremental options as required.  
+  Recommended options are '-debug_access' for post-process debug, 
+  '-debug_access+classdbg' for testbench debug, and '-debug_access+all' for 
+  all debug capabilities.  Refer the VCS user guide for more granular options 
+  for debug control under the switch '-debug_access' and refer to 
+  '-debug_region' for region control.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 75910
+CPU Time:      0.230 seconds;       Data structure size:   0.0Mb
+Sat May  4 17:36:45 2024

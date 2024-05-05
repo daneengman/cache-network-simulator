@@ -4,9 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/coherence.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/CMakeFiles/coherence.dir/coherence.c.o"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/protocol.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/CMakeFiles/coherence.dir/protocol.c.o"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/stree.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/CMakeFiles/coherence.dir/stree.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/coherence.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/CMakeFiles/coherence.dir/coherence.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/protocol.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/CMakeFiles/coherence.dir/protocol.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/stree.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/CMakeFiles/coherence.dir/stree.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

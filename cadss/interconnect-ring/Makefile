@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_SOURCE_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_BINARY_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/progress.marks
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/progress.marks
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/clean
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 interconnect-ring/CMakeFiles/interconnect-ring.dir/rule:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/CMakeFiles/interconnect-ring.dir/rule
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 interconnect-ring/CMakeFiles/interconnect-ring.dir/rule
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ interconnect-ring: interconnect-ring/CMakeFiles/interconnect-ring.dir/rule
 
 # fast build rule for target.
 interconnect-ring/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/build
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/build
 .PHONY : interconnect-ring/fast
 
 c_connection.o: c_connection.cpp.o
@@ -120,7 +120,7 @@ c_connection.o: c_connection.cpp.o
 
 # target to build an object file
 c_connection.cpp.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o
 .PHONY : c_connection.cpp.o
 
 c_connection.i: c_connection.cpp.i
@@ -128,7 +128,7 @@ c_connection.i: c_connection.cpp.i
 
 # target to preprocess a source file
 c_connection.cpp.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.i
 .PHONY : c_connection.cpp.i
 
 c_connection.s: c_connection.cpp.s
@@ -136,7 +136,7 @@ c_connection.s: c_connection.cpp.s
 
 # target to generate assembly for a file
 c_connection.cpp.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.s
 .PHONY : c_connection.cpp.s
 
 interconnect.o: interconnect.c.o
@@ -144,7 +144,7 @@ interconnect.o: interconnect.c.o
 
 # target to build an object file
 interconnect.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o
 .PHONY : interconnect.c.o
 
 interconnect.i: interconnect.c.i
@@ -152,7 +152,7 @@ interconnect.i: interconnect.c.i
 
 # target to preprocess a source file
 interconnect.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.i
 .PHONY : interconnect.c.i
 
 interconnect.s: interconnect.c.s
@@ -160,7 +160,7 @@ interconnect.s: interconnect.c.s
 
 # target to generate assembly for a file
 interconnect.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.s
 .PHONY : interconnect.c.s
 
 # Help Target
@@ -189,6 +189,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

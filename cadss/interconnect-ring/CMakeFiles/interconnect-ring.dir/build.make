@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_SOURCE_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_BINARY_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # Include any dependencies generated for this target.
 include interconnect-ring/CMakeFiles/interconnect-ring.dir/depend.make
@@ -54,17 +54,17 @@ include interconnect-ring/CMakeFiles/interconnect-ring.dir/flags.make
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o: interconnect-ring/CMakeFiles/interconnect-ring.dir/flags.make
 interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o: interconnect-ring/interconnect.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/interconnect-ring.dir/interconnect.c.o   -c /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/interconnect.c
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/interconnect-ring.dir/interconnect.c.o   -c /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/interconnect.c
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/interconnect-ring.dir/interconnect.c.i"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/interconnect.c > CMakeFiles/interconnect-ring.dir/interconnect.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -E /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/interconnect.c > CMakeFiles/interconnect-ring.dir/interconnect.c.i
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interconnect-ring.dir/interconnect.c.s"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/interconnect.c -o CMakeFiles/interconnect-ring.dir/interconnect.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -S /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/interconnect.c -o CMakeFiles/interconnect-ring.dir/interconnect.c.s
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o.requires:
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o.requires
@@ -77,17 +77,17 @@ interconnect-ring/CMakeFiles/interconnect-ring.dir/interconnect.c.o.provides.bui
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o: interconnect-ring/CMakeFiles/interconnect-ring.dir/flags.make
 interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o: interconnect-ring/c_connection.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/interconnect-ring.dir/c_connection.cpp.o -c /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/interconnect-ring.dir/c_connection.cpp.o -c /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/interconnect-ring.dir/c_connection.cpp.i"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp > CMakeFiles/interconnect-ring.dir/c_connection.cpp.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp > CMakeFiles/interconnect-ring.dir/c_connection.cpp.i
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/interconnect-ring.dir/c_connection.cpp.s"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp -o CMakeFiles/interconnect-ring.dir/c_connection.cpp.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/c_connection.cpp -o CMakeFiles/interconnect-ring.dir/c_connection.cpp.s
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o.requires:
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/c_connection.cpp.o.requires
@@ -111,7 +111,7 @@ interconnect-ring/libinterconnect-ring.so: interconnect-ring/CMakeFiles/intercon
 interconnect-ring/libinterconnect-ring.so: interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make
 interconnect-ring/libinterconnect-ring.so: interconnect-ring/CMakeFiles/interconnect-ring.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library libinterconnect-ring.so"
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/interconnect-ring.dir/link.txt --verbose=$(VERBOSE)
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/interconnect-ring.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 interconnect-ring/CMakeFiles/interconnect-ring.dir/build: interconnect-ring/libinterconnect-ring.so
@@ -122,10 +122,10 @@ interconnect-ring/CMakeFiles/interconnect-ring.dir/requires: interconnect-ring/C
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/requires
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/clean:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring && $(CMAKE_COMMAND) -P CMakeFiles/interconnect-ring.dir/cmake_clean.cmake
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring && $(CMAKE_COMMAND) -P CMakeFiles/interconnect-ring.dir/cmake_clean.cmake
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/clean
 
 interconnect-ring/CMakeFiles/interconnect-ring.dir/depend:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir/DependInfo.cmake --color=$(COLOR)
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : interconnect-ring/CMakeFiles/interconnect-ring.dir/depend
 

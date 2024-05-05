@@ -6,9 +6,51 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/config.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.c
+config.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.h
+sys/mman.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+ctype.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+unistd.h
+-
+stdio.h
+-
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/engine.c
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.h
+
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/debug.c
+stdio.h
+-
+stdint.h
+-
+stdlib.h
+-
+sys/ptrace.h
+-
+sys/wait.h
+-
+unistd.h
+-
+assert.h
+-
+engine.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.h
+
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.c
 stdio.h
 -
 getopt.h
@@ -28,11 +70,11 @@ unistd.h
 libgen.h
 -
 config.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/config.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.h
 engine.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/engine.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.h
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/engine.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.h
 
 engine/../common/branch.h
 common.h

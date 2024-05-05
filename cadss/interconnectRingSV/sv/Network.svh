@@ -1,7 +1,7 @@
 `ifndef ROUTER_H
   `define ROUTER_H
 
-  `define NUMNODES 3
+  `define NUMNODES 4
   `define DATA_WIDTH 256
   `define ID_SIZE 8
   `define QUEUE_DEPTH 4

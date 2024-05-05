@@ -106,27 +106,27 @@ __attribute__((weak)) int sv_socket_receive(/* INPUT */int A_1)
 }
 #endif /* __VCS_IMPORT_DPI_STUB_sv_socket_receive */
 
-#ifndef __VCS_IMPORT_DPI_STUB_ack
-#define __VCS_IMPORT_DPI_STUB_ack
-__attribute__((weak)) int ack(/* INPUT */int A_1)
+#ifndef __VCS_IMPORT_DPI_STUB_reply
+#define __VCS_IMPORT_DPI_STUB_reply
+__attribute__((weak)) int reply(/* INPUT */int A_1, /* INPUT */long long A_2)
 {
     static int _vcs_dpi_stub_initialized_ = 0;
-    static int (*_vcs_dpi_fp_)(/* INPUT */int A_1) = NULL;
+    static int (*_vcs_dpi_fp_)(/* INPUT */int A_1, /* INPUT */long long A_2) = NULL;
     if (!_vcs_dpi_stub_initialized_) {
         _vcs_dpi_stub_initialized_ = 1;
-        _vcs_dpi_fp_ = (int (*)(int A_1)) dlsym(RTLD_NEXT, "ack");
+        _vcs_dpi_fp_ = (int (*)(int A_1, long long A_2)) dlsym(RTLD_NEXT, "reply");
     }
     if (_vcs_dpi_fp_) {
-        return _vcs_dpi_fp_(A_1);
+        return _vcs_dpi_fp_(A_1, A_2);
     } else {
         const char *fileName;
         int lineNumber;
         svGetCallerInfo(&fileName, &lineNumber);
-        vcsMsgReport1("DPI-DIFNF", fileName, lineNumber, 0, 0, "ack");
+        vcsMsgReport1("DPI-DIFNF", fileName, lineNumber, 0, 0, "reply");
         return 0;
     }
 }
-#endif /* __VCS_IMPORT_DPI_STUB_ack */
+#endif /* __VCS_IMPORT_DPI_STUB_reply */
 
 #ifndef __VCS_IMPORT_DPI_STUB_process_cache_transfer
 #define __VCS_IMPORT_DPI_STUB_process_cache_transfer

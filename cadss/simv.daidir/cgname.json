@@ -1,14 +1,4 @@
 {
-    "NetworkPkg": [
-        "NetworkPkg",
-        "IfCxx",
-        "module"
-    ],
-    "_vcs_unit__380360504": [
-        "_vcs_unit__380360504",
-        "DWH6I",
-        "module"
-    ],
     "std": [
         "std",
         "reYIK",
@@ -22,11 +12,6 @@
     "...MASTER...": [
         "SIM",
         "amcQw",
-        "module"
-    ],
-    "node": [
-        "node",
-        "Jg9WB",
         "module"
     ]
 }

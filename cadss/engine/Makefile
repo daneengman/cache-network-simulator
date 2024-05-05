@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_SOURCE_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_BINARY_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/CMakeFiles/progress.marks
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/CMakeFiles/progress.marks
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/clean
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/preinstall
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 engine/CMakeFiles/cadss-engine.dir/rule:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/CMakeFiles/cadss-engine.dir/rule
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f CMakeFiles/Makefile2 engine/CMakeFiles/cadss-engine.dir/rule
 .PHONY : engine/CMakeFiles/cadss-engine.dir/rule
 
 # Convenience name for target.
@@ -112,7 +112,7 @@ cadss-engine: engine/CMakeFiles/cadss-engine.dir/rule
 
 # fast build rule for target.
 cadss-engine/fast:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/build
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/build
 .PHONY : cadss-engine/fast
 
 config.o: config.c.o
@@ -120,7 +120,7 @@ config.o: config.c.o
 
 # target to build an object file
 config.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/config.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/config.c.o
 .PHONY : config.c.o
 
 config.i: config.c.i
@@ -128,7 +128,7 @@ config.i: config.c.i
 
 # target to preprocess a source file
 config.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/config.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/config.c.i
 .PHONY : config.c.i
 
 config.s: config.c.s
@@ -136,7 +136,7 @@ config.s: config.c.s
 
 # target to generate assembly for a file
 config.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/config.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/config.c.s
 .PHONY : config.c.s
 
 debug.o: debug.c.o
@@ -144,7 +144,7 @@ debug.o: debug.c.o
 
 # target to build an object file
 debug.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/debug.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/debug.c.o
 .PHONY : debug.c.o
 
 debug.i: debug.c.i
@@ -152,7 +152,7 @@ debug.i: debug.c.i
 
 # target to preprocess a source file
 debug.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/debug.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/debug.c.i
 .PHONY : debug.c.i
 
 debug.s: debug.c.s
@@ -160,7 +160,7 @@ debug.s: debug.c.s
 
 # target to generate assembly for a file
 debug.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/debug.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/debug.c.s
 .PHONY : debug.c.s
 
 engine.o: engine.c.o
@@ -168,7 +168,7 @@ engine.o: engine.c.o
 
 # target to build an object file
 engine.c.o:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/engine.c.o
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/engine.c.o
 .PHONY : engine.c.o
 
 engine.i: engine.c.i
@@ -176,7 +176,7 @@ engine.i: engine.c.i
 
 # target to preprocess a source file
 engine.c.i:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/engine.c.i
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/engine.c.i
 .PHONY : engine.c.i
 
 engine.s: engine.c.s
@@ -184,7 +184,7 @@ engine.s: engine.c.s
 
 # target to generate assembly for a file
 engine.c.s:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/engine.c.s
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(MAKE) -f engine/CMakeFiles/cadss-engine.dir/build.make engine/CMakeFiles/cadss-engine.dir/engine.c.s
 .PHONY : engine.c.s
 
 # Help Target
@@ -216,6 +216,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

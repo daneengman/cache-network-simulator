@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.cpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Action.cpp
 Action.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Action.hpp
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Action.hpp
 inttypes.h
 -
 sstream
@@ -18,29 +18,29 @@ sstream
 iostream
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Backend.cpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Backend.cpp
 Backend.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Backend.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Backend.hpp
 TaskGraph.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Backend.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Backend.hpp
 TaskGraph.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Task.cpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Task.cpp
 Task.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Task.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Task.hpp
 string.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Task.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Task.hpp
 TaskId.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
 Action.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Action.hpp
 ct_file.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/ct_file.h
 stdio.h
 -
 stdlib.h
@@ -60,21 +60,21 @@ algorithm
 cinttypes
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.cpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraph.cpp
 TaskGraph.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
 Task.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Task.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Task.hpp
 TaskGraphInfo.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.hpp
 TaskId.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
 Action.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Action.hpp
 ct_file.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/ct_file.h
 stdio.h
 -
 stdlib.h
@@ -98,15 +98,15 @@ algorithm
 inttypes.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.cpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.cpp
 TaskGraph.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraph.hpp
 TaskGraphAPI.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
 string.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
 cstdint
 -
 cstdio
@@ -116,17 +116,17 @@ stdio.h
 trace.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.cpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.cpp
 TaskGraphInfo.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.hpp
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphInfo.hpp
 TaskId.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
 Action.hpp
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/Action.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/Action.hpp
 ct_file.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/ct_file.h
 stdio.h
 -
 stdlib.h
@@ -148,7 +148,7 @@ string
 inttypes.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskId.hpp
 inttypes.h
 -
 iostream
@@ -156,7 +156,7 @@ iostream
 sstream
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/ct_file.h
 stdio.h
 -
 stdlib.h
