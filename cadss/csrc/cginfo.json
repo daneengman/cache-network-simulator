@@ -1,133 +1,9 @@
 {
-    "Misc": {
-        "cwd": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss",
-        "archive_dir": "archive.48",
-        "csrc": "csrc",
-        "csrc_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/csrc",
-        "daidir": "simv.daidir",
-        "default_output_dir": "csrc",
-        "daidir_abs": "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simv.daidir"
-    },
-    "MlibObjs": {},
-    "stat": {
-        "ru_self_cgstart": {
-            "ru_nivcsw": 4,
-            "ru_utime_sec": 0.065570000000000003,
-            "ru_stime_sec": 0.035306999999999998,
-            "ru_maxrss_kb": 50952,
-            "ru_minflt": 13436,
-            "ru_nvcsw": 121,
-            "ru_majflt": 0
-        },
-        "CodeGen(%)": 5.3687400779333245,
-        "ru_childs_cgstart": {
-            "ru_nivcsw": 0,
-            "ru_utime_sec": 0.0,
-            "ru_stime_sec": 0.0,
-            "ru_maxrss_kb": 0,
-            "ru_minflt": 0,
-            "ru_nvcsw": 0,
-            "ru_majflt": 0
-        },
-        "totalObjSize": 68261,
-        "nMops": 0,
-        "nQuads": 0,
-        "ru_self_end": {
-            "ru_nivcsw": 4,
-            "ru_utime_sec": 0.069290000000000004,
-            "ru_stime_sec": 0.052462000000000002,
-            "ru_maxrss_kb": 57052,
-            "ru_minflt": 15257,
-            "ru_nvcsw": 167,
-            "ru_majflt": 0
-        },
-        "ru_childs_end": {
-            "ru_nivcsw": 0,
-            "ru_utime_sec": 0.0,
-            "ru_stime_sec": 0.0,
-            "ru_maxrss_kb": 0,
-            "ru_minflt": 0,
-            "ru_nvcsw": 0,
-            "ru_majflt": 0
-        },
-        "Frontend(%)": 94.631259922066675
-    },
-    "CompileStrategy": "fullobj",
-    "PrevCompiledModules": {
-        "NetworkPkg": {
-            "IfCxx_d": {
-                "bytes": 6775,
-                "mod": "NetworkPkg",
-                "archive": "archive.48/_prev_archive_1.a",
-                "mode": 4,
-                "checksum": 4294967295,
-                "out": "IfCxx_d.o"
-            }
-        },
-        "_vcs_unit__380360504": {
-            "DWH6I_d": {
-                "bytes": 8869,
-                "mod": "_vcs_unit__380360504",
-                "archive": "archive.48/_prev_archive_1.a",
-                "mode": 4,
-                "checksum": 4294967295,
-                "out": "DWH6I_d.o"
-            }
-        },
-        "std": {
-            "reYIK_d": {
-                "bytes": 28470,
-                "mod": "std",
-                "archive": "archive.48/_prev_archive_1.a",
-                "mode": 4,
-                "checksum": 4294967295,
-                "out": "reYIK_d.o"
-            }
-        },
-        "cadss_interconnect": {
-            "kBiSq_d": {
-                "bytes": 32760,
-                "mod": "cadss_interconnect",
-                "archive": "archive.48/_prev_archive_1.a",
-                "mode": 4,
-                "checksum": 4294967295,
-                "out": "kBiSq_d.o"
-            }
-        },
-        "...MASTER...": {
-            "amcQw_d": {
-                "bytes": 7599,
-                "mod": "...MASTER...",
-                "out": "objs/amcQw_d.o",
-                "mode": 4,
-                "checksum": 4294967295
-            }
-        },
-        "node": {
-            "Jg9WB_d": {
-                "bytes": 15871,
-                "mod": "node",
-                "archive": "archive.48/_prev_archive_1.a",
-                "mode": 4,
-                "checksum": 4294967295,
-                "out": "Jg9WB_d.o"
-            }
-        }
-    },
+    "PEModules": [],
     "NameTable": {
-        "NetworkPkg": [
-            "NetworkPkg",
-            "IfCxx",
-            "module"
-        ],
-        "_vcs_unit__380360504": [
-            "_vcs_unit__380360504",
-            "DWH6I",
-            "module"
-        ],
-        "std": [
-            "std",
-            "reYIK",
+        "_vcs_unit__3608651147": [
+            "_vcs_unit__3608651147",
+            "VaLUT",
             "module"
         ],
         "cadss_interconnect": [
@@ -135,31 +11,164 @@
             "kBiSq",
             "module"
         ],
-        "...MASTER...": [
-            "SIM",
-            "amcQw",
+        "std": [
+            "std",
+            "reYIK",
             "module"
         ],
         "node": [
             "node",
             "Jg9WB",
             "module"
+        ],
+        "NetworkPkg": [
+            "NetworkPkg",
+            "IfCxx",
+            "module"
+        ],
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
+            "module"
         ]
     },
-    "CurCompileUdps": {},
-    "SIMBData": {
-        "out": "amcQwB.o",
-        "bytes": 60662
-    },
-    "CurCompileModules": [
-        "...MASTER..."
-    ],
     "LVLData": [
         "SIM"
     ],
-    "PEModules": [],
-    "CompileStatus": "Successful",
+    "MlibObjs": {},
+    "Misc": {
+        "cwd": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss",
+        "default_output_dir": "csrc",
+        "csrc": "csrc",
+        "archive_dir": "archive.137",
+        "csrc_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/csrc",
+        "daidir": "simv.daidir",
+        "daidir_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv.daidir"
+    },
+    "CompileStrategy": "fullobj",
+    "PrevCompiledModules": {
+        "_vcs_unit__3608651147": {
+            "VaLUT_d": {
+                "mode": 4,
+                "bytes": 9043,
+                "out": "VaLUT_d.o",
+                "mod": "_vcs_unit__3608651147",
+                "checksum": 4294967295,
+                "archive": "archive.137/_114954_archive_1.a"
+            }
+        },
+        "cadss_interconnect": {
+            "kBiSq_d": {
+                "mode": 4,
+                "bytes": 72017,
+                "out": "kBiSq_d.o",
+                "mod": "cadss_interconnect",
+                "checksum": 4294967295,
+                "archive": "archive.137/_114954_archive_1.a"
+            }
+        },
+        "std": {
+            "reYIK_d": {
+                "mode": 4,
+                "bytes": 33308,
+                "out": "reYIK_d.o",
+                "mod": "std",
+                "checksum": 4294967295,
+                "archive": "archive.137/_114954_archive_1.a"
+            }
+        },
+        "node": {
+            "Jg9WB_d": {
+                "mode": 4,
+                "bytes": 22445,
+                "out": "Jg9WB_d.o",
+                "mod": "node",
+                "checksum": 4294967295,
+                "archive": "archive.137/_114954_archive_1.a"
+            }
+        },
+        "NetworkPkg": {
+            "IfCxx_d": {
+                "mode": 4,
+                "bytes": 6998,
+                "out": "IfCxx_d.o",
+                "mod": "NetworkPkg",
+                "checksum": 4294967295,
+                "archive": "archive.137/_114954_archive_1.a"
+            }
+        },
+        "...MASTER...": {
+            "amcQw_d": {
+                "mode": 4,
+                "bytes": 7599,
+                "out": "objs/amcQw_d.o",
+                "mod": "...MASTER...",
+                "checksum": 4294967295
+            }
+        }
+    },
+    "stat": {
+        "ru_self_cgstart": {
+            "ru_utime_sec": 0.067793000000000006,
+            "ru_stime_sec": 0.055829999999999998,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 53228,
+            "ru_nivcsw": 5,
+            "ru_nvcsw": 188,
+            "ru_minflt": 14779
+        },
+        "quadSpeed": 47161.120722582971,
+        "ru_self_end": {
+            "ru_utime_sec": 0.1123,
+            "ru_stime_sec": 0.089643,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 64072,
+            "ru_nivcsw": 7,
+            "ru_nvcsw": 272,
+            "ru_minflt": 18326
+        },
+        "ru_childs_cgstart": {
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0066620000000000004,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 14612,
+            "ru_nivcsw": 2,
+            "ru_nvcsw": 3,
+            "ru_minflt": 590
+        },
+        "nMops": 4813,
+        "mopSpeed": 108140.29253825243,
+        "ru_childs_end": {
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0066620000000000004,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 14612,
+            "ru_nivcsw": 2,
+            "ru_nvcsw": 3,
+            "ru_minflt": 590
+        },
+        "Frontend(%)": 60.367764915405175,
+        "nQuads": 2099,
+        "totalObjSize": 246867,
+        "mop/quad": 2.2929966650786087,
+        "outputSizePerQuad": 117.0,
+        "CodeGen(%)": 39.632235084594832
+    },
+    "CurCompileUdps": {},
     "CompileProcesses": [
-        "cgproc.10187.json"
-    ]
+        "cgproc.114954.json"
+    ],
+    "SIMBData": {
+        "out": "amcQwB.o",
+        "bytes": 97522
+    },
+    "CurCompileModules": [
+        "...MASTER...",
+        "_vcs_unit__3608651147",
+        "std",
+        "NetworkPkg",
+        "cadss_interconnect",
+        "node"
+    ],
+    "CompileStatus": "Successful"
 }

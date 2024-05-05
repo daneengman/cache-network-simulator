@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
 cstdint
 -
 cstdio
@@ -16,13 +16,13 @@ stdio.h
 trace.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/trace.c
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/trace.c
 trace.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/trace.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/trace.h
 trace_internal.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/trace_internal.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/trace_internal.h
 taskLib/TaskGraphAPI.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/TaskGraphAPI.h
 stdio.h
 -
 getopt.h
@@ -42,7 +42,7 @@ fcntl.h
 dlfcn.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/trace_internal.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/trace_internal.h
 
 trace/../common/common.h
 assert.h

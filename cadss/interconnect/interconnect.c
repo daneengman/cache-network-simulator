@@ -168,9 +168,12 @@ void memReqCallback(int procNum, uint64_t addr)
     }
 }
 
+int numReqs = 0;
+
 void busReq(bus_req_type brt, uint64_t addr, int procNum)
 {
-    printf("Bus request %s\n",req_type_map[brt]);
+    numReqs++;
+    printf("Bus request %s, %i\n",req_type_map[brt], numReqs);
     if (pendingRequest == NULL)
     {
         assert(brt != SHARED);

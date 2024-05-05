@@ -89,6 +89,7 @@ uint8_t busReq(bus_req_type reqType, uint64_t addr, int processorNum)
     if (processorNum < 0 || processorNum >= processorCount)
     {
         // ERROR
+        assert(0);
     }
 
     coherence_states currentState = getState(addr, processorNum);
@@ -123,6 +124,7 @@ uint8_t busReq(bus_req_type reqType, uint64_t addr, int processorNum)
         case DATA_RECV:
         case INVALIDATE:
         case NO_ACTION:
+            // printf("Callback to cache with ca %i\n",ca);
             cacheCallback(ca, processorNum, addr);
             break;
 

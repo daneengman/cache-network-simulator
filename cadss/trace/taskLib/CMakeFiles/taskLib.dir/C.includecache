@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.c
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/ct_file.c
 ct_file.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/ct_file.h
 unistd.h
 -
 stdio.h
@@ -16,7 +16,7 @@ stdio.h
 pthread.h
 -
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/taskLib/ct_file.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/taskLib/ct_file.h
 stdio.h
 -
 stdlib.h

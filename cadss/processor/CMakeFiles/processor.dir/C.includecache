@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor/processor.c
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/processor/processor.c
 getopt.h
 -
 stdlib.h
@@ -16,13 +16,13 @@ stdio.h
 unistd.h
 -
 processor.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor/processor.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/processor/processor.h
 trace.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor/trace.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/processor/trace.h
 cache.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor/cache.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/processor/cache.h
 branch.h
-/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor/branch.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/processor/branch.h
 
 processor/../common/branch.h
 common.h

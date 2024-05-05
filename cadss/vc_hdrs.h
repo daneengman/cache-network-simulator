@@ -44,7 +44,7 @@ typedef struct VeriC_Descriptor *vc_handle;
 
  extern int sv_socket_receive(/* INPUT */int socket_fd);
 
- extern int ack(/* INPUT */int countdown);
+ extern int reply(/* INPUT */int dest, /* INPUT */long long addr);
 
  extern int process_cache_transfer(/* OUTPUT */int *brt, /* OUTPUT */long long *addr, /* OUTPUT */int *procNumSource, /* OUTPUT */int *procNumDest);
 

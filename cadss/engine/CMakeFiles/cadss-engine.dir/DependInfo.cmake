@@ -4,9 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/config.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/config.c.o"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/debug.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/debug.c.o"
-  "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/engine.c" "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/engine.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/config.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/config.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/debug.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/debug.c.o"
+  "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/engine.c" "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir/engine.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

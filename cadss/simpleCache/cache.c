@@ -98,6 +98,7 @@ void coherCallback(int type, int processorNum, int64_t addr)
     if (type != DATA_RECV)
         return;
 
+    // If the callback matches the top pending request, mark it as ready
     if (pendReq->processorNum == processorNum && pendReq->addr == addr)
     {
         pendingRequest* pr = pendReq;
@@ -105,7 +106,7 @@ void coherCallback(int type, int processorNum, int64_t addr)
 
         pr->next = readyReq;
         readyReq = pr;
-    }
+    } // else iterate through other pending requests to find a match
     else
     {
         pendingRequest* prevReq = pendReq;

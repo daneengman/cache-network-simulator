@@ -1,4 +1,4 @@
-# Install script for directory: /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor
+# Install script for directory: /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/processor
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

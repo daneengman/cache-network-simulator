@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_SOURCE_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+CMAKE_BINARY_DIR = /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -206,19 +206,6 @@ interconnect/fast:
 .PHONY : interconnect/fast
 
 #=============================================================================
-# Target rules for targets named interconnect-ring
-
-# Build rule for target.
-interconnect-ring: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 interconnect-ring
-.PHONY : interconnect-ring
-
-# fast build rule for target.
-interconnect-ring/fast:
-	$(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/build
-.PHONY : interconnect-ring/fast
-
-#=============================================================================
 # Target rules for targets named interconnectBusSV
 
 # Build rule for target.
@@ -286,7 +273,6 @@ help:
 	@echo "... processor"
 	@echo "... coherence"
 	@echo "... interconnect"
-	@echo "... interconnect-ring"
 	@echo "... interconnectBusSV"
 	@echo "... interconnectRingSV"
 	@echo "... simpleCache"

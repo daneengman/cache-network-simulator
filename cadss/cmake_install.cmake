@@ -1,4 +1,4 @@
-# Install script for directory: /afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss
+# Install script for directory: /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,18 +34,17 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/branch/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/cache/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/engine/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/trace/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/processor/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/coherence/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnect-ring/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectBusSV/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/interconnectRingSV/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/simpleCache/cmake_install.cmake")
-  INCLUDE("/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/memory/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/branch/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/cache/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/trace/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/processor/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnectBusSV/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnectRingSV/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/simpleCache/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/memory/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -55,7 +54,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/afs/andrew.cmu.edu/usr13/dengman/private/15618/cache-network-simulator/cadss/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
