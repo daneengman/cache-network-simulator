@@ -206,19 +206,6 @@ interconnect/fast:
 .PHONY : interconnect/fast
 
 #=============================================================================
-# Target rules for targets named interconnect-ring
-
-# Build rule for target.
-interconnect-ring: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 interconnect-ring
-.PHONY : interconnect-ring
-
-# fast build rule for target.
-interconnect-ring/fast:
-	$(MAKE) -f interconnect-ring/CMakeFiles/interconnect-ring.dir/build.make interconnect-ring/CMakeFiles/interconnect-ring.dir/build
-.PHONY : interconnect-ring/fast
-
-#=============================================================================
 # Target rules for targets named interconnectBusSV
 
 # Build rule for target.
@@ -286,7 +273,6 @@ help:
 	@echo "... processor"
 	@echo "... coherence"
 	@echo "... interconnect"
-	@echo "... interconnect-ring"
 	@echo "... interconnectBusSV"
 	@echo "... interconnectRingSV"
 	@echo "... simpleCache"

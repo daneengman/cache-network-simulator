@@ -96,9 +96,7 @@ extern "C" int process_cache_transfer(int *brt, uint64_t *addr, int *procNumSour
     // while (bytes_received <= 0) {
         int bytes_received = recv(client_socket_fd, buf, 1024, 0);
     // }
-#ifdef VERBOSE
-    printf("Received %i bytes reading %s\n",bytes_received, (const char *)buf);
-#endif
+    // printf("Received %i bytes reading %s\n",bytes_received, (const char *)buf);
     sscanf((const char *)buf, "brt: %i, addr: %li, procNumSource: %i, procNumDest: %i", brt, addr, procNumSource, procNumDest);
 }
 
@@ -115,9 +113,9 @@ int socket_send(const unsigned char *buffer, int size) {
     return bytes_sent;
 }
 
-extern "C" int ack(int countdown) {
+extern "C" int reply(int dest,long int addr) {
     char buffer[1024];
-    int len = sprintf(buffer, "ack received: %i\n", countdown);
+    int len = sprintf(buffer, "ack received: %i %li\n", dest, addr);
     int bytes_sent = socket_send((const unsigned char *)buffer, len);
     // printf("Sent ack with result %i\n",bytes_sent);
 }

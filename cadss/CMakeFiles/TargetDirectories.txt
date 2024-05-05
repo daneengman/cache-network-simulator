@@ -3,7 +3,6 @@
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/engine/CMakeFiles/cadss-engine.dir
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/CMakeFiles/coherence.dir
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect/CMakeFiles/interconnect.dir
-/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect-ring/CMakeFiles/interconnect-ring.dir
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnectBusSV/CMakeFiles/interconnectBusSV.dir
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnectRingSV/CMakeFiles/interconnectRingSV.dir
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/memory/CMakeFiles/memory.dir

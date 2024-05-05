@@ -18,11 +18,22 @@ cmake .
 make
 
 
-./interconnectBusSV/sv/launch.sh 
+# ./interconnectBusSV/sv/launch.sh 
 # ./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnectBusSV
 
+# ./interconnectRingSV/sv/launch.sh 
+
+if [[ "$1" == "-gui" ]]; then
+    ./interconnectRingSV/sv/launch.sh -gui
+    echo "./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnectRingSV"
+else
+    ./interconnectRingSV/sv/launch.sh 
+    ./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnectRingSV
+fi
+
+
 # ./interconnectBusSV/sv/launch.sh 
-./cadss-engine -v -n 8 -s ex_proc.config -t traces/coher/splash2x.volrend_8_simsmall.taskgraph -c simpleCache -i interconnectBusSV
+# ./cadss-engine -v -n 8 -s ex_proc.config -t traces/coher/splash2x.volrend_8_simsmall.taskgraph -c simpleCache -i interconnectBusSV
 # pkill simv
 
 

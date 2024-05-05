@@ -43,8 +43,13 @@ memory* memComp;
 int CADSS_VERBOSE = 0;
 int processorCount = 1;
 
+bus_req* pendingCacheTransferRequests = NULL;
+bus_req* lastCacheTransferRequest = NULL;
+
 #define PORT 18240
 #define SERVER_ADDR "127.0.0.1"
+
+// #define VERBOSE
 
 int sockfd;
 
@@ -63,7 +68,7 @@ static const char* req_type_map[]
 
 
 
-const int CACHE_DELAY = 10;
+const int CACHE_DELAY = 10; // sure I Guess kind of inaccurate though considering probably should be 2 or 3 cycles
 const int CACHE_TRANSFER = 100;
 
 void registerCoher(coher* cc);
@@ -71,6 +76,23 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum);
 int busReqCacheTransfer(uint64_t addr, int procNum);
 void printInterconnState(void);
 void interconnNotifyState(void);
+
+void print_cache_list(char *src) {
+    #ifdef VERBOSE
+    printf("List printout %s\n", src);
+    bus_req *req = pendingCacheTransferRequests;
+    bus_req *prev = NULL;
+    while (req != NULL) {
+        printf("addr: %i ",req->addr);
+        printf("procNum: %i\n",req->procNum);
+        prev = req;
+        req = req->next;
+    }
+    printf("%li %li\n",lastCacheTransferRequest,prev);
+    assert(lastCacheTransferRequest == prev);
+    printf("Finished\n");
+    #endif
+}
 
 // Helper methods for per-processor request queues.
 static void enqBusRequest(bus_req* pr, int procNum)
@@ -106,8 +128,45 @@ static bus_req* deqBusRequest(int procNum)
     {
         queuedRequests[procNum] = ret->next;
     }
-
+    
     return ret;
+}
+
+void enqCacheRequest(bus_req *req) {
+    if (lastCacheTransferRequest) {
+        lastCacheTransferRequest->next = req;
+        lastCacheTransferRequest = req;
+    } else {
+        assert(!pendingCacheTransferRequests);
+        pendingCacheTransferRequests = req;
+        lastCacheTransferRequest = req;
+    }
+    req->next = NULL;
+    // printf("Pointer %li\n",req);
+    print_cache_list("enqCacheReq");
+}
+
+bus_req *removeCacheRequest(int procNum, long int addr) {
+    bus_req *req = pendingCacheTransferRequests;
+    bus_req *prev = NULL;
+    while (req) {
+        if (req->procNum == procNum && req->addr == addr) {
+            if (prev) {
+                prev->next = req->next;
+            } else {
+                pendingCacheTransferRequests = req->next;
+            }
+            if (lastCacheTransferRequest == req)
+                lastCacheTransferRequest = prev;
+            // lastCacheTransferRequest = req->next;
+            print_cache_list("removeCacheRequest");
+            return req;
+        }
+        prev = req;
+        req = req->next;
+    }
+    return NULL;
+    // assert(0);
 }
 
 static int busRequestQueueSize(int procNum)
@@ -149,6 +208,12 @@ interconn* init(inter_sim_args* isa)
         queuedRequests[i] = NULL;
     }
 
+    // pendingCacheTransferRequests = malloc(sizeof(bus_req*) * processorCount);
+    // for (int i = 0; i < processorCount; i++)
+    // {
+    //     pendingCacheTransferRequests[i] = NULL;
+    // }
+
     self = malloc(sizeof(interconn));
     self->busReq = busReq;
     self->registerCoher = registerCoher;
@@ -188,6 +253,7 @@ interconn* init(inter_sim_args* isa)
         assert(false);
     }
     // printf("\t\tSent reset, waiting for response\n");
+    // printf("\t\tProcessor count: %i\n",processorCount);
     char buffer[1024] = {0};
     if (recv(sockfd, buffer, sizeof(buffer), 0) == -1) {
         perror("recv");
@@ -206,6 +272,7 @@ void registerCoher(coher* cc)
     coherComp = cc;
 }
 
+
 void memReqCallback(int procNum, uint64_t addr)
 {
     if (!pendingRequest)
@@ -221,9 +288,8 @@ void memReqCallback(int procNum, uint64_t addr)
 
 void busReq(bus_req_type brt, uint64_t addr, int procNum)
 {   
-#ifdef VERBOSE
-    printf("Bus request %s\n",req_type_map[brt]);
-#endif
+    // printf("\t\tProcessor count: %i\n",processorCount);
+    // printf("Bus request %s\n",req_type_map[brt]);
     if (pendingRequest == NULL)
     {
         assert(brt != SHARED);
@@ -242,7 +308,7 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
 
         return;
     }
-    else if (brt == SHARED && pendingRequest->addr == addr)
+    else if (brt == SHARED && pendingRequest->addr == addr) // I don't think we actually do anything about this right now?
     {
         pendingRequest->shared = 1;
         return;
@@ -251,6 +317,7 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
     {
         assert(pendingRequest->currentState == WAITING_MEMORY);
         pendingRequest->data = 1;
+        pendingRequest->brt = DATA; // todo ???
         pendingRequest->currentState = TRANSFERING_CACHE;
         // TODO place these into wrapper functions
         if (send(sockfd, "cacheTransfer\n", strlen("cacheTransfer\n"), 0) == -1) {
@@ -264,13 +331,31 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
             exit(EXIT_FAILURE);
         }
         char message[1024];
-        sprintf(message, "brt: %i, addr: %li, procNumSource: %i, procNumDest: %i", brt, addr, procNum, pendingRequest->procNum);
+        sprintf(message, "brt: %i, addr: %li, procNumSource: %i, procNumDest: %i\n", brt, addr, procNum, pendingRequest->procNum);
+        // printf("Sending %s\n",message);
         if (send(sockfd, message, strlen(message), 0) == -1) {
             perror("send");
             assert(false);
         }
-        countDown = CACHE_TRANSFER; // Another processor called busReq from its coherence engine and now is working on sending it - we want to more accurately simulate this
-        waitOnCacheTransfer = 1;
+        // countDown = 1; // Another processor called busReq from its coherence engine and now is working on sending it - we want to more accurately simulate this
+
+        // if (pendingCacheTransferRequests) {
+        //     assert(lastCacheTransferRequest);
+        //     lastCacheTransferRequest->next = pendingRequest;
+        //     // lastCacheTransferRequest = pendingRequest;
+        //     // pendingRequest->next = NULL; TODO should this update happen here or elsewhere
+        //     // countDown = 0;
+        // } else {
+        //     pendingCacheTransferRequests = pendingRequest;
+        //     // lastCacheTransferRequest = pendingRequest;
+        // }
+        enqCacheRequest(pendingRequest);
+        // printf("Dest: %i\n",pendingRequest->procNum);
+        pendingRequest = NULL;
+        waitOnCacheTransfer++;
+        countDown = 0;
+        print_cache_list("busReq");
+
         return;
     }
     else
@@ -288,12 +373,8 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
     }
 }
 
-// #define VERBOSE
-
 int tick()
 {
-
-
 
     memComp->si.tick();
 
@@ -303,7 +384,8 @@ int tick()
     }
     // printf("\t\tSent tick, waiting for response\n");
     
-    int cacheTransferFinished = 0;
+    // int cacheTransferFinished = 0;
+    long int addr;
     int received;
     bool finished = false;
     // printf("\t\tC Program Received '%s'\n", buffer);
@@ -315,16 +397,69 @@ int tick()
             perror("recv");
             exit(EXIT_FAILURE);
         }
-        sscanf(buffer, "ack received: %i\n", &received);
-        // printf("Received = %i\n",received);
+        sscanf(buffer, "ack received: %i %li\n", &received, &addr); // TODO this needs some notion of address
+        #ifdef VERBOSE
+        if (received != -1)
+            printf("Received = %s\n",buffer);
+        #endif
         if (received == -1) 
             finished = true;
         else {
-#ifdef VERBOSE
+            #ifdef VERBOSE
             printf("\t\tC Program Received '%s'\n", buffer);
-#endif
-            cacheTransferFinished = 1;
+            #endif
+            // cacheTransferFinished = 1;
+            
             // buffer = strchr(str_p,'\n') + 1;
+            // bus_req* req = pendingCacheTransferRequests;
+            // bus_req* prev = NULL;
+            // bool removed = false;
+            // printf("Searching list for %i, %li\n", received, addr);
+            print_cache_list("Pre removal");
+            bus_req *req = removeCacheRequest(received,addr);
+            assert(req);
+            bus_req_type brt = req->brt; // how does the processor get notified of this completion
+            if (req->shared == 1)
+                brt = SHARED;
+            coherComp->busReq(brt, req->addr,
+                        req->procNum); // watt is this
+            waitOnCacheTransfer--;
+            interconnNotifyState();
+            free(req);
+            print_cache_list("Post removal");
+            // printf("Pending: %li\n",pendingCacheTransferRequests);
+            // while (req) {
+            //     if (req->procNum == received && req->addr == addr) {
+            //         removed = true;
+            //         bus_req_type brt = req->brt; // how does the processor get notified of this completion
+            //         if (req->shared == 1)
+            //             brt = SHARED;
+            //         coherComp->busReq(brt, req->addr,
+            //                     req->procNum); // watt is this
+            //         waitOnCacheTransfer--;
+            //         // TODO wrap this in some helper functions
+            //         if (prev)
+            //             prev->next = req->next;
+            //         else
+            //             pendingCacheTransferRequests = req->next;
+            //         if (req->next)
+            //             if (!req->next->next)
+            //                 lastCacheTransferRequest = req->next;
+            //         else
+            //             lastCacheTransferRequest = prev;
+            //         interconnNotifyState();
+            //         free(req);
+            //         print_cache_list();
+            //         break;
+            //     }
+            //     prev = req;
+            //     req = req->next;
+            // }
+
+            // if (!removed) {
+            //     printf("That's not good oh what if memory repl no");
+            //     assert(0);
+            // }
         }
     }
     // printf("Hello world3\n");
@@ -340,9 +475,9 @@ int tick()
         assert(pendingRequest != NULL);
         countDown--;
 
-        if (waitOnCacheTransfer) {
-            countDown = (cacheTransferFinished) ? 0 : 1;
-        }
+        // if (waitOnCacheTransfer) {
+        //     countDown = (cacheTransferFinished) ? 0 : 1;
+        // }
 
         // If the count-down has elapsed (or there hasn't been a
         // cache-to-cache transfer, the memory will respond with
@@ -367,24 +502,30 @@ int tick()
                 // The processors will snoop for this request as well.
                 for (int i = 0; i < processorCount; i++)
                 {
-                    if (pendingRequest->procNum != i)
-                    {
-                        coherComp->busReq(pendingRequest->brt,
-                                          pendingRequest->addr, i);
+                    if (pendingRequest) {
+                        if (pendingRequest->procNum != i)
+                        {
+                            coherComp->busReq(pendingRequest->brt,
+                                            pendingRequest->addr, i);
+                        }
+                    } else {
+                        assert(lastCacheTransferRequest);
+                        assert(countDown == 0);
                     }
                 }
-
-                if (pendingRequest->data == 1)
-                {
-                    pendingRequest->brt = DATA;
-                }
+                
+                // this is the case where it was snooped i think
+                // if (pendingRequest->data == 1)
+                // {
+                //     pendingRequest->brt = DATA;
+                // }
             }
             else if (pendingRequest->currentState == TRANSFERING_MEMORY)
             {
                 bus_req_type brt
                     = (pendingRequest->shared == 1) ? SHARED : DATA;
                 coherComp->busReq(brt, pendingRequest->addr,
-                                  pendingRequest->procNum);
+                                  pendingRequest->procNum); // coher gets notified here of completion, triggers call to main processor
 
                 interconnNotifyState();
                 free(pendingRequest);
@@ -392,7 +533,8 @@ int tick()
             }
             else if (pendingRequest->currentState == TRANSFERING_CACHE)
             {
-                bus_req_type brt = pendingRequest->brt;
+                assert(0);
+                bus_req_type brt = pendingRequest->brt; // how does the processor get notified of this completion
                 if (pendingRequest->shared == 1)
                     brt = SHARED;
 
@@ -402,11 +544,11 @@ int tick()
                 interconnNotifyState();
                 free(pendingRequest);
                 pendingRequest = NULL;
-                waitOnCacheTransfer = 0;
+                waitOnCacheTransfer--;
             }
         }
     }
-    else if (countDown == 0)
+    else if (countDown == 0) // select next new candidate!
     {
         for (int i = 0; i < processorCount; i++)
         {
@@ -458,7 +600,7 @@ void printInterconnState(void)
 void interconnNotifyState(void)
 {
     if (!pendingRequest)
-        return;
+        return; // ????
 
     if (self->dbgEnv.cadssDbgExternBreak)
     {
@@ -478,10 +620,19 @@ void interconnNotifyState(void)
 // was satisfied by a cache-to-cache transfer.
 int busReqCacheTransfer(uint64_t addr, int procNum)
 {
-    assert(pendingRequest);
+    // assert(pendingRequest);
 
-    if (addr == pendingRequest->addr && procNum == pendingRequest->procNum) {
-        return (pendingRequest->currentState == TRANSFERING_CACHE);
+    // if (addr == pendingRequest->addr && procNum == pendingRequest->procNum) {
+    //     // assert(0);
+    //     return (pendingRequest->currentState == TRANSFERING_CACHE);
+    // }
+
+    bus_req *req = pendingCacheTransferRequests;
+    while (req) {
+        if (addr == req->addr && procNum == req->procNum) {
+            return 1;
+        }
+        req = req->next;
     }
 
     return 0;

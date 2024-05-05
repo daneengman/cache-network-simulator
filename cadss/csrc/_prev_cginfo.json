@@ -1,8 +1,135 @@
 {
-    "CompileProcesses": [
-        "cgproc.90949.json"
-    ],
+    "MlibObjs": {},
+    "CompileStrategy": "fullobj",
+    "stat": {
+        "ru_childs_cgstart": {
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0062740000000000001,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 14608,
+            "ru_minflt": 591,
+            "ru_nvcsw": 6,
+            "ru_nivcsw": 2
+        },
+        "Frontend(%)": 61.909899522319222,
+        "ru_self_cgstart": {
+            "ru_utime_sec": 0.075171000000000002,
+            "ru_stime_sec": 0.045936999999999999,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 53216,
+            "ru_minflt": 14783,
+            "ru_nvcsw": 184,
+            "ru_nivcsw": 5
+        },
+        "nMops": 4850,
+        "ru_childs_end": {
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0062740000000000001,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 14608,
+            "ru_minflt": 591,
+            "ru_nvcsw": 6,
+            "ru_nivcsw": 2
+        },
+        "mopSpeed": 104867.1322623192,
+        "outputSizePerQuad": 117.0,
+        "nQuads": 2118,
+        "totalObjSize": 248932,
+        "quadSpeed": 45795.584769400419,
+        "ru_self_end": {
+            "ru_utime_sec": 0.12142,
+            "ru_stime_sec": 0.081959000000000004,
+            "ru_majflt": 0,
+            "ru_maxrss_kb": 64060,
+            "ru_minflt": 18316,
+            "ru_nvcsw": 266,
+            "ru_nivcsw": 8
+        },
+        "mop/quad": 2.2898961284230408,
+        "CodeGen(%)": 38.090100477680778
+    },
+    "PrevCompiledModules": {
+        "node": {
+            "Jg9WB_d": {
+                "bytes": 22445,
+                "mod": "node",
+                "out": "Jg9WB_d.o",
+                "mode": 4,
+                "checksum": 4294967295,
+                "archive": "archive.136/_97468_archive_1.a"
+            }
+        },
+        "NetworkPkg": {
+            "IfCxx_d": {
+                "bytes": 6998,
+                "mod": "NetworkPkg",
+                "out": "IfCxx_d.o",
+                "mode": 4,
+                "checksum": 4294967295,
+                "archive": "archive.136/_97468_archive_1.a"
+            }
+        },
+        "_vcs_unit__3608651147": {
+            "VaLUT_d": {
+                "bytes": 9043,
+                "mod": "_vcs_unit__3608651147",
+                "out": "VaLUT_d.o",
+                "mode": 4,
+                "checksum": 4294967295,
+                "archive": "archive.136/_97468_archive_1.a"
+            }
+        },
+        "...MASTER...": {
+            "amcQw_d": {
+                "bytes": 7599,
+                "mod": "...MASTER...",
+                "out": "objs/amcQw_d.o",
+                "mode": 4,
+                "checksum": 4294967295
+            }
+        },
+        "std": {
+            "reYIK_d": {
+                "bytes": 33308,
+                "mod": "std",
+                "out": "reYIK_d.o",
+                "mode": 4,
+                "checksum": 4294967295,
+                "archive": "archive.136/_97468_archive_1.a"
+            }
+        },
+        "cadss_interconnect": {
+            "kBiSq_d": {
+                "bytes": 72029,
+                "mod": "cadss_interconnect",
+                "out": "kBiSq_d.o",
+                "mode": 4,
+                "checksum": 4294967295,
+                "archive": "archive.136/_97468_archive_1.a"
+            }
+        }
+    },
     "NameTable": {
+        "node": [
+            "node",
+            "Jg9WB",
+            "module"
+        ],
+        "NetworkPkg": [
+            "NetworkPkg",
+            "IfCxx",
+            "module"
+        ],
+        "_vcs_unit__3608651147": [
+            "_vcs_unit__3608651147",
+            "VaLUT",
+            "module"
+        ],
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
+            "module"
+        ],
         "std": [
             "std",
             "reYIK",
@@ -12,115 +139,36 @@
             "cadss_interconnect",
             "kBiSq",
             "module"
-        ],
-        "...MASTER...": [
-            "SIM",
-            "amcQw",
-            "module"
         ]
     },
-    "Misc": {
-        "default_output_dir": "csrc",
-        "daidir": "simv.daidir",
-        "cwd": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss",
-        "csrc": "csrc",
-        "csrc_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/csrc",
-        "daidir_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv.daidir",
-        "archive_dir": "archive.122"
+    "SIMBData": {
+        "out": "amcQwB.o",
+        "bytes": 97522
     },
-    "MlibObjs": {},
-    "PrevCompiledModules": {
-        "std": {
-            "reYIK_d": {
-                "bytes": 33308,
-                "mod": "std",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.122/_90949_archive_1.a",
-                "out": "reYIK_d.o"
-            }
-        },
-        "cadss_interconnect": {
-            "kBiSq_d": {
-                "bytes": 83424,
-                "mod": "cadss_interconnect",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.122/_90949_archive_1.a",
-                "out": "kBiSq_d.o"
-            }
-        },
-        "...MASTER...": {
-            "amcQw_d": {
-                "bytes": 7295,
-                "mod": "...MASTER...",
-                "out": "objs/amcQw_d.o",
-                "mode": 4,
-                "checksum": 4294967295
-            }
-        }
-    },
+    "CurCompileUdps": {},
     "CurCompileModules": [
         "...MASTER...",
+        "_vcs_unit__3608651147",
         "std",
-        "cadss_interconnect"
+        "NetworkPkg",
+        "cadss_interconnect",
+        "node"
     ],
-    "CurCompileUdps": {},
-    "CompileStrategy": "fullobj",
-    "PEModules": [],
     "LVLData": [
         "SIM"
     ],
-    "stat": {
-        "Frontend(%)": 60.130935374310553,
-        "ru_self_cgstart": {
-            "ru_stime_sec": 0.05314,
-            "ru_utime_sec": 0.063559000000000004,
-            "ru_maxrss_kb": 52112,
-            "ru_nivcsw": 4,
-            "ru_minflt": 14626,
-            "ru_nvcsw": 180,
-            "ru_majflt": 0
-        },
-        "ru_childs_end": {
-            "ru_stime_sec": 0.0070349999999999996,
-            "ru_utime_sec": 0.0,
-            "ru_maxrss_kb": 14908,
-            "ru_nivcsw": 2,
-            "ru_minflt": 591,
-            "ru_nvcsw": 6,
-            "ru_majflt": 0
-        },
-        "nMops": 5965,
-        "totalObjSize": 220038,
-        "ru_childs_cgstart": {
-            "ru_stime_sec": 0.0070349999999999996,
-            "ru_utime_sec": 0.0,
-            "ru_maxrss_kb": 14908,
-            "ru_nivcsw": 2,
-            "ru_minflt": 591,
-            "ru_nvcsw": 6,
-            "ru_majflt": 0
-        },
-        "nQuads": 1998,
-        "ru_self_end": {
-            "ru_stime_sec": 0.083939,
-            "ru_utime_sec": 0.105701,
-            "ru_maxrss_kb": 62344,
-            "ru_nivcsw": 5,
-            "ru_minflt": 17900,
-            "ru_nvcsw": 266,
-            "ru_majflt": 0
-        },
-        "outputSizePerQuad": 110.0,
-        "quadSpeed": 47411.133785771912,
-        "mopSpeed": 141545.25176783258,
-        "mop/quad": 2.9854854854854853,
-        "CodeGen(%)": 39.86906462568944
+    "PEModules": [],
+    "CompileProcesses": [
+        "cgproc.97468.json"
+    ],
+    "Misc": {
+        "archive_dir": "archive.136",
+        "daidir": "simv.daidir",
+        "csrc_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/csrc",
+        "cwd": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss",
+        "csrc": "csrc",
+        "default_output_dir": "csrc",
+        "daidir_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv.daidir"
     },
-    "CompileStatus": "Successful",
-    "SIMBData": {
-        "out": "amcQwB.o",
-        "bytes": 96011
-    }
+    "CompileStatus": "Successful"
 }

@@ -1,15 +1,14 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Sat May 4 17:36:45 2024
+# Saved on Sat May 4 23:02:10 2024
 # Designs open: 1
 #   Sim: /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv
 # Toplevel windows open: 1
 # 	TopLevel.1
-#   Source.1: cadss_interconnect
-#   Group count = 3
+#   Source.1: NetworkPkg
+#   Group count = 2
 #   Group cadss_interconnect signal count = 16
-#   Group divider signal count = 6
-#   Group interconnect signal count = 14
+#   Group interconnect signal count = 13
 # End_DVE_Session_Save_Info
 
 # DVE version: K-2015.09_Full64
@@ -68,7 +67,7 @@ if {![gui_exist_window -window TopLevel.1]} {
 } else { 
     set TopLevel.1 TopLevel.1
 }
-gui_show_window -window ${TopLevel.1} -show_state normal -rect {{78 75} {1719 1045}}
+gui_show_window -window ${TopLevel.1} -show_state normal -rect {{78 141} {1716 1108}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -123,15 +122,15 @@ catch { set Object.1 [gui_share_window -id ${HSPane.1} -type Object -silent] }
 gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 105
 gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value -1
 gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 105} {height 856} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
-set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 333]
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 105} {height 853} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 330]
 catch { set Data.1 [gui_share_window -id ${DLPane.1} -type Data] }
 catch { set Local.1 [gui_share_window -id ${DLPane.1} -type Local -silent] }
 catch { set Member.1 [gui_share_window -id ${DLPane.1} -type Member -silent] }
-gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 333
-gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 857
+gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 330
+gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 854
 gui_set_window_pref_key -window ${DLPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 332} {height 856} {dock_state left} {dock_on_new_line true} {child_data_colvariable 169} {child_data_colvalue 100} {child_data_coltype 86} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
+gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 329} {height 853} {dock_state left} {dock_on_new_line true} {child_data_colvariable 169} {child_data_colvalue 100} {child_data_coltype 86} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -178,11 +177,11 @@ gui_update_statusbar_target_frame ${TopLevel.1}
 # DVE Open design session: 
 
 if { [llength [lindex [gui_get_db -design Sim] 0]] == 0 } {
-gui_set_env SIMSETUP::SIMARGS {{-ucligui }}
-gui_set_env SIMSETUP::SIMEXE {/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv}
+gui_set_env SIMSETUP::SIMARGS {{}}
+gui_set_env SIMSETUP::SIMEXE {./simv}
 gui_set_env SIMSETUP::ALLOW_POLL {0}
 if { ![gui_is_db_opened -db {/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv}] } {
-gui_sim_run Ucli -exe simv -args {-ucligui } -dir /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss -nosource
+gui_sim_run Ucli -exe simv -args { -ucligui} -dir /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss -nosource
 }
 }
 if { ![gui_sim_state -check active] } {error "Simulator did not start correctly" error}
@@ -204,16 +203,13 @@ gui_set_time_units 1s
 # Global: Signal Compare
 
 # Global: Signal Groups
-gui_load_child_values {cadss_interconnect.interconnect}
-gui_load_child_values {cadss_interconnect}
-gui_load_child_values {cadss_interconnect.divider}
 
 
-set _session_group_7 cadss_interconnect
-gui_sg_create "$_session_group_7"
-set cadss_interconnect "$_session_group_7"
+set _session_group_1 cadss_interconnect
+gui_sg_create "$_session_group_1"
+set cadss_interconnect "$_session_group_1"
 
-gui_sg_addsignal -group "$_session_group_7" { cadss_interconnect.request_out_avail cadss_interconnect.processed_request cadss_interconnect.interconnect_clk cadss_interconnect.NUM_PROC cadss_interconnect.request_in_avail cadss_interconnect.request_dest cadss_interconnect.new_request cadss_interconnect.request cadss_interconnect.SERVER_PORT cadss_interconnect.core_clk cadss_interconnect.addrs_out cadss_interconnect.inFlight cadss_interconnect.rst_l cadss_interconnect.finished_request cadss_interconnect.tickCount cadss_interconnect.addrs_in }
+gui_sg_addsignal -group "$_session_group_1" { cadss_interconnect.request_out_avail cadss_interconnect.processed_request cadss_interconnect.interconnect_clk cadss_interconnect.NUM_PROC cadss_interconnect.request_in_avail cadss_interconnect.new_request cadss_interconnect.request cadss_interconnect.processor_request_in cadss_interconnect.packetReceived cadss_interconnect.packetSendIn cadss_interconnect.SERVER_PORT cadss_interconnect.core_clk cadss_interconnect.inFlight cadss_interconnect.rst_l cadss_interconnect.finished_request cadss_interconnect.tickCount }
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.NUM_PROC}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.NUM_PROC}
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.SERVER_PORT}
@@ -223,23 +219,13 @@ gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.inFlight}
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.tickCount}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.tickCount}
 
-set _session_group_8 divider
-gui_sg_create "$_session_group_8"
-set divider "$_session_group_8"
+set _session_group_2 interconnect
+gui_sg_create "$_session_group_2"
+set interconnect "$_session_group_2"
 
-gui_sg_addsignal -group "$_session_group_8" { cadss_interconnect.divider.RATIO cadss_interconnect.divider.clk_in cadss_interconnect.divider.divided_clock cadss_interconnect.divider.rst_l cadss_interconnect.divider.count cadss_interconnect.divider.clk_out }
-gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.divider.RATIO}
-gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.divider.RATIO}
-
-set _session_group_9 interconnect
-gui_sg_create "$_session_group_9"
-set interconnect "$_session_group_9"
-
-gui_sg_addsignal -group "$_session_group_9" { cadss_interconnect.interconnect.request_out_avail cadss_interconnect.interconnect.processed_request cadss_interconnect.interconnect.NUM_PROC cadss_interconnect.interconnect.request_in_avail cadss_interconnect.interconnect.request_dest cadss_interconnect.interconnect.request cadss_interconnect.interconnect.bus_held cadss_interconnect.interconnect.first_priority cadss_interconnect.interconnect.addrs_out cadss_interconnect.interconnect.clk cadss_interconnect.interconnect.rst_l cadss_interconnect.interconnect.addrs_in cadss_interconnect.interconnect.TRANSFER_TIME cadss_interconnect.interconnect.countdown }
+gui_sg_addsignal -group "$_session_group_2" { cadss_interconnect.interconnect.packetNodeRec cadss_interconnect.interconnect.packetSendNext cadss_interconnect.interconnect.NUM_PROC cadss_interconnect.interconnect.packetOut cadss_interconnect.interconnect.packetSendIn cadss_interconnect.interconnect.packetCoreIn cadss_interconnect.interconnect.full cadss_interconnect.interconnect.clk cadss_interconnect.interconnect.rst_l cadss_interconnect.interconnect.packetRecieved cadss_interconnect.interconnect.packetIn cadss_interconnect.interconnect.recieved cadss_interconnect.interconnect.recievedOut }
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.interconnect.NUM_PROC}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.interconnect.NUM_PROC}
-gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.interconnect.TRANSFER_TIME}
-gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.interconnect.TRANSFER_TIME}
 
 # Global: Highlighting
 
@@ -249,7 +235,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 75910
+gui_set_time -C1_only 5140
 
 
 
@@ -274,8 +260,7 @@ gui_list_set_filter -id ${Hier.1} -list { {Package 1} {All 0} {Process 1} {VirtP
 gui_list_set_filter -id ${Hier.1} -text {*}
 gui_hier_list_init -id ${Hier.1}
 gui_change_design -id ${Hier.1} -design Sim
-catch {gui_list_expand -id ${Hier.1} cadss_interconnect}
-catch {gui_list_select -id ${Hier.1} {cadss_interconnect.divider}}
+catch {gui_list_select -id ${Hier.1} {cadss_interconnect}}
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
@@ -291,7 +276,7 @@ gui_list_set_filter -id ${Member.1} -text {*}
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Data.1} -text {*}
-gui_list_show_data -id ${Data.1} {cadss_interconnect.divider}
+gui_list_show_data -id ${Data.1} {cadss_interconnect.interconnect}
 gui_view_scroll -id ${Data.1} -vertical -set 0
 gui_view_scroll -id ${Data.1} -horizontal -set 0
 gui_view_scroll -id ${Hier.1} -vertical -set 0
@@ -300,7 +285,7 @@ gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Source 'Source.1'
 gui_src_value_annotate -id ${Source.1} -switch false
 gui_set_env TOGGLE::VALUEANNOTATE 0
-gui_open_source -id ${Source.1}  -replace -active cadss_interconnect /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectBusSV/sv/cadss_interconnect.sv
+gui_open_source -id ${Source.1}  -replace -active NetworkPkg /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectRingSV/sv/NetworkPkg.svg
 gui_view_scroll -id ${Source.1} -vertical -set 0
 gui_src_set_reusable -id ${Source.1}
 # Warning: Class view not found.
