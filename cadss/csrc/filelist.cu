@@ -1,12 +1,12 @@
 PIC_LD=ld
 
 ARCHIVE_OBJS=
-ARCHIVE_OBJS += _114954_archive_1.so
-_114954_archive_1.so : archive.137/_114954_archive_1.a
+ARCHIVE_OBJS += _170108_archive_1.so
+_170108_archive_1.so : archive.145/_170108_archive_1.a
 	@$(AR) -s $<
-	@$(PIC_LD) -shared  -o .//../simv.daidir//_114954_archive_1.so --whole-archive $< --no-whole-archive
+	@$(PIC_LD) -shared  -o .//../simv.daidir//_170108_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@
-	@ln -sf .//../simv.daidir//_114954_archive_1.so $@
+	@ln -sf .//../simv.daidir//_170108_archive_1.so $@
 
 
 

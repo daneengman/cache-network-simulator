@@ -1,14 +1,13 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Sat May 4 22:48:38 2024
+# Saved on Sat May 4 23:02:10 2024
 # Designs open: 1
 #   Sim: /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv
 # Toplevel windows open: 1
 # 	TopLevel.1
 #   Source.1: NetworkPkg
-#   Group count = 3
-#   Group cadss_interconnect signal count = 15
-#   Group divider signal count = 6
+#   Group count = 2
+#   Group cadss_interconnect signal count = 16
 #   Group interconnect signal count = 13
 # End_DVE_Session_Save_Info
 
@@ -68,7 +67,7 @@ if {![gui_exist_window -window TopLevel.1]} {
 } else { 
     set TopLevel.1 TopLevel.1
 }
-gui_show_window -window ${TopLevel.1} -show_state normal -rect {{78 97} {1718 1066}}
+gui_show_window -window ${TopLevel.1} -show_state normal -rect {{78 141} {1716 1108}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -123,15 +122,15 @@ catch { set Object.1 [gui_share_window -id ${HSPane.1} -type Object -silent] }
 gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 105
 gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value -1
 gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 105} {height 855} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
-set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 332]
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 105} {height 853} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 330]
 catch { set Data.1 [gui_share_window -id ${DLPane.1} -type Data] }
 catch { set Local.1 [gui_share_window -id ${DLPane.1} -type Local -silent] }
 catch { set Member.1 [gui_share_window -id ${DLPane.1} -type Member -silent] }
-gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 332
-gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 856
+gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 330
+gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 854
 gui_set_window_pref_key -window ${DLPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 331} {height 855} {dock_state left} {dock_on_new_line true} {child_data_colvariable 169} {child_data_colvalue 100} {child_data_coltype 86} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
+gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 329} {height 853} {dock_state left} {dock_on_new_line true} {child_data_colvariable 169} {child_data_colvalue 100} {child_data_coltype 86} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -210,7 +209,7 @@ set _session_group_1 cadss_interconnect
 gui_sg_create "$_session_group_1"
 set cadss_interconnect "$_session_group_1"
 
-gui_sg_addsignal -group "$_session_group_1" { cadss_interconnect.request_out_avail cadss_interconnect.processed_request cadss_interconnect.interconnect_clk cadss_interconnect.NUM_PROC cadss_interconnect.request_in_avail cadss_interconnect.new_request cadss_interconnect.request cadss_interconnect.packetReceived cadss_interconnect.packetSendIn cadss_interconnect.SERVER_PORT cadss_interconnect.core_clk cadss_interconnect.inFlight cadss_interconnect.rst_l cadss_interconnect.finished_request cadss_interconnect.tickCount }
+gui_sg_addsignal -group "$_session_group_1" { cadss_interconnect.request_out_avail cadss_interconnect.processed_request cadss_interconnect.interconnect_clk cadss_interconnect.NUM_PROC cadss_interconnect.request_in_avail cadss_interconnect.new_request cadss_interconnect.request cadss_interconnect.processor_request_in cadss_interconnect.packetReceived cadss_interconnect.packetSendIn cadss_interconnect.SERVER_PORT cadss_interconnect.core_clk cadss_interconnect.inFlight cadss_interconnect.rst_l cadss_interconnect.finished_request cadss_interconnect.tickCount }
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.NUM_PROC}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.NUM_PROC}
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.SERVER_PORT}
@@ -220,19 +219,11 @@ gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.inFlight}
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.tickCount}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.tickCount}
 
-set _session_group_2 divider
+set _session_group_2 interconnect
 gui_sg_create "$_session_group_2"
-set divider "$_session_group_2"
+set interconnect "$_session_group_2"
 
-gui_sg_addsignal -group "$_session_group_2" { cadss_interconnect.divider.RATIO cadss_interconnect.divider.clk_in cadss_interconnect.divider.divided_clock cadss_interconnect.divider.rst_l cadss_interconnect.divider.count cadss_interconnect.divider.clk_out }
-gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.divider.RATIO}
-gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.divider.RATIO}
-
-set _session_group_3 interconnect
-gui_sg_create "$_session_group_3"
-set interconnect "$_session_group_3"
-
-gui_sg_addsignal -group "$_session_group_3" { cadss_interconnect.interconnect.packetNodeRec cadss_interconnect.interconnect.packetSendNext cadss_interconnect.interconnect.NUM_PROC cadss_interconnect.interconnect.packetOut cadss_interconnect.interconnect.packetSendIn cadss_interconnect.interconnect.packetCoreIn cadss_interconnect.interconnect.full cadss_interconnect.interconnect.clk cadss_interconnect.interconnect.rst_l cadss_interconnect.interconnect.packetRecieved cadss_interconnect.interconnect.packetIn cadss_interconnect.interconnect.recieved cadss_interconnect.interconnect.recievedOut }
+gui_sg_addsignal -group "$_session_group_2" { cadss_interconnect.interconnect.packetNodeRec cadss_interconnect.interconnect.packetSendNext cadss_interconnect.interconnect.NUM_PROC cadss_interconnect.interconnect.packetOut cadss_interconnect.interconnect.packetSendIn cadss_interconnect.interconnect.packetCoreIn cadss_interconnect.interconnect.full cadss_interconnect.interconnect.clk cadss_interconnect.interconnect.rst_l cadss_interconnect.interconnect.packetRecieved cadss_interconnect.interconnect.packetIn cadss_interconnect.interconnect.recieved cadss_interconnect.interconnect.recievedOut }
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.interconnect.NUM_PROC}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.interconnect.NUM_PROC}
 
@@ -244,7 +235,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 5120
+gui_set_time -C1_only 5140
 
 
 

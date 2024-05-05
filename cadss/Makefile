@@ -232,6 +232,19 @@ interconnectRingSV/fast:
 .PHONY : interconnectRingSV/fast
 
 #=============================================================================
+# Target rules for targets named interconnectCrossbarSV
+
+# Build rule for target.
+interconnectCrossbarSV: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 interconnectCrossbarSV
+.PHONY : interconnectCrossbarSV
+
+# fast build rule for target.
+interconnectCrossbarSV/fast:
+	$(MAKE) -f interconnectCrossbarSV/CMakeFiles/interconnectCrossbarSV.dir/build.make interconnectCrossbarSV/CMakeFiles/interconnectCrossbarSV.dir/build
+.PHONY : interconnectCrossbarSV/fast
+
+#=============================================================================
 # Target rules for targets named simpleCache
 
 # Build rule for target.
@@ -275,6 +288,7 @@ help:
 	@echo "... interconnect"
 	@echo "... interconnectBusSV"
 	@echo "... interconnectRingSV"
+	@echo "... interconnectCrossbarSV"
 	@echo "... simpleCache"
 	@echo "... memory"
 .PHONY : help

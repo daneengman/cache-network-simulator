@@ -43,6 +43,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnect/cmake_install.cmake")
   INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnectBusSV/cmake_install.cmake")
   INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnectRingSV/cmake_install.cmake")
+  INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/interconnectCrossbarSV/cmake_install.cmake")
   INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/simpleCache/cmake_install.cmake")
   INCLUDE("/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/memory/cmake_install.cmake")
 

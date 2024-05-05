@@ -11,11 +11,15 @@ set -e
 
 pkill simv
 
+sleep 1
+
 rm -rf simv
 rm -rf simv.daidir
 
 cmake .
 make
+
+interconnect="Crossbar"
 
 
 # ./interconnectBusSV/sv/launch.sh 
@@ -24,11 +28,11 @@ make
 # ./interconnectRingSV/sv/launch.sh 
 
 if [[ "$1" == "-gui" ]]; then
-    ./interconnectRingSV/sv/launch.sh -gui
-    echo "./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnectRingSV"
+    "./interconnect${interconnect}SV/sv/launch.sh" -gui
+    echo "./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV"
 else
-    ./interconnectRingSV/sv/launch.sh 
-    ./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnectRingSV
+    "./interconnect${interconnect}SV/sv/launch.sh"
+    ./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
 fi
 
 

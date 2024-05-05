@@ -1,17 +1,18 @@
 # Begin_DVE_Session_Save_Info
 # DVE restart session
-# Saved on Sat May 4 17:29:02 2024
+# Saved on Sun May 5 14:51:47 2024
 # Designs open: 1
 #   Sim: /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv
 # Toplevel windows open: 2
 # 	TopLevel.1
 # 	TopLevel.2
-#   Source.1: cadss_interconnect
-#   Wave.1: 36 signals
-#   Group count = 3
+#   Source.1: NetworkPkg
+#   Wave.1: 31 signals
+#   Group count = 4
 #   Group cadss_interconnect signal count = 16
-#   Group divider signal count = 6
-#   Group interconnect signal count = 14
+#   Group interconnect signal count = 15
+#   Group cadss_interconnect_1 signal count = 16
+#   Group interconnect_1 signal count = 15
 # End_DVE_Session_Save_Info
 
 # DVE version: K-2015.09_Full64
@@ -67,7 +68,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 
 # MDI window settings
 set Wave.1 Wave.1
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 459} {child_wave_right 1121} {child_wave_colname 227} {child_wave_colvalue 228} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 458} {child_wave_right 1116} {child_wave_colname 227} {child_wave_colvalue 227} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -94,38 +95,47 @@ gui_set_time_units 1s
 # Global: Signal Compare
 
 # Global: Signal Groups
-gui_load_child_values {cadss_interconnect.interconnect}
-gui_load_child_values {cadss_interconnect}
-gui_load_child_values {cadss_interconnect.divider}
 
 
-set _session_group_4 cadss_interconnect
-gui_sg_create "$_session_group_4"
-set cadss_interconnect "$_session_group_4"
+set _session_group_1 cadss_interconnect
+gui_sg_create "$_session_group_1"
+set cadss_interconnect "$_session_group_1"
 
-gui_sg_addsignal -group "$_session_group_4" { cadss_interconnect.request_out_avail cadss_interconnect.processed_request cadss_interconnect.interconnect_clk cadss_interconnect.NUM_PROC cadss_interconnect.request_in_avail cadss_interconnect.request_dest cadss_interconnect.new_request cadss_interconnect.request cadss_interconnect.SERVER_PORT cadss_interconnect.core_clk cadss_interconnect.addrs_out cadss_interconnect.inFlight cadss_interconnect.rst_l cadss_interconnect.finished_request cadss_interconnect.tickCount cadss_interconnect.addrs_in }
+gui_sg_addsignal -group "$_session_group_1" { cadss_interconnect.request_out_avail cadss_interconnect.processed_request cadss_interconnect.interconnect_clk cadss_interconnect.NUM_PROC cadss_interconnect.request_in_avail cadss_interconnect.new_request cadss_interconnect.request cadss_interconnect.processor_request_in cadss_interconnect.packetReceived cadss_interconnect.packetSendIn cadss_interconnect.SERVER_PORT cadss_interconnect.core_clk cadss_interconnect.inFlight cadss_interconnect.rst_l cadss_interconnect.finished_request cadss_interconnect.tickCount }
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.NUM_PROC}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.NUM_PROC}
 gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.SERVER_PORT}
 gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.SERVER_PORT}
+gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.inFlight}
+gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.inFlight}
+gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.tickCount}
+gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.tickCount}
 
-set _session_group_5 divider
-gui_sg_create "$_session_group_5"
-set divider "$_session_group_5"
+set _session_group_2 interconnect
+gui_sg_create "$_session_group_2"
+set interconnect "$_session_group_2"
 
-gui_sg_addsignal -group "$_session_group_5" { cadss_interconnect.divider.RATIO cadss_interconnect.divider.clk_in cadss_interconnect.divider.divided_clock cadss_interconnect.divider.rst_l cadss_interconnect.divider.count cadss_interconnect.divider.clk_out }
-gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.divider.RATIO}
-gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.divider.RATIO}
+gui_sg_addsignal -group "$_session_group_2" { cadss_interconnect.interconnect.nodeID cadss_interconnect.interconnect.packetSendNext cadss_interconnect.interconnect.read cadss_interconnect.interconnect.packetSel cadss_interconnect.interconnect.selected cadss_interconnect.interconnect.empty cadss_interconnect.interconnect.packetSendIn cadss_interconnect.interconnect.packetCoreIn cadss_interconnect.interconnect.full cadss_interconnect.interconnect.clk cadss_interconnect.interconnect.rst_l cadss_interconnect.interconnect.packetRecieved cadss_interconnect.interconnect.beingSelected cadss_interconnect.interconnect.recieved cadss_interconnect.interconnect.recievedOut }
 
-set _session_group_6 interconnect
-gui_sg_create "$_session_group_6"
-set interconnect "$_session_group_6"
+set _session_group_3 cadss_interconnect_1
+gui_sg_create "$_session_group_3"
+set cadss_interconnect_1 "$_session_group_3"
 
-gui_sg_addsignal -group "$_session_group_6" { cadss_interconnect.interconnect.request_out_avail cadss_interconnect.interconnect.processed_request cadss_interconnect.interconnect.NUM_PROC cadss_interconnect.interconnect.request_in_avail cadss_interconnect.interconnect.request_dest cadss_interconnect.interconnect.request cadss_interconnect.interconnect.bus_held cadss_interconnect.interconnect.first_priority cadss_interconnect.interconnect.addrs_out cadss_interconnect.interconnect.clk cadss_interconnect.interconnect.rst_l cadss_interconnect.interconnect.addrs_in cadss_interconnect.interconnect.TRANSFER_TIME cadss_interconnect.interconnect.countdown }
-gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.interconnect.NUM_PROC}
-gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.interconnect.NUM_PROC}
-gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.interconnect.TRANSFER_TIME}
-gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.interconnect.TRANSFER_TIME}
+gui_sg_addsignal -group "$_session_group_3" { cadss_interconnect.request_out_avail cadss_interconnect.processed_request cadss_interconnect.interconnect_clk cadss_interconnect.NUM_PROC cadss_interconnect.request_in_avail cadss_interconnect.new_request cadss_interconnect.request cadss_interconnect.processor_request_in cadss_interconnect.packetReceived cadss_interconnect.packetSendIn cadss_interconnect.SERVER_PORT cadss_interconnect.core_clk cadss_interconnect.inFlight cadss_interconnect.rst_l cadss_interconnect.finished_request cadss_interconnect.tickCount }
+gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.NUM_PROC}
+gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.NUM_PROC}
+gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.SERVER_PORT}
+gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.SERVER_PORT}
+gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.inFlight}
+gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.inFlight}
+gui_set_radix -radix {decimal} -signals {Sim:cadss_interconnect.tickCount}
+gui_set_radix -radix {twosComplement} -signals {Sim:cadss_interconnect.tickCount}
+
+set _session_group_4 interconnect_1
+gui_sg_create "$_session_group_4"
+set interconnect_1 "$_session_group_4"
+
+gui_sg_addsignal -group "$_session_group_4" { cadss_interconnect.interconnect.nodeID cadss_interconnect.interconnect.packetSendNext cadss_interconnect.interconnect.read cadss_interconnect.interconnect.packetSel cadss_interconnect.interconnect.selected cadss_interconnect.interconnect.empty cadss_interconnect.interconnect.packetSendIn cadss_interconnect.interconnect.packetCoreIn cadss_interconnect.interconnect.full cadss_interconnect.interconnect.clk cadss_interconnect.interconnect.rst_l cadss_interconnect.interconnect.packetRecieved cadss_interconnect.interconnect.beingSelected cadss_interconnect.interconnect.recieved cadss_interconnect.interconnect.recievedOut }
 
 # Global: Highlighting
 
@@ -179,7 +189,7 @@ gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Source 'Source.1'
 gui_src_value_annotate -id ${Source.1} -switch false
 gui_set_env TOGGLE::VALUEANNOTATE 0
-gui_open_source -id ${Source.1}  -replace -active cadss_interconnect /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectBusSV/sv/cadss_interconnect.sv
+gui_open_source -id ${Source.1}  -replace -active NetworkPkg /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectRingSV/sv/NetworkPkg.svg
 gui_view_scroll -id ${Source.1} -vertical -set 0
 gui_src_set_reusable -id ${Source.1}
 # Warning: Class view not found.
@@ -192,12 +202,9 @@ set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
 gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
-gui_wv_zoom_timerange -id ${Wave.1} 75672 76039
-gui_list_add_group -id ${Wave.1} -after {New Group} {cadss_interconnect}
-gui_list_add_group -id ${Wave.1} -after {New Group} {divider}
-gui_list_add_group -id ${Wave.1} -after {New Group} {interconnect}
-gui_list_expand -id ${Wave.1} cadss_interconnect.request_out_avail
-gui_list_select -id ${Wave.1} {cadss_interconnect.interconnect.bus_held }
+gui_wv_zoom_timerange -id ${Wave.1} 0 365
+gui_list_add_group -id ${Wave.1} -after {New Group} {cadss_interconnect_1}
+gui_list_add_group -id ${Wave.1} -after {New Group} {interconnect_1}
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
@@ -213,15 +220,16 @@ if { $groupExD } {
 }
 gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Wave.1} -text {*}
-gui_list_set_insertion_bar  -id ${Wave.1} -group interconnect  -position in
+gui_list_set_insertion_bar  -id ${Wave.1} -group interconnect_1  -position in
 
-gui_view_scroll -id ${Wave.1} -vertical -set 300
+gui_view_scroll -id ${Wave.1} -vertical -set 0
 gui_show_grid -id ${Wave.1} -enable false
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
 if {[gui_exist_window -window ${TopLevel.1}]} {
 	gui_set_active_window -window ${TopLevel.1}
 	gui_set_active_window -window ${Source.1}
+	gui_set_active_window -window ${HSPane.1}
 }
 if {[gui_exist_window -window ${TopLevel.2}]} {
 	gui_set_active_window -window ${TopLevel.2}

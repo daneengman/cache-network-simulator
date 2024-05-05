@@ -17,6 +17,7 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "engine/CMakeLists.txt"
   "interconnect/CMakeLists.txt"
   "interconnectBusSV/CMakeLists.txt"
+  "interconnectCrossbarSV/CMakeLists.txt"
   "interconnectRingSV/CMakeLists.txt"
   "memory/CMakeLists.txt"
   "processor/CMakeLists.txt"
@@ -57,6 +58,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
   "interconnect/CMakeFiles/CMakeDirectoryInformation.cmake"
   "interconnectBusSV/CMakeFiles/CMakeDirectoryInformation.cmake"
   "interconnectRingSV/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "interconnectCrossbarSV/CMakeFiles/CMakeDirectoryInformation.cmake"
   "simpleCache/CMakeFiles/CMakeDirectoryInformation.cmake"
   "memory/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
@@ -73,6 +75,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "interconnect/CMakeFiles/interconnect.dir/DependInfo.cmake"
   "interconnectBusSV/CMakeFiles/interconnectBusSV.dir/DependInfo.cmake"
   "interconnectRingSV/CMakeFiles/interconnectRingSV.dir/DependInfo.cmake"
+  "interconnectCrossbarSV/CMakeFiles/interconnectCrossbarSV.dir/DependInfo.cmake"
   "simpleCache/CMakeFiles/simpleCache.dir/DependInfo.cmake"
   "memory/CMakeFiles/memory.dir/DependInfo.cmake"
   )

@@ -1,0 +1,3 @@
+project(interconnectCrossbarSV)
+add_library(interconnectCrossbarSV SHARED interconnectCrossbarSV.c)
+target_include_directories(interconnectCrossbarSV PRIVATE ../common)
