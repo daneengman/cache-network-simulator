@@ -1,0 +1,5 @@
+{"vcs1":{"timestamp_begin":1714849935.299870436, "rt":0.26, "ut":0.13, "st":0.12}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1714849934.389591406}
+{"VCS_COMP_START_TIME": 1714849934.389591406}
+{"VCS_COMP_END_TIME": 1714849935.652840817}
+{"VCS_USER_OPTIONS": "-sverilog library.sv crossbar.sv Network.svh NetworkPkg.svg library_test.sv -debug"}

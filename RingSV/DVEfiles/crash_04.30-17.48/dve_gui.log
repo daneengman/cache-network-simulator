@@ -1,0 +1,84 @@
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 30 17:20 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ringWormhole.sv", line 235.
+$finish at simulation time                  135
+Simulation complete, time is 135.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 30 17:25 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ringWormhole.sv", line 235.
+$finish at simulation time                  135
+Simulation complete, time is 135.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 30 17:27 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ringWormhole.sv", line 235.
+$finish at simulation time                  135
+Simulation complete, time is 135.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 30 17:28 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+$finish called from file "ringWormhole.sv", line 235.
+$finish at simulation time                  135
+Simulation complete, time is 135.
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06_Full64; Runtime version T-2022.06_Full64;  Apr 30 17:44 2024
+VCD+ Writer T-2022.06_Full64 Copyright (c) 1991-2022 by Synopsys Inc.
+The file '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' was opened successfully.
+*** FATAL: Simulation stopped due to a runtime error (such as null object access) in the HDL code.  Please see above in the log for more details, and/or recompile with '-check_all' to get more information printed to the log.
+The simulation cannot be continued. The current simulation state can be observed in DVE/UCLI.
+Assertion failed "(size_t)ofn < ctotalNodes" at line 2195 in file hscbkoptrt.c
+
+An unexpected termination has occurred in /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv due to an assertion failure in the tool
+Hostname ece012.ece.local.cmu.edu
+
+During icl execution command: ="_icl_dumpAdd 'NetworkPkg' '' '' '0' '/afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd' 'VPD' '1' '0' '0' '' '0' 'off' '14' 'node_test.DUT.clk' 'node_test.DUT.empty' 'node_test.DUT.full' 'node_test.DUT.newPacketIn' 'node_test.DUT.nodeID' 'node_test.DUT.outboundFree' 'node_test.DUT.packetDone' 'node_test.DUT.packetIn' 'node_test.DUT.packetOut' 'node_test.DUT.packetRecieved' 'node_test.DUT.packetSendIn' 'node_test.DUT.packetSendNext' 'node_test.DUT.recieved' 'node_test.DUT.rst_l'" <slb!&*()_+>---<sls!&*()_+>loc: -1<sls!&*()_+>diagtype: crash<sls!&*()_+>verbosity: 0<sls!&*()_+>msgtype: 0<sls!&*()_+>length: 0<sls!&*()_+>...<sls!&*()_+><sle!&*()_+>
+
+
+Command line: /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv -ucligui -ucli2Proc -uclimode
+
+--- Stack trace follows:
+
+Dumping VCS Annotated Stack:
+#0  0x00007fffeebc460c in ?? ()
+#1  0x00007fffeeb41f62 in ?? ()
+#2  0x0000000000001f2c in ?? ()
+#3  0x000000000074b108 in ?? ()
+#4  0x00007fffeeb42200 in ?? ()
+#5  0x00007fffffff8b60 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+Process VmPeak: 281876 kb, VmSize: 281872 kb
+System Free Memory: 70001352 kb, System Free Swap: 31430396 kb
+
+Completed context dump phase data
+Internal error: could not unlock message library mutex (No such file or directory)
+
+---------------------------------------------
+
+Simulation has just terminated due to a severe internal error:
+
+
+Release = 'T-2022.06_Full64'  Architecture = 'linux64'  Program = 'DVE'
+
+'35648016 35682754 34148626 34159530 34030185 34034531 34041335 28701426 29310945 28588861 42734328 44489519 44495186 44496031 44497223 34097680 34158951 34160691 34163407 34170352 44489519 44495186 44496031 44499235 44813937 44495186 44645337 44664374 44812384 44495186 44496031 42718539 38309528 38288207 38322911 38316220 38316859 35695886 20128892 21003505 35703069 35999907 35996689 20384026 42734328 44489519 44495186 44645337 44664374 44812384 44495186 44498843 44499198 44813911 44495186 44645337 44664374 44499284 44525291 44495186 44645337 44664374 44812384 44495186 44498843 44745145 44495186 44645337 44664374 44812384 44495186 44498843 44499198 44813911 44495186 44645337 44664374 44499284 44525291 44495186 44645337 44664374 44812384 44495186 44498843 44745145 44495186 44645337 44664374 44812384 44495186 44498843 44499198 44813911 44495186 44645337 44664374 44499284 44525291 44495186'
+
+---------------------------------------------
+===============================DVE Context================================
+Tcl="gui_list_add_group -id Wave.1 -after New Group DUT " 
+Tcl="guiSource .restartSimSession.tcl " 
+Tcl="gui_load_session -restart -ignore_errors " 
+Tcl="gui_menu_start_sim " 
+Tcl="gui_simulator_start_continue_command " 
+Command line: /afs/ece/support/synopsys/synopsys.release/T-Foundation/vcs/T-2022.06/gui/dve/linux64/bin/dve.exe -full64 -ucliplatform=linux64 -toolargs "-ucligui -toolexe ./simv  -pid 39837" -toolin /tmp/vcs_20240430212040_39836_yuchingw..stdin -toolout /tmp/vcs_20240430212040_39836_yuchingw..stdout
+==========================================================================

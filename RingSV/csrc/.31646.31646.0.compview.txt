@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1714854670.871083024, "rt":1.00, "ut":0.52, "st":0.30}}
+{"vcselab":{"timestamp_begin":1714854672.037837767, "rt":0.88, "ut":0.53, "st":0.27}}
+{"link":{"timestamp_begin":1714854673.057181394, "rt":0.48, "ut":0.15, "st":0.27}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1714854669.961021427}
+{"VCS_COMP_START_TIME": 1714854669.961021427}
+{"VCS_COMP_END_TIME": 1714854673.702113093}
+{"VCS_USER_OPTIONS": "-sverilog library.sv crossbar.sv Network.svh NetworkPkg.svg library_test.sv -debug"}
+{"vcs1": {"peak_mem": 338484}}
+{"stitch_vcselab": {"peak_mem": 239000}}

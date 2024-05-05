@@ -1,0 +1,91 @@
+ucliGUI::start /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv -ucligui 
+set ucliGUI::state
+set ucliGUI::state
+ucliCore::getToolPID
+synopsys::env hasTB
+trigger_hier_stack_context_switch 0
+synUtils::setDVEInitPhase 1
+synopsys::dump -type VPD -file /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/inter.vpd -locking
+synopsys::dump -autoflush on -fid VPD4
+set ::dve_fid VPD4
+synUtils::setDVEInitPhase 0
+ucliCore::getToolPID
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpEPVubH
+synUtils::sendTool -active {_icl_start_rpc -version "T-2022.06_Full64" -sync_file /tmp/vcs_dve_rpc.yuchingw.6020}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.yuchingw.6020}
+config endofsim noexit
+config onfail enable all
+config syscaddplainmembers
+config syscaddsourcenames
+config syscaddstructtypes
+synopsys::listing -disable
+# Begin_DVE_Session_Save_Info
+# DVE restart session
+# Saved on Tue Apr 30 17:44:01 2024
+# Designs open: 1
+#   Sim: /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv
+# Toplevel windows open: 2
+# 	TopLevel.1
+# 	TopLevel.2
+#   Source.1: node_test.DUT
+#   Wave.1: 16 signals
+#   Group count = 2
+#   Group node_test signal count = 12
+#   Group DUT signal count = 16
+# End_DVE_Session_Save_Info
+# DVE version: T-2022.06_Full64
+# DVE build date: May 31 2022 20:53:03
+#<Session mode="Restart" path=".restartSimSession.tcl" type="Debug">
+# Application preferences
+#<WindowLayout>
+# DVE top-level session
+# Create and position top-level window: TopLevel.1
+set TopLevel.1 TopLevel.1
+# Docked window settings
+set HSPane.1 HSPane.1
+set Hier.1 Hier.1
+set DLPane.1 DLPane.1
+set Data.1 Data.1
+set Console.1 Console.1
+# MDI window settings
+set Source.1 Source.1
+# End MDI window settings
+# Create and position top-level window: TopLevel.2
+set TopLevel.2 TopLevel.2
+# Docked window settings
+# MDI window settings
+set Wave.1 Wave.1
+# End MDI window settings
+#</WindowLayout>
+#<Database>
+#</Database>
+# DVE Global setting session:
+# Global: Breakpoints
+# Global: Bus
+# Global: Expressions
+# Global: Signal Time Shift
+# Global: Signal Compare
+# Global: Signal Groups
+synopsys::dump -add {node_test} -scope "." -depth 1 -fid VPD4
+set _session_group_7 node_test
+set node_test "$_session_group_7"
+set _session_group_8 DUT
+set DUT "$_session_group_8"
+# Global: Highlighting
+# Global: Stack
+# Post database loading setting...
+# Save global setting...
+# Wave/List view global setting
+# Close all empty TopLevel windows
+foreach __top [gui_ekki_get_window_ids -type TopLevel] {     if { [llength [gui_ekki_get_window_ids -parent $__top]] == 0} {         gui_close_window -window $__top     } }
+# DVE View/pane content session:
+# Hier 'Hier.1'
+catch {gui_list_expand -id ${Hier.1} node_test}
+catch {gui_list_select -id ${Hier.1} {node_test.DUT}}
+# Data 'Data.1'
+# Source 'Source.1'
+# View 'Wave.1'
+set groupExD [gui_get_pref_value -category Wave -key exclusiveSG]
+set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
+set origGroupCreationState [gui_list_create_group_when_add -wave]
+synopsys::dump -add {node_test.DUT.clk node_test.DUT.empty node_test.DUT.full node_test.DUT.newPacketIn node_test.DUT.nodeID node_test.DUT.outboundFree node_test.DUT.packetDone node_test.DUT.packetIn node_test.DUT.packetOut node_test.DUT.packetRecieved node_test.DUT.packetSendIn node_test.DUT.packetSendNext node_test.DUT.recieved node_test.DUT.rst_l } -aggregates  -fid VPD4

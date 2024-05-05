@@ -1,6 +1,6 @@
 # Begin_DVE_Session_Save_Info
 # DVE restart session
-# Saved on Sat May 4 17:31:50 2024
+# Saved on Sat May 4 17:37:07 2024
 # Designs open: 1
 #   Sim: /afs/andrew.cmu.edu/usr18/yuchingw/private/15418/cache-network-simulator/RingSV/simv
 # Toplevel windows open: 2
@@ -88,11 +88,11 @@ gui_set_time_units 1s
 # Global: Signal Groups
 
 
-set _session_group_41 DUT
-gui_sg_create "$_session_group_41"
-set DUT "$_session_group_41"
+set _session_group_42 DUT
+gui_sg_create "$_session_group_42"
+set DUT "$_session_group_42"
 
-gui_sg_addsignal -group "$_session_group_41" { network_test.DUT.nodeID network_test.DUT.packetSendNext network_test.DUT.selected network_test.DUT.empty network_test.DUT.packetSel network_test.DUT.beingSelected network_test.DUT.read network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.full network_test.DUT.clk network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.recieved network_test.DUT.recievedOut }
+gui_sg_addsignal -group "$_session_group_42" { network_test.DUT.nodeID network_test.DUT.packetSendNext network_test.DUT.selected network_test.DUT.empty network_test.DUT.packetSel network_test.DUT.beingSelected network_test.DUT.read network_test.DUT.packetSendIn network_test.DUT.packetCoreIn network_test.DUT.full network_test.DUT.clk network_test.DUT.rst_l network_test.DUT.packetRecieved network_test.DUT.recieved network_test.DUT.recievedOut }
 
 # Global: Highlighting
 
@@ -162,7 +162,7 @@ gui_list_expand -id ${Wave.1} network_test.DUT.beingSelected
 gui_list_expand -id ${Wave.1} network_test.DUT.read
 gui_list_expand -id ${Wave.1} network_test.DUT.recieved
 gui_list_expand -id ${Wave.1} network_test.DUT.recievedOut
-gui_list_select -id ${Wave.1} {{network_test.DUT.read[2]} }
+gui_list_select -id ${Wave.1} {network_test.DUT.full }
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
@@ -180,7 +180,7 @@ gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linka
 gui_list_set_filter -id ${Wave.1} -text {*}
 gui_list_set_insertion_bar  -id ${Wave.1} -group DUT  -item {network_test.DUT.packetSendIn[3:0]} -position below
 
-gui_view_scroll -id ${Wave.1} -vertical -set 157
+gui_view_scroll -id ${Wave.1} -vertical -set 382
 gui_show_grid -id ${Wave.1} -enable false
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane

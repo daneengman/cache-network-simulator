@@ -1,0 +1,5 @@
+{"vcs1":{"timestamp_begin":1714579949.904508720, "rt":0.34, "ut":0.14, "st":0.12}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1714579949.025301111}
+{"VCS_COMP_START_TIME": 1714579949.025301111}
+{"VCS_COMP_END_TIME": 1714579950.334198693}
+{"VCS_USER_OPTIONS": "-sverilog ringWormhole.sv library.sv Network.svh NetworkPkg.svg -debug"}
