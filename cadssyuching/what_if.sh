@@ -1,1 +1,0 @@
-gcc common/cache.h common/branch.h common/coherence.h common/common.h common/interconnect.h common/memory.h common/processor.h common/trace.h engine/*.h memory/*.h simpleCache/*.h engine/engine.c engine/config.c engine/debug.c interconnect/interconnect.c memory/memory.c processor/processor.c cache/cache.c -std=c99

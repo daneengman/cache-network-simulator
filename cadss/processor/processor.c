@@ -22,6 +22,7 @@ int64_t* memOpTag = NULL;
 
 #define CUTOFF 3000
 long int processorOpCount = 0;
+long int *processorOpCounts;
 
 //
 // init
@@ -35,6 +36,8 @@ processor* init(processor_sim_args* psa)
     tr = psa->tr;
     cs = psa->cache_sim;
     bs = psa->branch_sim;
+
+   
 
     // TODO - get argument list from assignment
     while ((op = getopt(psa->arg_count, psa->arg_list, "f:d:m:j:k:c:")) != -1)
@@ -70,6 +73,7 @@ processor* init(processor_sim_args* psa)
     pendingBranch = calloc(processorCount, sizeof(int));
     pendingMem = calloc(processorCount, sizeof(int));
     memOpTag = calloc(processorCount, sizeof(int64_t));
+     processorOpCounts = calloc(processorCount, sizeof(long int));
 
     self = calloc(1, sizeof(processor));
     return self;
@@ -149,8 +153,9 @@ int tick(void)
 
         // TODO: get and manage ops for each processor core
         nextOp = tr->getNextOp(i);
-        if (i == 0)
-            processorOpCount++;
+        // if (i == 0)
+        //     processorOpCount++;
+        processorOpCounts[i]++;
         // printf("nextOp: op %i,dest reg %i, src reg 0 %i, src reg 1 %i\n",nextOp->op,nextOp->dest_reg,nextOp->src_reg[0],nextOp->src_reg[1]);
         if (nextOp == NULL)
             continue;
@@ -187,12 +192,20 @@ int tick(void)
         free(nextOp);
     }
 
-    if (processorOpCount > CUTOFF) {
+    if (processorOpCounts[0] > CUTOFF) {
+        int done = 1;
+        for (int i = 1; i < processorCount; i++) {
+            if (processorOpCounts[i] <= CUTOFF)
+                done = 0;
+            printf("other count: %i %i\n", i, processorOpCounts[i]);
+        }
+        if (done) {
         printf("Reached cutoff point, stopping");
         return 0;
+        }
     }
 
-    printf("count: %i\n", processorOpCount);
+    printf("count: %i\n", processorOpCounts[0]);
     // printf("\n");
 
     return progress;

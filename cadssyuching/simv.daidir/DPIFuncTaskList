@@ -1,5 +1,0 @@
-import_DPI sv_socket_open cadss_interconnect
-import_DPI sv_socket_accept cadss_interconnect
-import_DPI sv_socket_receive cadss_interconnect
-import_DPI reply cadss_interconnect
-import_DPI process_cache_transfer cadss_interconnect

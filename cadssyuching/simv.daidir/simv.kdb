@@ -1,9 +1,0 @@
-rc file Version 1.0
-
-[Design]
-COMPILE_PATH=/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadssyuching
-SystemC=FALSE
-UUM=FALSE
-KDB=FALSE
-USE_NOVAS_HOME=FALSE
-TOP=cadss_interconnect register counter countUpTo SIPO FIFO_PISO 

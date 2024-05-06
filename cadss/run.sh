@@ -19,7 +19,7 @@ rm -rf simv.daidir
 cmake .
 make
 
-interconnect="Bus"
+interconnect="Crossbar"
 
 
 # ./interconnectBusSV/sv/launch.sh 
@@ -37,7 +37,7 @@ interconnect="Bus"
 
 "./interconnect${interconnect}SV/sv/launch.sh"
 # ./cadss-engine -v -n 4 -s ex_proc.config -t ../traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
-./cadss-engine -v -n 4 -s ex_proc.config -t ../traces/coher/dedup_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
+./cadss-engine -v -n 4 -s ex_proc.config -t ../traces/coher/fluidanimate_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
 
 
 # ./interconnectBusSV/sv/launch.sh 

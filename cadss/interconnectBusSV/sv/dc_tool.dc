@@ -1,0 +1,24 @@
+THE 18-341 Synopsys DC Script
+Homework 5
+Andy Orinvert
+=========================== SETUP ===========================
+set target_library /afs/ece/class/ece447/tools/synopsys/typical.db
+set link_library /afs/ece/class/ece447/tools/synopsys/typical.db
+define_design_lib WORK -path "./work"
+analyze -format sverilog "mesh.sv"
+elaborate "mesh"
+current_design mesh
+link
+uniquify
+========================= CLOCKING ==========================
+create_clock -period 100 clock
+set real_inputs [remove_from_collection [remove_from_collection [all_inputs] clock] e]
+set_input_delay -clock clock -max 0 $real_inputs
+set_output_delay -clock clock -max 0 [all_outputs]
+set_max_delay 100 [all_outputs]
+========================= REPORTS ===========================
+check_design
+compile -ungroup_all -area_effort high
+report_area > reports/area_F.rpt
+report_timing > reports/timing_F.rpt
+exit

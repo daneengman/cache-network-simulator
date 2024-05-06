@@ -1,36 +1,241 @@
 Chronologic VCS simulator copyright 1991-2015
 Contains Synopsys proprietary information.
-Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  May  5 19:06 2024
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  May  5 15:22 2024
 VCD+ Writer K-2015.09_Full64 Copyright (c) 1991-2015 by Synopsys Inc.
 The file '/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/inter.vpd' was opened successfully.
 Server started and listening on port 18240
 Client connected
 Resetting interconnect...
+                5120 Received brt           3, addr              5276544, source           0, dest           1
+Replying to node 1 at addr         5276544
+                6230 Received brt           3, addr             15655248, source           1, dest           2
+Replying to node 2 at addr        15655248
+                7340 Received brt           3, addr             15655248, source           2, dest           3
+Replying to node 3 at addr        15655248
+                8450 Received brt           3, addr              5276544, source           1, dest           0
+Replying to node 0 at addr         5276544
+               10570 Received brt           3, addr              5276544, source           0, dest           2
+Replying to node 2 at addr         5276544
+               10680 Received brt           3, addr              5276544, source           2, dest           3
+Replying to node 3 at addr         5276544
+               14810 Received brt           3, addr              5276560, source           1, dest           2
+Replying to node 2 at addr         5276560
+               14920 Received brt           3, addr              5276560, source           2, dest           3
+Replying to node 3 at addr         5276560
+               15030 Received brt           3, addr              5276544, source           3, dest           0
+Replying to node 0 at addr         5276544
+               19150 Received brt           3, addr              5276560, source           3, dest           2
+Replying to node 2 at addr         5276560
+               20260 Received brt           3, addr              5276560, source           2, dest           3
+Replying to node 3 at addr         5276560
+               21370 Received brt           3, addr              5276608, source           0, dest           1
+Replying to node 1 at addr         5276608
+               22480 Received brt           3, addr              5276576, source           1, dest           2
+Replying to node 2 at addr         5276576
+               23590 Received brt           3, addr              5276576, source           2, dest           3
+Replying to node 3 at addr         5276576
+               23700 Received brt           3, addr              5276608, source           1, dest           0
+Replying to node 0 at addr         5276608
+               24810 Received brt           3, addr              5276560, source           3, dest           1
+Replying to node 1 at addr         5276560
+               25920 Received brt           3, addr              5276576, source           3, dest           2
+Replying to node 2 at addr         5276576
+               27030 Received brt           3, addr              5276576, source           2, dest           3
+Replying to node 3 at addr         5276576
+               27140 Received brt           3, addr              5276576, source           3, dest           1
+Replying to node 1 at addr         5276576
+               28250 Received brt           3, addr              5276592, source           1, dest           2
+Replying to node 2 at addr         5276592
+               29360 Received brt           3, addr              5276592, source           2, dest           3
+Replying to node 3 at addr         5276592
+               29470 Received brt           3, addr              5276608, source           0, dest           1
+Replying to node 1 at addr         5276608
+               29570 Received brt           3, addr              5276608, source           1, dest           0
+Replying to node 0 at addr         5276608
+               30680 Received brt           3, addr              5276592, source           3, dest           2
+Replying to node 2 at addr         5276592
+               31790 Received brt           3, addr              5276592, source           2, dest           3
+Replying to node 3 at addr         5276592
+               31900 Received brt           3, addr              5276592, source           3, dest           1
+Replying to node 1 at addr         5276592
+               33010 Received brt           3, addr              5276608, source           0, dest           2
+Replying to node 2 at addr         5276608
+               33110 Received brt           3, addr              5276608, source           2, dest           0
+               36220 Received brt           3, addr              5276560, source           1, dest           3
+Replying to node 3 at addr         5276560
+               36330 Received brt           3, addr              5276608, source           3, dest           1
+Replying to node 1 at addr         5276608
+               37440 Received brt           3, addr              5276560, source           3, dest           2
+               37550 Received brt           3, addr              5276576, source           1, dest           3
 Warning: [DVIT111] 
 The design was not compiled with stack debug option.
 Stack debugging cannot be supported for Stack and Local Panes.
 To enable stack debugging capabilities, please compile the design with option '-debug_access+all'.
 Please recompile using the '-debug_access<+options>' switch and incremental options as required.  Recommended options are '-debug_access' for post-process debug, '-debug_access+classdbg' for testbench debug, and '-debug_access+all' for all debug capabilities.  Refer the VCS user guide for more granular options for debug control under the switch '-debug_access' and refer to '-debug_region' for region control.
-With selected criteria, DVE has found 'results at time 23255
-    cadss_interconnect.core_clk'.
-With selected criteria, DVE has found 'results at time 23250
-    cadss_interconnect.core_clk'.
-With selected criteria, DVE has found 'results at time 23245
-    cadss_interconnect.core_clk'.
-With selected criteria, DVE has found 'results at time 23240
-    cadss_interconnect.interconnect.packetIn[3:0]
-    cadss_interconnect.interconnect.clk
-    cadss_interconnect.interconnect.packetOut[3:0]
+With selected criteria, DVE has found 'results at time 36360
+    cadss_interconnect.interconnect.packetRecieved[3:0]'.
+With selected criteria, DVE has found 'results at time 33010
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31930
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31910
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31810
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31790
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 30710
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 30690
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29590
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29570
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29490
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29470
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29390
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29370
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 28270
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 28250
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27170
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27150
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27050
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27030
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 25950
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 25930
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 24830
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 25930
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 25950
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27030
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27050
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27150
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 27170
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 28250
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 28270
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29370
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29390
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29470
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29490
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29570
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 29590
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 30690
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 30710
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31790
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31810
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31910
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 31930
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 33010
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 33030
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 33110
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 33130
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 36230
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 36250
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 36330
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 36350
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 37450
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 37470
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 37550
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 37570
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+With selected criteria, DVE has found 'results at time 36380
+    cadss_interconnect.interconnect.recieved[3:0]'.
+With selected criteria, DVE has found 'results at time 36360
     cadss_interconnect.interconnect.packetSendNext[3:0]
-    cadss_interconnect.interconnect.packetNodeRec[3:0]
-    cadss_interconnect.core_clk
-    cadss_interconnect.interconnect_clk'.
-With selected criteria, DVE has found 'results at time 23220
-    cadss_interconnect.request_in_avail[3:0]'.
-With selected criteria, DVE has found 'results at time 23180
-    cadss_interconnect.request_in_avail[3:0]'.
-With selected criteria, DVE has found 'results at time 23100
-    cadss_interconnect.request_in_avail[3:0]'.
-With selected criteria, DVE has found 'results at time 23060
-    cadss_interconnect.request_in_avail[3:0]'.
-VCS terminated abruptly at time 23310
+    cadss_interconnect.interconnect.read[3:0]
+    cadss_interconnect.interconnect.selected[3:0][3:0]
+    cadss_interconnect.interconnect.empty[3:0]
+    cadss_interconnect.interconnect.clk
+    cadss_interconnect.interconnect.packetRecieved[3:0]
+    cadss_interconnect.interconnect.beingSelected[3:0][3:0]
+    cadss_interconnect.interconnect.recieved[3:0]
+    cadss_interconnect.interconnect.recieved[1]
+    cadss_interconnect.interconnect.recievedOut[3:0]'.
+With selected criteria, DVE has found 'results at time 36370
+    cadss_interconnect.interconnect.clk'.
+With selected criteria, DVE has found 'results at time 37450
+    cadss_interconnect.interconnect.packetCoreIn[3:0]'.
+With selected criteria, DVE has found 'results at time 33120
+    cadss_interconnect.interconnect.empty[2]'.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+Warning: [DVWW010] 
+Seek hit end of values with no more matches.
+With selected criteria, DVE has found 'results at time 31820
+    cadss_interconnect.interconnect.empty[2]'.
+With selected criteria, DVE has found 'results at time 33120
+    cadss_interconnect.interconnect.empty[2]'.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 8623060
+CPU Time:      7.260 seconds;       Data structure size:   0.0Mb
+Sun May  5 15:41:04 2024

@@ -1,4 +1,6 @@
 /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/central_sv_files/Network.svh
+/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/central_sv_files/NetworkPkg.svg
 /afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/central_sv_files/defines.svh
-/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectBusSV/sv/bus.sv
-/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectBusSV/sv/cadss_interconnect.sv
+/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/central_sv_files/library.sv
+/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectCrossbarSV/sv/cadss_interconnect.sv
+/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/interconnectCrossbarSV/sv/crossbar.sv

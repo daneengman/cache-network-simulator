@@ -1,0 +1,151 @@
+{
+    "ObjArchives": [
+        {
+            "objects": [
+                [
+                    "RApnS_d.o",
+                    10139
+                ],
+                [
+                    "reYIK_d.o",
+                    33308
+                ],
+                [
+                    "IfCxx_d.o",
+                    6990
+                ],
+                [
+                    "kBiSq_d.o",
+                    147350
+                ],
+                [
+                    "MQn6b_d.o",
+                    9792
+                ],
+                [
+                    "JwEYT_d.o",
+                    11160
+                ],
+                [
+                    "KDq4P_d.o",
+                    10710
+                ],
+                [
+                    "NEhHV_d.o",
+                    26427
+                ]
+            ],
+            "archive": "archive.181/_155377_archive_1.a",
+            "size": 255876
+        }
+    ],
+    "Modules": {
+        "SIPO": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "FIFO_PISO": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "...MASTER...": {},
+        "_vcs_unit__1462514895": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "std": {
+            "Compiled": "Yes",
+            "Compiled Times": 49
+        },
+        "NetworkPkg": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "countUpTo": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "cadss_interconnect": {
+            "Compiled": "Yes",
+            "Compiled Times": 59
+        },
+        "counter": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        }
+    },
+    "CompUnits": {
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "out": "objs/amcQw_d.o",
+            "bytes": 10919,
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "reYIK_d": {
+            "mod": "std",
+            "out": "reYIK_d.o",
+            "bytes": 33308,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "RApnS_d": {
+            "mod": "_vcs_unit__1462514895",
+            "out": "RApnS_d.o",
+            "bytes": 10139,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "IfCxx_d": {
+            "mod": "NetworkPkg",
+            "out": "IfCxx_d.o",
+            "bytes": 6990,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "kBiSq_d": {
+            "mod": "cadss_interconnect",
+            "out": "kBiSq_d.o",
+            "bytes": 147350,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "KDq4P_d": {
+            "mod": "SIPO",
+            "out": "KDq4P_d.o",
+            "bytes": 10710,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "MQn6b_d": {
+            "mod": "counter",
+            "out": "MQn6b_d.o",
+            "bytes": 9792,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "JwEYT_d": {
+            "mod": "countUpTo",
+            "out": "JwEYT_d.o",
+            "bytes": 11160,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "NEhHV_d": {
+            "mod": "FIFO_PISO",
+            "out": "NEhHV_d.o",
+            "bytes": 26427,
+            "archive": "archive.181/_155377_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        }
+    },
+    "reusePaths": {}
+}

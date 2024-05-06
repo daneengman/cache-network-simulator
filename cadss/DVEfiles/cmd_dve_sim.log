@@ -14,26 +14,46 @@ synopsys::dump -autoflush on -fid VPD0
 set ::dve_fid VPD0
 synUtils::setDVEInitPhase 0
 ucliCore::getToolPID
-synUtils::sendTool -active _icl_setToolSocket /tmp/smlnp1vXcv7
-synUtils::sendTool -active {_icl_start_rpc -version "K-2015.09_Full64" -sync_file /tmp/vcs_dve_rpc.dengman.253300}
-synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.dengman.253300}
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpJB4bWl
+synUtils::sendTool -active {_icl_start_rpc -version "K-2015.09_Full64" -sync_file /tmp/vcs_dve_rpc.dengman.177902}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.dengman.177902}
 config endofsim noexit
 config onfail enable all
 config syscaddplainmembers
 config syscaddsourcenames
 config syscaddstructtypes
 synopsys::listing -disable
-synopsys::dump -add {cadss_interconnect} -scope "." -depth 1 -fid VPD0
 synopsys::dump -add {cadss_interconnect.interconnect} -scope "." -depth 1 -fid VPD0
+synopsys::dump -add {cadss_interconnect} -scope "." -depth 1 -fid VPD0
 synopsys::run
 set ucliGUI::state
 set ucliGUI::state
-set synopsys::env(time) 23310
+set synopsys::env(time) 8450
+set synopsys::env(time) 452120
+set synopsys::env(time) 2032500
+set synopsys::env(time) 5137120
 ucliCore::getToolPID
 ucliCore::stopTool -no_signal
-ucliCore::stopTool
 set ucliGUI::state
 set ucliGUI::state
+# DVE Simulation Rebuild/Restart Options
+# Saved on Sun May 5 14:51:46 2024
+set SIMSETUP::REBUILDOPTION 1
+set SIMSETUP::REBUILDCMD {vcs -sverilog -debug interconnectRingSV/sv/cadss_interconnect.sv interconnectRingSV/sv/socket_wrappers.cpp interconnectRingSV/sv/Network.svh interconnectRingSV/sv/NetworkPkg.svg interconnectRingSV/sv/ring.sv}
+set SIMSETUP::REBUILDDIR {}
+set SIMSETUP::RESTOREBP 1
+set SIMSETUP::RESTOREDUMP 1
+set SIMSETUP::RESTOREFORCE 1
+set SIMSETUP::RESTORESPECMAN 0
+# DVE Simulation Rebuild/Restart Options
+# Saved on Sun May 5 14:51:46 2024
+set SIMSETUP::REBUILDOPTION 1
+set SIMSETUP::REBUILDCMD {vcs -sverilog -debug interconnectRingSV/sv/cadss_interconnect.sv interconnectRingSV/sv/socket_wrappers.cpp interconnectRingSV/sv/Network.svh interconnectRingSV/sv/NetworkPkg.svg interconnectRingSV/sv/ring.sv}
+set SIMSETUP::REBUILDDIR {}
+set SIMSETUP::RESTOREBP 1
+set SIMSETUP::RESTOREDUMP 1
+set SIMSETUP::RESTOREFORCE 1
+set SIMSETUP::RESTORESPECMAN 0
 if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
 synopsys::finish
 set ucliGUI::state

@@ -1,5 +1,5 @@
 0 
-30
+32
 +cli+4
 +itf+/afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/vcsd.tab
 +memcbk
@@ -28,8 +28,10 @@
 -picarchive
 -sverilog
 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/bin/vcs1
-interconnectBusSV/sv/bus.sv
-interconnectBusSV/sv/cadss_interconnect.sv
+central_sv_files/Network.svh
+central_sv_files/NetworkPkg.svg
+interconnectCrossbarSV/sv/cadss_interconnect.sv
+interconnectCrossbarSV/sv/crossbar.sv
 55
 sysc_uni_pwd=/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss
 no_proxy=localhost,127.0.0.1,.cmu.edu,.cmu.local
@@ -87,11 +89,13 @@ CVS_RSH=ssh
 BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
 AKLOG=/usr/bin/aklog
 0
-5
-1714954348 central_sv_files/defines.svh
+7
+1714946540 central_sv_files/library.sv
+1714957549 central_sv_files/defines.svh
+1714946294 interconnectCrossbarSV/sv/crossbar.sv
+1714948062 central_sv_files/NetworkPkg.svg
 1714948480 central_sv_files/Network.svh
-1714947898 interconnectBusSV/sv/bus.sv
-1714947878 interconnectBusSV/sv/cadss_interconnect.sv
+1714951956 interconnectCrossbarSV/sv/cadss_interconnect.sv
 1440562444 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/vcsd.tab
 5
 1714946544 central_sv_files/socket_wrappers.cpp
@@ -99,4 +103,4 @@ AKLOG=/usr/bin/aklog
 1440563255 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libvirsim.so
 1440562843 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so
 1440562824 /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libsnpsmalloc.so
-1714954367 simv.daidir
+1714961189 simv.daidir
