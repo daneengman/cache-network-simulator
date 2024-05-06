@@ -72,14 +72,24 @@ module node (
   output logic recieved,
   output logic full
 );
-  logic empty;
+  logic empty, packetRecieved_temp, recieved_temp;
+  
+  always_ff @(posedge clock, negedge rst_l) begin
+    if (~rst_l) begin
+      recieved <= 'b0;
+      packetRecieved <= 'b0;
+    end else begin
+      recieved <= recieved_temp;
+      packetRecieved <= packetRecieved_temp;
+    end 
+  end
 
   always_comb begin
-    packetRecieved = 'b0;
-    recieved = 1'b0;
+    packetRecieved_temp = 'b0;
+    recieved_temp = 1'b0;
     if (packetIn && packetSendIn.dest == nodeID) begin
-      packetRecieved = packetSendIn;
-      recieved = 1'b1;
+      packetRecieved_temp = packetSendIn;
+      recieved_temp = 1'b1;
     end
   end
 
