@@ -1,0 +1,315 @@
+Chronologic VCS simulator copyright 1991-2015
+Contains Synopsys proprietary information.
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  May  4 22:38 2024
+VCD+ Writer K-2015.09_Full64 Copyright (c) 1991-2015 by Synopsys Inc.
+The file '/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/inter.vpd' was opened successfully.
+Server started and listening on port 18240
+Client connected
+Resetting interconnect...
+                5120 Received brt           3, addr              5276544, source           0, dest           1
+Replying to node 0 at addr               0
+Could not decode message, received 0 bytes reading 
+Error: "interconnectRingSV/sv/cadss_interconnect.sv", 225: cadss_interconnect: at time 5160
+Received nothing comprehensible
+$finish called from file "interconnectRingSV/sv/cadss_interconnect.sv", line 226.
+$finish at simulation time                 5160
+Simulation complete, time is 5160.
+Warning: [DVIT111] 
+The design was not compiled with stack debug option.
+Stack debugging cannot be supported for Stack and Local Panes.
+To enable stack debugging capabilities, please compile the design with option '-debug_access+all'.
+Please recompile using the '-debug_access<+options>' switch and incremental options as required.  Recommended options are '-debug_access' for post-process debug, '-debug_access+classdbg' for testbench debug, and '-debug_access+all' for all debug capabilities.  Refer the VCS user guide for more granular options for debug control under the switch '-debug_access' and refer to '-debug_region' for region control.
+With selected criteria, DVE has found 'results at time 5130
+    cadss_interconnect.request_in_avail[7:0]'.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 5160
+CPU Time:      0.230 seconds;       Data structure size:   0.1Mb
+Sat May  4 22:41:35 2024
+                         Chronologic VCS (TM)
+         Version K-2015.09_Full64 -- Sat May  4 22:41:36 2024
+               Copyright (c) 1991-2015 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file 'interconnectRingSV/sv/cadss_interconnect.sv'
+Parsing included file 'interconnectRingSV/sv/Network.svh'.
+Back to file 'interconnectRingSV/sv/cadss_interconnect.sv'.
+Parsing included file 'interconnectRingSV/sv/NetworkPkg.svg'.
+Parsing included file 'interconnectRingSV/sv/Network.svh'.
+Back to file 'interconnectRingSV/sv/NetworkPkg.svg'.
+Back to file 'interconnectRingSV/sv/cadss_interconnect.sv'.
+Parsing design file 'interconnectRingSV/sv/Network.svh'
+Parsing design file 'interconnectRingSV/sv/NetworkPkg.svg'
+Parsing included file 'interconnectRingSV/sv/Network.svh'.
+Back to file 'interconnectRingSV/sv/NetworkPkg.svg'.
+Parsing design file 'interconnectRingSV/sv/ring.sv'
+Parsing included file 'interconnectRingSV/sv/Network.svh'.
+Back to file 'interconnectRingSV/sv/ring.sv'.
+Parsing included file 'interconnectRingSV/sv/NetworkPkg.svg'.
+Parsing included file 'interconnectRingSV/sv/Network.svh'.
+Back to file 'interconnectRingSV/sv/NetworkPkg.svg'.
+Back to file 'interconnectRingSV/sv/ring.sv'.
+Top Level Modules:
+       cadss_interconnect
+No TimeScale specified
+Starting vcs inline pass...
+4 modules and 0 UDP read.
+	However, due to incremental compilation, only 1 module needs to be compiled.
+recompiling module cadss_interconnect because:
+	Signal dependencies have changed
+	Module parameters have been changed via defparam.
+	Set of coalesce able signals has changed
+rm -f _csrc*.so linux64_scvhdl_*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++  -o ../simv   -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -rdynamic  socket_wrappers.o   amcQwB.o objs/amcQw_d.o   _107488_archive_1.so _prev_archive_1.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libzerosoft_rt_stubs.so /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libvirsim.so /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libsnpsmalloc.so    /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libvcsnew.so /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libsimprofile.so /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libuclinative.so   -Wl,-whole-archive /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libvcsucli.so -Wl,-no-whole-archive       ./../simv.daidir/vc_hdrs.o    /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/vcs_save_restore_new.o -ldl -lm  -lc -lpthread -ldl 
+../simv up to date
+CPU time: .275 seconds to compile + .336 seconds to elab + .281 seconds to link
+Finished rebuilding the design.
+Chronologic VCS simulator copyright 1991-2015
+Contains Synopsys proprietary information.
+Compiler version K-2015.09_Full64; Runtime version K-2015.09_Full64;  May  4 22:41 2024
+VCD+ Writer K-2015.09_Full64 Copyright (c) 1991-2015 by Synopsys Inc.
+The file '/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/inter.vpd' was opened successfully.
+---------------------------------------------
+
+The tool has just detected a severe internal error:
+
+SEGV exception handled in TCL command execution:
+source  .restartSimSession.tcl.
+
+
+Release = 'K-2015.09_Full64'  Architecture = 'amd64'  Program = 'DVE'
+
+'33100218 33137770 33139822 140167425692672'
+
+---------------------------------------------
+=======================DVE Context and Call Stack=========================
+
+An unexpected termination has occurred in /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/gui/dve/linux64/bin/dve.exeHostname ece022.ece.local.cmu.edu
+
+VPD API Function hfGetReadObj Handle1="cadss_interconnect.request_out_avail" 
+Tcl="gui_list_add_group -id Wave.1 -after New Group cadss_interconnect " 
+Tcl="guiSource .restartSimSession.tcl " 
+Tcl="gui_load_session -restart -ignore_errors " 
+Tcl="gui_sim_restart -build {vcs -sverilog -debug interconnectRingSV/sv/cadss_interconnect.sv interconnectRingSV/sv/socket_wrappers.cpp interconnectRingSV/sv/Network.svh interconnectRingSV/sv/NetworkPkg.svg interconnectRingSV/sv/ring.sv} " 
+Command line: /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/gui/dve/linux64/bin/dve.exe -full64 -ucliplatform=amd64 -toolargs "-ucligui -toolexe ./simv  -pid 65296" -toolin /tmp/vcs_20240505023806_65262_dengman..stdin -toolout /tmp/vcs_20240505023806_65262_dengman..stdout
+
+--- Stack trace follows:
+[New LWP 66372]
+[New LWP 65883]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+
+warning: Cannot parse .gnu_debugdata section; LZMA support was disabled at compile time
+0x00007f7b45a70659 in waitpid () from /lib64/libc.so.6
+
+Thread 3 (Thread 0x7f7b43a8b700 (LWP 65883)):
+#0  0x00007f7b476e0de2 in pthread_cond_timedwait@@GLIBC_2.3.2 () from /lib64/libpthread.so.0
+#1  0x00000000028b36fb in ?? ()
+#2  0x00000000028b3b8e in QThread::msleep(unsigned long) ()
+#3  0x00000000010dcf16 in ag::dveXThread::run() ()
+#4  0x00000000028b388a in QThreadInstance::start(void*) ()
+#5  0x00007f7b476dcea5 in start_thread () from /lib64/libpthread.so.0
+#6  0x00007f7b45aa9b0d in clone () from /lib64/libc.so.6
+
+Thread 2 (Thread 0x7f7b43289700 (LWP 66372)):
+#0  0x00007f7b45a9ab5d in read () from /lib64/libc.so.6
+#1  0x00007f7b45a26d54 in __GI__IO_file_underflow () from /lib64/libc.so.6
+#2  0x00007f7b45a27f22 in __GI__IO_default_uflow () from /lib64/libc.so.6
+#3  0x00007f7b45a1acd4 in __GI__IO_getline_info () from /lib64/libc.so.6
+#4  0x00007f7b45a19ad6 in fgets () from /lib64/libc.so.6
+#5  0x00000000011f55f3 in ag::dveSmlSocket::run() ()
+#6  0x00000000028b388a in QThreadInstance::start(void*) ()
+#7  0x00007f7b476dcea5 in start_thread () from /lib64/libpthread.so.0
+#8  0x00007f7b45aa9b0d in clone () from /lib64/libc.so.6
+
+Thread 1 (Thread 0x7f7b494f1840 (LWP 65310)):
+#0  0x00007f7b45a70659 in waitpid () from /lib64/libc.so.6
+#1  0x00007f7b459edf62 in do_system () from /lib64/libc.so.6
+#2  0x00007f7b459ee311 in system () from /lib64/libc.so.6
+#3  0x00007f7b48b06df8 in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313e639d2928478c79b3f673f99203bcf8be64600612100082236bffb2007f1e0ef9 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so
+#4  0x00007f7b48b0738d in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313e81c34e9ac4c8988ef4a6e067b3aa9271e9f15440f9e8f69ebc77e2fd65860faa () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so
+#5  0x00007f7b48b0869b in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313efba706aab251478fa49e66610e453774633a6c152e7ef778f2202cda681f3d4e () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so
+#6  0x00007f7b48b01465 in SNPSle_d35ca1ff70d465c2b9b1a72eee90a506fdd009d3de3db1de () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/liberrorinf.so
+#7  0x0000000001f9a415 in ag::logErrorMessage(ag::errorType, QString const&, bool) ()
+#8  0x0000000001f9ac6e in ?? ()
+#9  <signal handler called>
+#10 0x00007f7b48e52849 in SNPSle_b89b497d8343401309b8cebf36056851cae5ac21169b137fc5a7f1e45c2e6b66ae1d331a00434fd1 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#11 0x00007f7b48e43c88 in SNPSle_2d2fd458016b4009887782aa2ac3125c467adb1a0b551520bf4a419543412efe1e6bf772929c511d () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#12 0x00007f7b48e43f43 in SNPSle_2d2fd458016b4009887782aa2ac3125cdb75ee6a9034bc5754214e8bd5dc4067b1ea3c32620f024a22d4d655d536eaf6 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#13 0x00007f7b48e43aee in SNPSle_2d2fd458016b4009887782aa2ac3125cbed362d38072b61159066ca48e3e3c56904508659a6cea1a () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#14 0x00007f7b48e43b22 in SNPSle_2d2fd458016b4009887782aa2ac3125c28ff0fcc0a51a795edd36e59944a9ef09842fdbc7a93c297 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#15 0x00007f7b48e446e0 in SNPSle_b89b497d8343401393562a66a6b4b81d6916be828fe1a67d93b33788480935c3695aba22b97d4f59f6791f2587523d92af251b2a6ce6c864 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#16 0x00007f7b48e43b5c in SNPSle_2d2fd458016b4009887782aa2ac3125c28ff0fcc0a51a795edd36e59944a9ef09842fdbc7a93c297 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#17 0x00007f7b48e46103 in SNPSle_2d2fd458016b400966c2e096b7d99632e81ce868b8563cff0e7b859cd452dd5b () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#18 0x00007f7b48e4815f in SNPSle_2d2fd458016b400966c2e096b7d996320f855740db5897c614709d191ac90091 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#19 0x00007f7b48e492d6 in SNPSle_2d2fd458016b4009011b4e28906103fefb0bf8c59f9eac834996d42718c27a54d5ebc908cf7b368293a865f5346f8a37 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#20 0x00007f7b48e53a56 in SNPSle_2d2fd458016b40099785151571af20b780ffff57c9799ba7ee549fbcfdc4ed1d71d6bc32d23d6b5a63480ca588d9b1a966556c00677c4c7f () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#21 0x00007f7b48e53be4 in SNPSle_2d2fd458016b40099785151571af20b775c9ec91e07a500853e2d261e37e8e2a7dd29bf1bee984be99022b417b44c31abc7f8531c83f9b42fb494e25dd01d16137ea46da33c459a8 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#22 0x00007f7b48e4d377 in SNPSle_2d2fd458016b40091440d223d498268aa254c09b6b8ebd2cf912400b1132a79bb90a4be0cb7daa3853985190f978f29643a67e40e24fcb4e0721764f705ee38a () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#23 0x00007f7b48e506b0 in SNPSle_2d2fd458016b40091440d223d498268aa254c09b6b8ebd2c85f663914c00ec949387b982aa59f5ddeee03769aa003a27 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#24 0x00007f7b48e4a59a in SNPSle_2d2fd458016b4009011b4e28906103fefb0bf8c59f9eac831695bab6bbd4fc7469a06e026c65e15b67d93fbade7d40ad () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#25 0x00007f7b48e3923b in SNPSle_2d2fd458016b4009cc77f49b0e43bc98da027ad471f98d879130cc234e82f2e2a790519a38a3163a () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#26 0x00007f7b48e5f03a in SNPSle_8d1b2179acedd1750d9ea76e91c880e6697d0235e2188a318e4307e320e143a0 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#27 0x00007f7b48e76334 in SNPSle_e67072563947ded775fb6688f9bb34d7 () from /afs/ece.cmu.edu/support/synopsys/synopsys.release/vcs-mx_vK-2015.09/linux64/lib/libhflib.so
+#28 0x0000000001b85f25 in ag::valLoaderList::getLoaderID(ag::metaParentObj const&, ag::infLoader*&, bool&) const ()
+#29 0x0000000001bf9420 in ag::metaDbObj::traceSignal(char const*, bool) ()
+#30 0x0000000001bf897b in ag::metaDbObj::setIsLoadAllChildValues(bool, bool) ()
+#31 0x00000000019344dd in ag::fieldViewWaveItem::initializeItem() ()
+#32 0x000000000191a6e0 in ag::fieldViewGroupItem::createFieldViewItem(ag::metaBaseObj*, QListViewItem*, bool, ag::signalObject*) ()
+#33 0x0000000001919fbf in ag::fieldViewGroupItem::populateGroup(ag::wgtSignalGroup*, QListViewItem*, bool, bool, bool) ()
+#34 0x00000000019a0a35 in ag::waveListView::tclAddGroup(QString const&, ll_list_s*, bool, bool, bool, bool, bool) ()
+#35 0x00000000018f9cb7 in ag::gui_list_add_group_cmd(void*, cci_interp_s*, ll_list_s*) ()
+#36 0x000000000267cf8e in cci_check_command ()
+#37 0x00000000027ec26f in TclInvokeStringCommand ()
+#38 0x00000000027ed892 in TclEvalObjvInternal ()
+#39 0x00000000027edbdf in Tcl_EvalEx ()
+#40 0x00000000027ee087 in Tcl_Eval ()
+#41 0x0000000001e0e710 in ag::ucliProcessIF::tclEval(char const*, QString*, bool) ()
+#42 0x0000000001e1b067 in ag::ucliProcessIF::executeCommand(QString const&, QString*, bool) ()
+#43 0x0000000001e1b796 in ag::ucliProcessIF::tclEvalSafe(QString const&, QString*, bool, bool) ()
+#44 0x0000000001e1bf26 in ag::ucliProcessIF::executeScriptCommand(QString const&, int, QString const&, QString*, bool) ()
+#45 0x0000000001e20606 in ag::ucliProcessIF::guiSource(void*, Tcl_Interp*, int, char const**) ()
+#46 0x00000000027ec26f in TclInvokeStringCommand ()
+#47 0x00000000027ed892 in TclEvalObjvInternal ()
+#48 0x00000000027edbdf in Tcl_EvalEx ()
+#49 0x00000000027ee863 in Tcl_EvalObjEx ()
+#50 0x000000000283b5b1 in Tcl_UplevelObjCmd ()
+#51 0x00000000027ed892 in TclEvalObjvInternal ()
+#52 0x0000000002812319 in ?? ()
+#53 0x0000000002816d76 in TclCompEvalObj ()
+#54 0x000000000283afa0 in TclObjInterpProc ()
+#55 0x00000000027ed892 in TclEvalObjvInternal ()
+#56 0x00000000027ee6db in Tcl_EvalObjv ()
+#57 0x00000000027ee83e in Tcl_EvalObjEx ()
+#58 0x000000000283b597 in Tcl_UplevelObjCmd ()
+#59 0x00000000027ed892 in TclEvalObjvInternal ()
+#60 0x0000000002812319 in ?? ()
+#61 0x0000000002816d76 in TclCompEvalObj ()
+#62 0x00000000027ee894 in Tcl_EvalObjEx ()
+#63 0x00000000027f4e2b in Tcl_CatchObjCmd ()
+#64 0x00000000027ed892 in TclEvalObjvInternal ()
+#65 0x0000000002812319 in ?? ()
+#66 0x0000000002816d76 in TclCompEvalObj ()
+#67 0x000000000283afa0 in TclObjInterpProc ()
+#68 0x00000000027ed892 in TclEvalObjvInternal ()
+#69 0x00000000027ee6db in Tcl_EvalObjv ()
+#70 0x000000000282a8f9 in ?? ()
+#71 0x00000000027ed892 in TclEvalObjvInternal ()
+#72 0x00000000027edbdf in Tcl_EvalEx ()
+#73 0x000000000267a00c in ?? ()
+#74 0x000000000222fdc9 in ek_exec_cci_command_2(EkTclObjHandle&, cci_interp_s*, char const*, int, int, int, int, int, int, int) ()
+#75 0x000000000222a060 in EkTclShellExecImpl::TExecCommandIF::runCommand(QString&) ()
+#76 0x0000000002233550 in EkShellExecutionImpl::TExecCommand::run() ()
+#77 0x0000000002232ead in EkShellExecutionImpl::startRun(EkShellExecutionImpl::TExecCommand*, EkTriState, EkTriState) ()
+#78 0x0000000002233000 in EkShellExecutionImpl::executeSync(QString const&, bool, bool, bool, QString*, EkShellDefs::TCmdSrc, bool, EkTriState, EkTriState, bool) ()
+#79 0x0000000001f9dc00 in utilEkShellImpl::executeSync(QString const&, bool, bool, bool, QString*, EkShellDefs::TCmdSrc, bool, EkTriState, EkTriState, bool) ()
+#80 0x000000000113509f in ag::ovaShell::executeCmdWithFlags(QString const&, EkShellDefs::TMsgSeverity&, QString&, bool, bool, bool) ()
+#81 0x00000000012098bc in ag::wndConsole::slotExecuteCmdWithFlags(QString const&, bool, bool, bool, bool) ()
+#82 0x0000000001f9f6e8 in ag::utilFastTcl::invoke(bool, bool, bool, bool, bool, bool) ()
+#83 0x0000000001fe7dff in ag::baseSession::load(char const*, QDomDocument&, bool, bool) ()
+#84 0x0000000001fe709a in ag::baseSession::load(char const*, bool, bool) ()
+#85 0x0000000001170de9 in ag::gui_load_session_cmd(void*, cci_interp_s*, ll_list_s*) ()
+#86 0x000000000267cf8e in cci_check_command ()
+#87 0x00000000027ec26f in TclInvokeStringCommand ()
+#88 0x00000000027ed892 in TclEvalObjvInternal ()
+#89 0x0000000002812319 in ?? ()
+#90 0x0000000002816d76 in TclCompEvalObj ()
+#91 0x000000000283afa0 in TclObjInterpProc ()
+#92 0x00000000027ed892 in TclEvalObjvInternal ()
+#93 0x00000000027ee6db in Tcl_EvalObjv ()
+#94 0x00000000027ee83e in Tcl_EvalObjEx ()
+#95 0x000000000283b597 in Tcl_UplevelObjCmd ()
+#96 0x00000000027ed892 in TclEvalObjvInternal ()
+#97 0x0000000002812319 in ?? ()
+#98 0x0000000002816d76 in TclCompEvalObj ()
+#99 0x00000000027ee894 in Tcl_EvalObjEx ()
+#100 0x00000000027f4e2b in Tcl_CatchObjCmd ()
+#101 0x00000000027ed892 in TclEvalObjvInternal ()
+#102 0x0000000002812319 in ?? ()
+#103 0x0000000002816d76 in TclCompEvalObj ()
+#104 0x000000000283afa0 in TclObjInterpProc ()
+#105 0x00000000027ed892 in TclEvalObjvInternal ()
+#106 0x00000000027ee6db in Tcl_EvalObjv ()
+#107 0x000000000282a8f9 in ?? ()
+#108 0x00000000027ed892 in TclEvalObjvInternal ()
+#109 0x0000000002812319 in ?? ()
+#110 0x0000000002816d76 in TclCompEvalObj ()
+#111 0x000000000283afa0 in TclObjInterpProc ()
+#112 0x00000000027ed892 in TclEvalObjvInternal ()
+#113 0x00000000027ee6db in Tcl_EvalObjv ()
+#114 0x00000000027ee83e in Tcl_EvalObjEx ()
+#115 0x000000000283b597 in Tcl_UplevelObjCmd ()
+#116 0x00000000027ed892 in TclEvalObjvInternal ()
+#117 0x0000000002812319 in ?? ()
+#118 0x0000000002816d76 in TclCompEvalObj ()
+#119 0x00000000027ee894 in Tcl_EvalObjEx ()
+#120 0x00000000027f4e2b in Tcl_CatchObjCmd ()
+#121 0x00000000027ed892 in TclEvalObjvInternal ()
+#122 0x0000000002812319 in ?? ()
+#123 0x0000000002816d76 in TclCompEvalObj ()
+#124 0x000000000283afa0 in TclObjInterpProc ()
+#125 0x00000000027ed892 in TclEvalObjvInternal ()
+#126 0x00000000027ee6db in Tcl_EvalObjv ()
+#127 0x000000000282a8f9 in ?? ()
+#128 0x00000000027ed892 in TclEvalObjvInternal ()
+#129 0x00000000027edbdf in Tcl_EvalEx ()
+#130 0x000000000267a00c in ?? ()
+#131 0x000000000222fdc9 in ek_exec_cci_command_2(EkTclObjHandle&, cci_interp_s*, char const*, int, int, int, int, int, int, int) ()
+#132 0x000000000222a060 in EkTclShellExecImpl::TExecCommandIF::runCommand(QString&) ()
+#133 0x0000000002233550 in EkShellExecutionImpl::TExecCommand::run() ()
+#134 0x0000000002232ead in EkShellExecutionImpl::startRun(EkShellExecutionImpl::TExecCommand*, EkTriState, EkTriState) ()
+#135 0x0000000002233000 in EkShellExecutionImpl::executeSync(QString const&, bool, bool, bool, QString*, EkShellDefs::TCmdSrc, bool, EkTriState, EkTriState, bool) ()
+#136 0x0000000001f9dc00 in utilEkShellImpl::executeSync(QString const&, bool, bool, bool, QString*, EkShellDefs::TCmdSrc, bool, EkTriState, EkTriState, bool) ()
+#137 0x000000000113509f in ag::ovaShell::executeCmdWithFlags(QString const&, EkShellDefs::TMsgSeverity&, QString&, bool, bool, bool) ()
+#138 0x00000000012098bc in ag::wndConsole::slotExecuteCmdWithFlags(QString const&, bool, bool, bool, bool) ()
+#139 0x0000000001f9f6e8 in ag::utilFastTcl::invoke(bool, bool, bool, bool, bool, bool) ()
+#140 0x00000000012fd83d in ag::dlgSimSetup::runTclCmd(QString const&, bool) ()
+#141 0x00000000012ff818 in ag::dlgSimSetup::beginRebuildandStart(bool) ()
+#142 0x00000000012ff9c6 in ag::dlgSimSetup::slotOKClicked() ()
+#143 0x000000000134d5d4 in ag::dlgSimSetup::qt_invoke(int, QUObject*) ()
+#144 0x00000000029074e2 in QObject::activate_signal(QConnectionList*, QUObject*) ()
+#145 0x00000000029075a2 in QObject::activate_signal(int) ()
+#146 0x0000000002931900 in QWidget::event(QEvent*) ()
+#147 0x00000000028b9e45 in QApplication::internalNotify(QObject*, QEvent*) ()
+#148 0x00000000028ba1d5 in QApplication::notify(QObject*, QEvent*) ()
+#149 0x000000000200dcd4 in EkExtQtApp::notify(QObject*, QEvent*) ()
+#150 0x0000000001fe056d in ag::baseQtApp::notify(QObject*, QEvent*) ()
+#151 0x000000000286f9f6 in QETWidget::translateMouseEvent(_XEvent const*) ()
+#152 0x000000000286e540 in QApplication::x11ProcessEvent(_XEvent*) ()
+#153 0x000000000287c6ca in QEventLoop::processEvents(unsigned int) ()
+#154 0x000000000111e651 in ag::ovaEventLoop::processEvents(unsigned int) ()
+#155 0x00000000028ca039 in QEventLoop::enterLoop() ()
+#156 0x00000000028c9f9a in QEventLoop::exec() ()
+#157 0x000000000111dfbf in run_cci_event_loop ()
+#158 0x00000000010ddae4 in ag::ovaAppInst::enterEventLoop(int, char**) ()
+#159 0x0000000000de2c2f in main ()
+Completed context dump data 'VPD API Function'
+==========================================================================

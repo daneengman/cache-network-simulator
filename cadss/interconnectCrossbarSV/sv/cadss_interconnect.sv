@@ -1,8 +1,9 @@
-`include "interconnectRingSV/sv/Network.svh"
-`include "interconnectRingSV/sv/NetworkPkg.svg"
+`include "central_sv_files/Network.svh"
+`include "central_sv_files/NetworkPkg.svg"
+`include "central_sv_files/defines.svh"
 
 module cadss_interconnect ();
-  localparam NUM_PROC = 4;
+  localparam NUM_PROC = `NUMNODES;
 
 /*
   input logic clk, rst_l,
@@ -38,7 +39,7 @@ module cadss_interconnect ();
 
   // request_t [NUM_PROC-1:0] next_request;
   
-  clock_divider #(.RATIO(2)) divider(.clk_in(core_clk), .clk_out(interconnect_clk), .*);
+  clock_divider #(.RATIO(`CLOCK_RATIO)) divider(.clk_in(core_clk), .clk_out(interconnect_clk), .*);
 
 
   // bus #(.NUM_PROC(NUM_PROC)) interconnect(.clk(interconnect_clk), .*);
@@ -66,7 +67,7 @@ module cadss_interconnect ();
   import "DPI-C" function int process_cache_transfer(output int brt, output longint addr, output int procNumSource, output int procNumDest);
 
   // Define port for server to listen on
-  parameter int SERVER_PORT = 18240;
+  parameter int SERVER_PORT = `PORT_CROSSBAR;
 
   request_t request;
 
@@ -191,7 +192,7 @@ module cadss_interconnect ();
             // $display("Something finished");
             // $display(i);
             finished_request = complete_request_queue[i].pop_front();
-            $display("Replying to node %d at addr %d", finished_request.dest, finished_request.mem_address);
+            // $display("Replying to node %d at addr %d", finished_request.dest, finished_request.mem_address);
             reply(finished_request.dest,finished_request.mem_address);
           end
         end
@@ -208,7 +209,7 @@ module cadss_interconnect ();
       end else if (parse_result == 3) begin 
         reply(-1,-1);
         process_cache_transfer(brt, addr, procNumSource, procNumDest);
-        $display($time,,"Received brt %d, addr %d, source %d, dest %d",brt,addr,procNumSource,procNumDest);
+        // $display($time,,"Received brt %d, addr %d, source %d, dest %d",brt,addr,procNumSource,procNumDest);
         // request_in_avail[procNumSource] = 1'b1;
         // request_dest[procNumSource] = procNumDest;
         // addrs_in[procNumSource] = addr;
@@ -252,7 +253,7 @@ module cadss_interconnect ();
 
 endmodule
 
-module clock_divider #(parameter RATIO = 4) (input logic clk_in, rst_l, output logic clk_out);
+module clock_divider #(parameter RATIO = `CLOCK_RATIO) (input logic clk_in, rst_l, output logic clk_out);
   logic [$clog2(RATIO)-1:0] count;
   logic divided_clock;
   always_ff @(posedge clk_in, negedge rst_l) begin

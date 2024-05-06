@@ -9,7 +9,7 @@ trap 'handle_error' ERR
 
 set -e
 
-pkill simv
+# pkill simv
 
 sleep 1
 
@@ -19,7 +19,7 @@ rm -rf simv.daidir
 cmake .
 make
 
-interconnect="Crossbar"
+interconnect="Bus"
 
 
 # ./interconnectBusSV/sv/launch.sh 
@@ -27,13 +27,17 @@ interconnect="Crossbar"
 
 # ./interconnectRingSV/sv/launch.sh 
 
-if [[ "$1" == "-gui" ]]; then
-    "./interconnect${interconnect}SV/sv/launch.sh" -gui
-    echo "./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV"
-else
-    "./interconnect${interconnect}SV/sv/launch.sh"
-    ./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
-fi
+# if [[ "$1" == "-gui" ]]; then
+#     "./interconnect${interconnect}SV/sv/launch.sh" -gui
+#     echo "./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV"
+# else
+#     "./interconnect${interconnect}SV/sv/launch.sh"
+#     ./cadss-engine -v -n 4 -s ex_proc.config -t traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
+# fi
+
+"./interconnect${interconnect}SV/sv/launch.sh"
+# ./cadss-engine -v -n 4 -s ex_proc.config -t ../traces/blackscholes_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
+./cadss-engine -v -n 4 -s ex_proc.config -t ../traces/coher/dedup_4_simsmall.taskgraph -c simpleCache -i interconnect${interconnect}SV
 
 
 # ./interconnectBusSV/sv/launch.sh 

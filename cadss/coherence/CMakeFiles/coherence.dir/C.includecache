@@ -24,6 +24,14 @@ coher_internal.h
 stree.h
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/stree.h
 
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/protocol.c
+coher_internal.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/coher_internal.h
+
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/stree.c
+stree.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/stree.h
+
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/coherence/stree.h
 stdbool.h
 -

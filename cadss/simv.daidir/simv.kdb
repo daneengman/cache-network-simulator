@@ -6,4 +6,4 @@ SystemC=FALSE
 UUM=FALSE
 KDB=FALSE
 USE_NOVAS_HOME=FALSE
-TOP=cadss_interconnect counter countUpTo SIPO FIFO_PISO 
+TOP=cadss_interconnect 

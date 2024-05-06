@@ -22,6 +22,10 @@ coherence.h
 stree.h
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/simpleCache/stree.h
 
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/simpleCache/stree.c
+stree.h
+/afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/simpleCache/stree.h
+
 /afs/ece.cmu.edu/user/dengman/private/cache-network-simulator/cadss/simpleCache/stree.h
 stdbool.h
 -

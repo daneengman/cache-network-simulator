@@ -20,7 +20,7 @@ int* pendingMem = NULL;
 int* pendingBranch = NULL;
 int64_t* memOpTag = NULL;
 
-#define CUTOFF 10000
+#define CUTOFF 3000
 long int processorOpCount = 0;
 
 //
@@ -191,6 +191,9 @@ int tick(void)
         printf("Reached cutoff point, stopping");
         return 0;
     }
+
+    printf("count: %i\n", processorOpCount);
+    // printf("\n");
 
     return progress;
 }

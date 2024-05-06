@@ -1,0 +1,103 @@
+{
+    "Modules": {
+        "NetworkPkg": {
+            "Compiled Times": 5,
+            "Compiled": "Yes"
+        },
+        "...MASTER...": {},
+        "_vcs_unit__3608651147": {
+            "Compiled Times": 2,
+            "Compiled": "Yes"
+        },
+        "node": {
+            "Compiled Times": 2,
+            "Compiled": "Yes"
+        },
+        "std": {
+            "Compiled Times": 32,
+            "Compiled": "Yes"
+        },
+        "cadss_interconnect": {
+            "Compiled Times": 42,
+            "Compiled": "Yes"
+        }
+    },
+    "ObjArchives": [
+        {
+            "size": 151731,
+            "archive": "archive.163/_72542_archive_1.a",
+            "objects": [
+                [
+                    "VaLUT_d.o",
+                    9579
+                ],
+                [
+                    "reYIK_d.o",
+                    33308
+                ],
+                [
+                    "IfCxx_d.o",
+                    6990
+                ],
+                [
+                    "kBiSq_d.o",
+                    79409
+                ],
+                [
+                    "Jg9WB_d.o",
+                    22445
+                ]
+            ]
+        }
+    ],
+    "CompUnits": {
+        "kBiSq_d": {
+            "mod": "cadss_interconnect",
+            "out": "kBiSq_d.o",
+            "bytes": 79409,
+            "archive": "archive.163/_72542_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "out": "objs/amcQw_d.o",
+            "bytes": 7599,
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "Jg9WB_d": {
+            "mod": "node",
+            "out": "Jg9WB_d.o",
+            "bytes": 22445,
+            "archive": "archive.163/_72542_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "VaLUT_d": {
+            "mod": "_vcs_unit__3608651147",
+            "out": "VaLUT_d.o",
+            "bytes": 9579,
+            "archive": "archive.163/_72542_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "reYIK_d": {
+            "mod": "std",
+            "out": "reYIK_d.o",
+            "bytes": 33308,
+            "archive": "archive.163/_72542_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        },
+        "IfCxx_d": {
+            "mod": "NetworkPkg",
+            "out": "IfCxx_d.o",
+            "bytes": 6990,
+            "archive": "archive.163/_72542_archive_1.a",
+            "mode": 4,
+            "checksum": 4294967295
+        }
+    },
+    "reusePaths": {}
+}

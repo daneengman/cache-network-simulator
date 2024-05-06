@@ -1,195 +1,106 @@
 {
-    "MlibObjs": {},
+    "PEModules": [],
     "CurCompileUdps": {},
+    "CurCompileModules": [
+        "...MASTER...",
+        "std",
+        "cadss_interconnect"
+    ],
+    "MlibObjs": {},
+    "SIMBData": {
+        "out": "amcQwB.o",
+        "bytes": 99117
+    },
+    "stat": {
+        "ru_self_cgstart": {
+            "ru_nvcsw": 184,
+            "ru_utime_sec": 0.068267999999999995,
+            "ru_stime_sec": 0.044860999999999998,
+            "ru_maxrss_kb": 52224,
+            "ru_minflt": 14650,
+            "ru_majflt": 0,
+            "ru_nivcsw": 4
+        },
+        "ru_childs_cgstart": {
+            "ru_nvcsw": 6,
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0066940000000000003,
+            "ru_maxrss_kb": 14944,
+            "ru_minflt": 591,
+            "ru_majflt": 0,
+            "ru_nivcsw": 2
+        },
+        "totalObjSize": 212607,
+        "nMops": 4551,
+        "ru_self_end": {
+            "ru_nvcsw": 265,
+            "ru_utime_sec": 0.10537100000000001,
+            "ru_stime_sec": 0.075827000000000006,
+            "ru_maxrss_kb": 62520,
+            "ru_minflt": 17954,
+            "ru_majflt": 0,
+            "ru_nivcsw": 5
+        },
+        "outputSizePerQuad": 126.0,
+        "nQuads": 1682,
+        "mop/quad": 2.7057074910820451,
+        "ru_childs_end": {
+            "ru_nvcsw": 6,
+            "ru_utime_sec": 0.0,
+            "ru_stime_sec": 0.0066940000000000003,
+            "ru_maxrss_kb": 14944,
+            "ru_minflt": 591,
+            "ru_majflt": 0,
+            "ru_nivcsw": 2
+        },
+        "mopSpeed": 122658.54513112144,
+        "quadSpeed": 45333.261461337344,
+        "CodeGen(%)": 35.211775535963412,
+        "Frontend(%)": 64.788224464036588
+    },
     "PrevCompiledModules": {
-        "SIPO": {
-            "KDq4P_d": {
-                "out": "KDq4P_d.o",
-                "bytes": 10718,
-                "mod": "SIPO",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
-            }
-        },
-        "FIFO_PISO": {
-            "NEhHV_d": {
-                "out": "NEhHV_d.o",
-                "bytes": 26435,
-                "mod": "FIFO_PISO",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
-            }
-        },
         "std": {
             "reYIK_d": {
-                "out": "reYIK_d.o",
                 "bytes": 33308,
                 "mod": "std",
+                "out": "reYIK_d.o",
                 "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
-            }
-        },
-        "NetworkPkg": {
-            "IfCxx_d": {
-                "out": "IfCxx_d.o",
-                "bytes": 6998,
-                "mod": "NetworkPkg",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
-            }
-        },
-        "counter": {
-            "MQn6b_d": {
-                "out": "MQn6b_d.o",
-                "bytes": 9800,
-                "mod": "counter",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
-            }
-        },
-        "countUpTo": {
-            "JwEYT_d": {
-                "out": "JwEYT_d.o",
-                "bytes": 11168,
-                "mod": "countUpTo",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
-            }
-        },
-        "_vcs_unit__1462514895": {
-            "RApnS_d": {
-                "out": "RApnS_d.o",
-                "bytes": 10011,
-                "mod": "_vcs_unit__1462514895",
-                "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
+                "archive": "archive.200/_156125_archive_1.a",
+                "checksum": 4294967295
             }
         },
         "cadss_interconnect": {
             "kBiSq_d": {
-                "out": "kBiSq_d.o",
-                "bytes": 153547,
+                "bytes": 83502,
                 "mod": "cadss_interconnect",
+                "out": "kBiSq_d.o",
                 "mode": 4,
-                "checksum": 4294967295,
-                "archive": "archive.145/_170108_archive_1.a"
+                "archive": "archive.200/_156125_archive_1.a",
+                "checksum": 4294967295
             }
         },
         "...MASTER...": {
             "amcQw_d": {
-                "out": "objs/amcQw_d.o",
-                "bytes": 10919,
+                "bytes": 7295,
                 "mod": "...MASTER...",
+                "out": "objs/amcQw_d.o",
                 "mode": 4,
                 "checksum": 4294967295
             }
         }
     },
-    "stat": {
-        "ru_childs_end": {
-            "ru_minflt": 591,
-            "ru_utime_sec": 0.0,
-            "ru_maxrss_kb": 17332,
-            "ru_stime_sec": 0.0076010000000000001,
-            "ru_majflt": 0,
-            "ru_nvcsw": 4,
-            "ru_nivcsw": 2
-        },
-        "mop/quad": 2.3540907585293143,
-        "ru_self_cgstart": {
-            "ru_minflt": 15569,
-            "ru_utime_sec": 0.10517,
-            "ru_maxrss_kb": 55008,
-            "ru_stime_sec": 0.054607000000000003,
-            "ru_majflt": 0,
-            "ru_nvcsw": 192,
-            "ru_nivcsw": 5
-        },
-        "ru_childs_cgstart": {
-            "ru_minflt": 591,
-            "ru_utime_sec": 0.0,
-            "ru_maxrss_kb": 17332,
-            "ru_stime_sec": 0.0076010000000000001,
-            "ru_majflt": 0,
-            "ru_nvcsw": 4,
-            "ru_nivcsw": 2
-        },
-        "nMops": 14214,
-        "nQuads": 6038,
-        "ru_self_end": {
-            "ru_minflt": 19361,
-            "ru_utime_sec": 0.20732900000000001,
-            "ru_maxrss_kb": 65416,
-            "ru_stime_sec": 0.099677000000000002,
-            "ru_majflt": 0,
-            "ru_nvcsw": 292,
-            "ru_nivcsw": 10
-        },
-        "CodeGen(%)": 49.273859421499168,
-        "totalObjSize": 372093,
-        "outputSizePerQuad": 61.0,
-        "mopSpeed": 139136.05262385105,
-        "quadSpeed": 59103.94580996289,
-        "Frontend(%)": 50.726140578500832
-    },
-    "CurCompileModules": [
-        "...MASTER...",
-        "_vcs_unit__1462514895",
-        "std",
-        "NetworkPkg",
-        "cadss_interconnect",
-        "counter",
-        "countUpTo",
-        "SIPO",
-        "FIFO_PISO"
+    "CompileProcesses": [
+        "cgproc.156125.json"
     ],
-    "CompileStrategy": "fullobj",
     "NameTable": {
-        "_vcs_unit__1462514895": [
-            "_vcs_unit__1462514895",
-            "RApnS",
-            "module"
-        ],
         "std": [
             "std",
             "reYIK",
             "module"
         ],
-        "counter": [
-            "counter",
-            "MQn6b",
-            "module"
-        ],
-        "NetworkPkg": [
-            "NetworkPkg",
-            "IfCxx",
-            "module"
-        ],
         "cadss_interconnect": [
             "cadss_interconnect",
             "kBiSq",
-            "module"
-        ],
-        "countUpTo": [
-            "countUpTo",
-            "JwEYT",
-            "module"
-        ],
-        "FIFO_PISO": [
-            "FIFO_PISO",
-            "NEhHV",
-            "module"
-        ],
-        "SIPO": [
-            "SIPO",
-            "KDq4P",
             "module"
         ],
         "...MASTER...": [
@@ -198,25 +109,18 @@
             "module"
         ]
     },
-    "SIMBData": {
-        "bytes": 99277,
-        "out": "amcQwB.o"
-    },
+    "CompileStrategy": "fullobj",
     "LVLData": [
         "SIM"
     ],
-    "PEModules": [],
-    "CompileProcesses": [
-        "cgproc.170108.json"
-    ],
     "Misc": {
+        "daidir": "simv.daidir",
         "cwd": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss",
         "csrc": "csrc",
-        "archive_dir": "archive.145",
+        "default_output_dir": "csrc",
         "csrc_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/csrc",
-        "daidir": "simv.daidir",
         "daidir_abs": "/afs/ece.cmu.edu/usr/dengman/private/cache-network-simulator/cadss/simv.daidir",
-        "default_output_dir": "csrc"
+        "archive_dir": "archive.200"
     },
     "CompileStatus": "Successful"
 }

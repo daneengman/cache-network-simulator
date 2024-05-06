@@ -1,0 +1,183 @@
+{
+    "Modules": {
+        "...MASTER...": {},
+        "_vcs_unit__3858184415": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "countUpTo": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "std": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "cadss_interconnect": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "NetworkPkg": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "FIFO_PISO": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "register": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "counter": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "SIPO": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "node": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        }
+    },
+    "CompUnits": {
+        "amcQw_d": {
+            "out": "objs/amcQw_d.o",
+            "mod": "...MASTER...",
+            "bytes": 11583,
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "NEhHV_d": {
+            "out": "NEhHV_d.o",
+            "mod": "FIFO_PISO",
+            "bytes": 26427,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "hSS0B_d": {
+            "out": "hSS0B_d.o",
+            "mod": "_vcs_unit__3858184415",
+            "bytes": 10547,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "IfCxx_d": {
+            "out": "IfCxx_d.o",
+            "mod": "NetworkPkg",
+            "bytes": 6990,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "reYIK_d": {
+            "out": "reYIK_d.o",
+            "mod": "std",
+            "bytes": 33308,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "DAC4W_d": {
+            "out": "DAC4W_d.o",
+            "mod": "register",
+            "bytes": 9737,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "KDq4P_d": {
+            "out": "KDq4P_d.o",
+            "mod": "SIPO",
+            "bytes": 10710,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "JwEYT_d": {
+            "out": "JwEYT_d.o",
+            "mod": "countUpTo",
+            "bytes": 11160,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "kBiSq_d": {
+            "out": "kBiSq_d.o",
+            "mod": "cadss_interconnect",
+            "bytes": 70075,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "MQn6b_d": {
+            "out": "MQn6b_d.o",
+            "mod": "counter",
+            "bytes": 9792,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "Jg9WB_d": {
+            "out": "Jg9WB_d.o",
+            "mod": "node",
+            "bytes": 23355,
+            "archive": "archive.174/_125167_archive_1.a",
+            "checksum": 4294967295,
+            "mode": 4
+        }
+    },
+    "ObjArchives": [
+        {
+            "archive": "archive.174/_125167_archive_1.a",
+            "objects": [
+                [
+                    "hSS0B_d.o",
+                    10547
+                ],
+                [
+                    "reYIK_d.o",
+                    33308
+                ],
+                [
+                    "IfCxx_d.o",
+                    6990
+                ],
+                [
+                    "kBiSq_d.o",
+                    70075
+                ],
+                [
+                    "DAC4W_d.o",
+                    9737
+                ],
+                [
+                    "MQn6b_d.o",
+                    9792
+                ],
+                [
+                    "JwEYT_d.o",
+                    11160
+                ],
+                [
+                    "KDq4P_d.o",
+                    10710
+                ],
+                [
+                    "NEhHV_d.o",
+                    26427
+                ],
+                [
+                    "Jg9WB_d.o",
+                    23355
+                ]
+            ],
+            "size": 212101
+        }
+    ],
+    "reusePaths": {}
+}

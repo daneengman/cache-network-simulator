@@ -1,0 +1,55 @@
+{
+    "Modules": {
+        "...MASTER...": {},
+        "std": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        },
+        "cadss_interconnect": {
+            "Compiled": "Yes",
+            "Compiled Times": 2
+        }
+    },
+    "CompUnits": {
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "out": "objs/amcQw_d.o",
+            "bytes": 7295,
+            "checksum": 4294967295,
+            "mode": 4
+        },
+        "reYIK_d": {
+            "mod": "std",
+            "out": "reYIK_d.o",
+            "bytes": 33308,
+            "checksum": 4294967295,
+            "mode": 4,
+            "archive": "archive.123/_17040_archive_1.a"
+        },
+        "kBiSq_d": {
+            "mod": "cadss_interconnect",
+            "out": "kBiSq_d.o",
+            "bytes": 83424,
+            "checksum": 4294967295,
+            "mode": 4,
+            "archive": "archive.123/_17040_archive_1.a"
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": [
+        {
+            "size": 116732,
+            "archive": "archive.123/_17040_archive_1.a",
+            "objects": [
+                [
+                    "reYIK_d.o",
+                    33308
+                ],
+                [
+                    "kBiSq_d.o",
+                    83424
+                ]
+            ]
+        }
+    ]
+}

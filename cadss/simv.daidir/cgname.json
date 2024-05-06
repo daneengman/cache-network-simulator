@@ -1,42 +1,12 @@
 {
-    "_vcs_unit__1462514895": [
-        "_vcs_unit__1462514895",
-        "RApnS",
-        "module"
-    ],
     "std": [
         "std",
         "reYIK",
         "module"
     ],
-    "counter": [
-        "counter",
-        "MQn6b",
-        "module"
-    ],
-    "NetworkPkg": [
-        "NetworkPkg",
-        "IfCxx",
-        "module"
-    ],
     "cadss_interconnect": [
         "cadss_interconnect",
         "kBiSq",
-        "module"
-    ],
-    "countUpTo": [
-        "countUpTo",
-        "JwEYT",
-        "module"
-    ],
-    "FIFO_PISO": [
-        "FIFO_PISO",
-        "NEhHV",
-        "module"
-    ],
-    "SIPO": [
-        "SIPO",
-        "KDq4P",
         "module"
     ],
     "...MASTER...": [

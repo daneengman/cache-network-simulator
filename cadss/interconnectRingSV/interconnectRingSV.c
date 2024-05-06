@@ -13,6 +13,10 @@
 #include <assert.h>
 #include <stdbool.h>
 
+#include "../central_sv_files/port_define.h"
+
+// #define VERBOSE
+
 typedef enum _bus_req_state
 {
     NONE,
@@ -46,7 +50,7 @@ int processorCount = 1;
 bus_req* pendingCacheTransferRequests = NULL;
 bus_req* lastCacheTransferRequest = NULL;
 
-#define PORT 18240
+#define PORT PORT_RING
 #define SERVER_ADDR "127.0.0.1"
 
 // #define VERBOSE
@@ -342,7 +346,7 @@ void busReq(bus_req_type brt, uint64_t addr, int procNum)
         // if (pendingCacheTransferRequests) {
         //     assert(lastCacheTransferRequest);
         //     lastCacheTransferRequest->next = pendingRequest;
-        //     // lastCacheTransferRequest = pendingRequest;
+        //     // lastCacheTransferRequest = pendingRequest;""
         //     // pendingRequest->next = NULL; TODO should this update happen here or elsewhere
         //     // countDown = 0;
         // } else {
@@ -397,7 +401,10 @@ int tick()
             perror("recv");
             exit(EXIT_FAILURE);
         }
-        sscanf(buffer, "ack received: %i %li\n", &received, &addr); // TODO this needs some notion of address
+        bool buffer_finished = false;
+        char *ptr = buffer;
+        while (!buffer_finished) {
+        sscanf(ptr, "ack received: %i %li\n", &received, &addr); // TODO this needs some notion of address
         #ifdef VERBOSE
         if (received != -1)
             printf("Received = %s\n",buffer);
@@ -461,6 +468,13 @@ int tick()
             //     assert(0);
             // }
         }
+        while (*ptr != '\n' && *ptr != '\0') {
+            ptr++;
+        }
+        ptr++;
+        if (*ptr == '\0')
+            buffer_finished = true;
+    }
     }
     // printf("Hello world3\n");
     // TODO handle if it is ack or informing us of something, handle appropriately 
